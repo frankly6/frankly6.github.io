@@ -1,0 +1,1164 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":"manual","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="记录了24&#x2F;7&#x2F;8-24&#x2F;12&#x2F;28的十八场 codeforces 补题, \(rating\;1646\rightarrow1785\)">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Codeforces exercises 2024">
+<meta property="og:url" content="http://example.com/2025/01/05/Codeforces-exercises-2024/index.html">
+<meta property="og:site_name" content="Frankly6 的博客">
+<meta property="og:description" content="记录了24&#x2F;7&#x2F;8-24&#x2F;12&#x2F;28的十八场 codeforces 补题, \(rating\;1646\rightarrow1785\)">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/07/16/OZFv57c2fT6pN4B.png">
+<meta property="og:image" content="https://s2.loli.net/2024/12/31/nsJSIzthfdcCNkj.png">
+<meta property="article:published_time" content="2025-01-05T03:45:14.000Z">
+<meta property="article:modified_time" content="2025-01-05T04:17:58.943Z">
+<meta property="article:author" content="Frankly6">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/07/16/OZFv57c2fT6pN4B.png">
+
+<link rel="canonical" href="http://example.com/2025/01/05/Codeforces-exercises-2024/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Codeforces exercises 2024 | Frankly6 的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Frankly6 的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/01/05/Codeforces-exercises-2024/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Frankly6">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Frankly6 的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Codeforces exercises 2024
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-01-05 11:45:14 / 修改时间：12:17:58" itemprop="dateCreated datePublished" datetime="2025-01-05T11:45:14+08:00">2025-01-05</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%AE%97%E6%B3%95%E7%AB%9E%E8%B5%9B/" itemprop="url" rel="index"><span itemprop="name">算法竞赛</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+
+
+              <span title="post.wordcount">
+                6736 字
+              </span>
+
+
+
+
+
+
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+            </span>
+
+
+              <span title="post.min2read">
+                  29 分钟
+              </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>记录了24/7/8-24/12/28的十八场 codeforces 补题, <span
+class="math inline">\(rating\;1646\rightarrow1785\)</span></p>
+<span id="more"></span>
+<p>Undone: 982 的 E 还没写完, 后补</p>
+<h2 id="codeforces-round-956-div2-2478"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1983">codeforces round 956 (#Div2)
+24/7/8</a></h2>
+<p><span class="math inline">\((1646 \rightarrow 1692,
+rk1180)\)</span><br />
+<span class="math inline">\(next\_permutation\)</span>
+不会用导致卡了40mins C, 认了</p>
+<h3 id="e"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1983/problem/E">E</a></h3>
+<p>题意:<br />
+Alice 和 Bob 轮流随机取球, 一共 <span class="math inline">\(n \leq 4
+\times 10^5\)</span> 个带有一定分值 (<span
+class="math inline">\(v_i\)</span>) 的球, 前 <span
+class="math inline">\(k\)</span> 个特殊球取了之后还能继续取球,
+效果可叠加, 问 Alice 先手情况下两人得分的期望 (模 <span
+class="math inline">\(10^9+7\)</span> 输出)。</p>
+<p>思路:<br />
+小巧精妙的题。分 <span class="math inline">\(n-k\)</span> 个普通球和
+<span class="math inline">\(k\)</span> 个特殊球来思考,
+先求出各自种球分值的和。对于普通球, Alice 一定会取 <span
+class="math inline">\(\lceil \frac {n-k}{2}\rceil\)</span> 个。<br />
+对于特殊球取的个数, 因为其与普通球有关, 一个直观的想法是 D。设 <span
+class="math inline">\(dp_{i,j}\)</span> 表示此时有 <span
+class="math inline">\(i\)</span> 个普通球, <span
+class="math inline">\(j\)</span> 个特殊球时取走的特殊球数量的期望,
+显然其可以通过 <span class="math inline">\(dp_{i-1,j},
+dp_{i,j-1}\)</span> 转移而来, 很可惜这个想法是 <span
+class="math inline">\(O(n^2)\)</span> 的, 我们可以以此辅助先打表试试
+(当然前提是你C++有一个分数类的模板或你略懂 python) 。<br />
+我们发现, 除最后一次取球外, 一个人的完整的一次取球必定以取普通球结束
+(n个连续的特殊球加上一个普通球),
+我们可以采用配凑的手段在取球序列的最后加上一个普通球, 这 <span
+class="math inline">\(n-k+1\)</span> 个普通球将整个取球序列分为 <span
+class="math inline">\(n-k+1\)</span> 段,
+每一个特殊球出现在每一段中的概率都是相等的, 而 Alice 会取走 <span
+class="math inline">\(\lceil \frac{n-k+1}{2} \rceil\)</span> 段,
+所以会取走 <span class="math inline">\(k \times \frac{\lceil
+\frac{n-k+1}{2} \rceil}{n-k+1}\)</span> 个特殊球,
+剩下的就是一个逆元板子了。<br />
+代码: <a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1983/submission/269419260">link</a></p>
+<h2 id="codeforces-round-958-div2-24715"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1988">codeforces round 958 (#Div2)
+24/7/15</a></h2>
+<p><span class="math inline">\((1692 \rightarrow 1642,
+rk3656)\)</span><br />
+乱用 define int long long 加上D题思路错误, 认了</p>
+<h3 id="d"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1988/problem/D">D</a></h3>
+<p>题意:<br />
+树, 点有权值, 每回合先收到树上权值和(<span class="math inline">\(\sum
+{a_{i}}\)</span>)的伤害, 然后可以删去任意多不在一条边上的点,
+问受到的最小总伤害。(<span class="math inline">\(n \leq 3 \times 10^5,
+a_i \leq 10^{12}\)</span>)</p>
+<p>思路:<br />
+一开始认为总轮数最多为 3 , 否则会在第一次删点后在树上形成长度大于等于 3
+的长链, 那么中间的点就应该第一轮被删去, 这个思路是错误的, 反例很好举:
+<img src="https://s2.loli.net/2024/07/16/OZFv57c2fT6pN4B.png" style="zoom:33%;" />
+先删5 6 7 8, 再删 1 4, 再删 2, 再删 3。</p>
+<p>所以思考最多要几轮删完: 设第 <span class="math inline">\(i\)</span>
+个点第 <span class="math inline">\(b_i\)</span> 轮被删,
+题目限制等价于不存在相邻的两个点 <span
+class="math inline">\(b_i\)</span> 相同, 在最优情况下, <span
+class="math inline">\(b_i = mex_{(j,i) \in E} b_j\)</span> , 设最大的
+<span class="math inline">\(b_i = u\)</span> , 使其为根节点, 其子节点的
+<span class="math inline">\(b_j\)</span> 遍历 (1~ u-1) , 这样递归推下去,
+可推得 <span class="math inline">\(u= \lfloor log_2n \rfloor +1\)</span>
+。<br />
+在真实比赛中, 我们可以根据最大权值和 <span class="math inline">\(3
+\times 10^5 \times 10^{12} \leq 10^{18}\)</span>, 以及 <span
+class="math inline">\(2^{60} \; &gt;\; 10^{18}\)</span> ,
+构造出一种最多删 60 轮的删法, 即每次将树黑白染色后删较大权值和的部分,
+直接根据 <span class="math inline">\(u \leq 60\)</span> 来 DP。<br />
+设 <span class="math inline">\(f_{i,k}\)</span> 表示以 <span
+class="math inline">\(i\)</span> 为根的子树全部删完且 <span
+class="math inline">\(i\)</span> 节点在第 <span
+class="math inline">\(k\)</span> 轮删去的受伤害最小值, 即有 <span
+class="math inline">\(f_{i,k}=k \times a_{i} + \sum\limits_{(i,j)\in E}
+min\{f_{j,1},f_{j,2},...,f_{j,k-1},f_{j,k+1},...f_{j,60}\}\)</span><br />
+前缀和后缀和做一下即可快速更新, 复杂度 <span
+class="math inline">\(O(60n)\)</span><br />
+代码: <a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1988/submission/270809835">link</a></p>
+<h2 id="codeforces-round-959-div12-24718"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1994">codeforces round 959
+(#Div1+2) 24/7/18</a></h2>
+<p><span class="math inline">\((1642 \rightarrow 1631,
+rk3146)\)</span>​</p>
+<h3 id="d-1"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1994/problem/D">D</a></h3>
+<p>题意:<br />
+给你 <span class="math inline">\(a_i\)</span> 数组, <span
+class="math inline">\(n-1\)</span> 次操作, 第 <span
+class="math inline">\(x\)</span> 次操作时若 <span
+class="math inline">\(x\)</span> 整除<span
+class="math inline">\(|a_u-a_v|\)</span> 则可连边, 问能不能连成一棵树,
+<span class="math inline">\(n \leq 2000, a_i \leq 10^9\)</span><br />
+思路:<br />
+鸽巢原理, 反着操作, 第 <span class="math inline">\(x\)</span> 次操作时有
+<span class="math inline">\(x+1\)</span> 个连通块,
+则一定有两个连通块中的两个数关于 <span class="math inline">\(x\)</span>​
+同余, 加个并查集即可通过本题<br />
+代码: <a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1994/submission/283394920">link</a></p>
+<h3 id="e-1"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1994/problem/E">E</a></h3>
+<p>幽默贪心, 个人 D &gt; E, 题解区有人说应该把 E 放在 C 位置上的</p>
+<h2 id="codeforces-round-960-div2-24720"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1990">codeforces round 960 (#Div2)
+24/7/20</a></h2>
+<p><span class="math inline">\((1631 \rightarrow 1695,
+rk950)\)</span><br />
+E = 2500, 先咕着, 等我上 2000 就回来补。 ---24.9.29</p>
+<h2 id="pinely-round-4-div12-24728"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1991">Pinely round 4 (#Div1+2)
+24/7/28</a></h2>
+<p><span class="math inline">\((1695 \rightarrow 1709,
+rk2176)\)</span></p>
+<h3 id="e-2"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1991/problem/E">E</a></h3>
+<p>题意：<br />
+交互题, 给定无向图和三种颜色 <span class="math inline">\(1, 2,
+3\)</span>, Alice 和 Bob 进行游戏, 每一轮:</p>
+<ul>
+<li>Alice 选择两种不同颜色</li>
+<li>Bob 选择其中一种颜色并选择一个未染色点染色</li>
+</ul>
+<p>如果 <span class="math inline">\(n\)</span> 轮后, 有相邻节点颜色相同,
+则 Alice 胜利, 否则 Bob 胜利, 请输出胜者并完成交互<br />
+思路:<br />
+一个观察: 只要有奇环 Alice 就获胜, 否则 Bob 获胜。<br />
+一开始想要把图的奇环取出来, 比较困难<br />
+一个更进一步的观察: 若选择 Alice 胜利来交互, 只要重复选择颜色 <span
+class="math inline">\(1,2\)</span> 就行了,
+所以只用黑白染色确认奇环的存在就行。对于 Bob 胜利的情况,
+我们刚刚染好色的图就派上用场了, 如果 Alice
+给了对应染色的颜色就选那种颜色的点染色, 否则直接选择颜色 3, 此时 <span
+class="math inline">\(1, 2\)</span> 种肯定有一种颜色染完了,
+就染剩下颜色对应的点。<br />
+代码: <a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1991/submission/283513681">link</a></p>
+<h3 id="f"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1991/problem/F">F</a></h3>
+<p>题意：<br />
+给你 <span class="math inline">\(n\)</span> 根棍子, 长度 <span
+class="math inline">\(a_i\)</span> , <span
+class="math inline">\(q\)</span> 次询问, 每次问 <span
+class="math inline">\([l,r]\;(r-l+1\geq 6)\)</span>​
+的范围中能不能取六根棍子组成两个三角形。<br />
+<span class="math inline">\(n, q \leq 10^5, a_i \leq 10^9\)</span>
+思路:<br />
+<strong>纯纯诈骗题</strong>,
+一个最优的思想肯定是将所给区间排好序后尝试选择相邻的棍子构成三角形,
+这样暴力做一次的代价是 <span class="math inline">\(O(nlogn)\)</span>
+的。我们注意到 <span class="math inline">\(a_i \leq 10^9\)</span>,
+尝试构造一个构造不出来三角形的最长数列, 即 <span
+class="math inline">\(1,1,2,3,5,8,13,...\)</span> 事实上四十多项就涨破
+<span class="math inline">\(10^9\)</span> 了, 于是我们对于那些过宽的区间
+<span class="math inline">\([l,r]\)</span> 缩到最多 <span
+class="math inline">\(50\)</span> 的长度, 这样单次代价 <span
+class="math inline">\(O(50log(50))\)</span>​​, 可以通过本题。<br />
+如果这题的样例没有精心构造过, 这题会从诈骗题晋升为钓鱼题。对于 <span
+class="math inline">\(\{2,2,4,5,10,10\}\)</span> 这个样例, 里面 <span
+class="math inline">\(\{2,4,5\}\)</span> 是连续的, <span
+class="math inline">\(\{2,10,10\}\)</span> 不是连续的,
+这告诉我们答案可能会从连续的 <span class="math inline">\(6\)</span>
+个数字中不连续的出来, 设 <span class="math inline">\(6\)</span>
+个数字从小到大为 <span class="math inline">\(a,b,c,d,e,f\)</span> ,其中
+<span class="math inline">\(a\)</span> 一定为短边, <span
+class="math inline">\(f\)</span> 一定为长边, 要检查一共七种可能情形,
+分别是:</p>
+<ul>
+<li><span class="math inline">\(a+b&gt;d,\;c+e&gt;f\)</span></li>
+<li><span class="math inline">\(a+c&gt;d,\;b+e&gt;f\)</span></li>
+<li><span class="math inline">\(b+c&gt;d,\;a+e&gt;f\)</span></li>
+<li><span class="math inline">\(a+b&gt;e,\;c+d&gt;f\)</span></li>
+<li><span class="math inline">\(a+c&gt;e,\;b+d&gt;f\)</span></li>
+<li><span class="math inline">\(a+d&gt;e,\;b+c&gt;f\)</span></li>
+<li><span class="math inline">\(b+c&gt;e,\;a+d&gt;f\)</span></li>
+</ul>
+<p>对于 <span class="math inline">\(\{1,2,2,4,6,10,10\}\)</span>
+这个样例, 里面的 <span class="math inline">\(\{1,2,2\}
+,\{6,10,10\}\)</span> 并没有接到一起去, 但是是各自连续的,
+这启示我们答案可能由两个不在一起的 "三连续子数组" 构成,
+可证明只存在这两种构成方式。<br />
+代码: <a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1991/submission/283529434">link</a></p>
+<h2 id="codeforces-round-963-div2-2484"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1993">codeforces round 963 (#Div2)
+24/8/4</a></h2>
+<p><span class="math inline">\((1709 \rightarrow 1661,
+rk3739)\)</span></p>
+<h3 id="d-2"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1993/problem/D">D</a></h3>
+<p>绝妙思维题, 告诉我们题目的每个条件都应尽量贴切用上,
+可能还是我见的太少了......<br />
+题意:<br />
+给你长度为 <span class="math inline">\(n\)</span> 的数组 <span
+class="math inline">\(a_i\)</span> 和常数 <span
+class="math inline">\(k\)</span> , 每次在数组中删掉长度为 <span
+class="math inline">\(k\)</span> 的连续段直到不能删为止,
+问剩下数列的中位数最大是多少？ <span class="math inline">\(n,k \leq
+5*10^5, a_i \leq 10^9\)</span><br />
+思路:<br />
+首先套一个二分, 中位数根据与 mid 的关系映射为 <span
+class="math inline">\(-1/1\)</span> , 再套一个前缀和。<br />
+接下来我的想法是贪心暴力, 先把目前能删的连续段都放进优先队列里,
+若删去一个段再考虑把它两边接起来的段继续扔进去, 需要一个双向列表来维护,
+难写得很, 复杂度大抵是对的, 但是过不了题。<br />
+题解思路利用了一个条件, 每次删除的连续段长度不变, 都是 <span
+class="math inline">\(k\)</span>, 假设删到最后剩下 <span
+class="math inline">\(x\)</span> 个数, 它们下标 <span
+class="math inline">\(mod\;k\)</span> 的结果一定是 <span
+class="math inline">\(1,2,3,...,x\)</span>
+,这样就可以通过下标判断选了几个数从而 <span
+class="math inline">\(dp\)</span> , 设 <span
+class="math inline">\(f_u\)</span> 表示最后一个数字 <span
+class="math inline">\(mod\; k=u\)</span> 的答案, 转移一下就行了。<br />
+代码: <a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1993/submission/283846268">link</a></p>
+<h2 id="codeforces-round-965-div2-24810"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/1998">codeforces round 965 (#Div2)
+24/8/10</a></h2>
+<p><span class="math inline">\((1661 \rightarrow 1672,
+rk2013)\)</span></p>
+<h2 id="epic-institute-of-technology-round-august-2024-div12-24811"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2002">EPIC Institute of Technology
+Round August 2024 (#Div1+2) 24/8/11</a></h2>
+<p><span class="math inline">\((1672 \rightarrow 1797,
+rk773)\)</span></p>
+<h3 id="d2"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2002/problem/D2">D2</a></h3>
+<p>是 <span
+class="math inline">\(\color{black}{\tt{B}}\color{red}{\tt{rothercall}}\)</span>
+的思路, 不是我的, 谢罪, <span
+class="math inline">\(\color{black}{\tt{B}}\color{red}{\tt{rothercall}}\)</span>​
+真乃直觉杀手。<br />
+简写一下, 这题问给定排列是不是给定树的 DFS 序,
+你手玩一颗树后可以猜想其充必条件为: 对于排列上所有相邻的两点, 它们的 lca
+要么为前点(正在下探), 要么为后点的父节点(探完当前子树去新子树)<br />
+其必要性显然, 但充分性我真不会证</p>
+<h2 id="educational-codeforces-round-169-div2-24815"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2004">educational codeforces round
+169 (#Div2) 24/8/15</a></h2>
+<p><span class="math inline">\((1797 \rightarrow 1827,
+rk928)\)</span>​</p>
+<h3 id="e-3"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2004/problem/E">E</a></h3>
+<p>题目名称 Not A Nim, 实则是 SG 函数的板子, 把这个知识漏洞补了下</p>
+<h2 id="codeforces-round-973-div2-24920"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2013">codeforces round 973 (#Div2)
+24/9/20</a></h2>
+<p><span class="math inline">\((1827 \rightarrow 1800,
+rk1595)\)</span></p>
+<h3 id="d-3"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2013/problem/D">D</a></h3>
+<p>分别做两次二分, 可证明两次互不干扰, 我想到二分套二分上去了……</p>
+<h3 id="e-4"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2013/problem/E">E</a></h3>
+<p>小清新数论, 注意到 gcd 的减少至少也要缩一半 (/2), 故缩到 0 最多十次,
+贪心解决, <span class="math inline">\(O(10n)\)</span>​</p>
+<h2 id="educational-codeforces-round-170-div2-241014"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2025">Educational Codeforces Round
+170 (#Div2) 24/10/14</a></h2>
+<p>卡了三十分钟 C, 因为双指针不会写加上多测不清空, 寄之。</p>
+<h3 id="e-5"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2025/problem/E">E</a></h3>
+<p>题意:<br />
+有 <span class="math inline">\(n\)</span> 组牌, 每组牌有 <span
+class="math inline">\([1,m]\)</span> 数字的牌各一张, 一人拿 <span
+class="math inline">\(n\times m/2\)</span> 张牌,
+然后要找这样的拿牌方案数, 规定对于一方出的任意一张牌,
+另一方都有牌比它大, 每张牌只能用一次。牌的大小是这样比较的:</p>
+<ul>
+<li>第一组的牌可以打败任意非同组的牌</li>
+<li>若牌的组数相同，则比较牌的数字大小</li>
+</ul>
+<p>规定 <span class="math inline">\(n,m \leq 500\)</span> 且 <span
+class="math inline">\(m\)</span> 为偶数, 方案数模 <span
+class="math inline">\(998244353\)</span> 输出。<br />
+思路:<br />
+假设 <span class="math inline">\(n=1\)</span> ,
+这本质上就是个卡特兰数<br />
+若 <span class="math inline">\(n \neq 1\)</span> ,
+第一组牌的取法就成了卡特兰数的变形, 我们可以取 <span
+class="math inline">\(c\geq m/2\)</span> 张牌,
+在和其他第一组的牌比较完后还能剩 <span
+class="math inline">\(c-m/2\)</span> 张牌给后面用(相当于万能牌了), 对于
+2~n 组, 可以看出每组只能取最多 <span class="math inline">\(m/2\)</span>
+张牌, 否则多取的花不出去无法跨组比较，我们可以想到这样一个 DP:<br />
+<span class="math display">\[
+f_{i,j}=f_{i-1,j-1}+f_{i-1,j+1}\;\;\;\;f_{i,j}\;表示第1组目前取了i张牌并剩余j张万能牌
+的方案数\]</span></p>
+<p><span
+class="math display">\[g_i=f_{m,m-i}\;\;\;\;g_i\;表示m张卡片取i张并获得i/2场胜利的方案数(剩下m-i张用万能牌取胜)\]</span>
+<span class="math display">\[h_{i,j}= \sum\limits_{k=0}^j
+h_{i-1,k}*g_{m+k-j}\;\;\;\;h_{i,j}\;表示对于2\sim i
+组,用过了j张万能牌的方案数\]</span></p>
+<p>答案即为 <span
+class="math inline">\(\sum\limits_{i=0}^{m}f_{m,i}*h_{n,i}\)</span>
+复杂度 <span class="math inline">\(O(nm^2)\)</span><br />
+主要代码:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">f[<span class="number">0</span>][<span class="number">0</span>]=<span class="number">1</span>; <span class="comment">//f[i][j]: choose i cards and rest j cards on hand</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=M;i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=M;j++)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="keyword">if</span>(j&gt;<span class="number">0</span>) f[i][j]=(f[i<span class="number">-1</span>][j<span class="number">-1</span>]+f[i<span class="number">-1</span>][j+<span class="number">1</span>])%p;</span><br><span class="line">        <span class="keyword">else</span> f[i][j]=f[i<span class="number">-1</span>][j+<span class="number">1</span>];</span><br><span class="line">    &#125; </span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=M;i++) g[i]=f[M][M-i]; <span class="comment">//g[i]:choose i cards (i/2 each) and just win </span></span><br><span class="line">h[<span class="number">1</span>][<span class="number">0</span>]=<span class="number">1</span>; <span class="comment">//h[i][j]: i-th line, use j extra cards now</span></span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">2</span>;i&lt;=N;i++)</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> j=<span class="number">0</span>;j&lt;=M;j++)</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> k=<span class="number">0</span>;k&lt;=j;k++)</span><br><span class="line">            h[i][j]=(h[i][j]+h[i<span class="number">-1</span>][k]*g[M+k-j])%p;</span><br><span class="line"><span class="type">int</span> ans=<span class="number">0</span>;</span><br><span class="line"><span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">0</span>;i&lt;=M;i++)</span><br><span class="line">    ans=(ans+f[M][i]*h[N][i])%p;</span><br><span class="line">cout &lt;&lt; ans &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br></pre></td></tr></table></figure>
+<h2 id="codeforces-round-980-div2-241020"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2025">codeforces round 980 (#Div2)
+24/10/20</a></h2>
+<p><span class="math inline">\((1800 \rightarrow 1688,
+rk4628)\)</span><br />
+寄中寄, 做完 AB 后 C 陷入了先入为主猜结论的死胡同, D 又想假了,
+一场就送掉了……</p>
+<h3 id="d-4"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2025/problem/D">D</a></h3>
+<p>题意:<br />
+有 <span class="math inline">\(n\)</span> 个问题编号从 <span
+class="math inline">\(1\)</span> 到 <span
+class="math inline">\(n\)</span> , 每个问题有得分 <span
+class="math inline">\(a_i\)</span> 和参数 <span
+class="math inline">\(b_i\)</span><br />
+从第一个问题开始决策, 每次决策有两种选择:</p>
+<ol type="1">
+<li>提交问题获得 <span class="math inline">\(a_i\)</span> 分,
+然后问题作废, 下一题的下标 <span class="math inline">\(j\)</span> 是满足
+<span class="math inline">\(j&lt;i\)</span> 且问题未作废的最大下标</li>
+<li>跳过问题, 然后问题作废, 下一题的下标 <span
+class="math inline">\(j\)</span>​ 是满足 <span class="math inline">\(j
+\leq b_i\)</span>​ 且问题未作废的最大下标</li>
+</ol>
+<p>最大化得分, 数据范围 <span class="math inline">\(n \leq 4 \times
+10^5,a_i \leq 10^9, 1 \leq b_i \leq n\)</span><br />
+思路：<br />
+题目本身不是很难, 有优先队列(dp)解法, 大体思路是设 <span
+class="math inline">\(f_i\)</span> 为到 <span
+class="math inline">\(i\)</span> 点的最小花费, 更新 <span
+class="math inline">\(i\)</span> 时, 找队列中 <span
+class="math inline">\(b_j \geq i\)</span> 且代价最小的作为 <span
+class="math inline">\(f_i\)</span> , 更新完后把 <span
+class="math inline">\(\{a_i+f_i,b_i\}\)</span> 压入优先队列中,
+记得开小根堆。<br />
+然而这题真正有趣的在于其图论刻画, "下一题" 类似于一种有向边,
+最大化得分则是最长路, 考虑建图:</p>
+<ul>
+<li><span class="math inline">\(i \stackrel{-a_i}{\longrightarrow}
+b_i\)</span> , 表示跳过问题</li>
+<li><span class="math inline">\(i \stackrel{0}{\longrightarrow}
+i-1\)</span> 表示提交问题</li>
+<li><span class="math inline">\(i \stackrel{\sum_{j=1}^i
+a_j}{\longrightarrow} 0\)</span> 表示不再跳过问题,
+按顺序回答前面的每个问题直至结束</li>
+</ul>
+<p>只有跳过问题会导致分数的减少, 只有不再跳过才进行分数的结算,
+故提交问题的边权为 <span class="math inline">\(0\)</span><br />
+代码(来源<a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/2259996701">知乎</a>):</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">using</span> ll = <span class="type">long</span> <span class="type">long</span>;</span><br><span class="line"><span class="keyword">constexpr</span> ll inf = <span class="number">0x3f3f3f3f3f3f3f3f</span>;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> t; cin &gt;&gt; t;</span><br><span class="line">    <span class="keyword">while</span> (t--) &#123;</span><br><span class="line">        <span class="type">int</span> n;</span><br><span class="line">        cin &gt;&gt; n;</span><br><span class="line">        n++;</span><br><span class="line"></span><br><span class="line">        <span class="function">vector&lt;<span class="type">int</span>&gt; <span class="title">a</span><span class="params">(n)</span></span>;</span><br><span class="line">        <span class="function">vector&lt;ll&gt; <span class="title">pre</span><span class="params">(n)</span></span>;</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) </span><br><span class="line">        &#123;</span><br><span class="line">            cin &gt;&gt; a[i];</span><br><span class="line">            pre[i] = pre[i - <span class="number">1</span>] + a[i];</span><br><span class="line">        &#125;</span><br><span class="line">        vector&lt;vector&lt;pair&lt;ll, <span class="type">int</span>&gt;&gt;&gt; <span class="built_in">E</span>(n);</span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) </span><br><span class="line">        &#123;</span><br><span class="line">            E[i].<span class="built_in">push_back</span>(&#123; <span class="number">0</span>, i - <span class="number">1</span> &#125;);</span><br><span class="line">            E[i].<span class="built_in">push_back</span>(&#123; pre[i], <span class="number">0</span> &#125;);</span><br><span class="line">        &#125;    </span><br><span class="line">        <span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt; n; i++) </span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> x;</span><br><span class="line">            cin &gt;&gt; x;</span><br><span class="line">            E[i].<span class="built_in">push_back</span>(&#123; -a[i], x &#125;);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">auto</span> Dijkstra = [&amp;](<span class="type">int</span> s)</span><br><span class="line">        &#123;</span><br><span class="line">            vector&lt;<span class="type">int</span>&gt; <span class="built_in">vis</span>(n);</span><br><span class="line">            <span class="function">vector&lt;ll&gt; <span class="title">dis</span><span class="params">(n, -inf)</span></span>;</span><br><span class="line">            dis[s] = <span class="number">0</span>;</span><br><span class="line">            priority_queue&lt;pair&lt;ll, <span class="type">int</span>&gt;&gt; Q;</span><br><span class="line">            Q.<span class="built_in">push</span>(&#123; <span class="number">0</span>, s &#125;);</span><br><span class="line">            <span class="keyword">while</span> (!Q.<span class="built_in">empty</span>())</span><br><span class="line">            &#123;</span><br><span class="line">                <span class="keyword">auto</span> [d, u] = Q.<span class="built_in">top</span>(); Q.<span class="built_in">pop</span>();</span><br><span class="line">                <span class="keyword">if</span> (vis[u]) <span class="keyword">continue</span>;    </span><br><span class="line">                vis[u] = <span class="number">1</span>;</span><br><span class="line">                <span class="keyword">for</span> (<span class="keyword">auto</span>&amp; [w, v] : E[u]) </span><br><span class="line">                    <span class="keyword">if</span> (dis[v] &lt; w + d) </span><br><span class="line">                    &#123;</span><br><span class="line">                        dis[v] = w + d;      </span><br><span class="line">                        Q.<span class="built_in">push</span>(&#123; dis[v], v &#125;);</span><br><span class="line">                    &#125;</span><br><span class="line">            &#125;</span><br><span class="line">            <span class="keyword">return</span> dis;</span><br><span class="line">        &#125;;</span><br><span class="line">        <span class="keyword">auto</span> d = <span class="built_in">Dijkstra</span>(<span class="number">1</span>);</span><br><span class="line">        cout &lt;&lt; d[<span class="number">0</span>] &lt;&lt; <span class="string">&quot;\n&quot;</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<h2 id="codeforces-round-982-div2-241026"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2027">codeforces round 982 (#Div2)
+24/10/26</a></h2>
+<p><span class="math inline">\((1688 \rightarrow 1793,
+rk301)\)</span><br />
+手速场, D2 不会, E 是我见过最难的 SG 函数了</p>
+<h3 id="e1"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2035/problem/E1">E1</a></h3>
+<p>题意:<br />
+<span class="math inline">\(n\)</span> 堆石子, 每堆 <span
+class="math inline">\(x_i\)</span> 个, 有一个限制上限 <span
+class="math inline">\(a_i\)</span> , 两人先后手在一堆石子中取,
+每次可以取 <span class="math inline">\(d\)</span> 个, 满足 <span
+class="math inline">\(1 \leq d \leq a_i\)</span> 且 <span
+class="math inline">\(x \;\&amp;\;d=d\)</span> 其中 <span
+class="math inline">\(x\)</span> 是当且这堆石子的数量, 问理想状态下谁赢
+? <span class="math inline">\(n \leq 10^4; a_i,x_i \leq
+2^{30}\)</span><br />
+思路:<br />
+一眼 SG 函数, 但是不能只靠打表<br />
+当 <span class="math inline">\(a_i \geq x_i\)</span> 时相当于 <span
+class="math inline">\(a_i\)</span> 对 <span
+class="math inline">\(x_i\)</span> 没有影响, 此时 <span
+class="math inline">\(sg(x_i) = popcount(x_i)\)</span> 即 <span
+class="math inline">\(x_i\)</span> 在二进制下 <span
+class="math inline">\(1\)</span> 的个数。<br />
+当 <span class="math inline">\(a_i &lt; x_i\)</span> 时,
+我们尝试归并到上面情况:<br />
+首先忽略 x 比 a 高的位数, 因为肯定取不上去, 完成 a, x 位数的对齐, 例如
+a=100, x=1101 等价于 a=100, x=101<br />
+对于 a=100010, x=1<u>1</u>0000 , <span class="math inline">\(x\)</span>
+中<u>第一个比 <span class="math inline">\(\underline{a}\)</span>
+大的位置</u>后的 1 的数量为 0, 所以 <span
+class="math inline">\(x\)</span> 不管怎么取之后 <span
+class="math inline">\(x&#39; &lt; a\)</span> 且 <span
+class="math inline">\(x&#39; \neq 0\)</span>, 所以 <span
+class="math inline">\(sg(x)=0\)</span><br />
+对于 a=1000<u>1</u>0, x=1100<u>0</u>1, 其等价于 a=100001, x=110001,
+(对于 x=0, a=1的第一位, a 后面的 0 都翻成 1), 这又等价于 a=101,
+x=111(去除两边都为 0 的部分), 这下子 x 被我们消成了 <span
+class="math inline">\(2^k-1\)</span> 的形式</p>
+<h2 id="codeforces-global-round-27-241027"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2035">codeforces global round 27
+24/10/27</a></h2>
+<p><span class="math inline">\((1793 \rightarrow 1788,
+rk1780)\)</span><br />
+每次都天真的往 D 糊一个 1400 难度的假做法, 还恰巧能过样例, 于是上头狂调,
+一小时有余方才发现错误, 亡羊补牢为时已晚, 掉了小分</p>
+<h3 id="e-6"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2035/problem/E">E</a></h3>
+<p>题意:<br />
+初始攻击力为 <span class="math inline">\(0\)</span>
+，进行以下操作，以最少的代价击败生命值为 <span
+class="math inline">\(z\)</span> 的 Boss：<br />
+1.攻击力提升 <span class="math inline">\(1\)</span> ，花费 <span
+class="math inline">\(x\)</span> 的代价。最多<strong>连续</strong>进行
+<span class="math inline">\(k\)</span> 次攻击力提升。<br />
+2.进行一次攻击，造成相当于攻击力的伤害，花费 <span
+class="math inline">\(y\)</span> 的代价。<br />
+<span class="math inline">\(1 \leq x,y,z,k \leq 10^8\)</span>, 100
+组数据<br />
+思路:<br />
+一开始蒙了个三分, 认为先提升攻击最后进行攻击的击败代价函数是个二次函数,
+后来发现不对劲, 因为整数的离散性需要上取整, 函数不是平滑的。<br />
+然而总体的思路不变, 先升级再打, 注意到不是每次升级攻击力都会减少回合数,
+例如对于血量为 <span class="math inline">\(20\)</span> 的 boss 而言,
+只有攻击力提升到 <span class="math inline">\(1,2,3,4,5,7,10,20\)</span>
+时才会减少回合数, 可以观察到临界值个数的数量级为 <span
+class="math inline">\(\sqrt z\)</span><br />
+于是我们每次尝试拿 <span class="math inline">\(min(\sqrt z, k)\)</span>
+个临界值更新临界答案 (即加到临界值的攻击后停止提升并一直攻击的答案) ,
+然后进行一次攻击, 若 boss 仍有血量并继续循环, 循环次数为 <span
+class="math inline">\(O(\sqrt{z/k})\)</span> 次, 一次循环有 <span
+class="math inline">\(min(\sqrt z, k)\)</span> 个临界值, 当 <span
+class="math inline">\(k \sim O(\sqrt z)\)</span> 时, 复杂度为 <span
+class="math inline">\(O(z^{3/4})\)</span><br />
+代码:<a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2035/submission/288471774">link</a></p>
+<h2 id="educational-codeforces-round-171-div2-241028"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2026">educational codeforces round
+171 (#Div2) 24/10/28</a></h2>
+<p><span class="math inline">\((1788 \rightarrow 1810,
+rk986)\)</span>​</p>
+<h3 id="e-7"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2026/problem/E">E</a></h3>
+<p>题意:<br />
+给定大小为 <span class="math inline">\(n\)</span> 的数组 <span
+class="math inline">\(a\)</span>, 现在让你从 <span
+class="math inline">\(a\)</span> 中选取一些数, 记为数组 <span
+class="math inline">\(b\)</span> , 求 <span
+class="math inline">\(|b|-popcount(\bigvee b_i )\)</span> 最大值 <span
+class="math inline">\(T, n \leq 100, a_i \leq 2^{60}\)</span><br />
+思路:<br />
+十分的 educational , 最大权闭合图裸题, 设 1 ~ N 为数组各位, N+1~N+60 为
+60 个二进制位, 连边:<br />
+<span class="math inline">\(S\stackrel{1}{\longrightarrow} i (i \in
+[1,n])\)</span><br />
+<span class="math inline">\(i (i \in [1,n])
+\stackrel{inf}{\longrightarrow} n+j \;\; ((a_i &gt;&gt; j) \&amp;
+1==1)\)</span><br />
+<span class="math inline">\(n+j\stackrel{1}{\longrightarrow}
+T\)</span><br />
+答案即为 <span class="math inline">\(n-dinic()\)</span><br />
+代码: <a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2026/submission/288682837">link</a></p>
+<h2 id="codeton-round-9-div1-2-241123"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2039">codeTON round 9 (#Div1 + 2)
+24/11/23</a></h2>
+<p><span class="math inline">\((1810 \rightarrow 1852, rk1139)\)</span>
+​<br />
+C2 过了还是很懵, 分类讨论容易把人写浑, 不要追求讨论不重​,
+追求不漏就可以了</p>
+<h3 id="e-8"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2039/problem/E">E</a></h3>
+<p>题意:<br />
+初始 <span class="math inline">\(a=\{0,1\}\)</span>, 每次操作将 <span
+class="math inline">\(a\)</span> 的逆序对个数选择插入 <span
+class="math inline">\(a\)</span> 的任意位置, 求长度为 <span
+class="math inline">\(n\)</span> 的 <span
+class="math inline">\(a\)</span> 数组的方案数, <span
+class="math inline">\(n \leq 10^6\)</span><br />
+思路:<br />
+就不抄一遍 <a
+target="_blank" rel="noopener" href="https://codeforces.com/blog/entry/136523">Tutorial</a> 了,
+思想就是分类, 递推。因为注意到当 <span class="math inline">\(a\)</span>
+的逆序对个数大于 <span class="math inline">\(a\)</span> 的最大值时,
+所有插法都是新的, 记这样的 <span class="math inline">\(a\)</span> 为
+"好数组"。于是可以先考虑一个长度为 <span
+class="math inline">\(i\)</span> 的 "好数组" 可以构成多少个长度为 <span
+class="math inline">\(n\)</span> 的 "好数组", 再看有多少个 "好数组"
+可以由 "坏数组" 一步构造成, 答案为 "坏数组" 数量加上一个 $ a*b $
+形式的东西<br />
+代码: <a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2039/submission/293165729">link</a></p>
+<h2 id="codeforces-round-989-div1-2-241130"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2034">codeforces round 989 (#Div1 +
+2) 24/11/30</a></h2>
+<p><span class="math inline">\((1852 \rightarrow 1795,
+rk2503)\)</span><br />
+D 把一个 set 的 rbegin() 改成 begin() 就过了,
+告诉我们题目要想清楚一点再写, 因为以后有你急的</p>
+<h2 id="codeforces-round-992-div2-241208"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2040">codeforces round 992 (#Div2)
+24/12/08</a></h2>
+<p><span class="math inline">\((1795 \rightarrow
+1835,  rk554)\)</span><br />
+E 的实现丑陋，期望还在拿数列极限推，其实题目思想比较经典，可惜了</p>
+<h3 id="e-9"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2040/problem/E">E</a></h3>
+<p>题意:<br />
+初始在树上选择一个非根点后开始操作, 奇数步往根跳,
+偶数步可以支付一元往根跳, 否则随机跳, 给你树的形态, 进行 <span
+class="math inline">\(Q\)</span> 次询问, 每次询问提供初始点和钱的数量
+<span class="math inline">\(k\)</span> ,
+问跳到树根所需次数的最小期望<br />
+<span class="math inline">\(k \leq N \leq 2000, Q\leq
+2000\)</span><br />
+思路:<br />
+考场上把一条链上的需要花钱的点抽出来按期望 sort 后毙掉花钱最多的 <span
+class="math inline">\(k\)</span> 个, 但是期望算错了并且实现很丑,
+实际上可以树型 DP 解决 设点 <span class="math inline">\(u\)</span>
+往上跳的步数期望为 <span class="math inline">\(P(u)\)</span> , 有 <span
+class="math inline">\(P(u) = \frac{1}{son_u+1} + \frac{son_u}{son_u+1}
+\times (P(u)+2)\)</span>, 解得 <span class="math inline">\(P(u) = 2
+\times son_u+1\)</span><br />
+设 $f_{i,j} $ 表示点 <span class="math inline">\(i\)</span> 花费 <span
+class="math inline">\(j\)</span> 元跳到根节点的最小期望, 有:</p>
+<p><span class="math display">\[f_{root,i} = 0,\; f_{son_{root},i} =
+1,\; f_{v,0}=f_{fa_u,0}+P(u)+1 (v \notin son_{root})\]</span></p>
+<p><span class="math display">\[f_{v,i} =
+min(f_{fa_u,i-1}+2,f_{fa_u,i}+P(u)+1)\]</span></p>
+<p>然后 DP 即可, 复杂度 <span
+class="math inline">\(O(n^2)\)</span><br />
+代码:<a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2040/submission/295683045">link</a></p>
+<h2 id="good-bye-2024-2025-is-near-241228"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2053">Good Bye 2024: 2025 is NEAR
+24/12/28</a></h2>
+<p><span class="math inline">\((1835 \rightarrow
+1785,  rk3180)\)</span><br />
+纯纯小丑，D 一眼题却实现丑陋，WA
+的要道心破碎了，果然以后有我急的，应该以后还有我急的。 E
+看上去挺漂亮</p>
+<h3 id="e-10"><a
+target="_blank" rel="noopener" href="https://codeforces.com/contest/2053/problem/E">E</a></h3>
+<p>题意:<br />
+给定一棵大小为 <span class="math inline">\(N\)</span> 的树, 定义 <span
+class="math inline">\((p,q)\)</span> 为树上 <span
+class="math inline">\(p,q\)</span> 之间的路径, 在每一回合, Alice
+可以选择一个连接 <span class="math inline">\(p\)</span> 且不在路径上的点
+<span class="math inline">\(u\)</span> , 并将整个路径向 <span
+class="math inline">\(u\)</span> 方向移动, Bob 可以选择一个连接 <span
+class="math inline">\(q\)</span> 且不在路径上的点 <span
+class="math inline">\(v\)</span> , 并将整个路径向 <span
+class="math inline">\(v\)</span> 方向移动。当任何时刻 <span
+class="math inline">\(p\)</span> 为度数为一的节点时, Alice 获胜,
+当任何时刻 <span class="math inline">\(q\)</span> 为度数为一的节点时,
+Bob 获胜, 否则平局。问有多少个有序对 <span
+class="math inline">\((p,q)\)</span> 能让 Bob 获胜？<span
+class="math inline">\(N \leq 200000\)</span> ​ 思路:<br />
+考场上想出来了 80%, 场下找到了实现方式, 觉得自己思路比较自然(抽象),
+所以分享一下。</p>
+<p>让我们定义度数为一的点为叶子节点(一类点), 连接其的点为二类点,
+若都不是即为三类点。<br />
+有一种明显对答案的贡献方式, 即 <span class="math inline">\(p\)</span>
+为非一类点, <span class="math inline">\(q\)</span> 为一类点, 所以 Bob
+上来就赢了<br />
+让我们想想还有什么方式能对答案贡献, 若 <span
+class="math inline">\(p\)</span> 为一类点或二类点肯定不行, 当 <span
+class="math inline">\(p\)</span> 为三类点时, 在 Alice 走完一步后, 若
+<span class="math inline">\(q\)</span> 变成二类点, 则 Bob 可以向 <span
+class="math inline">\(q\)</span> 连接的一类点走一步来获得胜利。</p>
+<figure>
+<img src="https://s2.loli.net/2024/12/31/nsJSIzthfdcCNkj.png"
+alt="CF2053E" />
+<figcaption aria-hidden="true">CF2053E</figcaption>
+</figure>
+<p>如样例四的图: 绿色为一类点, 黄色为二类点, 青色为三类点, 答案为 <span
+class="math inline">\(5 \times 5 + (3,5) + (5,3) = 27\)</span><br />
+我们要想办法统计每个作为三类点的 <span class="math inline">\(p\)</span>
+对答案的贡献, 若 <span class="math inline">\(q\)</span> 在 <span
+class="math inline">\(p\)</span> 的子树中, 不难发现 <span
+class="math inline">\(p\)</span> 会使 <span
+class="math inline">\(q\)</span> 上移为其父节点; 若 <span
+class="math inline">\(q\)</span> 不在根到 <span
+class="math inline">\(p\)</span> 的路径上, <span
+class="math inline">\(q\)</span> 也会上移为其父节点; 若 <span
+class="math inline">\(q\)</span> 在根到 <span
+class="math inline">\(p\)</span> 的路径上, 则 <span
+class="math inline">\(q\)</span> 会朝 <span
+class="math inline">\(p\)</span> 方向下移。 上移的方向是确定的,
+而下移的方向因 <span class="math inline">\(p\)</span> 而异,
+这启示我们先统计每颗子树的上移贡献情况, 再在 dfs 时处理根到 <span
+class="math inline">\(p\)</span> 的路径。</p>
+<p>代码的实现用了三次 dfs (尽显幽默): 第一次处理一、二、三类点;
+第二次处理 <span class="math inline">\(num[x]\)</span> , 即以 <span
+class="math inline">\(x\)</span>
+为根的子树中有多少非一类点的父节点为二类点; 第三次处理统计贡献。<br />
+同时, 可以注意到我一直在用一类点的定义而非 “叶节点”,
+因为如果从随意一点开始 dfs 的话根节点可能也为一类点,
+在代码中我寻找第一个度数 <span class="math inline">\(\geq 2\)</span>
+的点开始 dfs, 特判一下 <span class="math inline">\(N=2\)</span>
+的情况。</p>
+<p>代码:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br><span class="line">71</span><br><span class="line">72</span><br><span class="line">73</span><br><span class="line">74</span><br><span class="line">75</span><br><span class="line">76</span><br><span class="line">77</span><br><span class="line">78</span><br><span class="line">79</span><br><span class="line">80</span><br><span class="line">81</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;iostream&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">include</span><span class="string">&lt;cstdio&gt;</span></span></span><br><span class="line"><span class="keyword">using</span> <span class="keyword">namespace</span> std;</span><br><span class="line"><span class="keyword">typedef</span> <span class="type">long</span> <span class="type">long</span> ll;</span><br><span class="line"><span class="type">const</span> <span class="type">int</span> MX=<span class="number">200020</span>;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> T, N, leaf=<span class="number">0</span>;</span><br><span class="line">ll ans=<span class="number">0</span>;</span><br><span class="line"><span class="type">int</span> head[MX], cnt=<span class="number">0</span>, in[MX], son[MX], num[MX];</span><br><span class="line"><span class="type">bool</span> isl[MX], isu[MX], to[MX];</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">read</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">int</span> r=<span class="number">0</span>, f=<span class="number">1</span>; <span class="type">char</span> ch=<span class="built_in">getchar</span>();</span><br><span class="line">    <span class="keyword">while</span>(ch&lt;<span class="string">&#x27;0&#x27;</span>||ch&gt;<span class="string">&#x27;9&#x27;</span>) &#123;<span class="keyword">if</span>(ch==<span class="string">&#x27;-&#x27;</span>) f=<span class="number">-1</span>; ch=<span class="built_in">getchar</span>();&#125;</span><br><span class="line">    <span class="keyword">while</span>(ch&gt;=<span class="string">&#x27;0&#x27;</span>&amp;&amp;ch&lt;=<span class="string">&#x27;9&#x27;</span>) &#123;r=r*<span class="number">10</span>+ch-<span class="string">&#x27;0&#x27;</span>; ch=<span class="built_in">getchar</span>();&#125;</span><br><span class="line">    <span class="keyword">return</span> r*f;</span><br><span class="line">&#125;</span><br><span class="line"><span class="keyword">struct</span> <span class="title class_">edge</span>&#123;<span class="type">int</span> nxt, to;&#125;e[<span class="number">2</span>*MX];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">void</span> <span class="title">ae</span><span class="params">(<span class="type">int</span> u, <span class="type">int</span> v)</span></span>&#123;e[++cnt].to=v; e[cnt].nxt=head[u]; head[u]=cnt; in[u]++;&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> f)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="type">bool</span> tag=<span class="number">0</span>; <span class="comment">//son tag</span></span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=head[x];i;i=e[i].nxt)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> y=e[i].to;</span><br><span class="line">        <span class="keyword">if</span>(y==f) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">dfs</span>(y,x); tag=<span class="number">1</span>; </span><br><span class="line">        <span class="keyword">if</span>(isl[y]) isu[x]=<span class="number">1</span>; <span class="comment">//type 2</span></span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!tag) isl[x]=<span class="number">1</span>, leaf++; <span class="comment">//type 1</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs2</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> f)</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    <span class="keyword">if</span>(isu[f]&amp;&amp;!isl[x]) to[x]=num[x]=<span class="number">1</span>;</span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=head[x];i;i=e[i].nxt)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> y=e[i].to;</span><br><span class="line">        <span class="keyword">if</span>(y==f) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">dfs2</span>(y,x);</span><br><span class="line">        num[x]+=num[y];</span><br><span class="line">    &#125;</span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">dfs3</span><span class="params">(<span class="type">int</span> x, <span class="type">int</span> f, <span class="type">int</span> cur)</span></span></span><br><span class="line"><span class="function"></span>&#123; </span><br><span class="line">    <span class="keyword">for</span>(<span class="type">int</span> i=head[x];i;i=e[i].nxt)</span><br><span class="line">    &#123;</span><br><span class="line">        <span class="type">int</span> y=e[i].to;</span><br><span class="line">        <span class="keyword">if</span>(y==f) <span class="keyword">continue</span>;</span><br><span class="line">        <span class="built_in">dfs3</span>(y,x,cur+num[x]-to[x]-num[y]+isu[y]);</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">if</span>(!isl[x]&amp;&amp;!isu[x]) <span class="comment">//type 3</span></span><br><span class="line">        ans=ans+<span class="number">1ll</span>*(cur+num[x]-to[x]); <span class="comment">//contribute 2</span></span><br><span class="line">&#125;</span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span></span></span><br><span class="line"><span class="function"></span>&#123;</span><br><span class="line">    T=<span class="built_in">read</span>();</span><br><span class="line">    <span class="keyword">while</span>(T--)</span><br><span class="line">    &#123;</span><br><span class="line">        N=<span class="built_in">read</span>();</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;N;i++)</span><br><span class="line">        &#123;</span><br><span class="line">            <span class="type">int</span> u=<span class="built_in">read</span>(), v=<span class="built_in">read</span>();</span><br><span class="line">            <span class="built_in">ae</span>(u,v); <span class="built_in">ae</span>(v,u);</span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">if</span>(N==<span class="number">2</span>) cout &lt;&lt; <span class="string">&quot;0\n&quot;</span>;</span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">        &#123;</span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=N;i++)</span><br><span class="line">                <span class="keyword">if</span>(in[i]&gt;=<span class="number">2</span>) &#123;<span class="built_in">dfs</span>(i,<span class="number">0</span>); <span class="keyword">break</span>;&#125;</span><br><span class="line">            ans+=<span class="number">1ll</span>*leaf*(N-leaf); <span class="comment">//contribute 1</span></span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=N;i++)</span><br><span class="line">                <span class="keyword">if</span>(in[i]&gt;=<span class="number">2</span>) &#123;<span class="built_in">dfs2</span>(i,<span class="number">0</span>); <span class="keyword">break</span>;&#125;     </span><br><span class="line">            <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=N;i++)</span><br><span class="line">                <span class="keyword">if</span>(in[i]&gt;=<span class="number">2</span>) &#123;<span class="built_in">dfs3</span>(i,<span class="number">0</span>,<span class="number">0</span>); <span class="keyword">break</span>;&#125;              </span><br><span class="line">            cout &lt;&lt; ans &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;       </span><br><span class="line">        &#125;</span><br><span class="line">        <span class="keyword">for</span>(<span class="type">int</span> i=<span class="number">1</span>;i&lt;=N;i++) head[i]=in[i]=isl[i]=isu[i]=to[i]=num[i]=<span class="number">0</span>; </span><br><span class="line">        cnt=leaf=ans=<span class="number">0</span>;</span><br><span class="line">    &#125;</span><br><span class="line">    <span class="keyword">return</span> (<span class="number">0</span><span class="number">-0</span>);</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>其中 <code>isl[x]</code> 代表一类点, <code>isu[x]</code> 代表二类点,
+<code>in[x]</code> 为度数, <code>to[x]</code> 代表非一类点的 <span
+class="math inline">\(x\)</span> 上探是否为二类点, <code>num[x]</code>
+为以 <span class="math inline">\(x\)</span>
+为根的子树中有多少非一类点的父节点为二类点。<br />
+第三次 dfs3 中的 cur 变量代表当前子树外的统计情况,
+贡献答案的时候还要加入当前子树, 并记得把 <span
+class="math inline">\(x\)</span> 的情况扣掉, 因为 <span
+class="math inline">\(p \neq q\)</span></p>
+<p>在理解上文的情况下我们可以看见官方题解更简单的做法,
+我们能注意到一个更强的事实, 假设三类点总数为 <span
+class="math inline">\(c\)</span>, 一个二类点 <span
+class="math inline">\(x\)</span> 相邻的非一类点数量为 <span
+class="math inline">\(m\)</span> , 则这个二类点会对答案产生 <span
+class="math inline">\(c \times (m-1)\)</span>​​ 的贡献, 因为对于任意三类点
+<span class="math inline">\(p\)</span> , 考虑 <span
+class="math inline">\(q\)</span> 在移动后到达该二类点 <span
+class="math inline">\(x\)</span> , 总存在唯一的 <span
+class="math inline">\(q\)</span> 在 <span
+class="math inline">\((p,x)\)</span> 路径上不合法,
+而其他点都是合法的且移动方向正确, 这样我们也不用弄什么 dfs 了,
+直接统计即可。</p>
+<p>我把官方题解代码也放在了下面并加上一点我的注释:</p>
+<figure class="highlight c++"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">#<span class="keyword">include</span> <span class="string">&lt;bits/stdc++.h&gt;</span></span></span><br><span class="line"><span class="meta">#<span class="keyword">define</span> MAXN 200001</span></span><br><span class="line">std::vector&lt;<span class="type">int</span>&gt; g[MAXN];</span><br><span class="line"><span class="function"><span class="keyword">inline</span> <span class="type">int</span> <span class="title">deg</span><span class="params">(<span class="type">int</span> u)</span> </span>&#123; <span class="keyword">return</span> g[u].<span class="built_in">size</span>(); &#125;</span><br><span class="line"></span><br><span class="line"><span class="type">int</span> d[MAXN]; <span class="comment">// d[x]: x 点连接的 2,3 类点数量</span></span><br><span class="line"><span class="function"><span class="type">void</span> <span class="title">solve</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	<span class="type">int</span> n; std::cin &gt;&gt; n; <span class="type">long</span> <span class="type">long</span> ans = <span class="number">0</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>, u, v; i &lt; n; ++i) &#123;</span><br><span class="line">		std::cin &gt;&gt; u &gt;&gt; v;</span><br><span class="line">		g[u].<span class="built_in">push_back</span>(v), g[v].<span class="built_in">push_back</span>(u);</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="type">int</span> c1 = <span class="number">0</span>, c2 = <span class="number">0</span>; <span class="comment">//type 1 num, type 3 num</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) c1 += (<span class="built_in">deg</span>(i) == <span class="number">1</span>);</span><br><span class="line">	ans += <span class="number">1ll</span> * c1 * (n - c1); <span class="comment">//contribute 1</span></span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) <span class="keyword">if</span> (<span class="built_in">deg</span>(i) &gt; <span class="number">1</span>) &#123;</span><br><span class="line">		<span class="keyword">for</span> (<span class="type">int</span> v : g[i]) d[i] += (<span class="built_in">deg</span>(v) &gt; <span class="number">1</span>);</span><br><span class="line">		c2 += (d[i] == <span class="built_in">deg</span>(i));</span><br><span class="line">	&#125;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> m = <span class="number">1</span>; m &lt;= n; ++m) </span><br><span class="line">        <span class="keyword">if</span> (<span class="built_in">deg</span>(m) &gt; <span class="number">1</span> &amp;&amp; d[m] != <span class="built_in">deg</span>(m))  <span class="comment">//type 2 point m</span></span><br><span class="line">			ans += <span class="number">1ll</span> * c2 * (d[m] - <span class="number">1</span>); <span class="comment">//contribute 2 </span></span><br><span class="line">	std::cout &lt;&lt; ans &lt;&lt; <span class="string">&#x27;\n&#x27;</span>;</span><br><span class="line">	<span class="keyword">for</span> (<span class="type">int</span> i = <span class="number">1</span>; i &lt;= n; ++i) </span><br><span class="line">		(std::<span class="built_in">vector</span>&lt;<span class="type">int</span>&gt;()).<span class="built_in">swap</span>(g[i]), d[i] = <span class="number">0</span>;</span><br><span class="line">&#125;</span><br><span class="line"></span><br><span class="line"><span class="function"><span class="type">int</span> <span class="title">main</span><span class="params">()</span> </span>&#123;</span><br><span class="line">	std::ios::<span class="built_in">sync_with_stdio</span>(<span class="literal">false</span>);</span><br><span class="line">	std::cin.<span class="built_in">tie</span>(<span class="literal">nullptr</span>), std::cout.<span class="built_in">tie</span>(<span class="literal">nullptr</span>);</span><br><span class="line">	<span class="type">int</span> t; std::cin &gt;&gt; t; <span class="keyword">while</span> (t--) <span class="built_in">solve</span>(); <span class="keyword">return</span> <span class="number">0</span>;</span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2024/07/05/Codeforces-exercises-2022/" rel="prev" title="Codeforces exercises 2022">
+      <i class="fa fa-chevron-left"></i> Codeforces exercises 2022
+    </a></div>
+      <div class="post-nav-item">
+    <a href="/2025/02/06/CS61A-notes/" rel="next" title="CS61A 笔记">
+      CS61A 笔记 <i class="fa fa-chevron-right"></i>
+    </a></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#codeforces-round-956-div2-2478"><span class="nav-number">1.</span> <span class="nav-text">codeforces round 956 (#Div2)
+24&#x2F;7&#x2F;8</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#e"><span class="nav-number">1.1.</span> <span class="nav-text">E</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#codeforces-round-958-div2-24715"><span class="nav-number">2.</span> <span class="nav-text">codeforces round 958 (#Div2)
+24&#x2F;7&#x2F;15</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#d"><span class="nav-number">2.1.</span> <span class="nav-text">D</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#codeforces-round-959-div12-24718"><span class="nav-number">3.</span> <span class="nav-text">codeforces round 959
+(#Div1+2) 24&#x2F;7&#x2F;18</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#d-1"><span class="nav-number">3.1.</span> <span class="nav-text">D</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e-1"><span class="nav-number">3.2.</span> <span class="nav-text">E</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#codeforces-round-960-div2-24720"><span class="nav-number">4.</span> <span class="nav-text">codeforces round 960 (#Div2)
+24&#x2F;7&#x2F;20</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#pinely-round-4-div12-24728"><span class="nav-number">5.</span> <span class="nav-text">Pinely round 4 (#Div1+2)
+24&#x2F;7&#x2F;28</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#e-2"><span class="nav-number">5.1.</span> <span class="nav-text">E</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#f"><span class="nav-number">5.2.</span> <span class="nav-text">F</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#codeforces-round-963-div2-2484"><span class="nav-number">6.</span> <span class="nav-text">codeforces round 963 (#Div2)
+24&#x2F;8&#x2F;4</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#d-2"><span class="nav-number">6.1.</span> <span class="nav-text">D</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#codeforces-round-965-div2-24810"><span class="nav-number">7.</span> <span class="nav-text">codeforces round 965 (#Div2)
+24&#x2F;8&#x2F;10</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#epic-institute-of-technology-round-august-2024-div12-24811"><span class="nav-number">8.</span> <span class="nav-text">EPIC Institute of Technology
+Round August 2024 (#Div1+2) 24&#x2F;8&#x2F;11</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#d2"><span class="nav-number">8.1.</span> <span class="nav-text">D2</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#educational-codeforces-round-169-div2-24815"><span class="nav-number">9.</span> <span class="nav-text">educational codeforces round
+169 (#Div2) 24&#x2F;8&#x2F;15</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#e-3"><span class="nav-number">9.1.</span> <span class="nav-text">E</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#codeforces-round-973-div2-24920"><span class="nav-number">10.</span> <span class="nav-text">codeforces round 973 (#Div2)
+24&#x2F;9&#x2F;20</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#d-3"><span class="nav-number">10.1.</span> <span class="nav-text">D</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#e-4"><span class="nav-number">10.2.</span> <span class="nav-text">E</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#educational-codeforces-round-170-div2-241014"><span class="nav-number">11.</span> <span class="nav-text">Educational Codeforces Round
+170 (#Div2) 24&#x2F;10&#x2F;14</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#e-5"><span class="nav-number">11.1.</span> <span class="nav-text">E</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#codeforces-round-980-div2-241020"><span class="nav-number">12.</span> <span class="nav-text">codeforces round 980 (#Div2)
+24&#x2F;10&#x2F;20</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#d-4"><span class="nav-number">12.1.</span> <span class="nav-text">D</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#codeforces-round-982-div2-241026"><span class="nav-number">13.</span> <span class="nav-text">codeforces round 982 (#Div2)
+24&#x2F;10&#x2F;26</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#e1"><span class="nav-number">13.1.</span> <span class="nav-text">E1</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#codeforces-global-round-27-241027"><span class="nav-number">14.</span> <span class="nav-text">codeforces global round 27
+24&#x2F;10&#x2F;27</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#e-6"><span class="nav-number">14.1.</span> <span class="nav-text">E</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#educational-codeforces-round-171-div2-241028"><span class="nav-number">15.</span> <span class="nav-text">educational codeforces round
+171 (#Div2) 24&#x2F;10&#x2F;28</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#e-7"><span class="nav-number">15.1.</span> <span class="nav-text">E</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#codeton-round-9-div1-2-241123"><span class="nav-number">16.</span> <span class="nav-text">codeTON round 9 (#Div1 + 2)
+24&#x2F;11&#x2F;23</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#e-8"><span class="nav-number">16.1.</span> <span class="nav-text">E</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#codeforces-round-989-div1-2-241130"><span class="nav-number">17.</span> <span class="nav-text">codeforces round 989 (#Div1 +
+2) 24&#x2F;11&#x2F;30</span></a></li><li class="nav-item nav-level-2"><a class="nav-link" href="#codeforces-round-992-div2-241208"><span class="nav-number">18.</span> <span class="nav-text">codeforces round 992 (#Div2)
+24&#x2F;12&#x2F;08</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#e-9"><span class="nav-number">18.1.</span> <span class="nav-text">E</span></a></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#good-bye-2024-2025-is-near-241228"><span class="nav-number">19.</span> <span class="nav-text">Good Bye 2024: 2025 is NEAR
+24&#x2F;12&#x2F;28</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#e-10"><span class="nav-number">19.1.</span> <span class="nav-text">E</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Frankly6"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Frankly6</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2024 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frankly6</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共 60420 字</span>
+</div>
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>

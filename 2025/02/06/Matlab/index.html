@@ -1,0 +1,1444 @@
+<!DOCTYPE html>
+<html lang="zh-CN">
+<head>
+  <meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=2">
+<meta name="theme-color" content="#222">
+<meta name="generator" content="Hexo 7.3.0">
+  <link rel="apple-touch-icon" sizes="180x180" href="/images/apple-touch-icon.png">
+  <link rel="icon" type="image/png" sizes="32x32" href="/images/favicon-32x32.png">
+  <link rel="icon" type="image/png" sizes="16x16" href="/images/favicon-16x16.png">
+  <link rel="mask-icon" href="/images/logo.svg" color="#222">
+
+<link rel="stylesheet" href="/css/main.css">
+
+
+<link rel="stylesheet" href="/lib/font-awesome/css/all.min.css">
+
+<script id="hexo-configurations">
+    var NexT = window.NexT || {};
+    var CONFIG = {"hostname":"example.com","root":"/","scheme":"Pisces","version":"7.8.0","exturl":false,"sidebar":{"position":"left","display":"post","padding":18,"offset":12,"onmobile":false},"copycode":{"enable":false,"show_result":false,"style":null},"back2top":{"enable":true,"sidebar":false,"scrollpercent":false},"bookmark":{"enable":false,"color":"#222","save":"auto"},"fancybox":false,"mediumzoom":false,"lazyload":false,"pangu":false,"comments":{"style":"tabs","active":null,"storage":true,"lazyload":false,"nav":null},"algolia":{"hits":{"per_page":10},"labels":{"input_placeholder":"Search for Posts","hits_empty":"We didn't find any results for the search: ${query}","hits_stats":"${hits} results found in ${time} ms"}},"localsearch":{"enable":"manual","trigger":"auto","top_n_per_article":1,"unescape":false,"preload":false},"motion":{"enable":true,"async":false,"transition":{"post_block":"fadeIn","post_header":"slideDownIn","post_body":"slideDownIn","coll_header":"slideLeftIn","sidebar":"slideUpIn"}}};
+  </script>
+
+  <meta name="description" content="Matlab 基本入门和有关数学建模的一些基本库的应用">
+<meta property="og:type" content="article">
+<meta property="og:title" content="Matlab 基础入门">
+<meta property="og:url" content="http://example.com/2025/02/06/Matlab/index.html">
+<meta property="og:site_name" content="Frankly6 的博客">
+<meta property="og:description" content="Matlab 基本入门和有关数学建模的一些基本库的应用">
+<meta property="og:locale" content="zh_CN">
+<meta property="og:image" content="https://s2.loli.net/2024/11/19/UpCaBlXL2Wxd4Qk.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/19/LPSIy9HZoir74uC.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/Hpu2kJthECOUWM3.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/bCKfqB1lvDn82Hd.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/BagqyGZHv8c1J3S.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/89XwmAqEBlzJ2sI.png">
+<meta property="og:image" content="https://s2.loli.net/2025/01/21/KeBGkMW4oNLUYVZ.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/VFUKwTCp9gWJOot.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/f4Zm9PD5OQX23UI.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/HzDORYFydtbK52n.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/4tVUKGuNkxqmdcs.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/vhBRuyb7wFoGcO8.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/V5L7nAN3QDtxesg.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/i6tkCYHycfsFeoW.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/p9wjgHLibIYJXKW.png">
+<meta property="og:image" content="https://s2.loli.net/2024/11/21/ROQ2xoiztIrPu7k.png">
+<meta property="og:image" content="https://s2.loli.net/2025/01/20/rMWU8IH6YG5kTKN.png">
+<meta property="og:image" content="https://s2.loli.net/2025/01/20/O2ULPvm3Nb7oDtE.png">
+<meta property="og:image" content="https://s2.loli.net/2025/01/20/jxKrMAu32aISWNJ.png">
+<meta property="og:image" content="https://s2.loli.net/2025/01/20/9IkE6s2nwUtXWVG.png">
+<meta property="og:image" content="https://s2.loli.net/2025/01/21/mKVe8uDnEbA1t4o.png">
+<meta property="og:image" content="https://s2.loli.net/2025/01/21/ziBQn27CmDZl6bG.png">
+<meta property="og:image" content="https://s2.loli.net/2025/01/21/c4Mn5BA9SN1w2Rs.png">
+<meta property="og:image" content="https://s2.loli.net/2025/01/21/PKdFhg5UulrCOLf.png">
+<meta property="og:image" content="https://s2.loli.net/2025/01/21/OJRi48Z6tY5Lrj7.png">
+<meta property="og:image" content="https://s2.loli.net/2025/01/21/quBzwRHIJ2CP5WL.png">
+<meta property="og:image" content="https://s2.loli.net/2025/01/21/M7LbrOzV2yhHWTk.png">
+<meta property="og:image" content="https://s2.loli.net/2025/01/21/JbjoRSh6LfnIwUB.png">
+<meta property="og:image" content="https://s2.loli.net/2025/01/21/Oh9cP4sAHCEbx32.png">
+<meta property="og:image" content="https://s2.loli.net/2025/01/21/H7gWrVJTuS5bNpX.png">
+<meta property="og:image" content="https://s2.loli.net/2025/01/22/TYaONjPXBm4foct.png">
+<meta property="og:image" content="https://s2.loli.net/2025/02/06/NegpHfrLIwvOk4S.jpg">
+<meta property="article:published_time" content="2025-02-06T12:48:14.000Z">
+<meta property="article:modified_time" content="2025-02-06T13:11:17.818Z">
+<meta property="article:author" content="Frankly6">
+<meta name="twitter:card" content="summary">
+<meta name="twitter:image" content="https://s2.loli.net/2024/11/19/UpCaBlXL2Wxd4Qk.png">
+
+<link rel="canonical" href="http://example.com/2025/02/06/Matlab/">
+
+
+<script id="page-configurations">
+  // https://hexo.io/docs/variables.html
+  CONFIG.page = {
+    sidebar: "",
+    isHome : false,
+    isPost : true,
+    lang   : 'zh-CN'
+  };
+</script>
+
+  <title>Matlab 基础入门 | Frankly6 的博客</title>
+  
+
+
+
+
+
+
+  <noscript>
+  <style>
+  .use-motion .brand,
+  .use-motion .menu-item,
+  .sidebar-inner,
+  .use-motion .post-block,
+  .use-motion .pagination,
+  .use-motion .comments,
+  .use-motion .post-header,
+  .use-motion .post-body,
+  .use-motion .collection-header { opacity: initial; }
+
+  .use-motion .site-title,
+  .use-motion .site-subtitle {
+    opacity: initial;
+    top: initial;
+  }
+
+  .use-motion .logo-line-before i { left: initial; }
+  .use-motion .logo-line-after i { right: initial; }
+  </style>
+</noscript>
+
+</head>
+
+<body itemscope itemtype="http://schema.org/WebPage">
+  <div class="container use-motion">
+    <div class="headband"></div>
+
+    <header class="header" itemscope itemtype="http://schema.org/WPHeader">
+      <div class="header-inner"><div class="site-brand-container">
+  <div class="site-nav-toggle">
+    <div class="toggle" aria-label="切换导航栏">
+      <span class="toggle-line toggle-line-first"></span>
+      <span class="toggle-line toggle-line-middle"></span>
+      <span class="toggle-line toggle-line-last"></span>
+    </div>
+  </div>
+
+  <div class="site-meta">
+
+    <a href="/" class="brand" rel="start">
+      <span class="logo-line-before"><i></i></span>
+      <h1 class="site-title">Frankly6 的博客</h1>
+      <span class="logo-line-after"><i></i></span>
+    </a>
+  </div>
+
+  <div class="site-nav-right">
+    <div class="toggle popup-trigger">
+        <i class="fa fa-search fa-fw fa-lg"></i>
+    </div>
+  </div>
+</div>
+
+
+
+
+<nav class="site-nav">
+  <ul id="menu" class="main-menu menu">
+        <li class="menu-item menu-item-home">
+
+    <a href="/" rel="section"><i class="fa fa-home fa-fw"></i>首页</a>
+
+  </li>
+        <li class="menu-item menu-item-categories">
+
+    <a href="/categories/" rel="section"><i class="fa fa-th fa-fw"></i>分类</a>
+
+  </li>
+        <li class="menu-item menu-item-archives">
+
+    <a href="/archives/" rel="section"><i class="fa fa-archive fa-fw"></i>归档</a>
+
+  </li>
+      <li class="menu-item menu-item-search">
+        <a role="button" class="popup-trigger"><i class="fa fa-search fa-fw"></i>搜索
+        </a>
+      </li>
+  </ul>
+</nav>
+
+
+
+  <div class="search-pop-overlay">
+    <div class="popup search-popup">
+        <div class="search-header">
+  <span class="search-icon">
+    <i class="fa fa-search"></i>
+  </span>
+  <div class="search-input-container">
+    <input autocomplete="off" autocapitalize="off"
+           placeholder="搜索..." spellcheck="false"
+           type="search" class="search-input">
+  </div>
+  <span class="popup-btn-close">
+    <i class="fa fa-times-circle"></i>
+  </span>
+</div>
+<div id="search-result">
+  <div id="no-result">
+    <i class="fa fa-spinner fa-pulse fa-5x fa-fw"></i>
+  </div>
+</div>
+
+    </div>
+  </div>
+
+</div>
+    </header>
+
+    
+  <div class="back-to-top">
+    <i class="fa fa-arrow-up"></i>
+    <span>0%</span>
+  </div>
+
+
+    <main class="main">
+      <div class="main-inner">
+        <div class="content-wrap">
+          
+
+          <div class="content post posts-expand">
+            
+
+    
+  
+  
+  <article itemscope itemtype="http://schema.org/Article" class="post-block" lang="zh-CN">
+    <link itemprop="mainEntityOfPage" href="http://example.com/2025/02/06/Matlab/">
+
+    <span hidden itemprop="author" itemscope itemtype="http://schema.org/Person">
+      <meta itemprop="image" content="/images/avatar.png">
+      <meta itemprop="name" content="Frankly6">
+      <meta itemprop="description" content="">
+    </span>
+
+    <span hidden itemprop="publisher" itemscope itemtype="http://schema.org/Organization">
+      <meta itemprop="name" content="Frankly6 的博客">
+    </span>
+      <header class="post-header">
+        <h1 class="post-title" itemprop="name headline">
+          Matlab 基础入门
+        </h1>
+
+        <div class="post-meta">
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-calendar"></i>
+              </span>
+              <span class="post-meta-item-text">发表于</span>
+              
+
+              <time title="创建时间：2025-02-06 20:48:14 / 修改时间：21:11:17" itemprop="dateCreated datePublished" datetime="2025-02-06T20:48:14+08:00">2025-02-06</time>
+            </span>
+            <span class="post-meta-item">
+              <span class="post-meta-item-icon">
+                <i class="far fa-folder"></i>
+              </span>
+              <span class="post-meta-item-text">分类于</span>
+                <span itemprop="about" itemscope itemtype="http://schema.org/Thing">
+                  <a href="/categories/%E7%BC%96%E7%A8%8B%E6%8A%80%E6%9C%AF/" itemprop="url" rel="index"><span itemprop="name">编程技术</span></a>
+                </span>
+            </span>
+
+          <br>
+            <span class="post-meta-item" title="本文字数">
+              <span class="post-meta-item-icon">
+                <i class="far fa-file-word"></i>
+              </span>
+                <span class="post-meta-item-text">本文字数：</span>
+
+
+              <span title="post.wordcount">
+                10434 字
+              </span>
+
+
+
+
+
+
+            </span>
+            <span class="post-meta-item" title="阅读时长">
+              <span class="post-meta-item-icon">
+                <i class="far fa-clock"></i>
+              </span>
+                <span class="post-meta-item-text">阅读时长 &asymp;</span>
+            </span>
+
+
+              <span title="post.min2read">
+                  45 分钟
+              </span>
+
+        </div>
+      </header>
+
+    
+    
+    
+    <div class="post-body" itemprop="articleBody">
+
+      
+        <p>Matlab 基本入门和有关数学建模的一些基本库的应用</p>
+<span id="more"></span>
+<p>参考资料<br />
+<a href="pdf1.pdf">数学建模算法与应用第3版(司守奎,孙玺菁)</a><br />
+<a
+href="pdf2.pdf">数学建模算法与应用第3版参考答案(司守奎,孙玺菁)</a><br />
+<a
+target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1Sj421S7wh/?share_source=copy_web&amp;vd_source=06902bc8772a1275f8297cd23a7feb12">零基础入门
+Matlab</a></p>
+<h2 id="matlab">Matlab</h2>
+<p>利用 .m 后缀的脚本文件编程 (Ctrl+N 创建)<br />
+<code>clear</code> 清空工作区 <code>clc</code> 清空命令行窗口<br />
+<code>clear all</code> 清除工作空间的所有变量, 函数(比
+<code>clear</code> 更彻底)<br />
+<code>F5</code> 运行程序, <code>F9</code> 运行选中部分<br />
+注释 <code>%</code> 多行注释 <code>Ctrl+R</code> 解注释
+<code>Ctrl+T</code><br />
+<code>Ctrl+I</code> 智能调整缩进<br />
+语句末尾的分号控制语句是否显示, 加入分号就不显示<br />
+可以用 <code>%%</code> 在首尾括住一块内容, 然后按
+<code>Ctrl+Enter</code> 运行这一部分<br />
+<code>disp()</code> 函数输出文本/数字/矩阵<br />
+Matlab debug: 设置断点, 按 <code>F10</code> 步进<br />
+<code>Ctrl+C</code> 强行中断程序进行<br />
+<code>format long</code> 小数点后保留 15 位(默认为
+<code>format short</code>)</p>
+<p>数据类型:<br />
+数字(整数,浮点数,复数), 字符和字符串(' '和“ ”), 矩阵 ([ ])</p>
+<h3 id="矩阵">矩阵</h3>
+<h4 id="创建矩阵">创建矩阵</h4>
+<ol type="1">
+<li>直接输入 <code>a=[1 2 3;4 5 6]</code> 或 <code>a=[1:3;4:6]</code> 或
+<code>a=[1:1:3;4:1:6]</code></li>
+<li>函数创建矩阵:
+<ol type="1">
+<li>生成全 0 矩阵(n * m) <code>zeros(n,m)</code> (生成 n*n 方阵:
+<code>zeros(n)</code>)</li>
+<li>生成全 1 矩阵(n * m) <code>ones(n,m)</code></li>
+<li>生成单位矩阵 (n * m) <code>eye(n,m)</code></li>
+<li>生成 (0,1) 随机数矩阵 (n * m) <code>rand(n,m)</code></li>
+<li>生成 [l,r] 随机整数矩阵 (n * m) <code>randi([l,r],n,m)</code><br />
+</li>
+<li>生成 <span class="math inline">\(\mu=0, \sigma=1\)</span>
+正态分布随机数矩阵 (n * m) <code>randn(n,m)</code><br />
+</li>
+</ol></li>
+<li>导入本地文件生成矩阵</li>
+</ol>
+<h4 id="矩阵元素修改">矩阵元素修改</h4>
+<p>改 i 行 j 列元素为 k: <code>a(i,j) = k</code><br />
+改 i 行为 k: <code>a(i,:) = k</code><br />
+改 [i1,i2,i3] 行的 [j1,j2,j3] 为 k:
+<code>a([i1,i2,i3],[j1,j2,j3]) = k</code><br />
+若改变超出范围的下标, 其他位置会自动填 0</p>
+<p>删除第 i 列: <code>a[:,i] = []</code><br />
+删除最后一行: <code>a[end,:] = []</code></p>
+<p>线性索引删除第 i 个元素: <code>a(i) = []</code>
+矩阵剩下部分会排成一行<br />
+#### 矩阵拼接</p>
+<p>A B 行数相同, 横向拼接 <code>C=[A B]</code> 或
+<code>C = cat[2,A,B]</code><br />
+A B 列数相同, 纵向拼接 <code>C=[A; B]</code> 或
+<code>C = cat[1,A,B]</code></p>
+<h4 id="矩阵重构与重排">矩阵重构与重排</h4>
+<p>如果 A 中元素数为, m*n, 则可以令 <code>B = reshape(A,m,n)</code>
+来重构 A 矩阵(按照线性索引)<br />
+如果不知道有多少列，可以令 <code>B = reshape(A,m,[])</code></p>
+<p>sort 函数对向量或矩阵排序, <code>sort(A,dim)</code> 或
+<code>sort(A,dim,‘descend’)</code> 实行升序或降序排列<br />
+若 dim = 1, 则沿行方向排序; 若 dim = 2, 则沿列方向排序<br />
+sortrows 函数基于某一列给整个矩阵排序, 同一行元素不变, 即
+<code>sortrows(A,row)</code><br />
+若有多个维度排序, 则用 <code>sortrows(A,[r1,r2,...])</code> 传向量,
+即先以 r1 列排序, 若相同再以 r2 列排序, etc.</p>
+<h4 id="矩阵的运算">矩阵的运算</h4>
+<h5 id="调用函数运算">调用函数运算</h5>
+<ol type="1">
+<li><code>sum(A,dim)</code> 或 <code>sum(A(:))</code>
+返回按每行/每类求和的向量或矩阵内元素总和<br />
+</li>
+<li><code>prod(A,dim)</code> 求乘积, 与 <code>sum</code> 类似,
+<code>prod(A(:)) = prod(A,"all")</code><br />
+</li>
+<li><code>diff(A)</code> 求 A 按行的差分矩阵 (n * m) -&gt; ((n-1) *
+m)</li>
+<li><code>mean(A,dim)</code> 求平均数</li>
+<li><code>median</code> 求中位数; <code>mode</code> 求众数;
+<code>var</code> 求方差; <code>std</code> 求标准差; <code>min</code>
+求最小值; <code>max</code> 求最大值</li>
+</ol>
+<h5 id="矩阵加减">矩阵加减</h5>
+<p>共五种兼容运算, 见下图:</p>
+<p><img src="https://s2.loli.net/2024/11/19/UpCaBlXL2Wxd4Qk.png" /></p>
+<h5 id="矩阵乘除乘方转置">矩阵乘/除/乘方/转置</h5>
+<p><code>*</code> 代表矩阵相乘, <code>.*</code>
+代表矩阵对应元素相乘(满足五种兼容)<br />
+<code>/</code> 代表右除(若 <code>x*A = B</code> , 则
+<code>x = B/A</code>)<br />
+<code>\</code> 代表左除(若 <code>A*x = B</code>, 则
+<code>x = A\B</code>)<br />
+<code>./</code> 代表矩阵对应元素相除<br />
+<code>^</code> 表示矩阵乘方(与数字), <code>.^</code>
+代表矩阵对应元素乘方对应次数<br />
+<code>'</code> 矩阵共轭转置, <span class="math inline">\(A^H =
+A^{&#39;}\)</span> , <code>.'</code> 矩阵转置, <span
+class="math inline">\(A^T = A^{.&#39;}\)</span></p>
+<h5 id="矩阵关系运算">矩阵关系运算</h5>
+<p><code>==</code> 等于; <code>~=</code> 不等于; <code>&gt;</code> 大于;
+<code>&gt;=</code> 大于等于; <code>&lt;</code> 小于; <code>&lt;=</code>
+小于等于<br />
+生成一个逻辑值矩阵, 矩阵的每个元素为 0 或 1,
+可以进行上文的五种兼容运算</p>
+<h3 id="逻辑">逻辑</h3>
+<h4 id="运算符">运算符</h4>
+<p><code>&amp; (and)</code> 与; <code>| (or)</code> 或;
+<code>~ (not)</code> 非; <code>xor</code> 异或<br />
+以上运算都仅返回 0/1<br />
+<code>xor(3,4) = 0</code> 因为这里把 3, 4 都看成了逻辑值 1 来运算<br />
+A &amp; B 对 A, B 的对应元素求 &amp;, 返回逻辑矩阵, 满足兼容运算<br />
+<code>&amp;&amp;</code> 和 <code>||</code> 只能对标量逻辑运算,
+具有短路功能, 提高效率<br />
+<code>integral(f,a,b)</code> 对 <span class="math inline">\(f\)</span>
+函数从 a 到 b 进行积分操作</p>
+<h4 id="常用函数">常用函数</h4>
+<p><code>mod(x,p)</code> 求 <span class="math inline">\(x \; mod
+\;p\)</span> 的值<br />
+<code>all(A,dim)</code> 当 A 中全为非零值时返回 1 向量, 否则返回 0
+向量<br />
+<code>any(A,dim)</code> 当 A 中存在非零值时返回 1 向量, 否则返回 0
+向量</p>
+<p><code>find</code> 函数:</p>
+<p><img src="https://s2.loli.net/2024/11/19/LPSIy9HZoir74uC.png" /></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">A = [<span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span></span><br><span class="line">	 <span class="number">0</span>,<span class="number">1</span>,<span class="number">2</span></span><br><span class="line">	 <span class="number">2</span>,<span class="number">0</span>,<span class="number">1</span>];</span><br><span class="line"><span class="built_in">find</span>(A) = [<span class="number">3</span>;<span class="number">4</span>;<span class="number">5</span>;<span class="number">7</span>;<span class="number">8</span>;<span class="number">9</span>] <span class="comment">%返回线性索引, 先列后行编号</span></span><br><span class="line"><span class="built_in">find</span>(A,<span class="number">2</span>) = [<span class="number">3</span>;<span class="number">4</span>]</span><br><span class="line"><span class="built_in">find</span>(A,<span class="number">2</span>,<span class="string">&#x27;last&#x27;</span>) = [<span class="number">8</span>;<span class="number">9</span>]</span><br><span class="line">[row,col] = <span class="built_in">find</span>(A) <span class="comment">%row = [3;1;2;1;2;3]; col = [1;2;2;3;3;3]</span></span><br><span class="line">[row,col,v] = <span class="built_in">find</span>(A) <span class="comment">%v = [2;1;1;2;2;1] 提取 A 中所有非零元素</span></span><br></pre></td></tr></table></figure>
+<h3 id="语法结构">语法结构</h3>
+<h4 id="条件结构">条件结构</h4>
+<p>if 语句格式: if - elseif - ... - elseif - else - end <strong>if 和
+end 不能省略</strong><br />
+对于一个矩阵 A, 其逻辑值为 <code>all(A(:))</code></p>
+<p>switch 语句格式: switch - case -...- case - otherwise - end<br />
+switch 后面跟着开关表达式, 其运算结果不能为向量或矩阵</p>
+<h4 id="循环结构">循环结构</h4>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:<span class="number">5</span></span><br><span class="line">	<span class="built_in">disp</span>(<span class="built_in">i</span>) <span class="comment">% 自带两个 &#x27;\n&#x27;, 本处为了节约空间只换行一次</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">%---------------------</span></span><br><span class="line"><span class="number">1</span></span><br><span class="line"><span class="number">2</span></span><br><span class="line"><span class="number">3</span></span><br><span class="line"><span class="number">4</span></span><br><span class="line"><span class="number">5</span></span><br></pre></td></tr></table></figure>
+<p>若 <code>for i = A</code> , 则 i 会循环 A 的列数次数, 每次输出 n*1
+的列向量</p>
+<p>while 语句格式: while - end</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">f(<span class="number">1</span>) = <span class="number">1</span>; f(<span class="number">2</span>) = <span class="number">1</span>;</span><br><span class="line">n = <span class="number">2</span>;</span><br><span class="line"><span class="keyword">while</span> f(n) &lt;= <span class="number">99999</span></span><br><span class="line">	n = n+<span class="number">1</span>;</span><br><span class="line">	f(n) = f(n<span class="number">-1</span>) + f(n<span class="number">-2</span>);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line">n</span><br><span class="line"><span class="comment">%---------------------</span></span><br><span class="line">n = <span class="number">26</span></span><br></pre></td></tr></table></figure>
+<p><strong>break</strong> 和 <strong>continue</strong> 关键字和 C++
+一样, 不讲了</p>
+<h3 id="函数">函数</h3>
+<h4 id="自定义函数">自定义函数</h4>
+<p>需要单独开一个 函数名.m
+结尾的文件放函数(好像不用其实？只要放在代码末尾就行),
+嵌套的子函数就不用了<br />
+基本结构:</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="function"><span class="keyword">function</span><span class="params">[输出形参表: output1, ..., outputn]</span> = 函数名<span class="params">(输入形参表: input1, ..., inputn)</span></span></span><br><span class="line">注释...</span><br><span class="line">代码...</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">%-----------------------------------</span></span><br><span class="line"><span class="comment">%eg. 编写 max_min_values.m 求向量最大最小值</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[mn,mx]</span> = <span class="title">max_min_values</span><span class="params">(X)</span></span></span><br><span class="line">x1 = <span class="built_in">sort</span>(X);</span><br><span class="line">x2 = <span class="built_in">sort</span>(X,<span class="string">&#x27;descend&#x27;</span>);</span><br><span class="line">mn = x1(<span class="number">1</span>);</span><br><span class="line">mx = x2(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<h4 id="匿名函数">匿名函数</h4>
+<p>效率更高, 不用单开 .m 文件<br />
+基本格式: <code>f = @(参数1, 参数2, ...) 函数表达式</code></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%eg. f(x,y) 返回 x^2+y^2</span></span><br><span class="line">f = @(x,y) x^<span class="number">2</span>+y^<span class="number">2</span>;</span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%eg. 双重匿名函数, 返回值为一个一层的匿名函数</span></span><br><span class="line">f = @(a,b)@(x) a*x+b;</span><br><span class="line">g = f(<span class="number">3</span>,<span class="number">4</span>);</span><br><span class="line">g(<span class="number">1</span>)</span><br><span class="line"><span class="comment">%---------------------------</span></span><br><span class="line">&gt;&gt; <span class="number">7</span></span><br></pre></td></tr></table></figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">%eg. 多行匿名函数, [] 括起来</span></span><br><span class="line">PlotSin=@(x,y) [<span class="built_in">figure</span>; <span class="built_in">plot</span>(x,y,<span class="string">&#x27;r -*&#x27;</span>);title(<span class="string">&#x27;Sin(x)&#x27;</span>);];</span><br><span class="line">x=-<span class="built_in">pi</span>:<span class="number">0.05</span>:<span class="built_in">pi</span>; <span class="comment">% x 为一个向量, 在 -pi 到 pi 之间取遍所有 0.05 的步长</span></span><br><span class="line">y=<span class="built_in">sin</span>(x);</span><br><span class="line">PlotSin(x,y);	<span class="comment">%画一条正弦曲线</span></span><br></pre></td></tr></table></figure>
+<p>其中 <code>figure</code> 函数用于创建一个新的图窗窗口</p>
+<p><img src="https://s2.loli.net/2024/11/21/Hpu2kJthECOUWM3.png" style="zoom:33%;" /></p>
+<p>例题: <span class="math inline">\(e^x+x^a+x^{\sqrt{x}} = 100\)</span>
+, 针对 <span class="math inline">\(a \in [0,2]\)</span>
+的不同取值求解</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">f = @(a)@(x)<span class="built_in">exp</span>(x)+x^a+x^(<span class="built_in">sqrt</span>(x))<span class="number">-100</span>;</span><br><span class="line">a = <span class="number">1</span>; A = <span class="number">0</span>:<span class="number">0.5</span>:<span class="number">2</span>;</span><br><span class="line">x = @(a)fzero(f(a),<span class="number">4</span>);</span><br><span class="line">X = @(A)arrayfun(@(a)x(a),A);</span><br><span class="line">x(a)</span><br><span class="line">X(A)</span><br><span class="line"><span class="comment">%------------------------------------------</span></span><br><span class="line"><span class="number">4.3153</span> 										   <span class="comment">%a = 1</span></span><br><span class="line"><span class="number">4.3506</span>    <span class="number">4.3392</span>    <span class="number">4.3153</span>    <span class="number">4.2654</span>    <span class="number">4.1635</span> <span class="comment">%a = 0, 0.5, 1, 1.5, 2</span></span><br></pre></td></tr></table></figure>
+<p>fzero 函数: 求非线性函数的根<br />
+语法 <code>fzero(func,x0)</code>, func 为函数表达式, x0
+为猜测的零点<br />
+arrayfun 函数: 将函数应用于每个数组元素<br />
+语法 <code>B = arrayfun(func,A)</code> 将 A 的元素应用于 func,
+输出串联在 B 中, 有 B(i) = func(A(i))</p>
+<h4 id="特殊函数"><a
+target="_blank" rel="noopener" href="https://ww2.mathworks.cn/help/matlab/special-functions.html?searchHighlight=%E7%89%B9%E6%AE%8A%E5%87%BD%E6%95%B0&amp;s_tid=srchtitle_support_results_1_%25E7%2589%25B9%25E6%25AE%258A%25E5%2587%25BD%25E6%2595%25B0">特殊函数</a></h4>
+<h4 id="常用函数-1">常用函数</h4>
+<p><code>abs(x)</code> 求 x 的绝对值, 若 x 为复数, 则求其模长<br />
+<code>mod(x,p)</code> 求 <span class="math inline">\(x \; mod
+\;p\)</span> 的值<br />
+<code>sqrt(x)</code> 对 x 开根号, 复数也可以, 放向量也可以<br />
+<code>exp(x)</code> 返回 <span class="math inline">\(e^x\)</span> ​<br />
+<code>log(x)</code> 返回 <span class="math inline">\(ln(x)\)</span>​​
+<code>log2(x)/log10(x)</code> 返回以 2 为<br />
+<code>round(x)</code> 四舍五入 x, 如果含 0.5, 则朝远离 0 的方向调整.
+<code>round(1.5)=2, round(-0.5)=-1</code><br />
+<code>isempty(A)</code> 若 A = [], 返回 1, 否则返回 0, 有 (length(A)==0)
+== (isempty(A))<br />
+<code>ismember(A,B)</code> 如果 A 中某位置的数据能在 B 中找到,
+函数返回一个在该位置为 1 的数组<br />
+<code>eg. A=[1:3], x=[2:4], ismember(x,A) = [1,1,0]</code><br />
+<code>meshgrid(x,y)</code> 基于向量 x 和 y
+中包含的坐标返回二维坐标<br />
+<code>rnd(seed)</code> 设置随机数种子为 seed, 默认为
+<code>rnd('shuffle')</code> , 随机数种子一直变化</p>
+<h5 id="三角函数"><a
+target="_blank" rel="noopener" href="https://ww2.mathworks.cn/help/matlab/trigonometry.html?searchHighlight=%E4%B8%89%E8%A7%92%E5%AD%A6&amp;s_tid=srchtitle_support_results_1_%25E4%25B8%2589%25E8%25A7%2592%25E5%25AD%25A6">三角函数</a></h5>
+<h3 id="图形绘制">图形绘制</h3>
+<h4 id="二维绘图">二维绘图</h4>
+<h5 id="plot-函数">plot 函数</h5>
+<p><code>plot(x,y)</code> x, y 为两个向量(或矩阵),
+本质为两个向量(或矩阵)构造的点连线<br />
+<code>plot(x)</code> 默认横坐标为 1, 2, 3, ... sizeof(x), 纵坐标为 x
+中的数<br />
+<img src="https://s2.loli.net/2024/11/21/bCKfqB1lvDn82Hd.png" style="zoom:40%;" /></p>
+<p>若作为矩阵, 则一次绘制多个函数<br />
+或通过 <code>plot(x1,y1,x2,y2,x3,y3)</code> 一次绘制多个函数</p>
+<p><code>linspace(x1,x2,num=100)</code> 返回包含 x1 和 x2 之间的 num
+个等间距点的行向量<br />
+<code>plot(x,y,LineSpec)</code> 其中 <a
+target="_blank" rel="noopener" href="https://ww2.mathworks.cn/help/matlab/ref/matlab.graphics.chart.primitive.line-properties.html">LineSpec</a>
+指定线型, 标记和颜色, 如 '--or' 为带有圆形标记的红色虚线</p>
+<h5 id="fplot-函数">fplot 函数</h5>
+<p><code>fplot(f)</code> 在默认区间 <span
+class="math inline">\([-5,5]\)</span> (对于 x) 绘制由函数 y = f(x)
+定义的曲线<br />
+<code>fplot(f,[l,r])</code> 在区间 <span
+class="math inline">\([l,r]\)</span> (对于 x) 绘制由函数 y = f(x)
+定义的曲线<br />
+当函数对步长要求苛刻时, 或者想少写点代码的话, 就用 fplot(), 以 sin(1/x)
+为例:<br />
+<img src="https://s2.loli.net/2024/11/21/BagqyGZHv8c1J3S.png" style="zoom:50%;" /></p>
+<p><code>fplot(funx,funy,[l,r])</code> 在区间 <span
+class="math inline">\([l,r]\)</span>​ (对于 t) 绘制由函数 x = funx(t) 和
+y = funy(t) 定义的曲线<br />
+<img src="https://s2.loli.net/2024/11/21/89XwmAqEBlzJ2sI.png" style="zoom: 50%;" />
+<strong>所有的 fplot 式子後面都可以加上 LineSpec 指定線型, 標記和顏色,
+你們不會受到任何處分！-發自我的電腦 </strong></p>
+<h5 id="fimplicit-函数">fimplicit 函数</h5>
+<p>可以实现隐函数绘图, 默认 <span class="math inline">\(f = 0\)</span>
+<img src="https://s2.loli.net/2025/01/21/KeBGkMW4oNLUYVZ.png" alt="0c480bcbc10c12a41824a24a94d796cf" style="zoom:50%;" /></p>
+<h5 id="其他绘图函数">其他绘图函数</h5>
+<p><code>semilogx(X,Y,LineSpec)</code> 在 x 轴上以 10 为底的对数刻度, 在
+y 轴上使用线性刻度来绘制 x 和 y 坐标<br />
+与 <code>linspace(x1,x2)</code> 对应的, 有 <code>logspace(x1,x2)</code>
+在 log 下在 <span class="math inline">\([10^{x_1},10^{x_2}]\)</span>​
+内均匀取点</p>
+<p><code>polarplot(theta,rho,LineSpec)</code> 在极坐标系下绘图, theta
+为弧度角, rho 为半径值<br />
+<img src="https://s2.loli.net/2024/11/21/VFUKwTCp9gWJOot.png" style="zoom:50%;" /></p>
+<p><strong>统计图</strong>:</p>
+<p><code>bar(x,y)</code> 创建一个条形图, y 中的每个元素对应一个条形,
+横坐标为 x<br />
+<img src="https://s2.loli.net/2024/11/21/f4Zm9PD5OQX23UI.png" style="zoom:50%;" /></p>
+<p><code>histogram(x,nbins)</code> 创建基于 x 的直方图, 有 nbins
+根柱子<br />
+<img src="https://s2.loli.net/2024/11/21/HzDORYFydtbK52n.png" style="zoom:50%;" /></p>
+<p><code>pie(X)</code> 使用 <code>X</code>
+中的数据绘制饼图。饼图的每个扇区代表 <code>X</code> 中的一个元素</p>
+<ul>
+<li>如果 <code>sum(X) ≤ 1</code>，<code>X</code>
+中的值直接指定饼图扇区的面积。如果
+<code>sum(X) &lt; 1</code>，<code>pie</code> 仅绘制部分饼图</li>
+<li>如果 <code>sum(X) &gt; 1</code>，则 <code>pie</code> 通过
+<code>X/sum(X)</code> 对值进行归一化，以确定饼图的每个扇区的面积</li>
+</ul>
+<p><code>pie3(X)</code> 生成三维饼图</p>
+<p><code>scatter(x,y)</code> 在向量 <code>x</code> 和 <code>y</code>
+指定的位置创建一个包含圆形标记的散点图<br />
+<code>scatter3(x,y)</code> 生成三维散点图<br />
+<img src="https://s2.loli.net/2024/11/21/4tVUKGuNkxqmdcs.png" style="zoom:50%;" /></p>
+<p><code>quiver(X,Y,U,V)</code> 画一个 (X,Y) -&gt; (U,V) 的向量</p>
+<h5 id="图形属性设置">图形属性设置</h5>
+<p><a
+target="_blank" rel="noopener" href="https://ww2.mathworks.cn/help/matlab/ref/matlab.graphics.chart.primitive.line-properties.html"><strong>LineSpec</strong></a>
+部分<br />
+图形标注部分(支持 <span class="math inline">\(\LaTeX\)</span>):</p>
+<ol type="1">
+<li><code>title(标题)</code><br />
+</li>
+<li><code>xlabel(x轴说明)</code></li>
+<li><code>ylabel(y轴说明)</code></li>
+<li><code>text(x,y,图形说明)</code></li>
+<li><code>legend(图例1, 图例2, ...)</code></li>
+</ol>
+<p><img src="https://s2.loli.net/2024/11/21/vhBRuyb7wFoGcO8.png" style="zoom:50%;" /></p>
+<p><a
+target="_blank" rel="noopener" href="https://ww2.mathworks.cn/help/matlab/ref/axis.html?searchHighlight=axis&amp;s_tid=srchtitle_support_results_1_axis">axis</a>
+函数控制坐标轴<br />
+<code>grid on/off</code> 开关网格线<br />
+<code>hold on/off</code> 控制保持原有图形 或 刷新图形窗口</p>
+<h4 id="三维绘图">三维绘图</h4>
+<p><code>plot3(x,y,z)</code> 与 <code>fplot3(x,y,z)</code> 函数,
+和二维类似
+<img src="https://s2.loli.net/2024/11/21/V5L7nAN3QDtxesg.png" style="zoom: 50%;" /></p>
+<p><img src="https://s2.loli.net/2024/11/21/i6tkCYHycfsFeoW.png" style="zoom:50%;" /></p>
+<h5 id="三维曲面">三维曲面</h5>
+<p>先生成网格坐标矩阵 <code>[X,Y] = meshgrid(x,y)</code><br />
+然后 <code>mesh(X,Y,Z,c)</code> 或 <code>surf(X,Y,Z,c)</code> 绘制曲面,
+其中 c 指定曲面颜色, 默认正比于曲面高度<br />
+<img src="https://s2.loli.net/2024/11/21/p9wjgHLibIYJXKW.png" style="zoom:50%;" /></p>
+<h4 id="句柄与窗口">句柄与窗口</h4>
+<p>句柄: 可以理解为图像的别名, 设 <code>h = plot(x,y)</code><br />
+<code>get(h)</code> 获取图像属性, <code>set(h)</code> 更改图像
+<code>eg. set(h,'Color','red')</code></p>
+<p>子图: 同一图形窗口中的不同坐标系下的图形为子图<br />
+<code>subplot(m,n,p)</code> 将图形窗口划分为 m*n 个活动区, p
+指定当前活动区<br />
+<img src="https://s2.loli.net/2024/11/21/ROQ2xoiztIrPu7k.png" style="zoom:50%;" /></p>
+<p><code>subplot(m,n,p)</code>
+下方区域的图形属性设置全都属于当前子图</p>
+<h2 id="mcmicm-matlab">MCM/ICM Matlab</h2>
+<h3 id="使用-optimproblem-创建和求解优化问题">使用
+<code>optimproblem</code> 创建和求解优化问题</h3>
+<p><strong>可以求解线性和非线性规划问题</strong><br />
+语法:</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">prob = optimproblem</span><br><span class="line">prob = optimproblem(Name,Value)</span><br></pre></td></tr></table></figure>
+<p><code>x = optimvar(name)</code> 创建标量优化变量。优化变量是符号对象,
+可以使用它来为目标函数和问题约束创建表达式<br />
+<code>x = optimvar(name,n)</code> 创建由优化变量组成的 n×1 向量</p>
+<p>在问题中设置一个目标函数: <code>prob.Objective = x'*a*x</code><br />
+在问题中创建线性不等式约束:
+<code>prob.Constraints.con = sum(x.^2)==1</code><br />
+检查问题: <code>show(prob)</code><br />
+求解, <code>sol = solve(prob)</code>, <code>sol.x</code> 就是答案<br />
+<span class="math display">\[
+已知矩阵 A =
+\begin{bmatrix}
+1 &amp; 4 &amp; 5 \\
+4 &amp; 2 &amp; 6 \\
+5 &amp; 6 &amp; 3
+\end{bmatrix}
+, x=
+\begin{bmatrix}
+x_1 \\
+x_2 \\
+x_3
+\end{bmatrix}
+, 求二次型 f(x_1,x_2,x_3) = \mathbf{x^T Ax}\;  
+\\在单位球面 x_1^2+x_2^2+x_3^2=1 上的最小值
+\]</span></p>
+<p>可以证明其答案等于 <span class="math inline">\(A\)</span>
+的最小特征值<br />
+可以把其问题归结为如下的非线性规划问题(s.t. = subject to):<br />
+<span class="math display">\[
+求\;min \;\mathbf{x^T Ax},\\
+s.t.=\left\{
+\begin{matrix}
+x_1^2+x_2^2+x_3^2=1, \\
+x_i \in R,\;\;i=1,2,3
+\end{matrix}
+\right.
+\]</span></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line">clc; clear; format long;</span><br><span class="line">a=[<span class="number">1</span> <span class="number">4</span> <span class="number">5</span>;<span class="number">4</span> <span class="number">2</span> <span class="number">6</span>;<span class="number">5</span> <span class="number">6</span> <span class="number">3</span>];</span><br><span class="line">val = eig(a);</span><br><span class="line">minv = <span class="built_in">min</span>(val);</span><br><span class="line">prob = optimproblem; </span><br><span class="line">x = optimvar(<span class="string">&#x27;x&#x27;</span>,<span class="number">3</span>); # <span class="number">3</span> 个变量</span><br><span class="line">prob.Objective = x&#x27;*a*x;</span><br><span class="line">prob.Constraints.con = sum(x.^<span class="number">2</span>)==<span class="number">1</span>;</span><br><span class="line">x0.x=<span class="built_in">rand</span>(<span class="number">3</span>,<span class="number">1</span>); <span class="comment">% 非线性就要设置 x0 初值扔进去</span></span><br><span class="line">[sol,fval,flag,out] = solve(prob,x0),sol.x;</span><br><span class="line">fval, sol.x</span><br><span class="line">#----------------------------------------</span><br><span class="line">fval = <span class="number">-3.66868</span></span><br><span class="line"><span class="built_in">ans</span> = </span><br><span class="line">	<span class="number">-0.31298</span></span><br><span class="line">	<span class="number">-0.57734</span></span><br><span class="line">	 <span class="number">0.75412</span></span><br></pre></td></tr></table></figure>
+<p><span class="math display">\[
+求\;max\;z=2x_1+3x_2-5x_3
+\\s.t.=
+\left\{\begin{matrix}
+x_1+x_2+x_3=7, \\
+2x_1-5x_2+x_3\geq 10, \\
+x_1+3x_2+x_3 \leq 12, \\
+x_1, x_2, x_3 \geq 0.
+\end{matrix}\right.
+\]</span></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br></pre></td><td class="code"><pre><span class="line">clc; clear;</span><br><span class="line">prob = optimproblem(<span class="string">&#x27;ObjectiveSense&#x27;</span>,<span class="string">&#x27;max&#x27;</span>); <span class="comment">% 指定最大化 objective</span></span><br><span class="line">x = optimvar(<span class="string">&#x27;x&#x27;</span>,<span class="number">3</span>,<span class="string">&#x27;LowerBound&#x27;</span>,<span class="number">0</span>); <span class="comment">% 设置变量下限为 0 </span></span><br><span class="line">prob.Objective = <span class="number">2</span>*x(<span class="number">1</span>)+<span class="number">3</span>*x(<span class="number">2</span>)<span class="number">-5</span>*x(<span class="number">3</span>);</span><br><span class="line">prob.Constraints.c1 = x(<span class="number">1</span>)+x(<span class="number">2</span>)+x(<span class="number">3</span>)==<span class="number">7</span>;</span><br><span class="line">prob.Constraints.c2 = <span class="number">2</span>*x(<span class="number">1</span>)<span class="number">-5</span>*x(<span class="number">2</span>)+x(<span class="number">3</span>)&gt;=<span class="number">10</span>;</span><br><span class="line">prob.Constraints.c3 = x(<span class="number">1</span>)+<span class="number">3</span>*x(<span class="number">2</span>)+x(<span class="number">3</span>)&lt;=<span class="number">12</span>;</span><br><span class="line">[sol, fval, flag, out] = solve(prob), sol.x;</span><br><span class="line">fval, <span class="built_in">ans</span></span><br><span class="line">#---------------------------------------</span><br><span class="line">fval = <span class="number">14.5714</span></span><br><span class="line"><span class="built_in">ans</span> = </span><br><span class="line">	<span class="number">6.4286</span></span><br><span class="line">	<span class="number">0.5714</span></span><br><span class="line">	<span class="number">0</span></span><br></pre></td></tr></table></figure>
+<p>设置 <code>optimproblem('Type','integer')</code>
+可以解决整数的线性规划问题</p>
+<h3 id="遗传算法genetic-algorithm">遗传算法(Genetic Algorithm)</h3>
+<p>在上文的基础上还可以求解非线性整数线性规划</p>
+<blockquote>
+<p>遗传算法通常实现方式为一种计算机模拟。对于一个最优化问题,
+一定数量的候选解 (称为个体) 可抽象表示为染色体,
+使种群向更好的解进化。传统上, 解用二进制表示 (即 0 和 1 的串),
+但也可以用其他表示方法。进化从完全随机个体的种群开始,
+之后一代一代发生。在每一代中评价整个种群的适应度,
+从当前种群中随机地选择多个个体 (基于它们的适应度),
+通过自然选择和突变产生新的生命种群,
+该种群在算法的下一次迭代中成为当前种群。</p>
+</blockquote>
+<blockquote>
+<p>在遗传算法里, 优化问题的解被称为个体, 它表示为一个变量序列, 叫做<a
+target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/染色體_(遺傳演算法)">染色体</a>或者<a
+target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/基因">基因</a><a
+target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/字符串">串</a>。染色体一般被表达为简单的字符串或数字符串,
+不过也有其他的依赖于特殊问题的表示方法适用, 这一过程称为编码。首先,
+算法<a
+target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/随机函数">随机</a>生成一定数量的个体,
+有时候操作者也可以干预这个随机产生过程,
+以提高初始种群的质量。在每一代中, 都会评价每一个体, 并通过计算<a
+target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=适应度函数&amp;action=edit&amp;redlink=1">适应度函数</a>得到<a
+target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/适应度">适应度</a>数值。按照适应度<a
+target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/排序">排序</a>种群个体,
+适应度高的在前面。这里的“高”是相对于初始的种群的低适应度而言。</p>
+<p>下一步是产生下一代个体并组成种群。这个过程是通过选择和<a
+target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/繁殖">繁殖</a>完成, 其中繁殖包括交配
+(crossover, 在算法研究领域中我们称之为交叉操作) 和突变
+(mutation)。选择则是根据新个体的适应度进行,
+但同时不意味着完全以适应度高低为导向,
+因为单纯选择适应度高的个体将可能导致算法快速收敛到局部最优解而非全局最优解,
+我们称之为早熟。作为折中, 遗传算法依据原则: 适应度越高,
+被选择的机会越高, 而适应度低的,
+被选择的机会就低。初始的数据可以通过这样的选择过程组成一个相对优化的群体。之后,
+被选择的个体进入交配过程。一般的遗传算法都有一个交配概率
+(又称为交叉概率), 范围一般是0.6~1,
+这个交配概率反映两个被选中的个体进行交配的<a
+target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/概率">概率</a>。例如, 交配概率为0.8,
+则80%的“夫妻”会生育后代。每两个个体通过交配产生两个新个体,
+代替原来的“老”个体, 而不交配的个体则保持不变。交配父母的染色体相互交换,
+从而产生两个新的染色体, 第一个个体前半段是父亲的染色体, 后半段是母亲的,
+第二个个体则正好相反。不过这里的半段并不是真正的一半,
+这个位置叫做交配点, 也是随机产生的, 可以是染色体的任意位置。再下一步是<a
+target="_blank" rel="noopener" href="https://zh.wikipedia.org/wiki/突變">突变</a>,
+通过突变产生新的“子”个体。一般遗传算法都有一个固定的<a
+target="_blank" rel="noopener" href="https://zh.wikipedia.org/w/index.php?title=突变常数&amp;action=edit&amp;redlink=1">突变常数</a>
+(又称为变异概率), 通常是0.1或者更小, 这代表变异发生的概率。根据这个概率,
+新个体的染色体随机的突变, 通常就是改变染色体的一个字节 ( 0 变到 1 , 或者
+1 变到 0 )。</p>
+<p>经过这一系列的过程 (选择、交配和突变),
+产生的新一代个体不同于初始的一代, 并一代一代向增加整体适应度的方向发展,
+因为总是更常选择最好的个体产生下一代,
+而适应度低的个体逐渐被淘汰掉。这样的过程不断的重复: 评价每个个体,
+计算适应度, 两两交配, 然后突变, 产生第三代。周而复始,
+直到终止条件满足为止。</p>
+</blockquote>
+<p><del>以上内容没有任何意义, 你只要会掉包就行</del></p>
+<p><code>ga</code> 函数:<br />
+<code>x = ga(fitnessfcn,nvars,A,b,[],[],LB,UB,nonlcon,IntCon,options)</code><br />
+<code>fitnessfcn</code> 为适应目标函数<br />
+<code>nvars</code> 为目标函数自变量的个数<br />
+<span class="math inline">\(A\)</span> 与 <span
+class="math inline">\(b\)</span> : 线性不等式约束 $A * x b $
+中的矩阵<br />
+<span class="math inline">\(Aeq\)</span> 与 <span
+class="math inline">\(beq\)</span> : 线性等式约束 $Aeq * x = beq $
+中的矩阵<br />
+<code>nonlcon</code>: 非线性约束, 该函数返回两个输出, 即:
+<code>[g,h] = nonlcon(x)</code> , g 为非线性不等式约束,
+所有的不等式约束均以列向量的形式存在变量 g 中。h为非线性等式约束,
+也以列向量的形式存储<br />
+<code>LB UB</code> 为下界和上界<br />
+<code>IntCon</code>: 若变量 x 中存在整数变量, 则在这里设置,
+指定这些下标的变量都是整数变量<br />
+<code>options</code>: 调整种群规模, 迭代次数等<br />
+<span class="math display">\[
+求解下列问题: max\;z =
+x_1^2+x_2^2+3x_3^2+4x_4^2+2x_5^2-8x_1-2x_2-3x_3-x_4-2x_5,\\
+\\s.t.=
+\left\{\begin{matrix}
+0 \leq x_i \leq 99, 且 x_i 为整数(i=1,2,\cdots, ),\\
+x_1+x_2+x_3+x_4+x_5 \leq 400, \\
+x_1 +2x_2+2x_3+x_4+6x_5 \leq 800, \\
+2x_1+x_2+6x_3 \leq 200, \\
+x_3+x_4+5x_5 \leq 200.
+\end{matrix}\right.
+\]</span></p>
+<p><span class="math display">\[
+sol.\;构造矩阵 A =
+\begin{bmatrix}
+1 &amp; 1 &amp; 1 &amp; 1 &amp; 1 \\
+1 &amp; 2 &amp; 2 &amp; 1 &amp; 6 \\
+2 &amp; 1 &amp; 6 &amp; 0 &amp; 0 \\
+0 &amp; 0 &amp; 1 &amp; 1 &amp; 5
+\end{bmatrix}
+, b =
+\begin{bmatrix}
+400 \\
+800 \\
+200 \\
+200
+\end{bmatrix}
+, 有 Ax \leq b
+\]</span></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line">clc; clear;</span><br><span class="line">c1 = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">3</span>,<span class="number">4</span>,<span class="number">2</span>]; c2=[<span class="number">-8</span>,<span class="number">-2</span>,<span class="number">-3</span>,<span class="number">-1</span>,<span class="number">-2</span>]; </span><br><span class="line">obj = @(x) -sum(c1.*x.^<span class="number">2</span> + c2.*x); <span class="comment">% 目标函数取反, 因为默认求最小值</span></span><br><span class="line">a = [<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">1</span>;<span class="number">1</span>,<span class="number">2</span>,<span class="number">2</span>,<span class="number">1</span>,<span class="number">6</span></span><br><span class="line">    <span class="number">2</span>,<span class="number">1</span>,<span class="number">6</span>,<span class="number">0</span>,<span class="number">0</span>;<span class="number">0</span>,<span class="number">0</span>,<span class="number">1</span>,<span class="number">1</span>,<span class="number">5</span>]; </span><br><span class="line">b = [<span class="number">400</span>,<span class="number">800</span>,<span class="number">200</span>,<span class="number">200</span>]&#x27;;</span><br><span class="line">[x,f,flag,out] = ga(obj,<span class="number">5</span>,a,b,[],[],<span class="built_in">zeros</span>(<span class="number">1</span>,<span class="number">5</span>),<span class="number">99</span>*<span class="built_in">ones</span>(<span class="number">1</span>,<span class="number">5</span>),[],[<span class="number">1</span>:<span class="number">5</span>]);</span><br><span class="line">x, f</span><br><span class="line">#-------------------------------</span><br><span class="line">x = <span class="number">50</span> <span class="number">99</span> <span class="number">0</span> <span class="number">99</span> <span class="number">20</span></span><br><span class="line">f = <span class="number">-51568</span> #<span class="built_in">ans</span> = <span class="number">51568</span></span><br></pre></td></tr></table></figure>
+<p><code>ga(obj,5,a,b,[],[],zeros(1,5),99*ones(1,5),[],[1:5])</code>
+调用遗传算法 <code>ga</code> 来求解优化问题。<br />
+具体参数含义如下：</p>
+<ul>
+<li><code>obj</code>: 目标函数，表示要优化的目标。<br />
+</li>
+<li><code>5</code>: 决策变量的数量，即 <code>x</code> 向量的长度为
+5。</li>
+<li><code>a</code>: 线性约束的系数矩阵。</li>
+<li><code>b</code>: 线性约束的右侧值。</li>
+<li><code>[]</code>: 这两个空的方括号表示没有等式约束（默认为空）。</li>
+<li><code>zeros(1,5)</code>: 决策变量的下限，这里是
+<code>[0, 0, 0, 0, 0]</code>，即所有变量的最小值为 0。</li>
+<li><code>99*ones(1,5)</code>: 决策变量的上限，这里是
+<code>[99, 99, 99, 99, 99]</code>，即所有变量的最大值为 99。</li>
+<li><code>[]</code>: 不指定选择交叉和变异的具体方式。</li>
+<li><code>[1:5]</code>: 遗传算法中每个决策变量都是整数变量。</li>
+</ul>
+<p><code>[x,f,flag,out] = ...</code>
+使用遗传算法并将其返回结果赋值给四个输出变量：</p>
+<ul>
+<li><code>x</code>: 最优解，即求解的决策变量的值。<br />
+</li>
+<li><code>f</code>: 最优解对应的目标函数值。</li>
+<li><code>flag</code>: 结束条件的标志，指示算法结束的原因。</li>
+<li><code>out</code>:
+包含优化过程的其他信息，如迭代次数、每代最好的适应度等。</li>
+</ul>
+<p>$ eg. 求;x+10sin(5x)+7cos(4x) ; 的最大值 $ <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">clc; clear;</span><br><span class="line">obj = @(x) -(x+<span class="number">10</span>*<span class="built_in">sin</span>(<span class="number">5</span>*x)+<span class="number">7</span>*<span class="built_in">cos</span>(<span class="number">4</span>*x)); </span><br><span class="line">[x,f,flag,out] = ga(obj,<span class="number">1</span>,[],[],[],[],<span class="number">5</span>,<span class="number">10</span>,[],[]);</span><br><span class="line">x, f</span><br><span class="line"><span class="comment">%--------------------------------</span></span><br><span class="line">x = <span class="number">7.8567</span></span><br><span class="line">f = <span class="number">-24.8554</span> <span class="comment">% ans = 24.8554</span></span><br></pre></td></tr></table></figure></p>
+<h3 id="蒙特卡洛法">蒙特卡洛法</h3>
+<p>应用: 算面积、超越积分数值计算、不规则图形面积、风险评估<br />
+<code>unifrnd()</code>: <code>r = unifrnd(a,b)</code> 从具有下部端点
+<code>a</code> 和上部端点 <code>b</code>
+的连续均匀分布中生成一个随机数<br />
+<code>r = unifrnd(a,b,sz)</code> 生成一个均匀 [a,b]
+间随机数数组，其中大小向量 <code>sz</code> 指定 <code>size(r)</code></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">sz = [<span class="number">2</span> <span class="number">3</span>];</span><br><span class="line">r2 = unifrnd(<span class="number">0</span>,<span class="number">1</span>,sz)</span><br><span class="line"><span class="comment">%--------------------------------</span></span><br><span class="line">r2 = </span><br><span class="line">	<span class="number">0.0975</span>    <span class="number">0.5469</span>    <span class="number">0.9649</span></span><br><span class="line">    <span class="number">0.2785</span>    <span class="number">0.9575</span>    <span class="number">0.1576</span></span><br></pre></td></tr></table></figure>
+<p>计算 <span class="math inline">\(y = x^2\)</span> 和 <span
+class="math inline">\(y = 12-x\)</span> 与 <span
+class="math inline">\(x\)</span> 轴在第一象限围成的曲边三角形的面积</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">clc; clear; n=<span class="number">10</span>^<span class="number">8</span>;</span><br><span class="line">x = unifrnd(<span class="number">0</span>,<span class="number">12</span>,[<span class="number">1</span>,n]); y = unifrnd(<span class="number">0</span>,<span class="number">9</span>,[<span class="number">1</span>,n]);</span><br><span class="line">frequency = sum(y&lt;x.^<span class="number">2</span> &amp; x&lt;=<span class="number">3</span>) + sum(y&lt;<span class="number">12</span>-x &amp; x&gt;=<span class="number">-3</span>);</span><br><span class="line">area = <span class="number">12</span>*<span class="number">9</span>*frequency/n</span><br><span class="line"><span class="comment">%--------------------------------</span></span><br><span class="line">area = <span class="number">76.5024</span></span><br></pre></td></tr></table></figure>
+<p>计算 <span class="math inline">\(y = sin(x^2), y =
+\frac{sin(x)}{x}\)</span> 和 <span class="math inline">\(y =
+e^{-x^2}\)</span> 在 <span class="math inline">\(x \in [0,2]\)</span>
+上的面积</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">clc; clear; n=<span class="number">10</span>^<span class="number">6</span>; <span class="built_in">hold</span> on;</span><br><span class="line">y1 = @(x) <span class="built_in">sin</span>(x.^<span class="number">2</span>);</span><br><span class="line">y2 = @(x) <span class="built_in">sin</span>(x)./x;</span><br><span class="line">y3 = @(x) <span class="built_in">exp</span>(-(x.^<span class="number">2</span>)); </span><br><span class="line">x = unifrnd(<span class="number">0</span>,<span class="number">2</span>,[<span class="number">1</span>,n]);</span><br><span class="line">y = unifrnd(<span class="number">0</span>,<span class="number">1</span>,[<span class="number">1</span>,n]);</span><br><span class="line">frequency = sum(y&gt;=y3(x) &amp; y&lt;=y2(x) &amp; y&lt;=y1(x))</span><br><span class="line">area = <span class="number">1</span>*<span class="number">2</span>*frequency/n</span><br><span class="line"><span class="comment">%--------------------------------</span></span><br><span class="line">area = <span class="number">0.4190</span></span><br></pre></td></tr></table></figure>
+<h3 id="图论绘图">图论绘图</h3>
+<figure>
+<img src="https://s2.loli.net/2025/01/20/rMWU8IH6YG5kTKN.png"
+alt="4bfccaa65d4e4b5e9a86188f418829af" />
+<figcaption
+aria-hidden="true">4bfccaa65d4e4b5e9a86188f418829af</figcaption>
+</figure>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br></pre></td><td class="code"><pre><span class="line">clc; clear;</span><br><span class="line">a1 = <span class="built_in">zeros</span>(<span class="number">6</span>); </span><br><span class="line">a1(<span class="number">1</span>,[<span class="number">2</span>:<span class="number">4</span>])=<span class="number">1</span>; a1(<span class="number">2</span>,[<span class="number">3</span>,<span class="number">6</span>])=<span class="number">1</span>; a1(<span class="number">3</span>,<span class="number">4</span>)=<span class="number">1</span>; a1(<span class="number">4</span>,<span class="number">5</span>)=<span class="number">1</span>; a1(<span class="number">5</span>,<span class="number">6</span>)=<span class="number">1</span>;</span><br><span class="line">s = cellstr(strcat(<span class="string">&#x27;v&#x27;</span>,int2str([<span class="number">1</span>:<span class="number">6</span>]&#x27;)));</span><br><span class="line">G1 = graph(a1,s,<span class="string">&#x27;upper&#x27;</span>);</span><br><span class="line"><span class="built_in">plot</span>(G1,<span class="string">&#x27;Layout&#x27;</span>,<span class="string">&#x27;circle&#x27;</span>,<span class="string">&#x27;NodeFontSize&#x27;</span>,<span class="number">12</span>)</span><br><span class="line"></span><br><span class="line">a2 = <span class="built_in">zeros</span>(<span class="number">6</span>);</span><br><span class="line">a2(<span class="number">1</span>,[<span class="number">2</span>:<span class="number">4</span>])=[<span class="number">7</span>,<span class="number">3</span>,<span class="number">12</span>]; a2(<span class="number">2</span>,[<span class="number">3</span>,<span class="number">6</span>])=<span class="number">1</span>; a2(<span class="number">3</span>,<span class="number">4</span>)=<span class="number">8</span>; a2(<span class="number">4</span>,<span class="number">5</span>)=<span class="number">9</span>; a2(<span class="number">5</span>,<span class="number">6</span>)=<span class="number">3</span>;</span><br><span class="line">G2 = graph(a2,s,<span class="string">&#x27;upper&#x27;</span>); <span class="built_in">figure</span>;</span><br><span class="line"><span class="built_in">plot</span>(G2,<span class="string">&#x27;Layout&#x27;</span>,<span class="string">&#x27;circle&#x27;</span>,<span class="string">&#x27;EdgeLabel&#x27;</span>,G2.Edges.Weight)</span><br><span class="line"></span><br><span class="line">a3 = <span class="built_in">zeros</span>(<span class="number">6</span>);</span><br><span class="line">a3(<span class="number">1</span>,<span class="number">3</span>)=<span class="number">3</span>; a3(<span class="number">2</span>,[<span class="number">1</span>,<span class="number">3</span>])=[<span class="number">7</span>,<span class="number">1</span>]; a3(<span class="number">3</span>,<span class="number">4</span>)=<span class="number">8</span>; a3(<span class="number">4</span>,<span class="number">1</span>)=<span class="number">12</span>; a3(<span class="number">5</span>,[<span class="number">4</span>,<span class="number">6</span>])=[<span class="number">9</span>,<span class="number">3</span>]; a3(<span class="number">6</span>,<span class="number">2</span>)=<span class="number">1</span>;</span><br><span class="line">G3 = digraph(a3,s); <span class="built_in">figure</span>;</span><br><span class="line"><span class="built_in">plot</span>(G3,<span class="string">&#x27;EdgeLabel&#x27;</span>,G3.Edges.Weight,<span class="string">&#x27;Layout&#x27;</span>,<span class="string">&#x27;circle&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2025/01/20/O2ULPvm3Nb7oDtE.png" alt="image-20250120215400654" style="zoom:25%;" /><img src="https://s2.loli.net/2025/01/20/jxKrMAu32aISWNJ.png" alt="image-20250120215455829" style="zoom:25%;" /><img src="https://s2.loli.net/2025/01/20/9IkE6s2nwUtXWVG.png" alt="image-20250120215504417" style="zoom:25%;" /></p>
+<h3 id="旅行商问题tsp">旅行商问题(TSP)</h3>
+<p>用图论的术语说, 就是在一个赋权完全图中, 找出一个有最小权的 Hamilton
+圈。称这种圈为最优圈<br />
+一个可行的办法是首先求一个 Hamilton 圈 C, 然后适当修改 C
+以得到具有较小权的 另一个 Hamilton 圈。修改的方法叫做改良圈算法:<br />
+设初始圈 <span class="math inline">\(C = v_1v_2 \cdots
+v_nv_1\)</span><br />
+对于 <span class="math inline">\(1 \leq i &lt; i+1 &lt; j \leq
+n\)</span>, 构造新的 Hamilton 圈<br />
+<span class="math display">\[
+C_{ij} = v_1v_2 \cdots v_i \underline{v_j v_{j-1} v_{j-2} \cdots
+v_{i+1}}_{(reverse)} v_{j+1} v_{j+2} \cdots v_n v_1
+\]</span> 它是由 <span class="math inline">\(C\)</span> 中删去边 <span
+class="math inline">\(v_iv_{i+1}\)</span> 和边 <span
+class="math inline">\(v_jv_{j+1}\)</span> , 添加边 <span
+class="math inline">\(v_iv_j\)</span> 和边 <span
+class="math inline">\(v_{i+1}v_{j+1}\)</span> 得到的。若:<br />
+<span class="math display">\[
+w(v_iv_j) + w(v_{i+1}v_{j+1}) &lt; w(v_iv_{i+1}) + w(v_jv_{j+1}),
+\]</span> 则以 <span class="math inline">\(C_{ij}\)</span> 代替 <span
+class="math inline">\(C\)</span> , <span
+class="math inline">\(C_{ij}\)</span> 叫做 <span
+class="math inline">\(C\)</span> 的改良圈<br />
+重复以上过程, 在无法改进后停止算法,
+可以选择不同的初始圈多进行几次得到更好结果</p>
+<p>eg. 对下图六城市找最小权的 Hamilton 圈</p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>L</th>
+<th>M</th>
+<th>N</th>
+<th>Pa</th>
+<th>Pe</th>
+<th>T</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><strong>L</strong></td>
+<td></td>
+<td>56</td>
+<td>35</td>
+<td>21</td>
+<td>51</td>
+<td>60</td>
+</tr>
+<tr>
+<td><strong>M</strong></td>
+<td>56</td>
+<td></td>
+<td>21</td>
+<td>57</td>
+<td>78</td>
+<td>70</td>
+</tr>
+<tr>
+<td><strong>N</strong></td>
+<td>35</td>
+<td>21</td>
+<td></td>
+<td>36</td>
+<td>68</td>
+<td>68</td>
+</tr>
+<tr>
+<td><strong>Pa</strong></td>
+<td>21</td>
+<td>57</td>
+<td>36</td>
+<td></td>
+<td>51</td>
+<td>61</td>
+</tr>
+<tr>
+<td><strong>Pe</strong></td>
+<td>51</td>
+<td>78</td>
+<td>68</td>
+<td>51</td>
+<td></td>
+<td>13</td>
+</tr>
+<tr>
+<td><strong>T</strong></td>
+<td>60</td>
+<td>70</td>
+<td>68</td>
+<td>61</td>
+<td>13</td>
+<td></td>
+</tr>
+</tbody>
+</table>
+<p>有初始圈 5-&gt;1-&gt;2-&gt;3-&gt;4-&gt;6-&gt;5, 长度为 274,
+代码见下:</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br></pre></td><td class="code"><pre><span class="line">clc, clear; <span class="comment">% 旅行商问题简单来说就是计算出发地经过若干地点再返回原地的最短路径</span></span><br><span class="line"><span class="comment">% 这个程序围绕数学建模书 59 页问题,从地点 5 开始出发，最后再回到地点 5</span></span><br><span class="line">a=<span class="built_in">zeros</span>(<span class="number">6</span>);  <span class="comment">% 初始化邻接矩阵</span></span><br><span class="line">a(<span class="number">1</span>,<span class="number">2</span>)=<span class="number">56</span>; a(<span class="number">1</span>,<span class="number">3</span>)=<span class="number">35</span>; a(<span class="number">1</span>,<span class="number">4</span>)=<span class="number">21</span>; a(<span class="number">1</span>,<span class="number">5</span>)=<span class="number">51</span>; a(<span class="number">1</span>,<span class="number">6</span>)=<span class="number">60</span>;</span><br><span class="line">a(<span class="number">2</span>,<span class="number">3</span>)=<span class="number">21</span>; a(<span class="number">2</span>,<span class="number">4</span>)=<span class="number">57</span>; a(<span class="number">2</span>,<span class="number">5</span>)=<span class="number">78</span>; a(<span class="number">2</span>,<span class="number">6</span>)=<span class="number">70</span>; a(<span class="number">3</span>,<span class="number">4</span>)=<span class="number">36</span>; a(<span class="number">3</span>,<span class="number">5</span>)=<span class="number">68</span>; a(<span class="number">3</span>,<span class="number">6</span>)=<span class="number">68</span>;</span><br><span class="line">a(<span class="number">4</span>,<span class="number">5</span>)=<span class="number">51</span>; a(<span class="number">4</span>,<span class="number">6</span>)=<span class="number">61</span>; a(<span class="number">5</span>,<span class="number">6</span>)=<span class="number">13</span>; <span class="comment">% 对邻接矩阵进行赋值</span></span><br><span class="line">a=a+a&#x27;;<span class="comment">% 利用对称矩阵的性质获得最终得邻接矩阵</span></span><br><span class="line">L=<span class="built_in">size</span>(a,<span class="number">1</span>); <span class="comment">% 获取矩阵的行数，如果是size(a,2)就是获取矩阵的列数</span></span><br><span class="line">c=[<span class="number">5</span> <span class="number">1</span>:<span class="number">4</span> <span class="number">6</span> <span class="number">5</span>];  <span class="comment">% 这样写是为了方便，实际上c=[5 1 2 3 4 6 5],这个定义的是初始圈</span></span><br><span class="line">[circle,long]=modifycircle(a,L,c); <span class="comment">% 调用下面的修改圈的子函数</span></span><br><span class="line">circle, long  <span class="comment">% 注意如果在变量名后面加上分号的话就不会在窗口显示它的值，如果想显示值就不要加分号</span></span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="params">[circle,long]</span> = <span class="title">modifycircle</span><span class="params">(a,L,c)</span></span></span><br><span class="line">    <span class="keyword">for</span> k=<span class="number">1</span>:L  <span class="comment">% 因为要走过六个地方，于是要遍历循环</span></span><br><span class="line">        flag=<span class="number">0</span>;    <span class="comment">% 预先设置是否知道已经修改了边,如果循环后flag还是0，说明并没有修改初始圈</span></span><br><span class="line">        long=<span class="number">0</span>;    <span class="comment">% 初始化总路程</span></span><br><span class="line">        <span class="keyword">for</span> m=<span class="number">1</span>:L<span class="number">-2</span>  <span class="comment">% 因为算法中的i是1&lt;=i&lt;i+1&lt;j&lt;=n,i与n最少差2</span></span><br><span class="line">            <span class="keyword">for</span> n=m+<span class="number">2</span>:L <span class="comment">% 原算法中的j是至少比i大2的</span></span><br><span class="line">                <span class="keyword">if</span> a(c(m),c(n))+a(c(m+<span class="number">1</span>),c(n+<span class="number">1</span>))&lt;a(c(m),c(m+<span class="number">1</span>))+a(c(n),c(n+<span class="number">1</span>)) </span><br><span class="line">                <span class="comment">% 如果修改后的新圈比旧圈权重小</span></span><br><span class="line">                    c(m+<span class="number">1</span>:n)=c(n:<span class="number">-1</span>:m+<span class="number">1</span>);  <span class="comment">% 将原来的路线倒过来，结合上面讲解的算法</span></span><br><span class="line">                    flag=flag+<span class="number">1</span>; <span class="comment">% 如果修改了圈就将flag的值加1</span></span><br><span class="line">                <span class="keyword">end</span></span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">        <span class="keyword">if</span> flag==<span class="number">0</span>  <span class="comment">% 如果循环结束后都没有修改圈的话</span></span><br><span class="line">            long=<span class="number">274</span> <span class="comment">% 那么所走路线就是初始圈，路程就是初始路线的总路程</span></span><br><span class="line">        <span class="keyword">else</span></span><br><span class="line">            <span class="keyword">for</span> <span class="built_in">i</span>=<span class="number">1</span>:L</span><br><span class="line">                long=long+a(c(<span class="built_in">i</span>),c(<span class="built_in">i</span>+<span class="number">1</span>)) <span class="comment">% 遍历更新总路程</span></span><br><span class="line">            <span class="keyword">end</span></span><br><span class="line">            circle=c; <span class="comment">% 更新路线圈</span></span><br><span class="line">            <span class="keyword">return</span> </span><br><span class="line">            <span class="comment">% 在条件块（例如 if 或 switch）或循环控制语句（例如 for 或 while）使用 return 时需要小心。当 MATLAB 到达 return 语句时，它并不仅是退出循环，还退出脚本或函数，并将控制权交还给调用程序或命令提示符。</span></span><br><span class="line">        <span class="keyword">end</span></span><br><span class="line">    <span class="keyword">end</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"><span class="comment">%-------------------------------</span></span><br><span class="line">circle = <span class="number">5</span> <span class="number">4</span> <span class="number">1</span> <span class="number">3</span> <span class="number">2</span> <span class="number">6</span> <span class="number">5</span></span><br><span class="line">long = <span class="number">211</span></span><br></pre></td></tr></table></figure>
+<p>你也可以用 0-1 整数规划模型解决 TSP 问题, 只要引进这样的 0-1
+变量:<br />
+<span class="math display">\[
+x_{ij} =
+\left\{\begin{align}
+&amp;1, \;\;当最短路径经过\;i\;到\;j\;的边时\\
+&amp;0, \;\;当最短路径不经过\;i\;到\;j\;的边时
+\end{align}\right.
+\]</span> 然后目标是要求一个 <span class="math inline">\(min \; z =
+\sum\limits_i\sum\limits_j w_{ij} x_{ij}\)</span> 这样的东西, 主要约束
+<span class="math inline">\(x_{ij}\)</span></p>
+<h3 id="插值">插值</h3>
+<p>拉格朗日插值和牛顿插值只有理论上意义, 实际应用不大, 故略去<br />
+利用多项式对某一函数作近似逼近, 计算相应的函数值, 一般情况下,
+多项式的次数越多, 需要的数据就越多, 而预测也就越准确。然而,
+插值次数越高, 插值结果越偏离原函数的现象称为龙格振荡现象</p>
+<h4 id="分段线性插值">分段线性插值</h4>
+<p>直接把 x, y 散点拿 plot 一画就可以了, 略</p>
+<h4 id="三次样条插值">三次样条插值</h4>
+<p>在给定两点间的表达式均为一个三次多项式,
+在整个区间上有连续的二阶导数<br />
+用 <code>spline</code> 函数, <code>s = spline(x,y,xq)</code> 返回与
+<code>xq</code> 中的查询点对应的插值向量 <code>s</code>。<code>s</code>
+的值由 <code>x</code> 和 <code>y</code> 的三次样条插值确定。<br />
+<img src="https://s2.loli.net/2025/01/21/mKVe8uDnEbA1t4o.png"
+alt="eff50bbb118a1685f62896f56a7dce6f" /></p>
+<h4 id="pchip-分段三次插值">pchip 分段三次插值</h4>
+<p>用多项式作插值函数, 随着插值节点(或插值条件)的增加,
+插值多项式次数也相应增加, 高次插值不但计算复杂且往往效果不理想,
+甚至可能会产生<strong>龙格振荡现象</strong>。<br />
+利用多项式对某一函数作近似逼近, 计算相应的函数值, 一般情况下,
+多项式的次数越多, 需要的数据就越多, 而预测也就越准确。然而,
+插值次数越高,
+插值结果越偏离原函数的现象称为<strong>龙格振荡现象</strong>。<br />
+分段插值就没这问题了</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">-3</span>:<span class="number">3</span>; </span><br><span class="line">y = [<span class="number">-1</span> <span class="number">-1</span> <span class="number">-1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span>]; </span><br><span class="line">xq1 = <span class="number">-3</span>:<span class="number">0.01</span>:<span class="number">3</span>;</span><br><span class="line">p = pchip(x,y,xq1);</span><br><span class="line">s = spline(x,y,xq1);</span><br><span class="line"><span class="built_in">plot</span>(x,y,<span class="string">&#x27;o&#x27;</span>,xq1,p,<span class="string">&#x27;-&#x27;</span>,xq1,s,<span class="string">&#x27;-.&#x27;</span>)</span><br><span class="line"><span class="built_in">legend</span>(<span class="string">&#x27;Sample Points&#x27;</span>,<span class="string">&#x27;pchip&#x27;</span>,<span class="string">&#x27;spline&#x27;</span>,<span class="string">&#x27;Location&#x27;</span>,<span class="string">&#x27;SouthEast&#x27;</span>)</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2025/01/21/ziBQn27CmDZl6bG.png" alt="96a1ec038f69675f29de9ba83b88b49e" style="zoom:50%;" /></p>
+<h4 id="griddedinterpolant-函数">griddedInterpolant 函数</h4>
+<p>我勒个超级插值函数<br />
+<code>F = griddedInterpolant(X1,X2,...,Xn,V)</code> 使用作为一组
+<code>n</code> 维数组 <code>X1,X2,...,Xn</code> 传递的样本点的<a
+target="_blank" rel="noopener" href="https://ww2.mathworks.cn/help/matlab/ref/griddedinterpolant.html#bvh2f0p-4">完整网格</a>创建二维、三维或
+N 维插值。<code>V</code> 数组包含与 <code>X1,X2,...,Xn</code>
+中的点位置关联的样本值。每个数组 <code>X1,X2,...,Xn</code>
+的大小都必须与 <code>V</code> 相同。<br />
+<code>F = griddedInterpolant(___,Method)</code> 指定插值方法:<br />
+<code>'linear'</code>、<code>'nearest'</code>、<code>'next'</code>、<code>'previous'</code>、<code>'pchip'</code>、<code>'cubic'</code>、<code>'makima'</code>
+或 <code>'spline'</code><br />
+你可以在上述任意语法中指定 <code>Method</code>
+作为最后一个输入参量。</p>
+<p>计算对应的函数值的使用格式为 <code>vq = F(xq1,xq2,...,xqn)</code></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">-5</span>:<span class="number">0.8</span>:<span class="number">5</span>;  </span><br><span class="line">y = x&#x27;;</span><br><span class="line">z = <span class="built_in">sin</span>(x.^<span class="number">2</span> + y.^<span class="number">2</span>) ./ (x.^<span class="number">2</span> + y.^<span class="number">2</span>);</span><br><span class="line">F = griddedInterpolant(&#123;x,y&#125;,z); <span class="comment">%二维, (x,y) 点, z 为函数值</span></span><br><span class="line">xq = <span class="number">-5</span>:<span class="number">0.1</span>:<span class="number">5</span>;</span><br><span class="line">yq = xq&#x27;;</span><br><span class="line">vq = F(&#123;xq,yq&#125;); <span class="comment">% 把原来 0.8 的步长插值成 0.1 的</span></span><br><span class="line">surf(xq,yq,vq)</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2025/01/21/c4Mn5BA9SN1w2Rs.png" alt="f4ce132acb2477e35cdfcf1f00e61880" style="zoom:50%;" /></p>
+<p>如果改为 <code>F = griddedInterpolant(&#123;x,y&#125;,z,'cubic')</code> ,
+能获得更好的三次插值</p>
+<p><img src="https://s2.loli.net/2025/01/21/PKdFhg5UulrCOLf.png" alt="2fd77972c96a679d022f60183037ba2f" style="zoom:50%;" /></p>
+<h3 id="拟合">拟合</h3>
+<h4 id="最小二乘法">最小二乘法</h4>
+<p>先看线性的, 根据一些基础的线性代数知识, <span
+class="math inline">\(\mathbf{A^T Ax= A^T b}\)</span> 肯定有解, 故 <span
+class="math inline">\(\mathbf{x} = \mathbf{(A^T A)^{-1} A^T b}\)</span>
+为所求的拟合矩阵的系数, <span class="math inline">\(f(x) = \displaystyle
+\sum a_ix^i\)</span><br />
+我们还是直接套库, 就不自己写了<br />
+<code>p = polyfit(x,y,n)</code> 返回次数为 <code>n</code> 的多项式
+<code>p(x)</code> 的系数, 该阶数是 <code>y</code> 中数据的最佳拟合
+(基于最小二乘指标)。<code>p</code> 中的系数按降幂排列, <code>p</code>
+的长度为 <code>n+1</code>，其中 <span class="math inline">\(p(x) =
+p_1x^n + p_2x^{n-1} + \dots + p_nx + p_{n+1}\)</span></p>
+<p><code>y = polyval(p,x)</code> 计算多项式 <code>p</code> 在
+<code>x</code> 的每个点处的值</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">x = [<span class="number">0</span>:<span class="number">7</span>];</span><br><span class="line">y = [<span class="number">27</span>,<span class="number">26.8</span>,<span class="number">26.5</span>,<span class="number">26.3</span>,<span class="number">26.1</span>,<span class="number">25.7</span>,<span class="number">25.3</span>,<span class="number">24.8</span>];</span><br><span class="line">p = polyfit(x,y,<span class="number">1</span>);</span><br><span class="line">x1 = <span class="built_in">linspace</span>(<span class="number">0</span>,<span class="number">7</span>);</span><br><span class="line">y1 = polyval(p,x1);</span><br><span class="line"><span class="built_in">hold</span> on;</span><br><span class="line"><span class="built_in">plot</span>(x,y,<span class="string">&#x27;o&#x27;</span>);</span><br><span class="line"><span class="built_in">plot</span>(x1,y1);</span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2025/01/21/OJRi48Z6tY5Lrj7.png" alt="89e1e570dcb512ffa48ce71a9e47f718" style="zoom:50%;" /></p>
+<p>若样本点不是线性的, 我们可以尝试用常见的非线性函数来拟合,
+例如多项式、双曲线 <span class="math inline">\(y= \displaystyle
+\frac{a_1}{x}+a_2\)</span>、指数曲线 <span class="math inline">\(y = a_1
+e^{a_2x}\)</span>​<br />
+我们这次不用库了, 用工具箱！<br />
+Matlab - APP - Curve Fitting Tool 进入, Polynomial, Power, Sum of Sine,
+Logistic(S 型) 等多种拟合方式任君挑选</p>
+<figure>
+<img src="https://s2.loli.net/2025/01/21/quBzwRHIJ2CP5WL.png"
+alt="546398cfbdb0a6718c8207dded6f9c37" />
+<figcaption
+aria-hidden="true">546398cfbdb0a6718c8207dded6f9c37</figcaption>
+</figure>
+<p>线性前提下, <span class="math inline">\(R^2\)</span> 越接近 1 越好,
+否则 SSE 越低越好<br />
+做题可以先把散点图画出来, 分段拟合</p>
+<h3 id="微分方程">微分方程</h3>
+<h4 id="解析解">解析解</h4>
+<p>调库，调库！<br />
+<span class="math inline">\(eg. 解 \;\;y&#39;&#39; + 2y&#39; +y-x^2 =0,
+y(0)=0, y&#39;(0)=15\)</span> ​</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">y=dsolve(<span class="string">&#x27;D2y+2*Dy+y-x^2=0&#x27;</span>,<span class="string">&#x27;y(0)=0&#x27;</span>,<span class="string">&#x27;Dy(0)=15&#x27;</span>,<span class="string">&#x27;x&#x27;</span>)</span><br><span class="line"><span class="comment">%---------------------------</span></span><br><span class="line">y = <span class="number">13</span>*x*<span class="built_in">exp</span>(-x) - <span class="number">6</span>*<span class="built_in">exp</span>(-x) - <span class="number">4</span>*x + x^<span class="number">2</span> + <span class="number">6</span></span><br></pre></td></tr></table></figure>
+<p>其中 Dty 代表 <span class="math inline">\(y^{(t)}\)</span>, 格式为
+<code>y = dsolve('f1','f2',...,'x')</code><br />
+你也可以:</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">syms y(x) <span class="comment">% 定义符号变量, 说明 y 是 x 的函数</span></span><br><span class="line">eq = y - diff(y,x) == <span class="number">2</span>*x; <span class="comment">% diff(y,x) = dy/dx = y&#x27;</span></span><br><span class="line">dsolve(eq) <span class="comment">% 通解</span></span><br><span class="line">dsolve(eq,y(<span class="number">0</span>)==<span class="number">3</span>) <span class="comment">% 特解</span></span><br><span class="line"><span class="comment">%----------------------------</span></span><br><span class="line"><span class="built_in">ans</span> = <span class="number">2</span>*x + C1*<span class="built_in">exp</span>(x) + <span class="number">2</span></span><br><span class="line"><span class="built_in">ans</span> = <span class="number">2</span>*x + <span class="built_in">exp</span>(x) + <span class="number">2</span></span><br></pre></td></tr></table></figure>
+<p><span class="math display">\[
+eg.\;求
+\left\{\begin{align}
+&amp;\frac{dx}{dt} = y \\
+&amp;\frac{dy}{dt} = -x
+\end{align}\right.
+且 \;x(0)=0, y(0)=1\;的解
+\]</span></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">syms x(t) y(t) <span class="comment">% 定义两个符号变量</span></span><br><span class="line">eq1 = diff(x,t) == y;</span><br><span class="line">eq2 = diff(y,t) == -x;</span><br><span class="line">eqs = [eq1 eq2]; <span class="comment">% 方程矩阵</span></span><br><span class="line">cond = [x(<span class="number">0</span>)==<span class="number">0</span>, y(<span class="number">0</span>)==<span class="number">1</span>]; <span class="comment">% 条件矩阵</span></span><br><span class="line">[xsol(t),ysol(t)] = dsolve(eqs,cond)</span><br><span class="line"><span class="comment">%------------------------------</span></span><br><span class="line">xsol(t) = <span class="built_in">sin</span>(t)</span><br><span class="line">ysol(t) = <span class="built_in">cos</span>(t)</span><br></pre></td></tr></table></figure>
+<p>求不出解析解, 就去求数值解, <code>ode45</code>, 启动！<br />
+#### 数值解</p>
+<p><code>ode45</code> 可以求解非刚性问题(函数变化缓慢) (刚性问题用
+<code>ode15s</code> )<br />
+格式为: <code>[t,y] = ode45(odefun,tspan,y0)</code><br />
+其中 <code>odefun</code> 是用匿名函数定义 <span
+class="math inline">\(f(t,y)\)</span>​ 的函数文件名(或匿名函数返回值),
+tspan = [t0 tf] 为一个积分区间, 奇妙的 matlab
+会自动选择步长并求经过的点集的数值解, 你可以之后 plot 把图象画出来, y0
+为初始条件, 长度与 <code>odefun</code> 的输出长度相同<br />
+<code>ode45</code> 只能解一阶微分方程, 高阶的要先拆成一阶微分方程组</p>
+<p>eg. 解 <span class="math inline">\(y_1&#39;&#39; -
+\mu(1-y_1^2)y_1&#39;+y_1 = 0,\;其中\; \mu=1, y_1(0)=2,
+y_1&#39;(0)=0\)</span><br />
+设 <span class="math inline">\(y_1&#39; = y_2\)</span> 有 <span
+class="math inline">\(y_1&#39; = y_2,
+\;y_2&#39;=\mu(1-y_1^2)y_2-y_1\)</span></p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">clc; clear; </span><br><span class="line">[x y] = ode45(@(x,y) df(x,y),[<span class="number">0</span>,<span class="number">20</span>],[<span class="number">2</span>,<span class="number">0</span>]); <span class="comment">%调用时导参, 再套一层匿名函数</span></span><br><span class="line"><span class="built_in">plot</span>(x,y(:,<span class="number">1</span>),<span class="string">&#x27;-o&#x27;</span>,x,y(:,<span class="number">2</span>),<span class="string">&#x27;-o&#x27;</span>)</span><br><span class="line">title(<span class="string">&#x27;Solution of van der Pol Equation (\mu = 1) with ODE45&#x27;</span>);</span><br><span class="line">xlabel(<span class="string">&#x27;Time t&#x27;</span>); ylabel(<span class="string">&#x27;Solution y&#x27;</span>); <span class="built_in">legend</span>(<span class="string">&#x27;y_1&#x27;</span>,<span class="string">&#x27;y_2&#x27;</span>);</span><br><span class="line"><span class="function"><span class="keyword">function</span> <span class="title">dydt</span> = <span class="title">df</span><span class="params">(x,y)</span></span></span><br><span class="line">    dydt = <span class="built_in">zeros</span>(<span class="number">2</span>,<span class="number">1</span>);</span><br><span class="line">    dydt(<span class="number">1</span>) = y(<span class="number">2</span>);</span><br><span class="line">    dydt(<span class="number">2</span>) = (<span class="number">1</span>-y(<span class="number">1</span>)^<span class="number">2</span>)*y(<span class="number">2</span>)-y(<span class="number">1</span>);</span><br><span class="line"><span class="keyword">end</span></span><br></pre></td></tr></table></figure>
+<figure>
+<img src="https://s2.loli.net/2025/01/21/M7LbrOzV2yhHWTk.png"
+alt="5ccaeed9e48c2a0a08ca41abce483f19" />
+<figcaption
+aria-hidden="true">5ccaeed9e48c2a0a08ca41abce483f19</figcaption>
+</figure>
+<p>步长大概为 0.1 左右, 而且不固定, 真抽象啊 matlab</p>
+<p>求微分方程 <span class="math inline">\(y&#39;=-2y+2x^2+2x,\;y(0)=1, 0
+\leq x \leq 0.5\)</span> 的数值解,
+并在同一个界面上画出数值解和解析解的曲线</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line">clc, clear, close all, syms y(x)</span><br><span class="line">y = dsolve(diff(y) == <span class="number">-2</span>*y+<span class="number">2</span>*x^<span class="number">2</span>+<span class="number">2</span>*x, y(<span class="number">0</span>)==<span class="number">1</span>);</span><br><span class="line">dy = @(x,y) <span class="number">-2</span>*y+<span class="number">2</span>*x^<span class="number">2</span>+<span class="number">2</span>*x;</span><br><span class="line">[sx,sy] = ode45(dy,[<span class="number">0</span>,<span class="number">0.5</span>], <span class="number">1</span>);</span><br><span class="line">fplot(y,[<span class="number">0</span>,<span class="number">0.5</span>]); <span class="built_in">hold</span> on;</span><br><span class="line"><span class="built_in">plot</span>(sx,sy,<span class="string">&#x27;*&#x27;</span>); <span class="built_in">legend</span>(&#123;<span class="string">&#x27;符号解&#x27;</span>,<span class="string">&#x27;数值解&#x27;</span>&#125;)</span><br><span class="line">xlabel(<span class="string">&#x27;$x$&#x27;</span>,<span class="string">&#x27;Interpreter&#x27;</span>,<span class="string">&#x27;latex&#x27;</span>);</span><br><span class="line">ylabel(<span class="string">&#x27;$y$&#x27;</span>,<span class="string">&#x27;Interpreter&#x27;</span>,<span class="string">&#x27;latex&#x27;</span>,<span class="string">&#x27;Rotation&#x27;</span>,<span class="number">0</span>); <span class="comment">% 不然字母 y 会旋转</span></span><br></pre></td></tr></table></figure>
+<p><img src="https://s2.loli.net/2025/01/21/JbjoRSh6LfnIwUB.png" alt="201f71568c50fd48ddc399986ebb3881" style="zoom:50%;" /></p>
+<h4 id="人口模型">人口模型</h4>
+<h5 id="马尔萨斯人口模型">马尔萨斯人口模型</h5>
+<p>对于这个模型, 有假设:<br />
+(1) 设 x(t) 表示 t 时刻的人口数, 且 x(t) 连续可微<br />
+(2) 人口的增长率 r 是常数 (增长率=出生率-死亡率)<br />
+(3) 人口数量的变化是封闭的,
+即人口数量的增加与减少只取决于人口中个体的生育和死亡,
+且每一个体都具有同样的生育能力和死亡率</p>
+<p>由假设, t 时刻到 t+Δt 时刻人口的增量为 x(t+Δt) -x(t) = rx(t)Δt, 有 dx
+= rx * dt, x(0) = x0,<br />
+解得 <span class="math inline">\(x(t) = x_0e^{rt}\)</span> , 显然扯淡,
+于是要修正</p>
+<h5 id="logistic-模型">Logistic 模型</h5>
+<p>也称阻滞增长模型 在人口较少时, 可以把增长率 r 看成常数,
+那么当人口增加到一定数量之后, 就应当视 r 为一个随着人口的增加而减小的量,
+即将增长率 r 表示为人口 x(t) 的函数 r(x), 且 r(x) 为 x 的减函数,
+有假设:<br />
+(1) 设 <span class="math inline">\(r(x)\)</span> 为 <span
+class="math inline">\(x\)</span> 的线性函数, <span
+class="math inline">\(r(x) = r-sx\)</span> (先假设为一次函数)<br />
+(2) 自然环境所能容纳的最大人口数为 <span
+class="math inline">\(x_m\)</span>, 即当 <span
+class="math inline">\(x=x_m\)</span> 时, 增长率 <span
+class="math inline">\(r(x_m) = 0\)</span><br />
+由假设, <span class="math inline">\(\displaystyle r(x) = r\left(1 -
+\frac{x}{x_m}\right)\)</span> , 有<br />
+<span class="math display">\[
+\left\{\begin{align}
+&amp;\frac{dx}{dt} = r\left(1-\frac{x}{x_m}\right)x, \\
+&amp;x(t_0) = x_0.
+\end{align}\right.
+\]</span> 解为 <span class="math inline">\(x(t) = \displaystyle
+\frac{x_m}{\displaystyle1+\left(\frac{x_m}{x_0}-1\right)e^{-r(t-t_0)}}\)</span><br />
+这个模型有一些特点, <span class="math inline">\(x(t)\)</span> 单增,
+变化率 <span class="math inline">\(dx/dt\)</span> 在 <span
+class="math inline">\(x = \frac{x_m}{2}\)</span> 时最大, 总体就是生物的
+<span class="math inline">\(S\)</span> 型曲线<br />
+实际应用还是 Matlab - APP - Curve Fitting Tool - Logistic 拟合<br />
+或者你用 Custom Equation, 然后把算出来的 x(t) 填进去, 例如:<br />
+<img src="https://s2.loli.net/2025/01/21/Oh9cP4sAHCEbx32.png"
+alt="65ee66ee7483af13d5caf588ff409927" /></p>
+<p>拟合的过程中能估计出来 <span class="math inline">\(x_m\)</span> 和
+<span class="math inline">\(r\)</span>​,
+得到了函数就可以拿来估计后续了</p>
+<h5 id="相互作用模型">相互作用模型</h5>
+<p><a
+target="_blank" rel="noopener" href="https://blog.csdn.net/COCO56/article/details/99708485">种群竞争模型</a>
+略<br />
+互惠共存模型 略</p>
+<p>弱肉强食模型(Lotka-Volterra模型)<br />
+此类问题广泛存在于自然界中, 如大鱼吃小鱼、狼群与羊群等<br />
+设 <span class="math inline">\(t\)</span>
+时刻第一个种群的数量和第二个种群的数量分别为 <span
+class="math inline">\(x_1(t),\; x_2(t)\)</span> , 初始种群数量为 <span
+class="math inline">\(x_1^0, \;x_2^0\)</span><br />
+有一些基本假设:<br />
+(1) 第一个种群的生物捕食第二个种群的生物, 其种群数量的变化除了自身受
+Logistic 规律的制约外, 还受到被捕食的第二个种群的数量影响<br />
+(2) 第二个种群的数量变化除了自身受自限规律影响外,
+还受其天敌第一个种群的数量影响。第二个种群的种群数量越多,
+被捕杀的机会越多, 从而第一个种群的繁殖越快<br />
+(3) 设两个种群的自然增长率分别为 <span
+class="math inline">\(r_1\)</span> 和 <span
+class="math inline">\(r_2\)</span>, 各自独自生存的生存极限数分别为 <span
+class="math inline">\(K_1\)</span> 和 <span
+class="math inline">\(K_2\)</span></p>
+<p>由假设, 有 <span class="math inline">\(\displaystyle \frac{dx_1}{dt}
+= r_1\left(1-\frac{x_1}{K_1}\right)x_1 + b_{12}x_1x_2, \;\;
+\frac{dx_2}{dt} = r_2\left(1-\frac{x_2}{K_2}\right)x_2 -
+b_{21}x_1x_2\)</span><br />
+其中 <span class="math inline">\(b_{12}, b_{21} &gt; 0\)</span>,
+为两个种群的接触系数, 并不一定相同, 再加上初始条件 <span
+class="math inline">\(x_1(0)=x_1^0,\;x_2(0)=x_2^0\)</span>
+就可以开解微分方程了</p>
+<p>eg. 已知 捕食者-被捕食者 方程组:<br />
+<span class="math display">\[
+\left\{\begin{align}
+&amp;\frac{dx}{dt} = 0.2x-0.005xy,\;x(0)=70, \\
+&amp;\frac{dy}{dt} = -0.5y+0.01xy,\;y(0)=40.
+\end{align}\right.
+\]</span> 式中: <span class="math inline">\(x(t)\)</span> 表示 <span
+class="math inline">\(t\)</span> 个月后兔子的总体数量, <span
+class="math inline">\(y(t)\)</span> 表示 <span
+class="math inline">\(t\)</span> 个月后狐狸的总体数量<br />
+请研究以下问题: (1). <span class="math inline">\(x(t),y(t)\)</span>
+变化的周期; (2). <span class="math inline">\(x(t)\)</span>
+总体数量的最值; (3). <span class="math inline">\(y(t)\)</span>
+总体数量的最值。</p>
+<p>我们先令 <span class="math inline">\(0.2x-0.005xy = -0.5y+0.01xy =
+0\)</span>, 解得临界点 <span class="math inline">\((50,40)\)</span> ​</p>
+<p><img src="https://s2.loli.net/2025/01/21/H7gWrVJTuS5bNpX.png"
+alt="71cff9403d6b76ffb6c5787377c2dfd4" /> 上图是炫酷的向量场图象, x, y
+就绕这个来变化<br />
+好像没什么用？还是画出 <span class="math inline">\(x(t),\;y(t)\)</span>​
+解的图象吧……<br />
+需要用到一个函数: <code>y = deval(sol,x)</code> 可以计算 <code>x</code>
+中包含的点处的微分方程问题的解 <code>sol</code>,
+<code>y = deval(___,idx)</code> 只返回带有向量 <code>idx</code>
+中所列索引的解分量<br />
+可能还需要一个函数:<br />
+<code>x = fminbnd(fun,x1,x2)</code> 返回一个值 <code>x</code>，该值是
+<code>fun</code> 中描述的标量值函数在区间 <code>x1 &lt; x &lt; x2</code>
+中的局部最小值<br />
+<code>[x,fval] = fminbnd(___)</code> 返回 <code>x</code> 与目标函数在
+<code>fun</code> 的解 <code>x</code> 处计算出的值</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br></pre></td><td class="code"><pre><span class="line">clc; clear; close all; <span class="comment">% 下文范围默认 [0,100]</span></span><br><span class="line">dxy = @(t,z) [<span class="number">0.2</span>*z(<span class="number">1</span>)<span class="number">-0.005</span>*z(<span class="number">1</span>)*z(<span class="number">2</span>); <span class="number">-0.5</span>*z(<span class="number">2</span>)+<span class="number">0.01</span>*z(<span class="number">1</span>)*z(<span class="number">2</span>)];</span><br><span class="line">sol = ode45(dxy,[<span class="number">0</span>,<span class="number">100</span>],[<span class="number">70</span>;<span class="number">40</span>]);</span><br><span class="line">xt = @(t)deval(sol,t,<span class="number">1</span>); yt = @(t)deval(sol,t,<span class="number">2</span>);</span><br><span class="line"><span class="built_in">hold</span> on;</span><br><span class="line">fplot(xt,[<span class="number">0</span>,<span class="number">100</span>],<span class="string">&#x27;--&#x27;</span>,<span class="string">&#x27;LineWidth&#x27;</span>,<span class="number">1.5</span>);</span><br><span class="line">fplot(yt,[<span class="number">0</span>,<span class="number">100</span>],<span class="string">&#x27;LineWidth&#x27;</span>,<span class="number">1.5</span>);</span><br><span class="line">xlabel(<span class="string">&#x27;$t$&#x27;</span>,<span class="string">&#x27;Interpreter&#x27;</span>,<span class="string">&#x27;latex&#x27;</span>);</span><br><span class="line"><span class="built_in">legend</span>(&#123;<span class="string">&#x27;$x(t)$&#x27;</span>,<span class="string">&#x27;$y(t)$&#x27;</span>&#125;,<span class="string">&#x27;Interpreter&#x27;</span>,<span class="string">&#x27;latex&#x27;</span>);</span><br><span class="line">[xt1,fx1] = fminbnd(xt,<span class="number">0</span>,<span class="number">100</span>) <span class="comment">% 求 x 的最小点及最小值</span></span><br><span class="line">[xt2,fx2] = fminbnd(@(t)-xt(t),<span class="number">0</span>,<span class="number">100</span>) <span class="comment">% 求 x 的最大点及最大值</span></span><br><span class="line">[yt1,fy1] = fminbnd(yt,<span class="number">0</span>,<span class="number">20</span>) <span class="comment">% 求 y 在 [0,20] 上的最小点及最小值</span></span><br><span class="line">[yt2,fy2] = fminbnd(yt,<span class="number">20</span>,<span class="number">40</span>) <span class="comment">% 求 y 在 [20,40] 上的最小点及最小值</span></span><br><span class="line">T = yt2-yt1 <span class="comment">% 求周期 (事先画图估计过在 20 左右)</span></span><br><span class="line">[yt3,fy3] = fminbnd(@(t)-yt(t),<span class="number">0</span>,<span class="number">100</span>) <span class="comment">% 求 y 的最大点及最大值</span></span><br><span class="line"><span class="comment">%-----------------------------------------------</span></span><br><span class="line">xt1, fx1 = <span class="number">8.9150</span>, <span class="number">34.2513</span></span><br><span class="line">xt2, fx2 = <span class="number">60.6487</span>, <span class="number">-69.8810</span> <span class="comment">% 取反后实为 69.8810</span></span><br><span class="line">yt1, fy1 = <span class="number">14.9932</span>, <span class="number">21.5086</span></span><br><span class="line">yt2, fy2 = <span class="number">35.2133</span>, <span class="number">21.5644</span></span><br><span class="line">T = <span class="number">20.2201</span></span><br><span class="line">yt3, fy3 = <span class="number">64.7762</span>, <span class="number">-66.7664</span> <span class="comment">% 取反后实为 66.7664</span></span><br></pre></td></tr></table></figure>
+<figure>
+<img src="https://s2.loli.net/2025/01/22/TYaONjPXBm4foct.png"
+alt="0642255a975355519b849ccd367f7cfc" />
+<figcaption
+aria-hidden="true">0642255a975355519b849ccd367f7cfc</figcaption>
+</figure>
+<h5 id="传染病模型笔记待补">传染病模型(笔记待补)</h5>
+<p>SI 模型和 Logistic 模型一样, 略<br />
+SIS 模型进一步假设了每天被治愈的病人占总人数的比例为 <span
+class="math inline">\(\mu\)</span>, 以及痊愈的病人还能被感染<br />
+SIR 假设:<br />
+(1)
+人群分健康者、病人和病愈后因具有免疫力而退出系统的移出者三类。设任意时刻
+t 这三类人群占总人口的比例分别为 <span class="math inline">\(s(t),
+i(t)\)</span> 和 <span class="math inline">\(r(t)\)</span><br />
+(2) 病人的日接触率为 <span class="math inline">\(\lambda\)</span>,
+日治愈率为 <span class="math inline">\(\mu\)</span>, 传染强度 <span
+class="math inline">\(\sigma = \lambda/\mu\)</span><br />
+(3) 人口总数 N 为固定常数<br />
+总体方程组为:<br />
+<span class="math display">\[
+\left\{\begin{align}
+&amp;\frac{di}{dt} = \lambda s i- \mu i,\\
+&amp;\frac{ds}{dt} = -\lambda s i, \\
+&amp;\frac{dr}{dt} = \mu i, \\
+&amp;i(0)=i_0, s(0)=s_0, r(0)=0
+\end{align}\right.
+\]</span></p>
+<h3 id="k-means-聚类算法">K-Means 聚类算法</h3>
+<p>算法目标是将数据集划分为 K 个<strong>簇(Clusters)</strong>,
+最小化簇内的点到<strong>簇中心(centroid)</strong>的距离总和<br />
+主要还是调库, 核心代码就一行
+<code>[idx centroid] = kmeans(data, Clusternum)</code><br />
+在实际绘图中为了好看你还可以画出外层凸包<br />
+二维最清晰好看, 可惜只能有两个指标</p>
+<figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br></pre></td><td class="code"><pre><span class="line"><span class="comment">% 生成随机数据（三个簇）</span></span><br><span class="line">rng default; <span class="comment">% 设置随机种子保证结果可重复</span></span><br><span class="line">data1 = <span class="built_in">randn</span>(<span class="number">50</span>, <span class="number">2</span>)*<span class="number">0.5</span> + [<span class="number">0</span>, <span class="number">0</span>];</span><br><span class="line">data2 = <span class="built_in">randn</span>(<span class="number">50</span>, <span class="number">2</span>)*<span class="number">0.5</span> + [<span class="number">3</span>, <span class="number">3</span>];</span><br><span class="line">data3 = <span class="built_in">randn</span>(<span class="number">50</span>, <span class="number">2</span>)*<span class="number">0.5</span> + [<span class="number">0</span>, <span class="number">3</span>];</span><br><span class="line">X = [data1; data2; data3];</span><br><span class="line"></span><br><span class="line"><span class="comment">% 应用K-means算法进行聚类</span></span><br><span class="line">k = <span class="number">3</span>; <span class="comment">% 聚类数目</span></span><br><span class="line">[idx, centroids] = kmeans(X, k);</span><br><span class="line"></span><br><span class="line"><span class="comment">% 分割数据到各个聚类</span></span><br><span class="line">clusters = cell(k, <span class="number">1</span>);</span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:k</span><br><span class="line">    clusters&#123;<span class="built_in">i</span>&#125; = X(idx == <span class="built_in">i</span>, :);</span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 计算每个聚类的凸包并绘图</span></span><br><span class="line"><span class="built_in">figure</span>;</span><br><span class="line"><span class="built_in">hold</span> on;</span><br><span class="line">colors = &#123;<span class="string">&#x27;r&#x27;</span>, <span class="string">&#x27;g&#x27;</span>, <span class="string">&#x27;b&#x27;</span>&#125;; <span class="comment">% 每个聚类的颜色</span></span><br><span class="line"></span><br><span class="line"><span class="keyword">for</span> <span class="built_in">i</span> = <span class="number">1</span>:k</span><br><span class="line">    <span class="comment">% 当前聚类的数据</span></span><br><span class="line">    currentCluster = clusters&#123;<span class="built_in">i</span>&#125;;</span><br><span class="line">    <span class="comment">% 绘制数据点</span></span><br><span class="line">    <span class="built_in">scatter</span>(currentCluster(:, <span class="number">1</span>), currentCluster(:, <span class="number">2</span>), [], colors&#123;<span class="built_in">i</span>&#125;, <span class="string">&#x27;filled&#x27;</span>);</span><br><span class="line">    <span class="comment">% 计算凸包</span></span><br><span class="line">    hullIndices = convhull(currentCluster(:, <span class="number">1</span>), currentCluster(:, <span class="number">2</span>));</span><br><span class="line">    hullPoints = currentCluster(hullIndices, :);</span><br><span class="line">    <span class="comment">% 绘制凸包边界</span></span><br><span class="line">    <span class="built_in">plot</span>(hullPoints(:, <span class="number">1</span>), hullPoints(:, <span class="number">2</span>), <span class="string">&#x27;Color&#x27;</span>, colors&#123;<span class="built_in">i</span>&#125;, <span class="string">&#x27;LineWidth&#x27;</span>, <span class="number">1.5</span>);</span><br><span class="line">    <span class="comment">% 填充凸包区域，颜色半透明</span></span><br><span class="line">    fill(hullPoints(:, <span class="number">1</span>), hullPoints(:, <span class="number">2</span>), colors&#123;<span class="built_in">i</span>&#125;, ...</span><br><span class="line">        <span class="string">&#x27;FaceAlpha&#x27;</span>, <span class="number">0.1</span>, <span class="string">&#x27;EdgeColor&#x27;</span>, <span class="string">&#x27;none&#x27;</span>); <span class="comment">% FaceAlpha 控制透明度</span></span><br><span class="line"><span class="keyword">end</span></span><br><span class="line"></span><br><span class="line"><span class="comment">% 可选：绘制聚类中心</span></span><br><span class="line"><span class="built_in">scatter</span>(centroids(:, <span class="number">1</span>), centroids(:, <span class="number">2</span>), <span class="number">100</span>, <span class="string">&#x27;k&#x27;</span>, <span class="string">&#x27;x&#x27;</span>, <span class="string">&#x27;LineWidth&#x27;</span>, <span class="number">2</span>);</span><br><span class="line">title(<span class="string">&#x27;K-means聚类结果及凸包（半透明填充）&#x27;</span>);</span><br><span class="line">xlabel(<span class="string">&#x27;X1&#x27;</span>);</span><br><span class="line">ylabel(<span class="string">&#x27;X2&#x27;</span>);</span><br></pre></td></tr></table></figure>
+<p>代码由 deepseek 编写, 在 <code>legend</code> 方面可能有点问题,
+我就直接去掉了<br />
+<img src="https://s2.loli.net/2025/02/06/NegpHfrLIwvOk4S.jpg" alt="untitled" style="zoom:50%;" /></p>
+
+    </div>
+
+    
+    
+    
+
+      <footer class="post-footer">
+
+        
+
+
+        
+    <div class="post-nav">
+      <div class="post-nav-item">
+    <a href="/2025/02/06/CS61A-notes/" rel="prev" title="CS61A 笔记">
+      <i class="fa fa-chevron-left"></i> CS61A 笔记
+    </a></div>
+      <div class="post-nav-item"></div>
+    </div>
+      </footer>
+    
+  </article>
+  
+  
+  
+
+
+
+          </div>
+          
+
+<script>
+  window.addEventListener('tabs:register', () => {
+    let { activeClass } = CONFIG.comments;
+    if (CONFIG.comments.storage) {
+      activeClass = localStorage.getItem('comments_active') || activeClass;
+    }
+    if (activeClass) {
+      let activeTab = document.querySelector(`a[href="#comment-${activeClass}"]`);
+      if (activeTab) {
+        activeTab.click();
+      }
+    }
+  });
+  if (CONFIG.comments.storage) {
+    window.addEventListener('tabs:click', event => {
+      if (!event.target.matches('.tabs-comment .tab-content .tab-pane')) return;
+      let commentClass = event.target.classList[1];
+      localStorage.setItem('comments_active', commentClass);
+    });
+  }
+</script>
+
+        </div>
+          
+  
+  <div class="toggle sidebar-toggle">
+    <span class="toggle-line toggle-line-first"></span>
+    <span class="toggle-line toggle-line-middle"></span>
+    <span class="toggle-line toggle-line-last"></span>
+  </div>
+
+  <aside class="sidebar">
+    <div class="sidebar-inner">
+
+      <ul class="sidebar-nav motion-element">
+        <li class="sidebar-nav-toc">
+          文章目录
+        </li>
+        <li class="sidebar-nav-overview">
+          站点概览
+        </li>
+      </ul>
+
+      <!--noindex-->
+      <div class="post-toc-wrap sidebar-panel">
+          <div class="post-toc motion-element"><ol class="nav"><li class="nav-item nav-level-2"><a class="nav-link" href="#matlab"><span class="nav-number">1.</span> <span class="nav-text">Matlab</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5"><span class="nav-number">1.1.</span> <span class="nav-text">矩阵</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%9B%E5%BB%BA%E7%9F%A9%E9%98%B5"><span class="nav-number">1.1.1.</span> <span class="nav-text">创建矩阵</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E5%85%83%E7%B4%A0%E4%BF%AE%E6%94%B9"><span class="nav-number">1.1.2.</span> <span class="nav-text">矩阵元素修改</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E9%87%8D%E6%9E%84%E4%B8%8E%E9%87%8D%E6%8E%92"><span class="nav-number">1.1.3.</span> <span class="nav-text">矩阵重构与重排</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E7%9A%84%E8%BF%90%E7%AE%97"><span class="nav-number">1.1.4.</span> <span class="nav-text">矩阵的运算</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E8%B0%83%E7%94%A8%E5%87%BD%E6%95%B0%E8%BF%90%E7%AE%97"><span class="nav-number">1.1.4.1.</span> <span class="nav-text">调用函数运算</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E5%8A%A0%E5%87%8F"><span class="nav-number">1.1.4.2.</span> <span class="nav-text">矩阵加减</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E4%B9%98%E9%99%A4%E4%B9%98%E6%96%B9%E8%BD%AC%E7%BD%AE"><span class="nav-number">1.1.4.3.</span> <span class="nav-text">矩阵乘&#x2F;除&#x2F;乘方&#x2F;转置</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9F%A9%E9%98%B5%E5%85%B3%E7%B3%BB%E8%BF%90%E7%AE%97"><span class="nav-number">1.1.4.4.</span> <span class="nav-text">矩阵关系运算</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%80%BB%E8%BE%91"><span class="nav-number">1.2.</span> <span class="nav-text">逻辑</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%BF%90%E7%AE%97%E7%AC%A6"><span class="nav-number">1.2.1.</span> <span class="nav-text">运算符</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0"><span class="nav-number">1.2.2.</span> <span class="nav-text">常用函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%AF%AD%E6%B3%95%E7%BB%93%E6%9E%84"><span class="nav-number">1.3.</span> <span class="nav-text">语法结构</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9D%A1%E4%BB%B6%E7%BB%93%E6%9E%84"><span class="nav-number">1.3.1.</span> <span class="nav-text">条件结构</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%BE%AA%E7%8E%AF%E7%BB%93%E6%9E%84"><span class="nav-number">1.3.2.</span> <span class="nav-text">循环结构</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.</span> <span class="nav-text">函数</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%87%AA%E5%AE%9A%E4%B9%89%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.1.</span> <span class="nav-text">自定义函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8C%BF%E5%90%8D%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.2.</span> <span class="nav-text">匿名函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E7%89%B9%E6%AE%8A%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.3.</span> <span class="nav-text">特殊函数</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%B8%B8%E7%94%A8%E5%87%BD%E6%95%B0-1"><span class="nav-number">1.4.4.</span> <span class="nav-text">常用函数</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%89%E8%A7%92%E5%87%BD%E6%95%B0"><span class="nav-number">1.4.4.1.</span> <span class="nav-text">三角函数</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E5%BD%A2%E7%BB%98%E5%88%B6"><span class="nav-number">1.5.</span> <span class="nav-text">图形绘制</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%8C%E7%BB%B4%E7%BB%98%E5%9B%BE"><span class="nav-number">1.5.1.</span> <span class="nav-text">二维绘图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#plot-%E5%87%BD%E6%95%B0"><span class="nav-number">1.5.1.1.</span> <span class="nav-text">plot 函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#fplot-%E5%87%BD%E6%95%B0"><span class="nav-number">1.5.1.2.</span> <span class="nav-text">fplot 函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#fimplicit-%E5%87%BD%E6%95%B0"><span class="nav-number">1.5.1.3.</span> <span class="nav-text">fimplicit 函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%85%B6%E4%BB%96%E7%BB%98%E5%9B%BE%E5%87%BD%E6%95%B0"><span class="nav-number">1.5.1.4.</span> <span class="nav-text">其他绘图函数</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E5%9B%BE%E5%BD%A2%E5%B1%9E%E6%80%A7%E8%AE%BE%E7%BD%AE"><span class="nav-number">1.5.1.5.</span> <span class="nav-text">图形属性设置</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E7%BB%B4%E7%BB%98%E5%9B%BE"><span class="nav-number">1.5.2.</span> <span class="nav-text">三维绘图</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%B8%89%E7%BB%B4%E6%9B%B2%E9%9D%A2"><span class="nav-number">1.5.2.1.</span> <span class="nav-text">三维曲面</span></a></li></ol></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%8F%A5%E6%9F%84%E4%B8%8E%E7%AA%97%E5%8F%A3"><span class="nav-number">1.5.3.</span> <span class="nav-text">句柄与窗口</span></a></li></ol></li></ol></li><li class="nav-item nav-level-2"><a class="nav-link" href="#mcmicm-matlab"><span class="nav-number">2.</span> <span class="nav-text">MCM&#x2F;ICM Matlab</span></a><ol class="nav-child"><li class="nav-item nav-level-3"><a class="nav-link" href="#%E4%BD%BF%E7%94%A8-optimproblem-%E5%88%9B%E5%BB%BA%E5%92%8C%E6%B1%82%E8%A7%A3%E4%BC%98%E5%8C%96%E9%97%AE%E9%A2%98"><span class="nav-number">2.1.</span> <span class="nav-text">使用
+optimproblem 创建和求解优化问题</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E9%81%97%E4%BC%A0%E7%AE%97%E6%B3%95genetic-algorithm"><span class="nav-number">2.2.</span> <span class="nav-text">遗传算法(Genetic Algorithm)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E8%92%99%E7%89%B9%E5%8D%A1%E6%B4%9B%E6%B3%95"><span class="nav-number">2.3.</span> <span class="nav-text">蒙特卡洛法</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%9B%BE%E8%AE%BA%E7%BB%98%E5%9B%BE"><span class="nav-number">2.4.</span> <span class="nav-text">图论绘图</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%97%85%E8%A1%8C%E5%95%86%E9%97%AE%E9%A2%98tsp"><span class="nav-number">2.5.</span> <span class="nav-text">旅行商问题(TSP)</span></a></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8F%92%E5%80%BC"><span class="nav-number">2.6.</span> <span class="nav-text">插值</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E5%88%86%E6%AE%B5%E7%BA%BF%E6%80%A7%E6%8F%92%E5%80%BC"><span class="nav-number">2.6.1.</span> <span class="nav-text">分段线性插值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%B8%89%E6%AC%A1%E6%A0%B7%E6%9D%A1%E6%8F%92%E5%80%BC"><span class="nav-number">2.6.2.</span> <span class="nav-text">三次样条插值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#pchip-%E5%88%86%E6%AE%B5%E4%B8%89%E6%AC%A1%E6%8F%92%E5%80%BC"><span class="nav-number">2.6.3.</span> <span class="nav-text">pchip 分段三次插值</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#griddedinterpolant-%E5%87%BD%E6%95%B0"><span class="nav-number">2.6.4.</span> <span class="nav-text">griddedInterpolant 函数</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E6%8B%9F%E5%90%88"><span class="nav-number">2.7.</span> <span class="nav-text">拟合</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E6%9C%80%E5%B0%8F%E4%BA%8C%E4%B9%98%E6%B3%95"><span class="nav-number">2.7.1.</span> <span class="nav-text">最小二乘法</span></a></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#%E5%BE%AE%E5%88%86%E6%96%B9%E7%A8%8B"><span class="nav-number">2.8.</span> <span class="nav-text">微分方程</span></a><ol class="nav-child"><li class="nav-item nav-level-4"><a class="nav-link" href="#%E8%A7%A3%E6%9E%90%E8%A7%A3"><span class="nav-number">2.8.1.</span> <span class="nav-text">解析解</span></a></li><li class="nav-item nav-level-4"><a class="nav-link" href="#%E4%BA%BA%E5%8F%A3%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.8.2.</span> <span class="nav-text">人口模型</span></a><ol class="nav-child"><li class="nav-item nav-level-5"><a class="nav-link" href="#%E9%A9%AC%E5%B0%94%E8%90%A8%E6%96%AF%E4%BA%BA%E5%8F%A3%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.8.2.1.</span> <span class="nav-text">马尔萨斯人口模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#logistic-%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.8.2.2.</span> <span class="nav-text">Logistic 模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E7%9B%B8%E4%BA%92%E4%BD%9C%E7%94%A8%E6%A8%A1%E5%9E%8B"><span class="nav-number">2.8.2.3.</span> <span class="nav-text">相互作用模型</span></a></li><li class="nav-item nav-level-5"><a class="nav-link" href="#%E4%BC%A0%E6%9F%93%E7%97%85%E6%A8%A1%E5%9E%8B%E7%AC%94%E8%AE%B0%E5%BE%85%E8%A1%A5"><span class="nav-number">2.8.2.4.</span> <span class="nav-text">传染病模型(笔记待补)</span></a></li></ol></li></ol></li><li class="nav-item nav-level-3"><a class="nav-link" href="#k-means-%E8%81%9A%E7%B1%BB%E7%AE%97%E6%B3%95"><span class="nav-number">2.9.</span> <span class="nav-text">K-Means 聚类算法</span></a></li></ol></li></ol></div>
+      </div>
+      <!--/noindex-->
+
+      <div class="site-overview-wrap sidebar-panel">
+        <div class="site-author motion-element" itemprop="author" itemscope itemtype="http://schema.org/Person">
+    <img class="site-author-image" itemprop="image" alt="Frankly6"
+      src="/images/avatar.png">
+  <p class="site-author-name" itemprop="name">Frankly6</p>
+  <div class="site-description" itemprop="description"></div>
+</div>
+<div class="site-state-wrap motion-element">
+  <nav class="site-state">
+      <div class="site-state-item site-state-posts">
+          <a href="/archives/">
+        
+          <span class="site-state-item-count">4</span>
+          <span class="site-state-item-name">日志</span>
+        </a>
+      </div>
+      <div class="site-state-item site-state-categories">
+            <a href="/categories/">
+          
+        <span class="site-state-item-count">2</span>
+        <span class="site-state-item-name">分类</span></a>
+      </div>
+  </nav>
+</div>
+
+
+
+      </div>
+
+    </div>
+  </aside>
+  <div id="sidebar-dimmer"></div>
+
+
+      </div>
+    </main>
+
+    <footer class="footer">
+      <div class="footer-inner">
+        
+
+        
+
+<div class="copyright">
+  
+  &copy; 2024 – 
+  <span itemprop="copyrightYear">2025</span>
+  <span class="with-love">
+    <i class="fa fa-heart"></i>
+  </span>
+  <span class="author" itemprop="copyrightHolder">Frankly6</span>
+</div>
+  <div class="powered-by">由 <a href="https://hexo.io/" class="theme-link" rel="noopener" target="_blank">Hexo</a> & <a href="https://pisces.theme-next.org/" class="theme-link" rel="noopener" target="_blank">NexT.Pisces</a> 强力驱动
+  </div>
+
+<div class="theme-info">
+  <div class="powered-by"></div>
+  <span class="post-count">博客全站共 60420 字</span>
+</div>
+        
+
+
+
+
+
+
+
+
+      </div>
+    </footer>
+  </div>
+
+  
+  <script src="/lib/anime.min.js"></script>
+  <script src="/lib/velocity/velocity.min.js"></script>
+  <script src="/lib/velocity/velocity.ui.min.js"></script>
+
+<script src="/js/utils.js"></script>
+
+<script src="/js/motion.js"></script>
+
+
+<script src="/js/schemes/pisces.js"></script>
+
+
+<script src="/js/next-boot.js"></script>
+
+
+
+
+  
+
+
+
+
+  
+<script src="/js/local-search.js"></script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+  
+
+  
+      
+
+<script>
+  if (typeof MathJax === 'undefined') {
+    window.MathJax = {
+      loader: {
+        source: {
+          '[tex]/amsCd': '[tex]/amscd',
+          '[tex]/AMScd': '[tex]/amscd'
+        }
+      },
+      tex: {
+        inlineMath: {'[+]': [['$', '$']]},
+        tags: 'ams'
+      },
+      options: {
+        renderActions: {
+          findScript: [10, doc => {
+            document.querySelectorAll('script[type^="math/tex"]').forEach(node => {
+              const display = !!node.type.match(/; *mode=display/);
+              const math = new doc.options.MathItem(node.textContent, doc.inputJax[0], display);
+              const text = document.createTextNode('');
+              node.parentNode.replaceChild(text, node);
+              math.start = {node: text, delim: '', n: 0};
+              math.end = {node: text, delim: '', n: 0};
+              doc.math.push(math);
+            });
+          }, '', false],
+          insertedScript: [200, () => {
+            document.querySelectorAll('mjx-container').forEach(node => {
+              let target = node.parentNode;
+              if (target.nodeName.toLowerCase() === 'li') {
+                target.parentNode.classList.add('has-jax');
+              }
+            });
+          }, '', false]
+        }
+      }
+    };
+    (function () {
+      var script = document.createElement('script');
+      script.src = '//cdn.jsdelivr.net/npm/mathjax@3/es5/tex-mml-chtml.js';
+      script.defer = true;
+      document.head.appendChild(script);
+    })();
+  } else {
+    MathJax.startup.document.state(0);
+    MathJax.texReset();
+    MathJax.typeset();
+  }
+</script>
+
+    
+
+  
+
+</body>
+</html>
