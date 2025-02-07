@@ -60,7 +60,7 @@
 <meta property="og:image" content="https://s2.loli.net/2025/01/22/TYaONjPXBm4foct.png">
 <meta property="og:image" content="https://s2.loli.net/2025/02/06/NegpHfrLIwvOk4S.jpg">
 <meta property="article:published_time" content="2025-02-06T12:48:14.000Z">
-<meta property="article:modified_time" content="2025-02-07T04:38:07.432Z">
+<meta property="article:modified_time" content="2025-02-07T07:02:24.302Z">
 <meta property="article:author" content="Frankly6">
 <meta name="twitter:card" content="summary">
 <meta name="twitter:image" content="https://s2.loli.net/2024/11/19/UpCaBlXL2Wxd4Qk.png">
@@ -246,7 +246,7 @@
                   <i class="far fa-calendar-check"></i>
                 </span>
                 <span class="post-meta-item-text">更新于</span>
-                <time title="修改时间：2025-02-07 12:38:07" itemprop="dateModified" datetime="2025-02-07T12:38:07+08:00">2025-02-07</time>
+                <time title="修改时间：2025-02-07 15:02:24" itemprop="dateModified" datetime="2025-02-07T15:02:24+08:00">2025-02-07</time>
               </span>
             <span class="post-meta-item">
               <span class="post-meta-item-icon">
@@ -267,7 +267,7 @@
 
 
               <span title="post.wordcount">
-                10433 字
+                10356 字
               </span>
 
 
@@ -821,7 +821,7 @@ e^{-x^2}\)</span> 在 <span class="math inline">\(x \in [0,2]\)</span>
 <p>用图论的术语说, 就是在一个赋权完全图中, 找出一个有最小权的 Hamilton
 圈。称这种圈为最优圈<br />
 一个可行的办法是首先求一个 Hamilton 圈 C, 然后适当修改 C
-以得到具有较小权的 另一个 Hamilton 圈。修改的方法叫做改良圈算法:<br />
+以得到具有较小权的另一个 Hamilton 圈。修改的方法叫做改良圈算法:<br />
 设初始圈 <span class="math inline">\(C = v_1v_2 \cdots
 v_nv_1\)</span><br />
 对于 <span class="math inline">\(1 \leq i &lt; i+1 &lt; j \leq
@@ -927,10 +927,7 @@ x_{ij} =
 \sum\limits_i\sum\limits_j w_{ij} x_{ij}\)</span> 这样的东西, 主要约束
 <span class="math inline">\(x_{ij}\)</span></p>
 <h3 id="插值">插值</h3>
-<p>拉格朗日插值和牛顿插值只有理论上意义, 实际应用不大, 故略去<br />
-利用多项式对某一函数作近似逼近, 计算相应的函数值, 一般情况下,
-多项式的次数越多, 需要的数据就越多, 而预测也就越准确。然而,
-插值次数越高, 插值结果越偏离原函数的现象称为龙格振荡现象</p>
+<p>拉格朗日插值和牛顿插值只有理论上意义, 实际应用不大, 故略去</p>
 <h4 id="分段线性插值">分段线性插值</h4>
 <p>直接把 x, y 散点拿 plot 一画就可以了, 略</p>
 <h4 id="三次样条插值">三次样条插值</h4>
@@ -944,12 +941,14 @@ alt="eff50bbb118a1685f62896f56a7dce6f" /></p>
 <h4 id="pchip-分段三次插值">pchip 分段三次插值</h4>
 <p>用多项式作插值函数, 随着插值节点(或插值条件)的增加,
 插值多项式次数也相应增加, 高次插值不但计算复杂且往往效果不理想,
-甚至可能会产生<strong>龙格振荡现象</strong>。<br />
-利用多项式对某一函数作近似逼近, 计算相应的函数值, 一般情况下,
+甚至可能会产生<strong>龙格振荡现象</strong>。</p>
+<blockquote>
+<p>利用多项式对某一函数作近似逼近, 计算相应的函数值, 一般情况下,
 多项式的次数越多, 需要的数据就越多, 而预测也就越准确。然而,
-插值次数越高,
-插值结果越偏离原函数的现象称为<strong>龙格振荡现象</strong>。<br />
-分段插值就没这问题了</p>
+插值次数越高, 会产生插值结果越偏离原函数的现象,
+这称为<strong>龙格振荡现象</strong>。</p>
+</blockquote>
+<p>分段插值就没这问题了</p>
 <figure class="highlight matlab"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">x = <span class="number">-3</span>:<span class="number">3</span>; </span><br><span class="line">y = [<span class="number">-1</span> <span class="number">-1</span> <span class="number">-1</span> <span class="number">0</span> <span class="number">1</span> <span class="number">1</span> <span class="number">1</span>]; </span><br><span class="line">xq1 = <span class="number">-3</span>:<span class="number">0.01</span>:<span class="number">3</span>;</span><br><span class="line">p = pchip(x,y,xq1);</span><br><span class="line">s = spline(x,y,xq1);</span><br><span class="line"><span class="built_in">plot</span>(x,y,<span class="string">&#x27;o&#x27;</span>,xq1,p,<span class="string">&#x27;-&#x27;</span>,xq1,s,<span class="string">&#x27;-.&#x27;</span>)</span><br><span class="line"><span class="built_in">legend</span>(<span class="string">&#x27;Sample Points&#x27;</span>,<span class="string">&#x27;pchip&#x27;</span>,<span class="string">&#x27;spline&#x27;</span>,<span class="string">&#x27;Location&#x27;</span>,<span class="string">&#x27;SouthEast&#x27;</span>)</span><br></pre></td></tr></table></figure>
 <p><img src="https://s2.loli.net/2025/01/21/ziBQn27CmDZl6bG.png" alt="96a1ec038f69675f29de9ba83b88b49e" style="zoom:50%;" /></p>
 <h4 id="griddedinterpolant-函数">griddedInterpolant 函数</h4>
@@ -1320,7 +1319,7 @@ optimproblem 创建和求解优化问题</span></a></li><li class="nav-item nav-
 
 <div class="theme-info">
   <div class="powered-by"></div>
-  <span class="post-count">博客全站共 60419 字</span>
+  <span class="post-count">博客全站共 60342 字</span>
 </div>
         
 
