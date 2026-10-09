@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>CS285 笔记 - frankly6</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="frankly6"><meta name="msapplication-TileImage" content="/img/newfavicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="frankly6"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Sergey Levine 教授的强化学习, 较为困难"><meta property="og:type" content="blog"><meta property="og:title" content="CS285 笔记"><meta property="og:url" content="https://frankly6.cn/2026/10/09/CS285-notes/"><meta property="og:site_name" content="frankly6"><meta property="og:description" content="Sergey Levine 教授的强化学习, 较为困难"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://files.seeusercontent.com/2026/10/09/6xZb/titlepage_compressed.png"><meta property="article:published_time" content="2026-10-09T06:00:00.000Z"><meta property="article:modified_time" content="2026-10-09T11:54:31.761Z"><meta property="article:author" content="Frankly6"><meta property="article:tag" content="深度学习"><meta property="article:tag" content="强化学习"><meta property="article:tag" content="python"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://files.seeusercontent.com/2026/10/09/6xZb/titlepage_compressed.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://frankly6.cn/2026/10/09/CS285-notes/"},"headline":"CS285 笔记","image":["https://files.seeusercontent.com/2026/10/09/6xZb/titlepage_compressed.png"],"datePublished":"2026-10-09T06:00:00.000Z","dateModified":"2026-10-09T11:54:31.761Z","author":{"@type":"Person","name":"Frankly6"},"publisher":{"@type":"Organization","name":"frankly6","logo":{"@type":"ImageObject","url":"https://frankly6.cn/img/newlogo.png"}},"description":"Sergey Levine 教授的强化学习, 较为困难"}</script><link rel="canonical" href="https://frankly6.cn/2026/10/09/CS285-notes/"><link rel="icon" href="/img/newfavicon.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/6.0.0/css/all.min.css"><link data-pjax rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.loli.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>CS285 笔记 - frankly6</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="frankly6"><meta name="msapplication-TileImage" content="/img/newfavicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="frankly6"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="Sergey Levine 教授的强化学习, 较为困难"><meta property="og:type" content="blog"><meta property="og:title" content="CS285 笔记"><meta property="og:url" content="https://frankly6.cn/2026/10/09/CS285-notes/"><meta property="og:site_name" content="frankly6"><meta property="og:description" content="Sergey Levine 教授的强化学习, 较为困难"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://files.seeusercontent.com/2026/10/09/6xZb/titlepage_compressed.png"><meta property="article:published_time" content="2026-10-09T06:00:00.000Z"><meta property="article:modified_time" content="2026-10-09T11:54:31.761Z"><meta property="article:author" content="Frankly6"><meta property="article:tag" content="python"><meta property="article:tag" content="深度学习"><meta property="article:tag" content="强化学习"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://files.seeusercontent.com/2026/10/09/6xZb/titlepage_compressed.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://frankly6.cn/2026/10/09/CS285-notes/"},"headline":"CS285 笔记","image":["https://files.seeusercontent.com/2026/10/09/6xZb/titlepage_compressed.png"],"datePublished":"2026-10-09T06:00:00.000Z","dateModified":"2026-10-09T11:54:31.761Z","author":{"@type":"Person","name":"Frankly6"},"publisher":{"@type":"Organization","name":"frankly6","logo":{"@type":"ImageObject","url":"https://frankly6.cn/img/newlogo-optimized.png"}},"description":"Sergey Levine 教授的强化学习, 较为困难"}</script><link rel="canonical" href="https://frankly6.cn/2026/10/09/CS285-notes/"><link rel="icon" href="/img/newfavicon.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/6.0.0/css/all.min.css"><link data-pjax rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.loli.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
   (function () {
       function switchTab() {
           if (!location.hash) {
@@ -29,7 +29,7 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/newlogo.png" alt="frankly6" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="https://files.seeusercontent.com/2026/10/09/6xZb/titlepage_compressed.png" alt="CS285 笔记"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><i class="far fa-calendar-alt"> </i><time datetime="2026-10-09T06:00:00.000Z" title="2026-10-09T06:00:00.000Z">2026-10-09</time></span><span class="level-item is-hidden-mobile"><i class="far fa-calendar-check"> </i><time datetime="2026-10-09T11:54:31.761Z" title="2026-10-09T11:54:31.761Z">2026-10-09</time></span><span class="level-item"><a class="link-muted" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a></span><span class="level-item">9 小时读完 (大约78732个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">CS285 笔记</h1><div class="content"><p>我想着为什么不试一下呢？这门课的笔记风格会更为随意, 因为大概学不完,
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/newlogo-optimized.png" alt="frankly6" height="28" decoding="async"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="https://files.seeusercontent.com/2026/10/09/6xZb/titlepage_compressed.png" alt="CS285 笔记" decoding="async" loading="eager" fetchpriority="high"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><i class="far fa-calendar-alt"> </i><time datetime="2026-10-09T06:00:00.000Z" title="2026-10-09T06:00:00.000Z">2026-10-09</time></span><span class="level-item is-hidden-mobile"><i class="far fa-calendar-check"> </i><time datetime="2026-10-09T11:54:31.761Z" title="2026-10-09T11:54:31.761Z">2026-10-09</time></span><span class="level-item"><a class="link-muted" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a></span><span class="level-item">9 小时读完 (大约78732个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">CS285 笔记</h1><div class="content"><p>我想着为什么不试一下呢？这门课的笔记风格会更为随意, 因为大概学不完,
 如果你能看见这段话, 说明运气很好啊, 我竟然学完了,
 没有被科研、社团活动、校内课程、竞赛、游戏、懒惰、自我否定所打败,
 这件事情其实比课程更让我欣喜。</p>
@@ -91,7 +91,7 @@ actor-critic</li>
 例如数据是独立同分布的(i.i.d.), 数据有标签,
 但在一些任务例如机器人抓握物体上其实没有这么强的假设, 没有 i.i.d.,
 没有<strong>基准事实(Ground Truth, GT)</strong></p>
-<p><img src="https://files.seeusercontent.com/2026/03/05/t8Bz/816070974119aebbebebac77c95fad74.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/05/t8Bz/816070974119aebbebebac77c95fad74.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>我们在 RL 中想学习<strong>策略(policy)</strong> <span
 class="math inline">\(\pi\)</span>, <span
 class="math inline">\(\pi\)</span> 将状态 <span
@@ -125,7 +125,7 @@ class="math inline">\(\sum r\)</span> 尽可能高</p>
 动作是决策而不直接是某种标签(不过你确实可以映射), 动作空间可能是连续的,
 要熟读下图, <span class="math inline">\(p(\mathbf s_{t+1}|\mathbf s_t,
 \mathbf a_t)\)</span> 是条件转移概率</p>
-<p><img src="https://files.seeusercontent.com/2026/03/05/9xBp/d8bda4b7f1aabcd27997e5cd95acf7ac.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/05/9xBp/d8bda4b7f1aabcd27997e5cd95acf7ac.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>状态 <span class="math inline">\(\mathbf s_t\)</span> 不同于观察
 <span class="math inline">\(\mathbf o_t\)</span>, 基于 <span
 class="math inline">\(\mathbf s_t\)</span> 是完整的观察策略(eg.
@@ -142,10 +142,10 @@ s_2\)</span> 时, <span class="math inline">\(\mathbf s_1\)</span> 与
 以自动驾驶为例, 根据人类的开车获得 <span class="math inline">\(\mathbf
 {o, a}\)</span>, 然后 "克隆" 人类的行为, 最早的模仿学习方法在 1989
 就提出了, 叫做 ALVINN</p>
-<p><img src="https://files.seeusercontent.com/2026/03/05/j2Mm/47fcb19610535693093c0469a75beca9.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/05/j2Mm/47fcb19610535693093c0469a75beca9.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>行为克隆方法会失败, 因为模型会随着时间产生偏差,
 使得最终的<strong>轨迹(trajectory)</strong>不一致</p>
-<p><img src="https://files.seeusercontent.com/2026/03/05/ip2A/109ba56644edcc34d56ee083088dfcc8.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/05/ip2A/109ba56644edcc34d56ee083088dfcc8.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>因为监督学习强调了独立同分布, 但在开车问题时不是这样,
 不过我们可以部分解决这个问题</p>
 <p>NVIDIA 在自动驾驶时使用了左中右三个摄像头,
@@ -272,7 +272,7 @@ o_t)\)</span><br />
 我们最后会补充</p>
 <p>离散化也可以获得复杂动作, 但是其在高维十分困难,
 所以一次可以离散化一个维度, 这就是自回归离散化的思想, 需要序列模型</p>
-<p><img src="https://files.seeusercontent.com/2026/03/05/nvM1/32d70cc1ea51b75af148290276dbdcb5.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/05/nvM1/32d70cc1ea51b75af148290276dbdcb5.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>使用多任务学习可以使得任务更简单<br />
 其大体思想是, 把 "要去哪里／要达到什么状态" 作为策略输入,
 让不同任务的数据共同训练一个策略; 再利用已经发生的轨迹,
@@ -304,7 +304,7 @@ class="math inline">\(p_{\pi_\theta}\)</span> 来收集, 但是你说不对啊,
 还没练模型怎么知道 <span
 class="math inline">\(p_{\pi_\theta}\)</span><br />
 于是我们循环做这个来更新</p>
-<p><img src="https://files.seeusercontent.com/2026/03/05/yX0d/8fdcf2e6b3968745ae379bf8855d7acd.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/05/yX0d/8fdcf2e6b3968745ae379bf8855d7acd.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>第一步就是正常训练, 第二步根据 <span
 class="math inline">\(\pi_\theta(\mathbf a_t|\mathbf o_t)\)</span>
 生成数据, 第三步真人标记数据, 这样分布被改变过来了, 第四步将数据结合,
@@ -336,7 +336,7 @@ class="math inline">\(a_{t,0},a_{t,1},a_{t,2}\)</span>, 模型先根据状态
 class="math inline">\(\mathbf o\)</span> 下,
 不同噪声应能产生不同的动作</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/23/8Pba/a36cc158a4f4b9c88a3cdcabdee32cde.png" /></p>
+src="https://files.seeusercontent.com/2026/09/23/8Pba/a36cc158a4f4b9c88a3cdcabdee32cde.png" decoding="async" loading="lazy"></p>
 <p>在这里 flow matching 的核心公式是 <span
 class="math inline">\(x_1=x_0+\displaystyle\int_0^1 v(x_t,t)\, \mathrm
 dt\)</span><br />
@@ -348,7 +348,7 @@ dt\)</span><br />
 我们不直接把噪声回归到动作, 把复杂的分布变换拆成许多局部移动,
 这种速度可以从训练数据构造出监督信号</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/23/n6Mk/cd420cb5c0a36e826cb089e3c384f5b8.png" /></p>
+src="https://files.seeusercontent.com/2026/09/23/n6Mk/cd420cb5c0a36e826cb089e3c384f5b8.png" decoding="async" loading="lazy"></p>
 <p>训练需要一个噪声 <span class="math inline">\(x_0\)</span>, 一个样本
 <span class="math inline">\(x_1\)</span>, 中间 <span
 class="math inline">\(t \sim p(t)\)</span> 采样并插值出来 <span
@@ -371,7 +371,7 @@ class="math inline">\(\tau\)</span> 是生成进度</p>
 matching 做 <span class="math inline">\(\mathbf
 a_{t:t+K}\sim\pi_\theta(\mathbf a_{t:t+K}\mid \mathbf o_t)\)</span>​</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/23/E8yd/4fcd337e05ecf63799d0ebb7827561d7.png" /></p>
+src="https://files.seeusercontent.com/2026/09/23/E8yd/4fcd337e05ecf63799d0ebb7827561d7.png" decoding="async" loading="lazy"></p>
 <p>伟大的具身智能界 gpt(存疑) <span class="math inline">\(\pi_0\)</span>
 可以完成多物理任务的泛化或某种复杂任务的灵巧操作<br />
 Pre-training(具身智能的专用数据集, 10000+ hours!)得到 foundation model,
@@ -415,7 +415,7 @@ p(\mathbf s_{t+1} | \mathbf s_t)
 \]</span> 形式化的马尔可夫链定义为 <span
 class="math inline">\(\mathcal{M} = \{ \mathcal{S}, \mathcal{T}
 \}\)</span>​</p>
-<p><img src="https://files.seeusercontent.com/2026/03/05/zm2V/925b2caaa916fbc0d2108e1478bb3157.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/05/zm2V/925b2caaa916fbc0d2108e1478bb3157.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <ul>
 <li><strong><span class="math inline">\(\mathcal{S}\)</span></strong>
 是状态空间, <span class="math inline">\(\mathbf s \in
@@ -434,7 +434,7 @@ class="math inline">\(\mathbf{u}_{t+1} = \mathcal{T}
 <p>形式化的马尔可夫决策过程定义为 <span
 class="math inline">\(\mathcal{M} = \{ \mathcal{S}, \mathcal{A},
 \mathcal{T}, r \}\)</span>​</p>
-<p><img src="https://files.seeusercontent.com/2026/03/05/x7Gq/8ddc9c94d60929cd94f8fe14dfa003e7.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/05/x7Gq/8ddc9c94d60929cd94f8fe14dfa003e7.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <ul>
 <li><p><strong><span class="math inline">\(\mathcal{A}\)</span>​</strong>
 是动作空间, 可以是连续动作或离散动作</p></li>
@@ -455,7 +455,7 @@ class="math inline">\(r(\mathbf{s}, \mathbf{a})\)</span>,
 <p>形式化的部分可观测马尔可夫(POMDP)决策过程定义为 <span
 class="math inline">\(\mathcal{M} = \{ \mathcal{S}, \mathcal{A},
 \mathcal{O}, \mathcal{T}, \mathcal{E}, r \}\)</span></p>
-<p><img src="https://files.seeusercontent.com/2026/03/05/c9Pg/07fda8c8eb5e3d2b561ce4dfb1224058.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/05/c9Pg/07fda8c8eb5e3d2b561ce4dfb1224058.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>在实际的决策回路中, 应该还存在从 <span class="math inline">\(\mathbf
 o_t\)</span> 到 <span class="math inline">\(\mathbf a_t\)</span> 的边,
 这代表了智能体的<strong>策略</strong> <span
@@ -489,7 +489,7 @@ class="math display">\[
 \pi_{\theta}(\mathbf{a}_t | \mathbf{s}_t) p(\mathbf{s}_{t+1} |
 \mathbf{s}_t, \mathbf{a}_t)
 \]</span>
-<img src="https://files.seeusercontent.com/2026/03/05/9dPb/0279c6156c1d1750d7ee6d85c2ea623a.png" style="zoom:80%;" /></p>
+<img src="https://files.seeusercontent.com/2026/03/05/9dPb/0279c6156c1d1750d7ee6d85c2ea623a.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>这是一个 <span class="math inline">\((\mathbf{s}_t,
 \mathbf{a}_t)\)</span> 对的马尔科夫链, <span
 class="math inline">\(p_\theta(\tau)\)</span> 就是轨迹 <span
@@ -537,7 +537,7 @@ class="math inline">\(\theta\)</span>​ 上连续啊</p>
 </blockquote>
 <p>强化学习算法通常由生成样本, 学习模型/拟合回归, 改进 policy
 三个部分构成, 这三个部分会不断循环</p>
-<p><img src="https://files.seeusercontent.com/2026/03/05/al8U/feddab9df2f4d2e5c277d34ad9d94686.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/05/al8U/feddab9df2f4d2e5c277d34ad9d94686.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>这里有期望奖励函数 <span
 class="math inline">\(J(\theta)\)</span><br />
 有的时候绿框对应的是 fit a model, 这时候就不是求和(简单),
@@ -639,7 +639,7 @@ off-policy 算法可以根据先前收集的样本来改进策略, on-policy 算
 policy 变化时重新生成样本<br />
 Policy Gradient 算法就是 on-policy 的, 这使得其很低效</p>
 <p>我们可以画一个光谱来排序算法</p>
-<p><img src="https://files.seeusercontent.com/2026/03/05/6Geb/9a292196c5b1b97c733b200053cc41a7.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/05/6Geb/9a292196c5b1b97c733b200053cc41a7.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>有的时候我们不那么关心样本效率, 因为样本很快就能生成<br />
 有时候我们更关心 RL 是否能收敛？收敛到局部最优还是全局最优？</p>
 <p>额, RL 领域的算法分类其实乱成了一团, on-policy 指的是某种 "batch size
@@ -653,12 +653,12 @@ RL 的发展与方法比较乱, 我也在一次一次的重看自己的笔记,
 然后每次逐渐把握不同的脉络, 我在下面再放一堆的分类图,
 它们可能都有用也可能都没用</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/05/Y5pc/v2-e9e3dadc1b3677e4e527eae7e3ff0.jpg" /></p>
+src="https://files.seeusercontent.com/2026/08/05/Y5pc/v2-e9e3dadc1b3677e4e527eae7e3ff0.jpg" decoding="async" loading="lazy"></p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/05/r7mQ/v2-378bda9e7f0147769a3816aea4688.jpg" /></p>
+src="https://files.seeusercontent.com/2026/08/05/r7mQ/v2-378bda9e7f0147769a3816aea4688.jpg" decoding="async" loading="lazy"></p>
 <p>可能最复杂的关系图更准确一点</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/06/0cVu/v2-56d66cee64d25163ccabcd79d7792.webp" /></p>
+src="https://files.seeusercontent.com/2026/08/06/0cVu/v2-56d66cee64d25163ccabcd79d7792.webp" decoding="async" loading="lazy"></p>
 <p>在 RL 中, 能收敛的算法是一种奢侈<br />
 Q-learning 的收敛性是 open problem<br />
 model-based RL 的模型本身是收敛的,
@@ -735,7 +735,7 @@ class="math inline">\(\nabla_\theta J(\theta) \approx \dfrac{1}{N}
 <p>然后就是经典的梯度下降 <span class="math inline">\(\theta \leftarrow
 \theta + \alpha\nabla_\theta J(\theta)\)</span> 了</p>
 <p>我们刚刚推出的就是 REINFORCE 算法, 但它的应用可能不会特别有用</p>
-<p><img src="https://files.seeusercontent.com/2026/03/13/Qhc2/b93b2ae2f7b2744179cd33695ca6d0c5.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/13/Qhc2/b93b2ae2f7b2744179cd33695ca6d0c5.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>我们理解一下策略梯度公式, <span class="math inline">\(\nabla_\theta
 J(\theta) = E_{\tau \sim p_\theta(\tau)} \left[ \left(
 \sum\limits_{t=1}^T \nabla_\theta \log \pi_\theta(\mathbf a_t|\mathbf
@@ -765,7 +765,7 @@ E_{\tau \sim p_\theta(\tau)} \left[ \left( \sum\limits_{t=1}^T
 r(\tau) \right) \right]\)</span>​</p>
 <p>policy-gradient 的问题在于高方差(其实严格来讲可能叫做以 0
 为均值的平方统计量什么的东西, 懂意思就行)</p>
-<p><img src="https://files.seeusercontent.com/2026/10/09/fHu5/f2f8d1f3abc20a06f68214643868bae0.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/10/09/fHu5/f2f8d1f3abc20a06f68214643868bae0.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>例如上图, 奖赏值上加一个常量不会影响策略梯度,
 但是会改变策略的概率分布, 这是由于奖励的方差导致的</p>
 <p>目标是减少方差<br />
@@ -780,7 +780,7 @@ r(\mathbf{s}_{i,t&#39;}, \mathbf{a}_{i,t&#39;}) \right) \right]
 \sum\limits_{t&#39;=t}^T r(\mathbf{s}_{i,t&#39;},
 \mathbf{a}_{i,t&#39;})\)</span> 叫做 "reward to go",
 这里引用一下图片</p>
-<p><img src="https://pica.zhimg.com/v2-5899d03e65fd083067b46a767f4c01ea_r.jpg" style="zoom:80%;" /></p>
+<p><img src="https://pica.zhimg.com/v2-5899d03e65fd083067b46a767f4c01ea_r.jpg" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>另一个 trick 是<strong>基线(Baseline)</strong>, reward
 全减掉一个基线(例如平均值), 方差不就下来了, 我们形式化为 <span
 class="math display">\[
@@ -960,7 +960,7 @@ J_{ML}(\theta) \approx \dfrac{1}{N}
 <p>我们的 policy gradient 方法有大方差的特点, 所以需要更大的 batch,
 更多的超参微调</p>
 <p>在这里简要提一下 Lecture 9 的内容 —— 高级策略梯度算法</p>
-<p><img src="https://files.seeusercontent.com/2026/03/13/y2Xh/7ab89e9240624f458eb147b1da9368ee.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/13/y2Xh/7ab89e9240624f458eb147b1da9368ee.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>以这张图为例, 蓝色小球(智能体)试图移动到黄色星星, 有奖励函数 <span
 class="math inline">\(r(\mathbf{s}_t, \mathbf{a}_t) = -\mathbf{s}_t^2 -
 \mathbf{a}_t^2\)</span><br />
@@ -993,7 +993,7 @@ class="math inline">\(F(\theta)\)</span> 中对应的值就会非常大, 取逆
 <span class="math inline">\(x\)</span> 出现的概率变大, 参数 <span
 class="math inline">\(\theta\)</span> 应该往哪个方向调整</p>
 <p>于是更新向量场变得更好了, 类似下图</p>
-<p><img src="https://files.seeusercontent.com/2026/03/13/2Jja/13cc798434fd72d535ddfc31eff57b8a.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/13/2Jja/13cc798434fd72d535ddfc31eff57b8a.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <h2 id="lecture-6-actor-critic-方法">Lecture 6 Actor-critic 方法</h2>
 <p>回顾 REINFORCE 算法:</p>
 <ol type="1">
@@ -1118,7 +1118,7 @@ class="math inline">\(\hat A^\pi(\mathbf s_i, \mathbf a_i) = r(\mathbf
 s_i, \mathbf a_i) + \gamma \hat V_{\phi}^\pi(\mathbf s&#39;_i) -\hat
 V_{\phi}^\pi(\mathbf s_i)\)</span></p>
 <p>我们也可以写出 online actor-critic 算法了</p>
-<p><img src="https://files.seeusercontent.com/2026/03/06/9kyU/f230c34a1a44bdd37dba9e3650068278.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/06/9kyU/f230c34a1a44bdd37dba9e3650068278.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>在实现上, 有一些方法可以选择</p>
 <ul>
 <li>两个网络分别拟合 <span class="math inline">\(\hat V_\phi^\pi(\mathbf
@@ -1133,7 +1133,7 @@ s), \pi\)</span>, 这样简单稳定易训练, 但是 actor 与 critic
 我们自然想到<strong>异步(asychronous)</strong>方法, 但是如果线程落后了,
 actor 不一样怎么办？经验证明,
 它带来的性能提升超过了略微滞后带来的偏差</p>
-<p><img src="https://files.seeusercontent.com/2026/04/02/K7ty/a542807f45b2ff84cd131ca23f4d3804.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/02/K7ty/a542807f45b2ff84cd131ca23f4d3804.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>既然可以稍稍滞后, 能不能直接 off-policy
 呢？我们可以弄一个回放缓冲区(replay buffer)<br />
 具体来说, 我们只使用一个线程, 我们把转移都保存进 replay buffer 中,
@@ -1141,7 +1141,7 @@ actor 不一样怎么办？经验证明,
 但这样 actor
 会不会太老了？我们可以把缓冲区建成一个先进先出的结构(环形队列),
 这可以稍稍缓解问题</p>
-<p><img src="https://files.seeusercontent.com/2026/04/02/5bkI/27c5d8e9a09f923d1c99654e1fc85909.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/02/5bkI/27c5d8e9a09f923d1c99654e1fc85909.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>你注意到这个算法的问题吗？Replay buffer 带来了什么坏处</p>
 <p>首先, 在第三步, <span class="math inline">\(\mathbf s_i&#39;\)</span>
 是较老的 actor 出来的, 我们一路把旧数据带入 <span
@@ -1191,7 +1191,7 @@ class="math inline">\(V\)</span> 扬掉了, 少训一个网络,
 然后这个高方差可以稍微通过从 <span class="math inline">\(\mathbf
 s_i\)</span> 多采样几次 <span class="math inline">\(\mathbf a_i\)</span>​
 来控制(工程经验, 不是数学上的)</p>
-<p><img src="https://files.seeusercontent.com/2026/04/02/cJ7s/7009c44f828686b973281d9ed74763ca.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/02/cJ7s/7009c44f828686b973281d9ed74763ca.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>于是得到了最终的 online actor-critic 算法, 在数学上,
 它当然不是完美的, 我们的 <span class="math inline">\(\mathbf a\)</span>
 可以从 <span class="math inline">\(\pi_\theta(\mathbf s)\)</span> 采样,
@@ -1337,7 +1337,7 @@ class="math inline">\(V^\pi(\mathbf s)\)</span>), 但是方差极小,
 <p>假设我们知道 <span class="math inline">\(p(\mathbf s&#39;|\mathbf s,
 \mathbf a)\)</span>, <span class="math inline">\(\mathbf s, \mathbf
 a\)</span> 都是离散且较小的, 我们下文以在小型 2D 网格中的移动举例</p>
-<p><img src="https://files.seeusercontent.com/2026/04/03/suL8/542fea94f715be4b20aa1b9504f94a0e.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/03/suL8/542fea94f715be4b20aa1b9504f94a0e.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>我可以存储整个 <span class="math inline">\(V^\pi(\mathbf s)\)</span>,
 <span class="math inline">\(\mathcal T\)</span> 代表从 16
 个起点中的任意一个, 采取 4 种动作(上下左右)中的任意一个, 到达 16
@@ -1408,7 +1408,7 @@ class="math inline">\(\phi\)</span>, 定义损失 <span
 class="math inline">\(\mathcal L(\phi) = \dfrac{1}{2} \| V_\phi(\mathbf
 s) - \max_{\mathbf a} Q^\pi(\mathbf s, \mathbf a) \|^2\)</span>​<br />
 于是我们的算法为</p>
-<p><img src="https://files.seeusercontent.com/2026/04/03/Ygi4/7f52c9714b04a1cdd9ba2b7d1a866494.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/03/Ygi4/7f52c9714b04a1cdd9ba2b7d1a866494.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>这种算法首先需要我们计算第一步的期望, 然后需要我们能从同一状态 <span
 class="math inline">\(\mathbf s\)</span> 产生不同的动作 <span
 class="math inline">\(\mathbf a\)</span>, 先看第二个问题<br />
@@ -1436,16 +1436,16 @@ class="math inline">\(E\)</span> 是对环境状态转移的随机性求期望,
 r(\mathbf{s}_i, \mathbf{a}_i) + \gamma \max_{\mathbf{a}&#39;}
 Q_\phi(\mathbf{s}&#39;_i, \mathbf{a}&#39;_i)\)</span>, 这就是拟合 Q
 迭代(fitting Q iteration)</p>
-<p><img src="https://files.seeusercontent.com/2026/04/03/ii4C/67060d8ecf8c0bb98005f2dc4bd50e8f.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/03/ii4C/67060d8ecf8c0bb98005f2dc4bd50e8f.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>这个算法对 off-policy 有效, 只有一个 Q 网络, 方差低,
 但是它对任何非线性函数没有任何收敛保证<br />
 完整的算法思路如下, 我们的 K 次迭代是为了让奖励回溯传播</p>
-<p><img src="https://files.seeusercontent.com/2026/04/03/V0cq/988025e3a8d3a7c76df106efdb74aecc.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/03/V0cq/988025e3a8d3a7c76df106efdb74aecc.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <hr />
 <p>让我们从 Q-Iteration 走向 Q-learning<br />
 我们可以想象 Q-Iteration 在 <span class="math inline">\(\mathbf s,
 \mathbf a\)</span> 转移数据对上进行迭代</p>
-<p><img src="https://files.seeusercontent.com/2026/04/03/4Uuc/d8d3bf85b227135c6ccc562d888012d0.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/03/4Uuc/d8d3bf85b227135c6ccc562d888012d0.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>Q-Iteration 在求 max 的步骤优化策略, 第三步是在优化误差 <span
 class="math inline">\(\mathcal E\)</span> <span class="math display">\[
 \mathcal{E} = \frac{1}{2} E_{(\mathbf{s}, \mathbf{a}) \sim \beta} \left[
@@ -1519,7 +1519,7 @@ class="math inline">\(\Omega\)</span> 来表示这个集合,
 V&#39; \leftarrow \arg \min_{V&#39; \in \Omega} \frac{1}{2} \sum \|
 V&#39;(\mathbf s) - (\mathcal BV)(\mathbf s) \| ^2
 \]</span> 所以监督学习可以看作是在 L2 空间上的投影</p>
-<p><img src="https://files.seeusercontent.com/2026/04/03/z5Xl/90acf0d9483be2c596317f347ce93217.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/03/z5Xl/90acf0d9483be2c596317f347ce93217.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p><span class="math inline">\(\mathcal BV\)</span> 是偏离 <span
 class="math inline">\(\Omega\)</span> 的, 因为神经网络大小有限,
 我们需要投影到 <span class="math inline">\(\Omega\)</span> 上的 <span
@@ -1532,7 +1532,7 @@ class="math inline">\(V&#39;\)</span> 点, 这个操作可以抽象出投影算�
 <span class="math inline">\(V^\star\)</span> 更近, 但是投影后 <span
 class="math inline">\(V&#39;\)</span> 却离 <span
 class="math inline">\(V^\star\)</span> 更远了</p>
-<p><img src="https://files.seeusercontent.com/2026/04/03/r5pO/5a651a9899118fa64895ecd583c7e530.png"  /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/03/r5pO/5a651a9899118fa64895ecd583c7e530.png" decoding="async" loading="lazy"></p>
 <p>一个悲伤的事实是, fitted value iteration 不仅理论上不收敛,
 实际上也常常不收敛</p>
 <p>同理, fitted Q iteration 也不收敛, 一个常见疑问是 online Q iteration
@@ -1548,7 +1548,7 @@ value iteration, 我们需要使用一些 trick 让这些算法跑起来</p>
 本节课将深入这一方法<br />
 上文提到, online Q-Iteration, 收集一次数据就拟合一次, 这样可能不稳定,
 它的算法流程如下</p>
-<p><img src="https://files.seeusercontent.com/2026/04/09/l1Jp/c86ecd2d07d7bbb26a6b57a4823bd009.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/09/l1Jp/c86ecd2d07d7bbb26a6b57a4823bd009.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>我们可以一步展开, 有 <span class="math display">\[
 \phi \leftarrow \phi - \alpha \frac{dQ_\phi}{d\phi}(\mathbf{s}_i,
 \mathbf{a}_i) (Q_\phi(\mathbf{s}_i, \mathbf{a}_i) -
@@ -1563,19 +1563,19 @@ class="math inline">\((\mathbf{s}_1, \mathbf{a}_1, \mathbf{s}_2, r_1),
 网络可能会对当前的局部状态空间严重过拟合</p>
 <p>对于相关性问题, 我们可以使用 actor-critic
 架构中的同步并行与异步并行方法</p>
-<p><img src="https://files.seeusercontent.com/2026/04/02/K7ty/a542807f45b2ff84cd131ca23f4d3804.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/02/K7ty/a542807f45b2ff84cd131ca23f4d3804.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>我们也可以用 replay buffer, 我不是说回到 full fitted Q iteration,
 这里是有区别的<br />
 replay buffer 属于在线或半在线算法, buffer 是动态的,
 通常使用滑动窗口法<br />
 而 fitted Q iteration 是离线算法, 智能体不与环境交互, 有了数据集,
 把问题变成监督学习问题</p>
-<p><img src="https://files.seeusercontent.com/2026/04/09/xpW0/d446655249552c04771a2077e27e5965.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/09/xpW0/d446655249552c04771a2077e27e5965.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>我们需要定期向 buffer <span class="math inline">\(\mathcal B\)</span>
 中提供数据, 使用不同的策略从现实世界(环境)带来新的数据</p>
-<p><img src="https://files.seeusercontent.com/2026/04/09/9Pqp/7efb4060643acd7acdca7db8e34c15db.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/09/9Pqp/7efb4060643acd7acdca7db8e34c15db.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>可以将这个方法与 fitted Q iteration 结合, 得到一个朴素的 DQN 算法</p>
-<p><img src="https://files.seeusercontent.com/2026/04/09/D4ax/fca4d1b1b25a1b663cdade51fac1227a.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/09/D4ax/fca4d1b1b25a1b663cdade51fac1227a.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <hr />
 <p>我们还没有处理 "半梯度" 的问题, 而且其目标 <span
 class="math inline">\(\mathbf y_i\)</span> 是依靠 <span
@@ -1585,7 +1585,7 @@ class="math inline">\(\phi\)</span> 自举的, 会不断移动<br />
 固定下来认真学习<br />
 我们固定下来的 <span class="math inline">\(\phi\)</span>
 就叫做<strong>目标网络(target network)</strong></p>
-<p><img src="https://files.seeusercontent.com/2026/04/09/Vn1o/b58517d47e4ed36f8ee242a4aa3cc6f5.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/09/Vn1o/b58517d47e4ed36f8ee242a4aa3cc6f5.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>可以选择 <span class="math inline">\(N=10000, K=1 \sim 4\)</span>
 左右, 这样会让训练更稳定<br />
 经典 DQN 算法如下</p>
@@ -1627,7 +1627,7 @@ class="math inline">\(O(N^2)\)</span> 或 <span
 class="math inline">\(O(N^3)\)</span> 的开销小很多</p>
 </blockquote>
 <p>总结一个整体的 Q-learning 框架, 由下图三个步骤组成</p>
-<p><img src="https://files.seeusercontent.com/2026/04/09/Yhd5/ccff5e811ce76fb5ed9fbaa3e9c61414.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/09/Yhd5/ccff5e811ce76fb5ed9fbaa3e9c61414.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>online Q-learning 在三个步骤上保持统一速度<br />
 DQN 在第一步和第三步上同速, 第二步更新 target network 比较慢<br />
 Fitted Q-iteration 中第三步是第二步的内循环, 第二步是第一步的内循环</p>
@@ -1731,7 +1731,7 @@ class="math inline">\(\max\)</span> 没法求的问题<br />
 40 维的动作空间还可以</p>
 <p>另一个方法是让 Q 函数适应问题, 找一些容易取 max 的 Q 函数, 这是 <a
 target="_blank" rel="noopener" href="https://arxiv.org/pdf/1603.00748">NAF</a> 的思想</p>
-<p><img src="https://files.seeusercontent.com/2026/04/09/3jQw/1053496a07f4b338492ff9d1d344d3ff.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/09/3jQw/1053496a07f4b338492ff9d1d344d3ff.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>神经网络输出标量偏置(<span class="math inline">\(V\)</span>),
 向量(<span class="math inline">\(\mu\)</span>)与正定矩阵(<span
 class="math inline">\(P\)</span>), 对于给定的状态, Q
@@ -1865,7 +1865,7 @@ class="math inline">\(\Psi_{i}^{\theta}(x)\)</span>​ 相当于敏感系数</p>
 <h2 id="lecture-9-高级策略梯度方法">Lecture 9 高级策略梯度方法</h2>
 <p>本节课会为 policy gradient 方法提供新的视角, 我们从最经典的 REINFORCE
 讲起</p>
-<p><img src="https://files.seeusercontent.com/2026/03/13/Qhc2/b93b2ae2f7b2744179cd33695ca6d0c5.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/13/Qhc2/b93b2ae2f7b2744179cd33695ca6d0c5.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>为什么 policy gradient 凑效, 这就是在问为什么梯度下降凑效一样<br />
 一种看待这个问题的方式是它在做 <span class="math inline">\(\pi \to \hat
 A^\pi(\mathbf s_t, \mathbf a_t) \to \pi&#39;\)</span> 的循环改进,
@@ -2155,7 +2155,7 @@ a_t \sim \pi_{\theta}(\mathbf a_t | \mathbf s_t)}
 \gamma^tA^{\pi_\theta}(\mathbf s_t, \mathbf a_t)]]\)</span>,
 当我们计算目标的梯度并使用梯度上升或梯度下降时,
 这可以被解释为优化该目标的一阶泰勒展开</p>
-<p><img src="https://files.seeusercontent.com/2026/03/18/1Chz/d49da0537537a4de866023773f5e72e3.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/18/1Chz/d49da0537537a4de866023773f5e72e3.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>一阶泰勒展开即上图简单的绿色直线, 如果不施加约束,
 那么直线与原函数(非线性)的偏差会越来越大,
 这个约束本质上是我们信任绿色曲线近似蓝色曲线的区域,
@@ -2230,7 +2230,7 @@ F^{-1}\nabla_\theta J(\theta)\)</span>, 这就叫做<strong>自然梯度
 <span class="math inline">\(\alpha =
 \sqrt{\dfrac{2\epsilon}{\nabla_\theta J(\theta)^T \mathbf{F}^{-1}
 \nabla_\theta J(\theta)}}\)</span>​, 但一般我们还是手动调参</p>
-<p><img src="https://files.seeusercontent.com/2026/03/13/2Jja/13cc798434fd72d535ddfc31eff57b8a.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/13/2Jja/13cc798434fd72d535ddfc31eff57b8a.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>我们回顾 Lecture 4 的例子, 自然梯度确实更加 "自然" 了</p>
 <h3 id="trpo-与-ppo-补充">TRPO 与 PPO 补充</h3>
 <p>在最新的讲义 <a
@@ -2403,7 +2403,7 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/28974854144">P
 <p>最后以 <a
 target="_blank" rel="noopener" href="https://rail.eecs.berkeley.edu/deeprlcourse/static/slides/lec-10.pdf">CS285
 2026fall</a> 上的流程图做收尾, 注意下面的 PPO 指的是 KL-penalty 的</p>
-<p><img src="https://files.seeusercontent.com/2026/04/09/sCg3/07dab4e008e77a82fb93d9e4e7763a4b.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/09/sCg3/07dab4e008e77a82fb93d9e4e7763a4b.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <h3 id="dpo-与-grpo-补充">DPO 与 GRPO 补充</h3>
 <p><a
 target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1984387073625593089">看完能和外婆解释的
@@ -2415,7 +2415,7 @@ Reward Model <span class="math inline">\(\psi\)</span> 是一个预训练好的,
 仅在推理时使用, 针对整个 rollout 输出 <span
 class="math inline">\(r\)</span>​​​ 给 GAE 的模型</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/07/iMy0/6bab99cb4aa5c485be7c38e085287f80.png" /></p>
+src="https://files.seeusercontent.com/2026/07/07/iMy0/6bab99cb4aa5c485be7c38e085287f80.png" decoding="async" loading="lazy"></p>
 <p>我们稍微进军 LLM RL 领域一下<br />
 LLM
 训练粗略分为<strong>预训练(Pre-training)</strong>与<strong>后训练(Post-training)</strong>两个阶段,
@@ -2490,7 +2490,7 @@ class="math inline">\(\pi_{\text{ref}}\)</span>​</p>
 <p>我们要转向 Model-based RL 了, 本 lecture 为预备知识, 前面的
 Lecture(除补充外)都是 Model-free 的</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/08/7iaD/f6070b5b986687b8ef119357beccbdb4.png" /></p>
+src="https://files.seeusercontent.com/2026/07/08/7iaD/f6070b5b986687b8ef119357beccbdb4.png" decoding="async" loading="lazy"></p>
 <p>又一次的, 我们把之前复杂的一堆符号都忘掉, 回到最开始,
 目标是最大化轨迹上奖励总和的期望</p>
 <p>model-free 假设了我们不知道 <span class="math inline">\(p(\mathbf
@@ -2508,7 +2508,7 @@ s_{t+1}|\mathbf s_t, \mathbf a_t)\)</span>, 并且我们不去学习它<br />
 Planning)</strong>和<strong>闭环控制 (Closed-loop
 Control)</strong>两种情况</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/08/d9oS/3ba171c6a268549b46e4962ae3fbe857.png" /></p>
+src="https://files.seeusercontent.com/2026/07/08/d9oS/3ba171c6a268549b46e4962ae3fbe857.png" decoding="async" loading="lazy"></p>
 <p>开环规划直接求解出的是一个<strong>固定的动作序列</strong>, 有 <span
 class="math display">\[
 p_\theta(\mathbf{s}_1, \dots, \mathbf{s}_T | \mathbf{a}_1, \dots,
@@ -2561,7 +2561,7 @@ MCTS)主要适用于离散状态棋牌游戏, 涉及一些闭环反馈</p>
 注意我们扩展的节点值不等于真实价值, 因为这是随机环境, 有随机策略<br />
 我们如何选择扩展哪个节点？一般使用 UCT 策略平衡最优动作与探索</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/08/J1jw/cc86ed30efaa3b98da004f97ad500a50.png" /></p>
+src="https://files.seeusercontent.com/2026/07/08/J1jw/cc86ed30efaa3b98da004f97ad500a50.png" decoding="async" loading="lazy"></p>
 <p>这种方法的扩展非常丰富, 额, 也许你能自己写一个 AlphaGo 出来</p>
 <hr />
 <p>我们也可以使用导数方法, 现在用控制论的符号, <span
@@ -2582,7 +2582,7 @@ Methods)</strong></p>
 class="math inline">\(\mathbf{x}_2, \mathbf{x}_3, \dots,
 \mathbf{x}_T\)</span>​), 再回传梯度, 容易梯度爆炸</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/08/Yu3t/6c2ba6b1f6a92074840c2a420a3f5be2.png" /></p>
+src="https://files.seeusercontent.com/2026/07/08/Yu3t/6c2ba6b1f6a92074840c2a420a3f5be2.png" decoding="async" loading="lazy"></p>
 <p>配点法把状态也抬升为决策变量同时优化,
 允许中间过程暂时违反物理规律<br />
 我们做 <span class="math inline">\(\min\limits_{\mathbf{x}_{1:T},
@@ -2592,7 +2592,7 @@ src="https://files.seeusercontent.com/2026/07/08/Yu3t/6c2ba6b1f6a92074840c2a420a
 这样规避了长距离前向模拟带来的非线性累积, 但是优化问题的维度暴增,
 并且可能未收敛时得到一条<strong>物理上不可能实现</strong>的断裂轨迹</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/08/tK4g/9e426632ada329d382577ad8e8cdcfb3.png" /></p>
+src="https://files.seeusercontent.com/2026/07/08/tK4g/9e426632ada329d382577ad8e8cdcfb3.png" decoding="async" loading="lazy"></p>
 </div>
 </article>
 <p>下面介绍一个简单的 case, <strong>LQR (Linear Quadratic Regulator,
@@ -2674,7 +2674,7 @@ x_{T-1}\)</span> 有关了<br />
 \mathbf{K}_{T-1} \mathbf{x}_{T-1} + \mathbf{k}_{T-1}\)</span>
 这样的东西, 然后递归往回做, 总流程如下</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/08/0olL/cbb4b67d31d33fe3dffe521001e97d91.png" /></p>
+src="https://files.seeusercontent.com/2026/07/08/0olL/cbb4b67d31d33fe3dffe521001e97d91.png" decoding="async" loading="lazy"></p>
 <hr />
 <p>接下来为了让你进一步疯狂,
 我们把刚刚的一切推广到随机动力学以及非线性系统上</p>
@@ -2760,7 +2760,7 @@ class="math inline">\(\mathbf{x}_t^{\text{new}}\)</span><br />
 </blockquote>
 <p>事实上, iLQR 方法是牛顿法的进一步近似(动力学为一阶而不是二阶)</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/08/p4Ft/4d0c3d5d70ae0a5956ef6319e007658e.png" /></p>
+src="https://files.seeusercontent.com/2026/07/08/p4Ft/4d0c3d5d70ae0a5956ef6319e007658e.png" decoding="async" loading="lazy"></p>
 <p>孩子们, 因为那个 Hessian 矩阵 <span class="math inline">\(\mathbf
 H\)</span> 求导很困难啊<br />
 完整求解二阶动力学的方法叫做 <strong>DDP(Differential Dynamic
@@ -2811,7 +2811,7 @@ a)\)</span> 后, 我们要用 <span class="math inline">\(f\)</span>
 (一连串)并于真实环境交互得到正确的 <span class="math inline">\(\mathbf
 s\)</span> 加入数据集</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/09/5siN/ce6d1c66ef255006d3878e9c26e3c325.png" /></p>
+src="https://files.seeusercontent.com/2026/07/09/5siN/ce6d1c66ef255006d3878e9c26e3c325.png" decoding="async" loading="lazy"></p>
 <p>我们相信这种方法能够渐进纠正错误, 但我们也可以做得更好,
 即刻纠正错误<br />
 在 <span class="math inline">\(f\)</span> 做出第一个 <span
@@ -2822,7 +2822,7 @@ class="math inline">\(\mathbf a\)</span> 后立刻观察环境给出的真实新
 ver 1.5 相当于闭环规划, 而 ver 1.0 则是开环规划, ver 1.5 每隔 <span
 class="math inline">\(N\)</span> 步更新一次动力学模型</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/09/fxM0/b26d4eddc1fb1f544f48fb7c672905d6.png" /></p>
+src="https://files.seeusercontent.com/2026/07/09/fxM0/b26d4eddc1fb1f544f48fb7c672905d6.png" decoding="async" loading="lazy"></p>
 <p>既然现在是闭环控制了, 一般我们第三步 plan 的 horizon 会降低一点</p>
 <p>一般认为 Model-Based RL 高效但上限低, Model-Free RL
 低效但上限高<br />
@@ -2908,7 +2908,7 @@ J(\mathbf{a}_1, \dots, \mathbf{a}_H) = \frac{1}{N} \sum_{i=1}^N
 \]</span> 步骤如下, Step 1 等价于选择 <span
 class="math inline">\(N\)</span> 个模型中的一个</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/09/P8kl/a056376f2023f4b4d1d74ad7120f3a67.png" /></p>
+src="https://files.seeusercontent.com/2026/07/09/P8kl/a056376f2023f4b4d1d74ad7120f3a67.png" decoding="async" loading="lazy"></p>
 <p>这不是唯一的方法, 还有 Moment Matching(矩匹配) 方法与
 BNNs(贝叶斯神经网络) 等方法<br />
 通过对不确定性的估计, model-based RL 可以变得又快又好</p>
@@ -2923,7 +2923,7 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/138337983">Mod
 class="math inline">\(\mathbf o \in \mathbf s\)</span><br />
 我们要学习 $p(o_t|s_t), p(s_{t+1}|s_t, a_t), p(r_t|s_t, a_t) $</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/09/9Asj/934bf80233c5b481db69531da5a18e66.png" /></p>
+src="https://files.seeusercontent.com/2026/07/09/9Asj/934bf80233c5b481db69531da5a18e66.png" decoding="async" loading="lazy"></p>
 <p>如果全观测了, <span class="math inline">\(\mathbf o = \mathbf
 s\)</span>, 那么用最大似然训练, <span
 class="math inline">\(\max\limits_\phi \dfrac{1}{N} \sum\limits_{i=1}^N
@@ -2962,7 +2962,7 @@ p_\phi(g_\psi(\mathbf{o}_{t+1,i})|g_\psi(\mathbf{o}_{t,i}),
 p_\phi(\mathbf{o}_{t,i}|g_\psi(\mathbf{o}_{t,i}))
 \]</span> 因为全部是确定性策略, 梯度丝滑流转, 一切皆可微</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/09/io5H/8357d44e09e004ef864a9d86f7a00db9.png" /></p>
+src="https://files.seeusercontent.com/2026/07/09/io5H/8357d44e09e004ef864a9d86f7a00db9.png" decoding="async" loading="lazy"></p>
 <p>这个方向比较出名的文章是 <a
 target="_blank" rel="noopener" href="https://arxiv.org/pdf/1506.07365">Embed to Control</a> 这篇,
 虽然有人说比较 toy, 但是可以看到随着训练, 学习的 latent space
@@ -2982,7 +2982,7 @@ Policy Learning</h2>
 Model-Based Acceleration！</p>
 <p>回顾一下 Model-based RL version 1.5</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/10/Rdn0/4b82ef8f5e9159245759f05fa652d58e.png" /></p>
+src="https://files.seeusercontent.com/2026/07/10/Rdn0/4b82ef8f5e9159245759f05fa652d58e.png" decoding="async" loading="lazy"></p>
 <p>我们的开环策略是 sub-optimal 的, 闭环策略, 例如 iLQR 是 Local
 的<br />
 如果转向深度学习方法, 即建立计算图, 反向传播梯度, 计算给定策略奖励综合,
@@ -2993,7 +2993,7 @@ src="https://files.seeusercontent.com/2026/07/10/Rdn0/4b82ef8f5e9159245759f05fa6
 动态环境 <span class="math inline">\(f\)</span>, 奖励函数 <span
 class="math inline">\(r\)</span></p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/10/4Ysg/3cb164175074844b09d95119b5ee6e8f.png" /></p>
+src="https://files.seeusercontent.com/2026/07/10/4Ysg/3cb164175074844b09d95119b5ee6e8f.png" decoding="async" loading="lazy"></p>
 <p>与 version 1.5 相比, 我们有了显式策略网络而不是规划算法,
 原来的方法像是下围棋, 每走一步都要在脑子里往后推演十几步, 然后重新推演;
 现在的方法运行时无需规划(训练训完了), 只要无脑 <span
@@ -3059,7 +3059,7 @@ class="math inline">\(\nabla_\theta J(\theta) \approx \dfrac{1}{N}
 \]</span> 里面的 <span class="math inline">\(\prod\)</span>
 把梯度都毁了, 于是我们现在使用 Model-based RL via policy gradient</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/10/gOt1/bbe5c77543f62bc0ed6e98ba4ab96391.png" /></p>
+src="https://files.seeusercontent.com/2026/07/10/gOt1/bbe5c77543f62bc0ed6e98ba4ab96391.png" decoding="async" loading="lazy"></p>
 <p>先训模型 <span class="math inline">\(f\)</span>, 再训 policy <span
 class="math inline">\(\pi\)</span>, 然后左脚踩右脚上天, 这里的问题还是
 <span class="math inline">\(f\)</span> 的问题, <span
@@ -3075,12 +3075,12 @@ rollout<br />
 trick 去防止大幅分布跳变</p>
 <p>于是我们有了 version 3.0</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/10/qw0V/e9175e348f7f17878e606ec17e22358a.png" /></p>
+src="https://files.seeusercontent.com/2026/07/10/qw0V/e9175e348f7f17878e606ec17e22358a.png" decoding="async" loading="lazy"></p>
 <hr />
 <p>Dyna-Q 算法将 Online Q-learning 与 model-free RL with a model
 结合到了一起</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/10/jJ0o/91a7b9788de5c3949050bde95270a445.png" /></p>
+src="https://files.seeusercontent.com/2026/07/10/jJ0o/91a7b9788de5c3949050bde95270a445.png" decoding="async" loading="lazy"></p>
 <p>这里的步骤 1-2 是与真实世界交互的, 得到 <span
 class="math inline">\((\mathbf{s}, \mathbf{a}, \mathbf{s&#39;},
 r)\)</span><br />
@@ -3102,10 +3102,10 @@ class="math inline">\(r\)</span>, 用<strong>虚拟经验</strong>再次更新 Q
 class="math inline">\(\pi\)</span> 产出的动作,
 或者模拟多步轨迹而不是一步, 这些东西都是 Dyna-style 的</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/10/Dpb6/7889cc88307db16f78001eb9d1055329.png" /></p>
+src="https://files.seeusercontent.com/2026/07/10/Dpb6/7889cc88307db16f78001eb9d1055329.png" decoding="async" loading="lazy"></p>
 <p>于是我们可以把 Q-learning 的图解画得更加花里胡哨</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/10/Pql0/bef705028ab94801c6ee07065edfd147.png" /></p>
+src="https://files.seeusercontent.com/2026/07/10/Pql0/bef705028ab94801c6ee07065edfd147.png" decoding="async" loading="lazy"></p>
 <p><a target="_blank" rel="noopener" href="https://arxiv.org/abs/1603.00748">MBA, PMLR 2016</a>
 和上面的 Dyna-Style 没啥区别<br />
 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1803.00101">MBVE, ICML 2018</a>
@@ -3265,7 +3265,7 @@ class="math inline">\(p^\pi(\mathbf{s}_{\text{future}})\)</span>
 我们通过学习分类器, 得到了概率密度, 所以叫做 Classification-based
 Learning</p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/10/Aj7j/90e6d34df22b43095d2a224408290d47.png" /></p>
+src="https://files.seeusercontent.com/2026/07/10/Aj7j/90e6d34df22b43095d2a224408290d47.png" decoding="async" loading="lazy"></p>
 <p><strong>SR: </strong>未来会访问每个离散状态多少次？<br />
 <strong>SF: </strong>状态太多时, 未来会积累多少种特征？<br />
 <strong>SF-GPI: </strong>奖励变化后, 怎样组合多个旧策略快速行动？<br />
@@ -3277,7 +3277,7 @@ src="https://files.seeusercontent.com/2026/07/10/Aj7j/90e6d34df22b43095d2a224408
 系列文章的时候也没学到后面那里,
 如果我知道后面要学的话可能也还是忍不住先读完 Dreamer</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/30/xJ8v/83b562abbf0b4b2bf7fc8a5ee7b134fa.jpg" /></p>
+src="https://files.seeusercontent.com/2026/08/30/xJ8v/83b562abbf0b4b2bf7fc8a5ee7b134fa.jpg" decoding="async" loading="lazy"></p>
 <p>不, 我们不说 Model-based RL, 不够高端, 我们说 World Model<br />
 世界上有这么多 World Model, 例如 JEPA(LeCun 讨厌 RL, 但感觉做得挺像 RL
 啊), <span class="math inline">\(\pi_{0.7}\)</span>(具身智能, 不如
@@ -3292,13 +3292,13 @@ latent space, Loss 函数挺复杂</p>
 然后循环左脚踩右脚上天, 我们主要关心 Model 的训练部分, 在 <a
 target="_blank" rel="noopener" href="https://arxiv.org/abs/2010.02193">DreamerV2</a> 中是这样的</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/23/rd9L/34bd74563beefdaf22aae20a83f71463.png" /></p>
+src="https://files.seeusercontent.com/2026/08/23/rd9L/34bd74563beefdaf22aae20a83f71463.png" decoding="async" loading="lazy"></p>
 <p>这里的 <span class="math inline">\(x_t\)</span> 是 Atari Game
 的单帧画面, <span class="math inline">\(z_t\)</span> 是图像的隐状态,
 <span class="math inline">\(h_t\)</span> 是整个 World 的隐状态,
 我们说这里面有很多模型</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/23/qBo1/faff54c2a783ecd1f76a0d1c49bb65ec.png" /></p>
+src="https://files.seeusercontent.com/2026/08/23/qBo1/faff54c2a783ecd1f76a0d1c49bb65ec.png" decoding="async" loading="lazy"></p>
 <p>核心是 RNN Model 构造 World 隐状态 <span
 class="math inline">\(h\)</span> 在时间轴上前进<br />
 Representation model 训练 <span class="math inline">\(x_t \to
@@ -3320,7 +3320,7 @@ Dynamic<br />
 <p>有很多 trick 值得一讲, 首先, 总 World Model Loss 为下式,
 其实大有来头</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/23/kx4G/edb6467f019b5f3b39e9a6e366d0052d.png" /></p>
+src="https://files.seeusercontent.com/2026/08/23/kx4G/edb6467f019b5f3b39e9a6e366d0052d.png" decoding="async" loading="lazy"></p>
 <article class="message message-immersive is-primary">
 <div class="message-body">
 <p><i class="fas fa-book-open mr-2"></i> 看完 Lec 13 &amp; Lec 18
@@ -3390,7 +3390,7 @@ class="math inline">\(\alpha = 0.8\)</span><br />
 <strong>让后验接近先验: </strong>约束图像编码结果,
 防止后验随意编码大量先验无法预测的细节</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/23/qWj5/b5403e0bd6be95b856a742333d55ad27.png" /></p>
+src="https://files.seeusercontent.com/2026/08/23/qWj5/b5403e0bd6be95b856a742333d55ad27.png" decoding="async" loading="lazy"></p>
 <p>不学就用 stop-gradient, 因为后验一开始是准的, 而先验 <span
 class="math inline">\(\hat z\)</span> 在 <span
 class="math inline">\(h\)</span>​​​ 没训练好前是一坨,
@@ -3446,7 +3446,7 @@ DreamerV3 200M Param<br />
 DreamerV4 2B Param(400M for the tokenizer and 1.6B for the dynamics
 model)</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/25/A6lh/174836306e4b43bd3bcd2e606aacac74.png" /></p>
+src="https://files.seeusercontent.com/2026/08/25/A6lh/174836306e4b43bd3bcd2e606aacac74.png" decoding="async" loading="lazy"></p>
 <p>Transformer, Flow matching, Offline RL(On Minecraft diamond), 100h
 label, Scalable<br />
 感觉这个方向也到了某种 scaling 时代, 个人玩不转了</p>
@@ -3454,7 +3454,7 @@ label, Scalable<br />
 <p>最近看到了 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/2310.09615">STORM</a>
 这篇文章, 可以称作 DreamerV3 lite？</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/27/3Tzg/72349f579f88458f913542b46b495471.png" /></p>
+src="https://files.seeusercontent.com/2026/08/27/3Tzg/72349f579f88458f913542b46b495471.png" decoding="async" loading="lazy"></p>
 <p>把 RNN 换成两层 Transformer, image decode 不用 <span
 class="math inline">\(h,z\)</span> 只用 <span
 class="math inline">\(z\)</span>, 同时 <span
@@ -3489,7 +3489,7 @@ class="math inline">\(T\)</span> 上相较于最优策略的差距最小, 即下
 \]</span> 然后,
 所有问题都可解吗？有一个简单的光谱来帮你判断问题的复杂程度</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/05/Nqg2/e7a30761f94af1836abacfa79cf78c5f.png" /></p>
+src="https://files.seeusercontent.com/2026/08/05/Nqg2/e7a30761f94af1836abacfa79cf78c5f.png" decoding="async" loading="lazy"></p>
 <p>最简单的多臂老虎机或者上下文老虎机只需要我们做出 1-step,
 可以把它们很容易转化为 MDP 或 POMDP,<br />
 对于 small, finite MDPs, 我个人的理解就是一个动态规划过程,
@@ -3580,10 +3580,10 @@ class="math inline">\((s_1,a_1,r_1,\dots,s_t)\)</span><br />
 这里的进一步 trade-off 是 balance 信息量大的动作与次优动作的探索,
 给一个示例</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/05/Sdv0/6fedfe032df6d3563ed6d994e110273b.png" /></p>
+src="https://files.seeusercontent.com/2026/08/05/Sdv0/6fedfe032df6d3563ed6d994e110273b.png" decoding="async" loading="lazy"></p>
 <p>总结一下三种方法</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/05/rJh1/3eba5969eb598c0481bdc9fc4f477e53.png" /></p>
+src="https://files.seeusercontent.com/2026/08/05/rJh1/3eba5969eb598c0481bdc9fc4f477e53.png" decoding="async" loading="lazy"></p>
 <p>这三种方法都有不确定性估计, 假定新信息的某种价值(UCB
 假设未知情况是好的, Thompson sampling 假设采样得到的数据为真, IG
 假设信息增益越大越好)</p>
@@ -3610,7 +3610,7 @@ a)\)</span> 上, 然后尝试能不能定义出某种 pseudo-count<br />
 对于传统的 MDP, 在 <span class="math inline">\(\mathbf s\)</span>
 被看到前后, 有</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/05/tEy3/a6fddd31233eeac8e36e59dad3cc20c9.png" /></p>
+src="https://files.seeusercontent.com/2026/08/05/tEy3/a6fddd31233eeac8e36e59dad3cc20c9.png" decoding="async" loading="lazy"></p>
 <p>我们希望将其扩展到 <span class="math inline">\(p_\theta(\mathbf
 s)\)</span> 与 <span class="math inline">\(p_{\theta&#39;}(\mathbf
 s)\)</span> 上, 然后, 我们可以得到 <span class="math inline">\(\hat
@@ -3666,7 +3666,7 @@ class="math inline">\(\phi(\mathbf s)\)</span><br />
 这里的 hash function 是一个 auto encoder 网络,
 它首先被训练为最大化重建质量, 然后砍掉一半用来做 hash</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/05/Mv8h/2e463f1b4553e25769c48616bf68de4d.png" /></p>
+src="https://files.seeusercontent.com/2026/08/05/Mv8h/2e463f1b4553e25769c48616bf68de4d.png" decoding="async" loading="lazy"></p>
 <blockquote>
 <p>我感觉这个方法虽然很漂亮, 但也有固有缺陷,
 <strong>阈值相似关系不是等价关系</strong>,
@@ -3681,7 +3681,7 @@ B,\; B\sim C,\;A\not\sim C\)</span>​ 的情况<br />
 在 MDP 中, 因为动作会影响后来状态, 我们选择 Q 函数, 维护它的近似后验
 <span class="math inline">\(\hat p(Q)\)</span></p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/09/s4Zi/5839d277d0e72c5fac70462942b5a9d5.png" /></p>
+src="https://files.seeusercontent.com/2026/10/09/s4Zi/5839d277d0e72c5fac70462942b5a9d5.png" decoding="async" loading="lazy"></p>
 <p>一个抽象的东西是, 什么叫做 sample Q-function?<br />
 其实就是 Lec 11 的<strong>神经网络集成</strong>, 在 <span
 class="math inline">\(\mathcal D_i \in \mathcal D\)</span>
@@ -3783,7 +3783,7 @@ q_{\phi&#39;}(\theta) \Vert q_\phi(\theta) \right)\)</span></p>
 a)\)</span> 来拟合 <span class="math inline">\(f^{\star}(\mathbf s,
 \mathbf a)\)</span>, 我们可以算它们的 L2 误差, 误差高的地方更加新颖</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/05/wqL4/557ea5c7f5900d27add100d2b72cb9f4.png" /></p>
+src="https://files.seeusercontent.com/2026/08/05/wqL4/557ea5c7f5900d27add100d2b72cb9f4.png" decoding="async" loading="lazy"></p>
 <p>这里的 <span class="math inline">\(f^{\star}(\mathbf s, \mathbf
 a)\)</span> 最方便的选择是 <span class="math inline">\(\mathbf
 s&#39;\)</span>, 另一个选择是一个随机网络 <span
@@ -3848,7 +3848,7 @@ class="math display">\[
 <p>一种想法就是 latent model, 我们利用 latent space 提出一系列 goals
 并且实现<br />
 <img
-src="https://files.seeusercontent.com/2026/08/06/2nJq/323e6e8ba13b972bceeb1ad336b8f26c.png" /></p>
+src="https://files.seeusercontent.com/2026/08/06/2nJq/323e6e8ba13b972bceeb1ad336b8f26c.png" decoding="async" loading="lazy"></p>
 <p>在最最开始, 我们要训练 VAE(或者任意生成模型), 学习 latent space,
 包括压缩 <span class="math inline">\(q_\phi(z|x)\)</span> 与还原 <span
 class="math inline">\(p_\theta(x|z)\)</span><br />
@@ -3863,7 +3863,7 @@ class="math inline">\(\bar x\)</span><br />
 需要增加未访问状态的权重(Step 4), 这是 <a
 target="_blank" rel="noopener" href="https://arxiv.org/pdf/1903.03698">Skew-Fit</a> 的思想<br />
 <img
-src="https://files.seeusercontent.com/2026/08/06/Jnj0/66d67b8d2db95a92db1f245f4f6c8858.png" /></p>
+src="https://files.seeusercontent.com/2026/08/06/Jnj0/66d67b8d2db95a92db1f245f4f6c8858.png" decoding="async" loading="lazy"></p>
 <p>总体就是做一个加权最大似然(weighted MLE), <span
 class="math inline">\(\theta, \phi \leftarrow \arg \max_{\theta, \phi}
 \mathbb E [ w(\bar x)\log p(\bar x) ]\)</span><br />
@@ -3965,7 +3965,7 @@ class="math inline">\(z\)</span>, 那么我们想要的 policy
 <p>这好像有点绕, 我其实是故意往类似 GAN 的方向上讲的,
 只不过这里不是对抗而是合作</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/06/aEf9/eefbb3c5d68f002558869b9c8fc44054.png" /></p>
+src="https://files.seeusercontent.com/2026/08/06/aEf9/eefbb3c5d68f002558869b9c8fc44054.png" decoding="async" loading="lazy"></p>
 <p>对于 policy 网络, 其奖励为 <span class="math inline">\(r(\mathbf s,
 z) = \log p(z|\mathbf s) \approx \log q_\phi(z|\mathbf s)\)</span>,
 为了最大化它, 就要为 <span class="math inline">\(z|\mathbf s\)</span>
@@ -4036,7 +4036,7 @@ class="math inline">\(g&#39;\)</span> 的方法例如</p>
 个随机状态</p></li>
 </ul>
 <p><img
-src="https://files.seeusercontent.com/2026/08/14/3rNt/62eacb3c6aad0b7b5949e8f12f485432.png" /></p>
+src="https://files.seeusercontent.com/2026/08/14/3rNt/62eacb3c6aad0b7b5949e8f12f485432.png" decoding="async" loading="lazy"></p>
 <p>由算法流程可知, HER可以结合<strong>任意的 off-policy
 算法</strong><br />
 由实验可知(这里是 robot 的 pushing/sliding/pick-and-place 任务), HER
@@ -4060,7 +4060,7 @@ class="math inline">\(\mathcal D\)</span>, 我们用这部分数据训练最好�
 然后它一经部署就不再训练(也可以再训练, 那就是 offline-to-online RL,
 但核心是用离线数据直接可以获得部分功能)</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/10/boD2/exec-6f783321-85ea-4569-8934-174.png" />
+src="https://files.seeusercontent.com/2026/08/10/boD2/exec-6f783321-85ea-4569-8934-174.png" decoding="async" loading="lazy">
 一些 RL 应用不支持完全的 trial and error, 这时候 Offline RL
 就是必要的</p>
 <p>正式来说, Offline RL 需要 <span class="math inline">\(\mathcal
@@ -4105,7 +4105,7 @@ Offline RL 可以从混乱中找到秩序,
 <p>纯 Offline RL 可能表现不佳, 580k Offline RL 的数据只要加上 28k 的
 Online RL 微调就能让 Failure 从 13% 降低到 4%</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/10/Kgn9/ae7341889e3b15ee9d486b642eafd72e.png" /></p>
+src="https://files.seeusercontent.com/2026/08/10/Kgn9/ae7341889e3b15ee9d486b642eafd72e.png" decoding="async" loading="lazy"></p>
 <p>在 HalfCheetah 中, Offline RL 的 Q 函数估计极大,
 然而在训练中表现很差<br />
 根本的问题是 <strong>counterfactual query(反事实查询)</strong>, 我们用
@@ -4117,7 +4117,7 @@ src="https://files.seeusercontent.com/2026/08/10/Kgn9/ae7341889e3b15ee9d486b642e
 因为它们能与真实世界交互获得结果, 总结一下, Offline RL OOD 了,
 并且处理不了</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/10/0sxA/b789f18085d46d6298a1741743321acb.png" /></p>
+src="https://files.seeusercontent.com/2026/08/10/0sxA/b789f18085d46d6298a1741743321acb.png" decoding="async" loading="lazy"></p>
 <p>这里有一个精密的 trade-off, 如果不处理 OOD 数据就没有泛化,
 如果追求泛化就容易错误处理 OOD 数据, out-of-sample 和
 out-of-distribution 是有区别的</p>
@@ -4315,7 +4315,7 @@ V^\pi\)</span>, 即 <span class="math inline">\(V^\pi = (\mathbf I-
 \gamma P^\pi)^{-1} \mathbf r\)</span>, 同理也可以推导 <span
 class="math inline">\(\mathbf w_V\)</span></p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/12/px7A/c730eed706d25b03ac233d827227ee1e.png" /></p>
+src="https://files.seeusercontent.com/2026/08/12/px7A/c730eed706d25b03ac233d827227ee1e.png" decoding="async" loading="lazy"></p>
 <p>总结一下, 这就是 <strong>least-squares temporal difference (LSTD,
 最小二乘时间差分法)</strong>, 我们得到了使用线性特征求解价值函数的
 model-free 公式, 但是在 <span class="math inline">\(\mathbf w_V =
@@ -4403,7 +4403,7 @@ class="math inline">\(\beta\)</span>​</p>
 <p>本 Lec 介绍现代的 Offline RL 方法, 缓解 distribution shift
 的不良影响</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/10/boD2/exec-6f783321-85ea-4569-8934-174.png" />
+src="https://files.seeusercontent.com/2026/08/10/boD2/exec-6f783321-85ea-4569-8934-174.png" decoding="async" loading="lazy">
 Offline RL 需要 <span class="math inline">\(\mathcal D=\{(\mathbf s_i,
 \mathbf a_i, \mathbf s&#39;_i, r_i)\}\)</span><br />
 其中数据来自其他策略分布, <span class="math inline">\(\mathbf s \sim
@@ -4420,7 +4420,7 @@ class="math display">\[
 更好的 policy, Q-function 在 OOD 上对抗式拟合更高的价值, 使其不断被高估,
 是 Offline RL 的主要问题</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/12/1aHf/263adf47cf5ecad3575de88573854177.png" /></p>
+src="https://files.seeusercontent.com/2026/08/12/1aHf/263adf47cf5ecad3575de88573854177.png" decoding="async" loading="lazy"></p>
 <p>一类解决方式为策略约束方法,<br />
 我们的 policy evaluation 如常: <span class="math inline">\(Q(\mathbf s,
 \mathbf a) = r(\mathbf s, \mathbf a) + \gamma \mathbb E_{\mathbf a&#39;
@@ -4516,7 +4516,7 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/18854834316909
 <p>最终我们得到 <strong>AWAC(Advantage-Weighted Actor-Critic)</strong>
 算法</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/12/Vx6f/0d692390af7c7bcf789dd2b1e892d8b9.png" /></p>
+src="https://files.seeusercontent.com/2026/08/12/Vx6f/0d692390af7c7bcf789dd2b1e892d8b9.png" decoding="async" loading="lazy"></p>
 <p><span class="math inline">\(\mathcal L_C(\phi)\)</span>
 负责<strong>评价动作</strong>, <span class="math inline">\(\mathcal
 L_A(\theta)\)</span> 根据评价结果<strong>有选择地模仿动作</strong><br />
@@ -4602,7 +4602,7 @@ D}[Q(\mathbf s, \mathbf a)] \\
 \left[ (Q(\mathbf s, \mathbf a) - r(\mathbf s, \mathbf a) + \mathbb
 E_{\pi}[Q(\mathbf s&#39;, \mathbf a&#39;)])^2 \right]
 \]</span> <img
-src="https://files.seeusercontent.com/2026/08/12/tG8k/234cd37c62e6f045c8005147dd3b79aa.png" /></p>
+src="https://files.seeusercontent.com/2026/08/12/tG8k/234cd37c62e6f045c8005147dd3b79aa.png" decoding="async" loading="lazy"></p>
 <p>一边压低, 一边撑高; 如果所有大 Q 值对应于数据的动作, 两项应该会平衡;
 如果大 Q 值不在数据上, 则会被压低, 而数据 Q 值则会被抬起来<br />
 我们可以保证, <span class="math inline">\(\forall \mathbf s \in \mathcal
@@ -4697,7 +4697,7 @@ s_t, \mathbf a_t\)</span> 都拆成了 <span class="math inline">\(s_t^1,
 s_t^2, \dots\)</span>​ 这样的单维度<br />
 我们使用一个表达能力强大的模型 —— Transformer</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/13/ol5X/2a2bafd3368d59ae07373a8cd25c02ec.png" /></p>
+src="https://files.seeusercontent.com/2026/08/13/ol5X/2a2bafd3368d59ae07373a8cd25c02ec.png" decoding="async" loading="lazy"></p>
 <p>我们训练的目标是尽可能拟合离线数据,
 而选择高回报行为主要发生在<strong>推理阶段的搜索过程</strong>中<br />
 当训练完成后, 环境给出当前状态 <span class="math inline">\(\mathbf
@@ -4725,7 +4725,7 @@ s_1, \mathbf a_1, \dots, \hat R_T, \mathbf s_T, \mathbf a_T)\)</span>,
 这里的 <span class="math inline">\(\hat R\)</span> 是 reward-to-go,
 即带折扣的未来奖励和</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/13/M9tj/6820364950fd0ee81b9341d00fd9cfaf.png" /></p>
+src="https://files.seeusercontent.com/2026/08/13/M9tj/6820364950fd0ee81b9341d00fd9cfaf.png" decoding="async" loading="lazy"></p>
 <p>训练 DT 时, 每次采集一批长度为 <span class="math inline">\(K\)</span>​
 的序列, 以有监督学习模式来训练, 用 <span
 class="math inline">\(a_t\)</span> 之前的序列来预测 <span
@@ -4733,7 +4733,7 @@ class="math inline">\(a_t\)</span>​, 然后用平均的 L2 loss,</p>
 <p>测试时, 需要在最开始额外估计一个策略能达到的最大 return, 作为第一步的
 reward-to-go, 后面的 reward-to-go 由上一步的累计奖励减掉估计奖励得到,
 简单到都能给出完整的伪代码</p>
-<p><img src="https://files.seeusercontent.com/2026/08/13/nd2W/d145432d19fbe483d6e7f4da074af3ab.png"  /></p>
+<p><img src="https://files.seeusercontent.com/2026/08/13/nd2W/d145432d19fbe483d6e7f4da074af3ab.png" decoding="async" loading="lazy"></p>
 <p>我的理解是, DT 实际上使用了初始设置的
 reward-to-go(这个玄妙的超参一般设置的要比数据中的最佳回报高一点, 多则有
 extrapolation error 了), 从而达到了 IQL 的效果,
@@ -4862,7 +4862,7 @@ action, 还要带梯度计算以完成梯度下降,
 对于更大的模型设计可能训练过程会相当痛苦</p>
 <p>看实验测试一片 SOTA, 吓哭了</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/13/zsL4/3c901f98e7b424cb22ee9065d985d8a0.png" /></p>
+src="https://files.seeusercontent.com/2026/08/13/zsL4/3c901f98e7b424cb22ee9065d985d8a0.png" decoding="async" loading="lazy"></p>
 <hr />
 <p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2304.10573">IDQL</a> 是 IQL 和上面的
 DQL(指 Diffusion Q-Learning 而不是 Double Q-Learning) 生下的产物</p>
@@ -4901,7 +4901,7 @@ class="math inline">\(\pi_\theta(\mathbf a|\mathbf s)\)</span> 采样
 a_K\}\)</span>, 然后选择 <span class="math inline">\(\arg \max_{\mathbf
 a_k} \hat Q_{\phi}(\mathbf s, \mathbf a_k)\)</span> 动作, 总流程如下</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/13/D1pg/5221e8e519f831eea911b89ebacc3a00.png" /></p>
+src="https://files.seeusercontent.com/2026/08/13/D1pg/5221e8e519f831eea911b89ebacc3a00.png" decoding="async" loading="lazy"></p>
 <article class="message message-immersive is-primary">
 <div class="message-body">
 <p><i class="fas fa-book-open mr-2"></i> IDQL 做出了理论与工程的突破,
@@ -4921,7 +4921,7 @@ class="math inline">\(\pi_{\text{imp}}\)</span>​<br />
 <p>测评一下, IDQL 又成为新 SOTA 了, 这里的 IDQL-1
 说明每个域只能调整一个超参数的情况, 不用调参总是好的</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/13/mH9g/c90adbca6f694aa876ed0a4d88e6c2a7.png" /></p>
+src="https://files.seeusercontent.com/2026/08/13/mH9g/c90adbca6f694aa876ed0a4d88e6c2a7.png" decoding="async" loading="lazy"></p>
 <p>我在此留下一个开放式问题, 为什么不直接让 diffusion 拟合最终的
 advantage-weighted 策略, 而是将最优策略解耦成 behavior policy 和 weight
 的相乘, 分别训练 behavior policy 和 (下游任务的 <span
@@ -5092,7 +5092,7 @@ s&#39;|\mathbf s, \mathbf a) V^\pi(\mathbf s&#39;)\)</span>,
 或写成向量式 <span class="math inline">\(Q^\pi = r+\gamma
 PV^\pi\)</span></p>
 <p><img
-src="https://files.seeusercontent.com/2026/07/11/0zLl/70fc6eab55172fbab3813520d6c5ab9e.png" /></p>
+src="https://files.seeusercontent.com/2026/07/11/0zLl/70fc6eab55172fbab3813520d6c5ab9e.png" decoding="async" loading="lazy"></p>
 <p>这里的 <span class="math inline">\(\Pi\)</span> 是策略矩阵, <span
 class="math inline">\(V^\pi = \Pi Q^\pi\)</span>,
 在数学上等价于根据策略对动作求期望, 得到了状态价值函数 <span
@@ -5196,7 +5196,7 @@ class="math inline">\(2\epsilon\)</span>​ 误差</p>
 <p>上面的部分属于 model-based RL, 那么 model-free RL
 的理论主要关心什么问题呢？</p>
 <p>曾几何时, 我们有 fitted Q-iteration, 被打入了不收敛的冷宫</p>
-<p><img src="https://files.seeusercontent.com/2026/04/03/V0cq/988025e3a8d3a7c76df106efdb74aecc.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/03/V0cq/988025e3a8d3a7c76df106efdb74aecc.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>现在, 我们重新捞出来看看能不能有点理论的油水<br />
 Q-iteration 的核心是 <span class="math inline">\(Q_\phi(\mathbf{s},
 \mathbf{a}) = r(\mathbf{s}, \mathbf{a}) + \gamma \max_{\mathbf{a}&#39;}
@@ -5336,7 +5336,7 @@ class="math inline">\(\pi_\theta(\mathbf a|\mathbf s)\)</span>
 models)</strong>, 隐变量是那些既不是 query variable 也不是 evidence
 variable 的变量, 它们需要被积分掉</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/24/Kg4o/7150c85588732bc3b4374d6abe7f5643.png" /></p>
+src="https://files.seeusercontent.com/2026/09/24/Kg4o/7150c85588732bc3b4374d6abe7f5643.png" decoding="async" loading="lazy"></p>
 <p>我们想找到一个能准确拟合上面三个簇的分布,
 在这里我们的隐变量是三值之一的分类离散变量</p>
 <p><span class="math inline">\(p(y|x) = \sum_z p(y|x,z)p(z|x)\)</span>​
@@ -5350,7 +5350,7 @@ class="math inline">\(p(z)\)</span><br />
 class="math inline">\(\mathcal N(\mu_{nn}(z),
 \sigma_{nn}(z))\)</span></p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/24/B2db/8139e533302326e5f470416e27b60f7d.png" /></p>
+src="https://files.seeusercontent.com/2026/09/24/B2db/8139e533302326e5f470416e27b60f7d.png" decoding="async" loading="lazy"></p>
 <p>于是我们可以用 "简单" 的 <span class="math inline">\(p(x|z),
 p(z)\)</span> 来表示 <span class="math inline">\(p(x)\)</span>, 有 <span
 class="math inline">\(p(x) = \int p(x|z)p(z) \mathrm dz\)</span>,
@@ -5415,7 +5415,7 @@ E_{x \sim q(x)} \left[ \log \dfrac{q(x)}{p(x)} \right] =  -\mathbb E_{x
 <p>RHS 就是 <strong>ELBO(Evidence Lower Bound, 证据下界)</strong>,
 我们提过这个了</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/24/Lj5n/297ff0f86aa381a6d2926eff47f503d1.png" /></p>
+src="https://files.seeusercontent.com/2026/09/24/Lj5n/297ff0f86aa381a6d2926eff47f503d1.png" decoding="async" loading="lazy"></p>
 <p>直观理解 ELBO 对分布的塑造, max log p 会造成概率的尖峰,
 然后最大化熵会稍稍 "展开" 尖峰使其没那么尖锐</p>
 <p>ELBO 指出 <span class="math inline">\(\log p(x_i) \geq \mathbb E_{z
@@ -5447,7 +5447,7 @@ class="math inline">\(q\)</span> 来提高下界, 再学习 <span
 class="math inline">\(p\)</span>, 轮流转, 这是传统的 EM algorithm<br />
 深入工程部分发现坑会很多</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/24/eUd9/c25ffc0d1fe23a873d8514d7ef1c4574.png" /></p>
+src="https://files.seeusercontent.com/2026/09/24/eUd9/c25ffc0d1fe23a873d8514d7ef1c4574.png" decoding="async" loading="lazy"></p>
 <p>我可以取 <span class="math inline">\(x_i\)</span>, 我可以对于 <span
 class="math inline">\(z \sim q_i(z)\)</span> 然后得到 <span
 class="math inline">\(\mathcal L_i(p,q_i)\)</span>, 然后我可以做 <span
@@ -5545,11 +5545,11 @@ p(z))\)</span>, 有 <span class="math display">\[
 \]</span> 其中前项可以反向传播, 后项因为是对两个高斯分布做 KL 散度,
 本质是解析的, 也能反向传播</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/25/fx8E/12342567ed5e930b84af3cc1e6468d51.png" /></p>
+src="https://files.seeusercontent.com/2026/09/25/fx8E/12342567ed5e930b84af3cc1e6468d51.png" decoding="async" loading="lazy"></p>
 <p>上面就是整个的计算图</p>
 <hr />
 <p><img
-src="https://files.seeusercontent.com/2026/09/25/bf7I/f458d53d1b84b2e6d365af84106137ed.png" /></p>
+src="https://files.seeusercontent.com/2026/09/25/bf7I/f458d53d1b84b2e6d365af84106137ed.png" decoding="async" loading="lazy"></p>
 <p>现在才开始讲 VAE 是不是有点晚了？上面就是 VAE 的模型架构,
 计算图还是那个计算图, 最终目标可以写成 <span class="math display">\[
 \max_{\theta, \phi} \frac{1}{N} \sum_i \log p_\theta(x_i |
@@ -5575,7 +5575,7 @@ class="math inline">\(p(y|x)\)</span> 可能是复杂多峰的, 并且我们不�
 \mathcal L_i = \mathbb E_{z \sim q_\phi(z|x_i, y_i)} [\log p_\theta
 (y_i|x_i,z) + \log p(z|x_i)] + \mathcal H(q_\phi(z|x_i, y_i))
 \]</span> <img
-src="https://files.seeusercontent.com/2026/09/25/S9ui/2c657016480559a3ad872d63b447392c.png" /></p>
+src="https://files.seeusercontent.com/2026/09/25/S9ui/2c657016480559a3ad872d63b447392c.png" decoding="async" loading="lazy"></p>
 <p>架构也没有太大变化, 多模态模仿学习中常用这一类方法</p>
 <hr />
 <p>再复杂一点, 我们要上 State space models 了, 从 单帧静态隐变量 扩展到
@@ -5585,7 +5585,7 @@ z_T\)</span> 当成 hidden state, 把整个观测序列 <span
 class="math inline">\(o_1, o_2, \dots, o_T\)</span> 当成 <span
 class="math inline">\(\mathbf x\)</span></p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/25/5llJ/cfb5a36713d5f23759d8b05faaaf032c.png" /></p>
+src="https://files.seeusercontent.com/2026/09/25/5llJ/cfb5a36713d5f23759d8b05faaaf032c.png" decoding="async" loading="lazy"></p>
 <p>我们的 prior 不再独立, 除了第一步从高斯中来, 剩下的都是 dynamic
 得到的<br />
 我们的 decoder 是独立的, 但 encoder 不是,
@@ -5596,7 +5596,7 @@ target="_blank" rel="noopener" href="https://arxiv.org/abs/2310.09615">STORM</a>
 Z_t\)</span>,
 这可能也算一种解耦？不过这样可能会丧失一点时间维度上的表示力</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/25/v0aC/d8f4f3f2243d0a948c28e10a151635bb.png" /></p>
+src="https://files.seeusercontent.com/2026/09/25/v0aC/d8f4f3f2243d0a948c28e10a151635bb.png" decoding="async" loading="lazy"></p>
 <h2 id="lecture-19-控制与推理">Lecture 19 控制与推理</h2>
 <p>本节研究如何将控制问题重新定义为推理问题, 有点困难,
 有一些看上去很吓人的东西, <a
@@ -5614,7 +5614,7 @@ stochastic<br />
 我们可以证明在 fully-observed 的情况下, 最优策略是确定性策略; 需要一点
 "无伤大雅的随机性"</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/25/6Yrp/d2adba8c1812d679daee78b7d1e0acad.png" /></p>
+src="https://files.seeusercontent.com/2026/09/25/6Yrp/d2adba8c1812d679daee78b7d1e0acad.png" decoding="async" loading="lazy"></p>
 <p>下面重新建模一下 RL 问题,
 不加解释的引入一些定义(为了某种最终数学理论优雅 soft), 可能有点抽象</p>
 <p>我们的目标还是建模 <span class="math inline">\(p(\mathbf s_{1:T},
@@ -5851,7 +5851,7 @@ class="math inline">\(\mathbf s_t\)</span> 改变, 只是归一化常数<br />
 class="math inline">\(\mathcal O_{1:T}\)</span>
 下的出现概率与反向消息乘以正向消息成正比</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/25/nVr6/be76552e6375137cf86e6dac6edf43d9.png" /></p>
+src="https://files.seeusercontent.com/2026/09/25/nVr6/be76552e6375137cf86e6dac6edf43d9.png" decoding="async" loading="lazy"></p>
 <p>反向消息和正向消息各自构成一个锥形代表能够达到目标的状态,
 状态边缘分布就是两个锥形的交集,
 代表能够从起点达到终点的那些可能状态<br />
@@ -5897,7 +5897,7 @@ a_{1:T} | \mathcal O_{1:T})\)</span> 或是 <span class="math inline">\(p(
 <span class="math inline">\(p(\mathbf a_{t} | \mathbf s_{t}, \mathcal
 O_{1:T})\)</span>​</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/25/Ef1d/aa7888056c9c92cf544380d7dd10c78a.png" /></p>
+src="https://files.seeusercontent.com/2026/09/25/Ef1d/aa7888056c9c92cf544380d7dd10c78a.png" decoding="async" loading="lazy"></p>
 <p>另一种看法为 <span class="math inline">\(p(\mathbf s_{t+1} | \mathbf
 s_t, \mathbf a_t, \mathcal O_{1:T}) \neq p(\mathbf s_{t+1} | \mathbf
 s_t, \mathbf a_t)\)</span>​, 我们本质上改变了动态, 但动态是不能变的</p>
@@ -5923,7 +5923,7 @@ s_t)\)</span>, 这就是轨迹分布, 下文 <span
 class="math inline">\(q\)</span> 变 <span
 class="math inline">\(\pi\)</span> 的时候不要惊讶</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/25/uxN5/7e1cac218ed338467fb018ed5a26d800.png" /></p>
+src="https://files.seeusercontent.com/2026/09/25/uxN5/7e1cac218ed338467fb018ed5a26d800.png" decoding="async" loading="lazy"></p>
 <p>还记得吗? <span class="math inline">\(\underbrace{\log p(\mathcal
 O_{1:T})}_{\text{与 q 无关}} = \underbrace{ \mathbb E_{\tau\sim q}
 \left[\log p(\tau,\mathcal O_{1:T})-\log q(\tau)\right] }_{\mathcal
@@ -6064,7 +6064,7 @@ class="math inline">\(q(\mathbf{a}_t | \mathbf{s}_t) \propto
 可以拉格朗日慢慢推来验证这个<br />
 这就是 soft value iteration 算法</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/25/xxQ5/0c4b5c27fd7c4c7953c97e4d0a2936d7.png" /></p>
+src="https://files.seeusercontent.com/2026/09/25/xxQ5/0c4b5c27fd7c4c7953c97e4d0a2936d7.png" decoding="async" loading="lazy"></p>
 <p>额, 总结就是动作可以 soft max, 转移不行, 这样做才是对的,
 为了证明这样是对的, 我们推了一车式子, 我感觉 ELBO 的思路很好,
 剩下的有点水到渠成的意味, 如果是 RL 大师可能不用推式子就能看出来<br />
@@ -6112,7 +6112,7 @@ class="math inline">\(V=\alpha \log \int_a
 <p>我们可以从 soft value iteration 推出 soft Q-learning 和 SAC</p>
 <p>soft Q-learning 用一张图片就能概括了</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/25/iF9l/509afe39ee041b2452c00c995d0a8b65.png" /></p>
+src="https://files.seeusercontent.com/2026/09/25/iF9l/509afe39ee041b2452c00c995d0a8b65.png" decoding="async" loading="lazy"></p>
 <p>这里的 <span class="math inline">\(\int\)</span>
 就说明了要<strong>遍历所有的 action</strong><br />
 在大型连续空间中, 用 <span class="math inline">\(\pi_\theta\)</span>
@@ -6189,12 +6189,12 @@ correction</p>
 <p>soft optimality 改善了探索, 防止了熵崩溃, 更容易针对更具体的任务微调,
 更好的鲁棒性, 可以简单转变为 hard optimality, 可以较好模拟人类行为</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/27/bG5j/54db998eb8c9729f44b3ef59bfbf2c82.png" /></p>
+src="https://files.seeusercontent.com/2026/09/27/bG5j/54db998eb8c9729f44b3ef59bfbf2c82.png" decoding="async" loading="lazy"></p>
 <hr />
 <p>Soft Q-learning 会同时探索两个相近的假设,
 直到我们最终确定哪个更好为止</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/27/Im5v/e5961306818bff8e0d588c5c2907c07e.png" /></p>
+src="https://files.seeusercontent.com/2026/09/27/Im5v/e5961306818bff8e0d588c5c2907c07e.png" decoding="async" loading="lazy"></p>
 <p>这种方法十分适合预训练, 我们可以学会以多种不同的方式完成任务,
 当任务改变时就只要少量的 finetune 就可以重新适应了, 而 DDPG
 有一个先忘记-后学习的过程</p>
@@ -6206,7 +6206,7 @@ src="https://files.seeusercontent.com/2026/09/27/Im5v/e5961306818bff8e0d588c5c29
 class="math inline">\(D_{\mathrm{KL}}(\pi_\theta(\cdot | \mathbf
 s)\|\pi^*(\cdot | \mathbf s))\)</span>​</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/27/bvW1/12e8d76514c5892d4b061c74f5d73c58.png" /></p>
+src="https://files.seeusercontent.com/2026/09/27/bvW1/12e8d76514c5892d4b061c74f5d73c58.png" decoding="async" loading="lazy"></p>
 <p>有一个 trick 是 Automatic temperature adjustment, SAC 很容易受到温度
 <span class="math inline">\(\alpha\)</span> 的影响, 随着训练的进行,
 我们的 policy 的随机性应当随之下降, 因此有一个自动调整的方法</p>
@@ -6221,7 +6221,7 @@ E_{a\sim\pi(\cdot|s)}\left[Q(s,a)-\alpha\log\pi(a|s)\right]
 叫做策略熵, 一般 <span class="math inline">\(\mathcal H_0=-\dim(\mathcal
 A)\)</span>, 有总流程</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/27/6oDo/v2-c65b59c151260cdf64439a03a1656.jpg" /></p>
+src="https://files.seeusercontent.com/2026/09/27/6oDo/v2-c65b59c151260cdf64439a03a1656.jpg" decoding="async" loading="lazy"></p>
 <p><span class="math inline">\(J_Q(\theta)\)</span> 是最小化 bellman
 误差出来的, 大概长 <span class="math inline">\(\mathbb E[\frac{1}{2}(Q -
 (r+\gamma \mathbb EV))^2]\)</span> 这样<br />
@@ -6242,7 +6242,7 @@ Gradient Algorithms | Lil'Log</a><br />
 target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1960392908566929656">强化学习(RL)
 Pass@K 优化 &amp; LLM探索</a>, 感觉和 max-entropy 很像啊</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/28/vJk8/v2-1e49d6edc3d2015e47c5d99b3a809.jpg" /></p>
+src="https://files.seeusercontent.com/2026/09/28/vJk8/v2-1e49d6edc3d2015e47c5d99b3a809.jpg" decoding="async" loading="lazy"></p>
 <blockquote>
 <p><strong>LLM 经过预训练后, 其策略分布已经非常 "尖锐"(peaked),
 即对某些输出有极强的偏好。当从这样一个尖锐的分布开始进行强化学习时,
@@ -6321,7 +6321,7 @@ s_t)\)</span> 更本质的东西</p>
 的奖励", 但这不是我们想要的专家目的</p>
 <p>我们正式定义 Inverse RL 如下</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/06/9Unm/cdee573c550417f8f69cdd75c28854b4.png" /></p>
+src="https://files.seeusercontent.com/2026/10/06/9Unm/cdee573c550417f8f69cdd75c28854b4.png" decoding="async" loading="lazy"></p>
 <p>首先还是 states space 和 action space<br />
 我们得到了最优策略 <span class="math inline">\(\pi^\star\)</span>
 采样过的 <span class="math inline">\(\{ \tau_i \}\)</span>,
@@ -6467,7 +6467,7 @@ r_\psi(\tau)]
 target="_blank" rel="noopener" href="https://cdn.aaai.org/AAAI/2008/AAAI08-227.pdf">MaxEnt
 IRL</a>(最大熵逆强化学习), 是 AAAI 2008 提出的老东西了</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/06/Dv1o/8a6e58de3e748003f4108b3f004ba2f0.png" /></p>
+src="https://files.seeusercontent.com/2026/10/06/Dv1o/8a6e58de3e748003f4108b3f004ba2f0.png" decoding="async" loading="lazy"></p>
 <p>双重积分可以用样本平均做, 当循环收敛时,
 可以生成最能解释专家潜在次优行为的奖励<br />
 主要适用于规模较小的离散状态—动作空间</p>
@@ -6518,10 +6518,10 @@ w_j &amp;= \frac{p(\tau) \exp(r_\psi(\tau_j))}{C \pi(\tau_j)} \\
 target="_blank" rel="noopener" href="https://proceedings.mlr.press/v48/finn16.pdf">Guided Cost
 Learning(GCL)</a> 的思想, 最后 reward 和 policy 都一起学出来了</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/06/4Zzp/3138ed54729658499709423416b93498.png" /></p>
+src="https://files.seeusercontent.com/2026/10/06/4Zzp/3138ed54729658499709423416b93498.png" decoding="async" loading="lazy"></p>
 <hr />
 <p><img
-src="https://files.seeusercontent.com/2026/10/06/L2gi/c4677d644910060d2c6480f08420b132.png" /></p>
+src="https://files.seeusercontent.com/2026/10/06/L2gi/c4677d644910060d2c6480f08420b132.png" decoding="async" loading="lazy"></p>
 <p>如果我们一边通过最大化 reward 差的方式来学 <span
 class="math inline">\(\psi\)</span>, 一边通过使得 <span
 class="math inline">\(\psi\)</span> 更难区分 <span
@@ -6529,7 +6529,7 @@ class="math inline">\(\pi_\theta\)</span> 与 <span
 class="math inline">\(\pi^\star\)</span> 的方式来学 policy, 那这不就是
 <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1406.2661">GAN</a> 的思想吗？</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/06/S2os/9773280bc51a5993596a00bee0521c20.png" /></p>
+src="https://files.seeusercontent.com/2026/10/06/S2os/9773280bc51a5993596a00bee0521c20.png" decoding="async" loading="lazy"></p>
 <p>在 GAN 中, discriminator(判别器) <span class="math inline">\(D_\psi =
 p_\psi (\text {real} | \mathbf x)\)</span> 试图区分生成的数据与真实数据,
 有 <span class="math display">\[
@@ -6564,11 +6564,11 @@ D_\psi(\tau)] + \mathbb E_{\tau \sim \pi_\theta} [\log (1-D_\psi(\tau))]
 class="math inline">\(Z\)</span> 的一部分, 这里的 <span
 class="math inline">\(Z\)</span> 可以通过优化得到</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/06/3Jwx/85aaa282339288c34190dbb2ddccc786.png" /></p>
+src="https://files.seeusercontent.com/2026/10/06/3Jwx/85aaa282339288c34190dbb2ddccc786.png" decoding="async" loading="lazy"></p>
 <p>以上就是 Inverse RL as GAN 的思想</p>
 <p>我们可以通过实验看到 Inverse RL 不是模仿动作而是模仿意图</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/06/Ff2q/5a0d23512e5129ddd82965084c73fc53.png" /></p>
+src="https://files.seeusercontent.com/2026/10/06/Ff2q/5a0d23512e5129ddd82965084c73fc53.png" decoding="async" loading="lazy"></p>
 <p>这里的例子是, 如果我们从四足蜘蛛行走中学习了 reward function,
 将其应用在双足行走的蜘蛛上, 它仍然能够学会往正确的方向走<br />
 Inverse RL 将 reward 与 dynamic 解耦了, 防止了模仿学习的一锅炖</p>
@@ -6594,7 +6594,7 @@ s_t\)</span>, 这也代表着之前的观测还能提供更多的信息,
 <figure>
 <img
 src="https://files.seeusercontent.com/2026/10/06/e8Ch/e248d6d804bd5fa513335c9617d6e33c.png"
-alt="鼠鼠探头.png" />
+alt="鼠鼠探头.png" decoding="async" loading="lazy">
 <figcaption aria-hidden="true">鼠鼠探头.png</figcaption>
 </figure>
 <p>二是 stochastic optimal policies, 我们可以证明 POMDP
@@ -6602,7 +6602,7 @@ alt="鼠鼠探头.png" />
 <p>之前我们学的哪些 RL 算法能够处理 POMDP？哪些 RL 算法在 <span
 class="math inline">\(\mathbf s \to \mathbf o\)</span> 下依然有效？</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/06/In9y/f65ece3a1e49c48edc3b9e076fef692c.png" /></p>
+src="https://files.seeusercontent.com/2026/10/06/In9y/f65ece3a1e49c48edc3b9e076fef692c.png" decoding="async" loading="lazy"></p>
 <p>我们主要研究 Policy Gradient, Value-based methods 与 Model-based RL
 在 <span class="math inline">\(\mathbf o \to \mathbf s\)</span>
 下是否有效(这差不多也覆盖所有 RL 算法类型了……), 在进行更换后,
@@ -6708,7 +6708,7 @@ Qwen 确实很厉害, 文章三个月一发, Loss function 越来越长,
 不是来关心 Super-advanced Policy Optimization 的</p>
 <p>Language Model 就是一个预测 next token 的模型</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/xrU7/1cfcaee4f10268de74c6184f02e84845.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/xrU7/1cfcaee4f10268de74c6184f02e84845.png" decoding="async" loading="lazy"></p>
 <p>Language Model 乍一看和 RL 没啥关系, 它不满足 MDP,
 通过监督学习训练<br />
 RL 的用处在于希望 LLM 不仅仅匹配训练数据, 而是最大化某种 reward
@@ -6754,11 +6754,11 @@ r(\mathbf {s},\mathbf {a}_i),
 \]</span> 我们喜欢用 PPO-like 的估计, 因为采样太耗时了, 评估奖励也很贵,
 于是有了一个简单算法</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/wb0B/7a2d9c59bdc6a0e6cbbd7aadc13334d5.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/wb0B/7a2d9c59bdc6a0e6cbbd7aadc13334d5.png" decoding="async" loading="lazy"></p>
 <p>reward 是什么？它如何为所有可能的 LLM 结果打分？当我们询问一个问题时,
 答案不仅有对错之分, 还有各种语气/简洁度等等的打分</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/t0tO/1a81e38ff45d2c96565bbb891af08aa6.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/t0tO/1a81e38ff45d2c96565bbb891af08aa6.png" decoding="async" loading="lazy"></p>
 <p>我们可能要先从监督学习中学习 reward model, 需要很多人来标注,
 不过主观的得分分配因人而异也不准确, 这里的做法是利用人类偏好,
 人类无法精确给出 "A 满分, B 蛋分" 这样的评价, 但是人类可以给出 "A 比 B
@@ -6777,7 +6777,7 @@ a_2)) \quad 其中\; \sigma(x) = \frac{1}{1+e^{-x}}
 \end{aligned}
 \]</span> 然后做最大似然学习来训练奖励模型, 总流程为</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/zgK9/a275dcbfcceae928122bdfaf55b56977.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/zgK9/a275dcbfcceae928122bdfaf55b56977.png" decoding="async" loading="lazy"></p>
 <p>这个 Step 5 的展开可以见上文</p>
 <p>进一步的问题在于人类标注偏好的昂贵, 需要经常的 label, 不然会变成
 Offline RL 然后 overestimate</p>
@@ -6828,11 +6828,11 @@ model, 涉及到多步决策的问题, 我们无法简单地对单步进行一�
 a_5, \mathbf o_1, \dots, \mathbf o_4\}\)</span> 这样, action space
 变小了, 但是 horizon 变得特别长</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/Pi0x/c402af5edfe1523e1770fda814695007.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/Pi0x/c402af5edfe1523e1770fda814695007.png" decoding="async" loading="lazy"></p>
 <p>对于 value-based RL with per-utterance time step, 我们要学习一个
 <span class="math inline">\(Q(\mathbf s, \mathbf a)\)</span></p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/o6Xe/de79098d4ec6ecf1ce370cdda6d40444.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/o6Xe/de79098d4ec6ecf1ce370cdda6d40444.png" decoding="async" loading="lazy"></p>
 <p>其中 <span class="math inline">\(\mathbf s\)</span> 是之前所有对话的
 stack, 然后有 candidate action <span class="math inline">\(\mathbf
 a\)</span>, 这个 <span class="math inline">\(\mathbf a\)</span>
@@ -6894,7 +6894,7 @@ Features/hidden states 抽象一层来告诉我们 representation 的信息,
 <p>Transfer learning 把已有任务中学到的知识用于新任务, 这里的 "任务" 在
 RL 的语义中就是 MDP</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/vLr1/f84d6c921aa96cac06f1ad72ba251f05.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/vLr1/f84d6c921aa96cac06f1ad72ba251f05.png" decoding="async" loading="lazy"></p>
 <p>我们主要考虑在 target domain 上的表现, 可以用 "shot" 来衡量, 0-shot
 真是超天才的发挥, 我怀疑这属于 target domain 被 source domain
 的复杂度完全覆盖了, 给我一个 few shot 的方法我就很满足了</p>
@@ -6912,7 +6912,7 @@ task 所需要的能力通常会处于其他 task 要求能力的凸包内;
 上就要采用妙妙的学习方法</p>
 <p>在 CV 中, 一般的迁移学习就是 Pretraining + Finetuning</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/Je3p/6163cb6adf3a9ccfed8c25d6067a2b07.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/Je3p/6163cb6adf3a9ccfed8c25d6067a2b07.png" decoding="async" loading="lazy"></p>
 <p>主要的问题有:<br />
 <strong>Domain shift:</strong> source domain 的知识不能很好的帮助在
 target domain 工作, 例如我在 gta5
@@ -6927,7 +6927,7 @@ assumption</strong><br />
 我们直接认为, 既然主要 dynamic 相同, 一些小 gap 是无关紧要的, 例如 gta5
 游戏中虚假错误的光影不会影响到它的开车手感(可能举赛车模拟器的例子更恰当？或者有人玩过欧卡吗？)</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/5Stt/862a076d00cf80ffe60a4a664ec3fc6e.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/5Stt/862a076d00cf80ffe60a4a664ec3fc6e.png" decoding="async" loading="lazy"></p>
 <p>正式定义一下: <span class="math inline">\(p(x)\)</span>​
 在两个域中是不同的, 但 <span class="math inline">\(z=f(x)\)</span>​
 特征化后 <span class="math inline">\(p(z)\)</span>​ 是相同的,
@@ -6948,7 +6948,7 @@ source domain 可以做到, 但是在 target domain 中做不到的行为</p>
 <p>例如, source domain 有一堵墙, target domain 没有, 那么可以用 <span
 class="math inline">\(-\infty\)</span> reward 来构造同样一堵墙出来</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/7lAj/67891475b3b810a956db53abe64f3c1e.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/7lAj/67891475b3b810a956db53abe64f3c1e.png" decoding="async" loading="lazy"></p>
 <p>一般用 <span class="math inline">\(\tilde r(\mathbf s,\mathbf
 a,\mathbf s&#39;) = r(\mathbf s,\mathbf a,\mathbf s&#39;)+ \underbrace{
 \log\dfrac{p_{\mathrm{target}}(\mathbf s&#39;\mid \mathbf s,\mathbf a)}
@@ -6980,7 +6980,7 @@ robustness 也提高了</p>
 学习多任务需要 joint MDP, 这个 joint 的意思就是每个 episode
 随机挑一个任务训练, 最后还是最大化各任务回报的加权平均, 其实挺没意思</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/hbO3/f33a19ea81f2880ff9504640d909f3a1.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/hbO3/f33a19ea81f2880ff9504640d909f3a1.png" decoding="async" loading="lazy"></p>
 <blockquote>
 <p>我想到一个之前没想过的问题, 即使每个 episode
 的输入不同(传入了任务编号), 还是可能出现梯度冲突的情况,
@@ -7012,7 +7012,7 @@ class="math inline">\(x\)</span>, 读入整个 <span
 class="math inline">\(\mathcal D^{\mathrm{tr}}\)</span> 可以通过 RNN
 的方法进行</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/On1r/629aa2a312ca72760613a10a815ea9ae.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/On1r/629aa2a312ca72760613a10a815ea9ae.png" decoding="async" loading="lazy"></p>
 <p>相比于普通 learning 寻找最小化 <span class="math inline">\(\mathcal
 D^{\mathrm{tr}}\)</span> 上的 loss 的 <span
 class="math inline">\(\theta\)</span>,<br />
@@ -7029,7 +7029,7 @@ class="math inline">\(\mathcal D^{\mathrm{ts}}\)</span>
 <p>我们可以把 <span class="math inline">\(f_\theta\)</span>
 理解成一种插在 RNN 外部的东西</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/E9re/23e81c12c0ab313123074cc332a7be26.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/E9re/23e81c12c0ab313123074cc332a7be26.png" decoding="async" loading="lazy"></p>
 <p><span class="math inline">\(\theta\)</span> 就是 RNN 参数, 最后绞出来
 <span class="math inline">\(h_i\)</span> 这样的 hidden state,
 我们要训练的分类器 <span class="math inline">\(p_{\phi_i}\)</span> 由
@@ -7047,12 +7047,12 @@ class="math inline">\(\phi\)</span> 网络参数), 在不同任务间共享</p>
 class="math inline">\(\mathcal D\)</span> 换成 MDP <span
 class="math inline">\(\mathcal M\)</span></p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/Ml6r/b3ff701cfd1a750e0342ccc835ffaea8.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/Ml6r/b3ff701cfd1a750e0342ccc835ffaea8.png" decoding="async" loading="lazy"></p>
 <p>假设一系列 MDP <span class="math inline">\(\mathcal M_i \sim
 p(\mathcal M)\)</span> 来自一个 MDP 分布, 测试时也从相同分布抽取 <span
 class="math inline">\(\mathcal M_{\text{test}}\)</span></p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/q8Ho/1c81c728d2eeb0d16c0a0b8c01b93756.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/q8Ho/1c81c728d2eeb0d16c0a0b8c01b93756.png" decoding="async" loading="lazy"></p>
 <p>我们会学习 <span class="math inline">\(\phi_i = f_\theta(\mathcal
 M_{\text{test}})\)</span> 来评估 meta-learning 的效果</p>
 <p>Meta-learning 与上下文情境密切相关, 我们也可以把 <span
@@ -7072,10 +7072,10 @@ M_i)\)</span> ?<br />
 并且读取环境转移 <span class="math inline">\((\mathbf s_t,\mathbf
 a_t,\mathbf s_{t+1},r_t)\)</span></p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/nQt9/52b02180b4ab61d3b86843dfab265442.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/nQt9/52b02180b4ab61d3b86843dfab265442.png" decoding="async" loading="lazy"></p>
 <p>在训练时, 注意 hidden state 是跨 episode 保留的！</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/E5xw/97fe59cb78dc96702dbb27ac105cae22.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/E5xw/97fe59cb78dc96702dbb27ac105cae22.png" decoding="async" loading="lazy"></p>
 <p>同一任务的多个 episode 合起来, 称为一个 meta-episode, 而求和覆盖整个
 meta-episode<br />
 这意味着, 一个动作即使现在没得到奖励,
@@ -7102,7 +7102,7 @@ Meta-Learning(MAML)</a></p>
 class="math inline">\(\theta\)</span>
 使得从这个位置出发很容易到达各个任务的最优</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/m3Fr/dc658d892244d03ba6138b338a348e50.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/m3Fr/dc658d892244d03ba6138b338a348e50.png" decoding="async" loading="lazy"></p>
 <p>MAML 相较于 RNN 方法更加灵活, 每一步底层的 step 都有用, RNN 方法的
 <span class="math inline">\(\theta\)</span> 是在 meta-episode 上学习的,
 在任务内部 <span class="math inline">\(\theta\)</span> 是固定的,
@@ -7138,7 +7138,7 @@ o_{1:t})\)</span> 的方法, 那么和之前的 RNN Meta RL 并无什么大不�
 class="math inline">\(p(\mathbf z_t|\mathbf s_{1:t}, \mathbf a_{1:t},
 r_{1:t})\)</span>, 然后开干</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/9Fyv/5b3b5158dd3c571068d6d65d64947d53.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/9Fyv/5b3b5158dd3c571068d6d65d64947d53.png" decoding="async" loading="lazy"></p>
 <p>我们采样 <span class="math inline">\(z\)</span>, 然后 action
 来采样更多 context<br />
 这不是最优的, 因为 Posterior sampling 没有考虑为了消除任务不确定性,
@@ -7147,7 +7147,7 @@ src="https://files.seeusercontent.com/2026/10/07/9Fyv/5b3b5158dd3c571068d6d65d64
 <p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1903.08254">PEARL</a>
 的思想大概就是这样, 这里的符号很有迷惑性</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/q0Dr/705c144b1b1160bd66e6a416a312bdda.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/q0Dr/705c144b1b1160bd66e6a416a312bdda.png" decoding="async" loading="lazy"></p>
 <p>这里的 <span class="math inline">\(\phi\)</span> 是 inference network
 的参数, 也是 meta-learner 的一部分, 元学习太烧脑了,
 我得承认自己推不来这个, 把这部分的学习留给 <a
@@ -7163,7 +7163,7 @@ RL 算法来学习, 容易外推, 能力强, 但是复杂, 不适用于 off poli
 建模为推断问题, 容易 meta-overfitting, 不易优化,
 但是这个规约不是很优雅吗？</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/07/E5os/fdfce7020fbdb70cf1c06f5797828a34.png" /></p>
+src="https://files.seeusercontent.com/2026/10/07/E5os/fdfce7020fbdb70cf1c06f5797828a34.png" decoding="async" loading="lazy"></p>
 <p>这三种方法间有很多共性, inference 的 <span
 class="math inline">\(\mathbf z\)</span> 就是 RNN 的 <span
 class="math inline">\(\phi\)</span>, gradient based
@@ -7176,7 +7176,7 @@ learning 方式能推出来上面的全部东西,
 了)</p>
 <h2 id="lecture-23-挑战与开放问题">Lecture 23 挑战与开放问题</h2>
 <p><img
-src="https://files.seeusercontent.com/2026/08/06/0cVu/v2-56d66cee64d25163ccabcd79d7792.webp" /></p>
+src="https://files.seeusercontent.com/2026/08/06/0cVu/v2-56d66cee64d25163ccabcd79d7792.webp" decoding="async" loading="lazy"></p>
 <p>我们已经把上面的<strong>每一个节点</strong>都学完了, 我们更懂 RL
 了吗？还是有更多疑问？</p>
 <p>RL 面临着哪些挑战？那可多了去了</p>
@@ -7212,7 +7212,7 @@ policy 去利用(exploit)它, 可能造成严重的高估</p>
 <p>二是算法效率问题, 这里指 sample efficiency,
 这个前面画过一次光谱来展示</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/09/1xuW/d527f2ea14c3fcceb515f693f0679238.png" /></p>
+src="https://files.seeusercontent.com/2026/10/09/1xuW/d527f2ea14c3fcceb515f693f0679238.png" decoding="async" loading="lazy"></p>
 <p>这个图很老了, 我们认为最慢的是那些 gradient-free 方法, 里面全是黑盒,
 只能慢慢扰动出来一些信号<br />
 纯在线方法不复用数据, policy gradient 还是部分复用的(保留 K epochs),
@@ -7231,7 +7231,7 @@ Layer Networks for Self-Supervised RL</a> 的讲解<br />
 RL 总是在一个特定任务上用一个特定网络进行, 我们评估的是 performance
 而不是 generalization, 这可能与 RL 的 training loop 有关系</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/09/yqN8/67377eb62d5d366fb135f15396f207fd.png" /></p>
+src="https://files.seeusercontent.com/2026/10/09/yqN8/67377eb62d5d366fb135f15396f207fd.png" decoding="async" loading="lazy"></p>
 <p>在 RL 中, 我们要与环境反复交互, 这使得调整算法变得非常困难(你也不想把
 10000h 的数据全扔掉吧), Offline RL 的 Scale 已经部分成功了(DreamerV4,
 <span class="math inline">\(\pi_{0.x}\)</span>), 但感觉纯正的 RL
@@ -7266,7 +7266,7 @@ RL 在逆向物理方程: 建模问题, simulation, 运行 RL 算法得到方法
 但是做智慧工作只有几千年。RL 也许可以指导我们如何面对 unexpected 的系统,
 在所有学习框架下, RL 是最有可能完成这些问题的</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/09/jc1K/3fab14a59d275d105ff1b3df8de0117e.png" /></p>
+src="https://files.seeusercontent.com/2026/10/09/jc1K/3fab14a59d275d105ff1b3df8de0117e.png" decoding="async" loading="lazy"></p>
 <p>RL 在这里要面对的问题包括 reward 的缺失、持续的无法 reset
 的环境、如何保持 robust、如何使用过去经验和数据
 generalize、如何使用先验进行探索<br />
@@ -7275,7 +7275,7 @@ Robot 可能是 RL 理解世界的一个中间态？它和人类确实很像</p>
 去学习接咖啡, 如果它把杯子弄倒了就去学习捡杯子,
 然后再学习自主重新放置杯子这样……</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/09/dAa0/6bce3527a665bc281cc5fae3e24ce1c1.png" /></p>
+src="https://files.seeusercontent.com/2026/10/09/dAa0/6bce3527a665bc281cc5fae3e24ce1c1.png" decoding="async" loading="lazy"></p>
 <p>行为先验可以引导探索的策略, prior 会阻止 robot 进行特别愚蠢的学习</p>
 <p>对于 Hardness 的奖励, 我们希望 RL 给出超乎人类想象的, novel 的东西,
 只有一个足够复杂的世界才有这种可能性</p>
@@ -7286,7 +7286,7 @@ Deep Learning 依靠 large model, large data, large money 获得了成功<br />
 的目的是为了产生 decisions, 而 RL 的目的在于询问能做到多好来支撑
 decisions</p>
 <p><img
-src="https://files.seeusercontent.com/2026/10/09/4sWn/v2-5047f83401ca38e61ad1068ea5c20.jpg" /></p>
+src="https://files.seeusercontent.com/2026/10/09/4sWn/v2-5047f83401ca38e61ad1068ea5c20.jpg" decoding="async" loading="lazy"></p>
 <p>一条可能的路径是 big data + big Offline RL + downstream task<br />
 RL 的潜力很大, LLM 近几年后训练的伟大智商提升已经证明了这一点</p>
 <p>Deep Model 可以承载复杂性, 而 RL 可以推理决策<br />
@@ -7346,16 +7346,9 @@ engineer 与 trade-off 前进了一小步, 未来真正的智能能否从 RL 中
 这可能是我适应很慢的另一个特征, 也许我所有的问题,
 包括在这里无能愤怒的问题, 只要去问 AI 就能解决。</p>
 <p>总而言之, 感谢你的阅读, 不管你是人类还是 AI, 再见。</p>
-</div><div class="article-licensing box"><div class="licensing-title"><p>CS285 笔记</p><p><a href="https://frankly6.cn/2026/10/09/CS285-notes/">https://frankly6.cn/2026/10/09/CS285-notes/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Frankly6</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2026-10-09</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2026-10-09</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习, </a><a class="link-muted" rel="tag" href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习, </a><a class="link-muted" rel="tag" href="/tags/python/">python </a></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2026/10/09/CS285-homework/"><span class="level-item">CS285 Assignment 笔记</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Frankly6"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Frankly6</p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">文章</p><div><p class="title">8</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">分类</p><div><p class="title">3</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">标签</p><div><p class="title">7</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">总字数</p><div><p class="title">20.3W</p></div></div></a></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#lecture-1-介绍"><span class="level-left"><span class="level-item">1</span><span class="level-item">Lecture 1 介绍</span></span></a></li><li><a class="level is-mobile" href="#lecture-2-模仿学习"><span class="level-left"><span class="level-item">2</span><span class="level-item">Lecture 2 模仿学习</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#π0-补充"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">π0 补充</span></span></a></li></ul></li><li><a class="level is-mobile" href="#lecture-4-强化学习介绍"><span class="level-left"><span class="level-item">3</span><span class="level-item">Lecture 4 强化学习介绍</span></span></a></li><li><a class="level is-mobile" href="#lecture-5-策略梯度方法"><span class="level-left"><span class="level-item">4</span><span class="level-item">Lecture 5 策略梯度方法</span></span></a></li><li><a class="level is-mobile" href="#lecture-6-actor-critic-方法"><span class="level-left"><span class="level-item">5</span><span class="level-item">Lecture 6 Actor-critic 方法</span></span></a></li><li><a class="level is-mobile" href="#lecture-7-价值函数方法"><span class="level-left"><span class="level-item">6</span><span class="level-item">Lecture 7 价值函数方法</span></span></a></li><li><a class="level is-mobile" href="#lecture-8-深度强化学习方法"><span class="level-left"><span class="level-item">7</span><span class="level-item">Lecture 8 深度强化学习方法</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#tqc-补充"><span class="level-left"><span class="level-item">7.1</span><span class="level-item">TQC 补充</span></span></a></li><li><a class="level is-mobile" href="#nash-dqn-补充"><span class="level-left"><span class="level-item">7.2</span><span class="level-item">Nash DQN 补充</span></span></a></li></ul></li><li><a class="level is-mobile" href="#lecture-9-高级策略梯度方法"><span class="level-left"><span class="level-item">8</span><span class="level-item">Lecture 9 高级策略梯度方法</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#trpo-与-ppo-补充"><span class="level-left"><span class="level-item">8.1</span><span class="level-item">TRPO 与 PPO 补充</span></span></a></li><li><a class="level is-mobile" href="#dpo-与-grpo-补充"><span class="level-left"><span class="level-item">8.2</span><span class="level-item">DPO 与 GRPO 补充</span></span></a></li></ul></li><li><a class="level is-mobile" href="#lecture-10-最优控制与规划"><span class="level-left"><span class="level-item">9</span><span class="level-item">Lecture 10 最优控制与规划</span></span></a></li><li><a class="level is-mobile" href="#lecture-11-model-based-rl"><span class="level-left"><span class="level-item">10</span><span class="level-item">Lecture 11 Model-Based RL</span></span></a></li><li><a class="level is-mobile" href="#lecture-12-model-based-policy-learning"><span class="level-left"><span class="level-item">11</span><span class="level-item">Lecture 12 Model-Based
+</div><div class="article-licensing box"><div class="licensing-title"><p>CS285 笔记</p><p><a href="https://frankly6.cn/2026/10/09/CS285-notes/">https://frankly6.cn/2026/10/09/CS285-notes/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Frankly6</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2026-10-09</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2026-10-09</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/python/">python, </a><a class="link-muted" rel="tag" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习, </a><a class="link-muted" rel="tag" href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习 </a></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2026/10/09/CS285-homework/"><span class="level-item">CS285 Assignment 笔记</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.webp" alt="Frankly6" decoding="async" loading="lazy" width="128" height="128"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Frankly6</p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">文章</p><div><p class="title">8</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">分类</p><div><p class="title">3</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">标签</p><div><p class="title">7</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">总字数</p><div><p class="title">20.3W</p></div></div></a></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#lecture-1-介绍"><span class="level-left"><span class="level-item">1</span><span class="level-item">Lecture 1 介绍</span></span></a></li><li><a class="level is-mobile" href="#lecture-2-模仿学习"><span class="level-left"><span class="level-item">2</span><span class="level-item">Lecture 2 模仿学习</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#π0-补充"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">π0 补充</span></span></a></li></ul></li><li><a class="level is-mobile" href="#lecture-4-强化学习介绍"><span class="level-left"><span class="level-item">3</span><span class="level-item">Lecture 4 强化学习介绍</span></span></a></li><li><a class="level is-mobile" href="#lecture-5-策略梯度方法"><span class="level-left"><span class="level-item">4</span><span class="level-item">Lecture 5 策略梯度方法</span></span></a></li><li><a class="level is-mobile" href="#lecture-6-actor-critic-方法"><span class="level-left"><span class="level-item">5</span><span class="level-item">Lecture 6 Actor-critic 方法</span></span></a></li><li><a class="level is-mobile" href="#lecture-7-价值函数方法"><span class="level-left"><span class="level-item">6</span><span class="level-item">Lecture 7 价值函数方法</span></span></a></li><li><a class="level is-mobile" href="#lecture-8-深度强化学习方法"><span class="level-left"><span class="level-item">7</span><span class="level-item">Lecture 8 深度强化学习方法</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#tqc-补充"><span class="level-left"><span class="level-item">7.1</span><span class="level-item">TQC 补充</span></span></a></li><li><a class="level is-mobile" href="#nash-dqn-补充"><span class="level-left"><span class="level-item">7.2</span><span class="level-item">Nash DQN 补充</span></span></a></li></ul></li><li><a class="level is-mobile" href="#lecture-9-高级策略梯度方法"><span class="level-left"><span class="level-item">8</span><span class="level-item">Lecture 9 高级策略梯度方法</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#trpo-与-ppo-补充"><span class="level-left"><span class="level-item">8.1</span><span class="level-item">TRPO 与 PPO 补充</span></span></a></li><li><a class="level is-mobile" href="#dpo-与-grpo-补充"><span class="level-left"><span class="level-item">8.2</span><span class="level-item">DPO 与 GRPO 补充</span></span></a></li></ul></li><li><a class="level is-mobile" href="#lecture-10-最优控制与规划"><span class="level-left"><span class="level-item">9</span><span class="level-item">Lecture 10 最优控制与规划</span></span></a></li><li><a class="level is-mobile" href="#lecture-11-model-based-rl"><span class="level-left"><span class="level-item">10</span><span class="level-item">Lecture 11 Model-Based RL</span></span></a></li><li><a class="level is-mobile" href="#lecture-12-model-based-policy-learning"><span class="level-left"><span class="level-item">11</span><span class="level-item">Lecture 12 Model-Based
 Policy Learning</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#dreamer-补充"><span class="level-left"><span class="level-item">11.1</span><span class="level-item">Dreamer 补充</span></span></a></li></ul></li><li><a class="level is-mobile" href="#lecture-13-exploration-1"><span class="level-left"><span class="level-item">12</span><span class="level-item">Lecture 13 Exploration 1</span></span></a></li><li><a class="level is-mobile" href="#lecture-14-exploration-2"><span class="level-left"><span class="level-item">13</span><span class="level-item">Lecture 14 Exploration 2</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#her-补充"><span class="level-left"><span class="level-item">13.1</span><span class="level-item">HER 补充</span></span></a></li></ul></li><li><a class="level is-mobile" href="#lecture-15-offline-rl-1"><span class="level-left"><span class="level-item">14</span><span class="level-item">Lecture 15 Offline RL 1</span></span></a></li><li><a class="level is-mobile" href="#lecture-16-offline-rl-2"><span class="level-left"><span class="level-item">15</span><span class="level-item">Lecture 16 Offline RL 2</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#diffusion-rl-补充"><span class="level-left"><span class="level-item">15.1</span><span class="level-item">Diffusion RL 补充</span></span></a></li></ul></li><li><a class="level is-mobile" href="#lecture-17-rl-theory"><span class="level-left"><span class="level-item">16</span><span class="level-item">Lecture 17 RL Theory</span></span></a></li><li><a class="level is-mobile" href="#lecture-18-变分推断与生成模型"><span class="level-left"><span class="level-item">17</span><span class="level-item">Lecture 18
-变分推断与生成模型</span></span></a></li><li><a class="level is-mobile" href="#lecture-19-控制与推理"><span class="level-left"><span class="level-item">18</span><span class="level-item">Lecture 19 控制与推理</span></span></a></li><li><a class="level is-mobile" href="#lecture-20-inverse-rl"><span class="level-left"><span class="level-item">19</span><span class="level-item">Lecture 20 Inverse RL</span></span></a></li><li><a class="level is-mobile" href="#lecture-21-rl-in-seq"><span class="level-left"><span class="level-item">20</span><span class="level-item">Lecture 21 RL in Seq</span></span></a></li><li><a class="level is-mobile" href="#lecture-22-迁移学习与元学习"><span class="level-left"><span class="level-item">21</span><span class="level-item">Lecture 22 迁移学习与元学习</span></span></a></li><li><a class="level is-mobile" href="#lecture-23-挑战与开放问题"><span class="level-left"><span class="level-item">22</span><span class="level-item">Lecture 23 挑战与开放问题</span></span></a></li><li><a class="level is-mobile" href="#个人总结与胡扯"><span class="level-left"><span class="level-item">23</span><span class="level-item">个人总结与胡扯</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/newlogo.png" alt="frankly6" height="28"></a><p class="is-size-7"><span>&copy; 2026 Frankly6</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
-            }
-        };</script><script data-pjax src="/js/column.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+变分推断与生成模型</span></span></a></li><li><a class="level is-mobile" href="#lecture-19-控制与推理"><span class="level-left"><span class="level-item">18</span><span class="level-item">Lecture 19 控制与推理</span></span></a></li><li><a class="level is-mobile" href="#lecture-20-inverse-rl"><span class="level-left"><span class="level-item">19</span><span class="level-item">Lecture 20 Inverse RL</span></span></a></li><li><a class="level is-mobile" href="#lecture-21-rl-in-seq"><span class="level-left"><span class="level-item">20</span><span class="level-item">Lecture 21 RL in Seq</span></span></a></li><li><a class="level is-mobile" href="#lecture-22-迁移学习与元学习"><span class="level-left"><span class="level-item">21</span><span class="level-item">Lecture 22 迁移学习与元学习</span></span></a></li><li><a class="level is-mobile" href="#lecture-23-挑战与开放问题"><span class="level-left"><span class="level-item">22</span><span class="level-item">Lecture 23 挑战与开放问题</span></span></a></li><li><a class="level is-mobile" href="#个人总结与胡扯"><span class="level-left"><span class="level-item">23</span><span class="level-item">个人总结与胡扯</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/newlogo-optimized.png" alt="frankly6" height="28" decoding="async"></a><p class="is-size-7"><span>&copy; 2026 Frankly6</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script data-pjax>window.IcarusThemeSettings = {"article":{"highlight":{"clipboard":true,"fold":"unfolded"}},"features":{"clipboard":"https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js","mathjax":"https://cdnjs.loli.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","gallery":{"js":"https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js","css":"https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"},"justifiedGallery":{"js":"https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js","css":"https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"}}};</script><script data-pjax src="/js/column.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
       window.cookieconsent.initialise({
         type: "info",
         theme: "edgeless",
@@ -7380,26 +7373,6 @@ Policy Learning</span></span></a><ul class="menu-list"><li><a class="level is-mo
           },
         },
       });
-    });</script><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
-            if (typeof $.fn.lightGallery === 'function') {
-                $('.article').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof $.fn.justifiedGallery === 'function') {
-                if ($('.justified-gallery > p > .gallery-item').length) {
-                    $('.justified-gallery > p > .gallery-item').unwrap();
-                }
-                $('.justified-gallery').justifiedGallery();
-            }
-        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
-      },
-      svg: {
-        fontCache: 'global'
-      },
-      chtml: {
-        matchFontHeight: false
-      }
-    };</script><script src="https://cdnjs.loli.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script><script src="https://cdnjs.loli.net/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+    });</script><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script src="/js/features.js" defer></script><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
             loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
         });</script></body></html>

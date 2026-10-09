@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>CS285 Assignment 笔记 - frankly6</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="frankly6"><meta name="msapplication-TileImage" content="/img/newfavicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="frankly6"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="CS285 笔记的 side product"><meta property="og:type" content="blog"><meta property="og:title" content="CS285 Assignment 笔记"><meta property="og:url" content="https://frankly6.cn/2026/10/09/CS285-homework/"><meta property="og:site_name" content="frankly6"><meta property="og:description" content="CS285 笔记的 side product"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://files.seeusercontent.com/2026/10/09/mS4v/40ece1d2ecc04f9a60b4650ccc38d0ac.png"><meta property="article:published_time" content="2026-10-09T04:00:00.000Z"><meta property="article:modified_time" content="2026-10-09T11:43:14.412Z"><meta property="article:author" content="Frankly6"><meta property="article:tag" content="深度学习"><meta property="article:tag" content="强化学习"><meta property="article:tag" content="python"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://files.seeusercontent.com/2026/10/09/mS4v/40ece1d2ecc04f9a60b4650ccc38d0ac.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://frankly6.cn/2026/10/09/CS285-homework/"},"headline":"CS285 Assignment 笔记","image":["https://files.seeusercontent.com/2026/10/09/mS4v/40ece1d2ecc04f9a60b4650ccc38d0ac.png"],"datePublished":"2026-10-09T04:00:00.000Z","dateModified":"2026-10-09T11:43:14.412Z","author":{"@type":"Person","name":"Frankly6"},"publisher":{"@type":"Organization","name":"frankly6","logo":{"@type":"ImageObject","url":"https://frankly6.cn/img/newlogo.png"}},"description":"CS285 笔记的 side product"}</script><link rel="canonical" href="https://frankly6.cn/2026/10/09/CS285-homework/"><link rel="icon" href="/img/newfavicon.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/6.0.0/css/all.min.css"><link data-pjax rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.loli.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>CS285 Assignment 笔记 - frankly6</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="frankly6"><meta name="msapplication-TileImage" content="/img/newfavicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="frankly6"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="CS285 笔记的 side product"><meta property="og:type" content="blog"><meta property="og:title" content="CS285 Assignment 笔记"><meta property="og:url" content="https://frankly6.cn/2026/10/09/CS285-homework/"><meta property="og:site_name" content="frankly6"><meta property="og:description" content="CS285 笔记的 side product"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://files.seeusercontent.com/2026/10/09/mS4v/40ece1d2ecc04f9a60b4650ccc38d0ac.png"><meta property="article:published_time" content="2026-10-09T04:00:00.000Z"><meta property="article:modified_time" content="2026-10-09T11:43:14.412Z"><meta property="article:author" content="Frankly6"><meta property="article:tag" content="python"><meta property="article:tag" content="深度学习"><meta property="article:tag" content="强化学习"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://files.seeusercontent.com/2026/10/09/mS4v/40ece1d2ecc04f9a60b4650ccc38d0ac.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://frankly6.cn/2026/10/09/CS285-homework/"},"headline":"CS285 Assignment 笔记","image":["https://files.seeusercontent.com/2026/10/09/mS4v/40ece1d2ecc04f9a60b4650ccc38d0ac.png"],"datePublished":"2026-10-09T04:00:00.000Z","dateModified":"2026-10-09T11:43:14.412Z","author":{"@type":"Person","name":"Frankly6"},"publisher":{"@type":"Organization","name":"frankly6","logo":{"@type":"ImageObject","url":"https://frankly6.cn/img/newlogo-optimized.png"}},"description":"CS285 笔记的 side product"}</script><link rel="canonical" href="https://frankly6.cn/2026/10/09/CS285-homework/"><link rel="icon" href="/img/newfavicon.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/6.0.0/css/all.min.css"><link data-pjax rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.loli.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
   (function () {
       function switchTab() {
           if (!location.hash) {
@@ -29,7 +29,7 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/newlogo.png" alt="frankly6" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="https://files.seeusercontent.com/2026/10/09/mS4v/40ece1d2ecc04f9a60b4650ccc38d0ac.png" alt="CS285 Assignment 笔记"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><i class="far fa-calendar-alt"> </i><time datetime="2026-10-09T04:00:00.000Z" title="2026-10-09T04:00:00.000Z">2026-10-09</time></span><span class="level-item is-hidden-mobile"><i class="far fa-calendar-check"> </i><time datetime="2026-10-09T11:43:14.412Z" title="2026-10-09T11:43:14.412Z">2026-10-09</time></span><span class="level-item"><a class="link-muted" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a></span><span class="level-item">2 小时读完 (大约17973个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">CS285 Assignment 笔记</h1><div class="content"><p><a target="_blank" rel="noopener" href="https://rail.eecs.berkeley.edu/deeprlcourse-fa23/">CS 285
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/newlogo-optimized.png" alt="frankly6" height="28" decoding="async"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="https://files.seeusercontent.com/2026/10/09/mS4v/40ece1d2ecc04f9a60b4650ccc38d0ac.png" alt="CS285 Assignment 笔记" decoding="async" loading="eager" fetchpriority="high"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><i class="far fa-calendar-alt"> </i><time datetime="2026-10-09T04:00:00.000Z" title="2026-10-09T04:00:00.000Z">2026-10-09</time></span><span class="level-item is-hidden-mobile"><i class="far fa-calendar-check"> </i><time datetime="2026-10-09T11:43:14.412Z" title="2026-10-09T11:43:14.412Z">2026-10-09</time></span><span class="level-item"><a class="link-muted" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a></span><span class="level-item">2 小时读完 (大约17973个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">CS285 Assignment 笔记</h1><div class="content"><p><a target="_blank" rel="noopener" href="https://rail.eecs.berkeley.edu/deeprlcourse-fa23/">CS 285
 2023 Fall</a><br />
 <a
 target="_blank" rel="noopener" href="https://github.com/berkeleydeeprlcourse/homework_fall2023">homework
@@ -196,7 +196,7 @@ p_{\pi_\theta}(s_t)) \\
 我们主要用 <code>step()</code> 方法在 MDP 上步进<br />
 在 run_hw1.py 里面, Agent 就是个 MLP, 有个 <code>replay_buffer</code> 是
 off-policy 用的？我们主要写训练部分</p>
-<p><img src="https://files.seeusercontent.com/2026/03/05/yX0d/8fdcf2e6b3968745ae379bf8855d7acd.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/05/yX0d/8fdcf2e6b3968745ae379bf8855d7acd.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>第一次 (iter 0) 是做<strong>行为克隆(Behavior Cloning, BC)</strong>,
 后面是在做 DAGGER<br />
 在 Step 3, 要把人类对 <span class="math inline">\(\mathbf o_t\)</span>
@@ -571,7 +571,7 @@ a_{i,t}) + \gamma \hat V_{\phi}^\pi (\mathbf s_{i,t+1})\)</span>​,
 下面是 <a
 target="_blank" rel="noopener" href="https://www.zhihu.com/people/zhang-kun-shen">blacefeather</a>
 的结论</p>
-<p><img src="https://files.seeusercontent.com/2026/03/14/Qe6z/301b942d850272b2c15f946979da3b88.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/14/Qe6z/301b942d850272b2c15f946979da3b88.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>tensorboard 上的图表有很多, 我们主要关心 Average Return<br />
 我这边最好的结果来自 大 batch + advantage normalization, 稳得很,
 否则会抖</p>
@@ -590,7 +590,7 @@ class="math inline">\(\lambda\)</span> 以获得偏差与方差的权衡,
 target="_blank" rel="noopener" href="https://gymnasium.farama.org/introduction/speed_up_env/">vectorize</a></p>
 <p>我能给后来人的建议是, 200 轮左右就收敛的差不多了, 训 4h
 左右应该就行?</p>
-<p><img src="https://files.seeusercontent.com/2026/03/15/0sXo/08151a433d5effeff55a8908694700e2.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/15/0sXo/08151a433d5effeff55a8908694700e2.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <h3 id="analysis-1">Analysis</h3>
 <p>考虑下面这个无限视界 MDP <span class="math display">\[
 \mathbf a_1 \circlearrowright \mathbf s_1 \stackrel{\mathbf
@@ -729,13 +729,13 @@ J(\theta))^2] - (E[\nabla_\theta J(\theta)])^2 \\
 \end{aligned}
 \]</span></p>
 <p>绘图, 有</p>
-<p><img src="https://files.seeusercontent.com/2026/07/11/Ltg9/6e6c021504efc31f8b914d4a94e9e4ac.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/07/11/Ltg9/6e6c021504efc31f8b914d4a94e9e4ac.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>应用 reward-to-go 将方差极值从 B(约 27.94) 点降低到了 C 点(约
 18.79)</p>
 <ol start="4" type="1">
 <li>考虑下图这个 H 步的 MDP</li>
 </ol>
-<p><img src="https://files.seeusercontent.com/2026/03/14/o1tL/cb4a941c1e3cd0310f53b0328579c9d3.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/03/14/o1tL/cb4a941c1e3cd0310f53b0328579c9d3.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>​ 如果到达 <span class="math inline">\(\mathbf s_H\)</span>, 有奖励
 <span class="math inline">\(R_{\max}=1\)</span>, 否则如果到达 <span
 class="math inline">\(\mathbf s_F\)</span> 获得 0 奖励并且终止</p>
@@ -807,7 +807,7 @@ a_{t}}Q_{\phi_{k+1}}(\mathbf s_{t},\mathbf a_{t})\\
 \quad (3)
 \]</span> 我们将等式 (1) 到 (3) 中的步骤重复 K
 次以改进策略。在这个问题中, 你将分析下文算法 1 的一些性质</p>
-<p><img src="https://files.seeusercontent.com/2026/04/09/Jh6p/97eabc549adefebdd87ad78bd26bc90c.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/09/Jh6p/97eabc549adefebdd87ad78bd26bc90c.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p><strong>Q1-1 TD-Learning Bias</strong><br />
 我们说使用从过程 <span class="math inline">\(P\)</span> 采样的数据 <span
 class="math inline">\(\mathcal D\)</span> 构建的 <span
@@ -1062,7 +1062,7 @@ tensor</p>
 DQN 不稳定: <span class="math inline">\(Q\)</span>
 值发散、目标不平稳、高估偏置, 把 lr 调高会爆炸(Q 与 Critic loss)<br />
 DDQN 还可以, 效果比 DQN 好一些</p>
-<p><img src="https://files.seeusercontent.com/2026/04/20/W3gk/fd813e1a61f03654951fe3126e69a1ed.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/20/W3gk/fd813e1a61f03654951fe3126e69a1ed.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>我们在 LunarLander 上跑个 300k step, 上图红线是 DDQN, 黄线是 DQN,
 好的比较有限, 可能因为 <span class="math inline">\(\phi,
 \phi&#39;\)</span> 相关性太大了, 应该从头训两套网络<br />
@@ -1077,14 +1077,14 @@ return 在 100 左右震荡<br />
 MsPacman 的动作空间维度是 9, 是从数字 0 到 8 的离散空间, gym
 游戏中给出的 reward 空间为[0, 10, 50]</p>
 <p><img
-src="https://files.seeusercontent.com/2026/04/21/npP2/MsPacman301.png" /></p>
+src="https://files.seeusercontent.com/2026/04/21/npP2/MsPacman301.png" decoding="async" loading="lazy"></p>
 <p>当然, Wrapper 包裹之后, RL 接受的输入就是 4 帧一次的 resize
 的模糊灰度图</p>
 </blockquote>
 <p>这个作业其实只关心最后的 eval_return, 我们跑 1M step(约 4h), reward
 能有 1600 左右</p>
 <p><img
-src="https://files.seeusercontent.com/2026/04/21/1vAq/3521237ed65c0bec0e66152a967944df.png" /></p>
+src="https://files.seeusercontent.com/2026/04/21/1vAq/3521237ed65c0bec0e66152a967944df.png" decoding="async" loading="lazy"></p>
 <p>其中黄线是 eval return, 绿线是 train return</p>
 <p>接下来我们进入连续动作的部分<br />
 在连续动作时, 我们还要训练一个 policy <span
@@ -1138,10 +1138,10 @@ a_{t+1})+\beta\mathcal{H}(\pi(\mathbf a_{t+1}|\mathbf s_{t+1}))]
 <p>我们在 hopper 任务中比较 DQN, DDQN, clipped-DQN, REDQ(critic=10,
 UTD=20) 方法</p>
 <p><img
-src="https://files.seeusercontent.com/2026/04/21/Mlj7/67b4d19e8aa72a7835a3941015e77d41.png" /></p>
+src="https://files.seeusercontent.com/2026/04/21/Mlj7/67b4d19e8aa72a7835a3941015e77d41.png" decoding="async" loading="lazy"></p>
 <p>从 eval_return 来看, clipped-DQN&gt;DDQN&gt;REDQ&gt;DQN</p>
 <p><img
-src="https://files.seeusercontent.com/2026/04/21/lCe4/837a259ee5c03af8e5975b34d5916a58.png" /></p>
+src="https://files.seeusercontent.com/2026/04/21/lCe4/837a259ee5c03af8e5975b34d5916a58.png" decoding="async" loading="lazy"></p>
 <p>从最终估计的 Q 值来看, clipped-DQN 明显较小<br />
 AI 说因为 Hopper 是容易失败的任务, 所以最悲观的 clipped-DQN
 表现最好<br />
@@ -1156,7 +1156,7 @@ class="math inline">\(\mathcal N\)</span> 上采样, 方差自然小,
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">actor_loss_reparametrize</span>(<span class="params">self, obs: torch.Tensor</span>):</span><br><span class="line">    batch_size = obs.shape[<span class="number">0</span>]</span><br><span class="line">    action_distribution: torch.distributions.Distribution = self.actor(obs)</span><br><span class="line">    action = action_distribution.rsample() <span class="comment"># rsample 直接重参数化</span></span><br><span class="line">    q_values = self.critic(obs, action)</span><br><span class="line">    loss = -torch.mean(q_values)</span><br><span class="line">    <span class="keyword">return</span> loss, torch.mean(self.entropy(action_distribution))</span><br></pre></td></tr></table></figure>
 <p>我们在 halfcheetah 任务上测试 单样本REINFORCE, 十样本REINFORCE, 以及
 REPARAMETRIZE方法</p>
-<p><img src="https://files.seeusercontent.com/2026/04/23/Pn4u/81e0d8f5d2385fcb0be8fae379d58337.png" style="zoom:80%;" /></p>
+<p><img src="https://files.seeusercontent.com/2026/04/23/Pn4u/81e0d8f5d2385fcb0be8fae379d58337.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>发现 REPARAMETRIZE 方法遥遥领先,
 把"随机性"和"网络参数"剥离就是好用啊<br />
 最后其实还要测试一个 5M 步的 Humanoid, 但是因为在我电脑上要跑 30h
@@ -1438,7 +1438,7 @@ class="math inline">\(H\)</span>​ 步动作序列,
 这意味着它可以从任何数据中学习<br />
 但在实践中, 如果没有 on-policy 数据, 它的表现会很差</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/01/eNy5/fe09c4fa5b481068d51a1204e2efb118.png" /></p>
+src="https://files.seeusercontent.com/2026/08/01/eNy5/fe09c4fa5b481068d51a1204e2efb118.png" decoding="async" loading="lazy"></p>
 <hr />
 <p><strong>模型集成 (Ensembles)</strong></p>
 <p>训练 <span class="math inline">\(N\)</span> 个独立初始化的网络 <span
@@ -1461,7 +1461,7 @@ RL……</p>
 <p>我在这里放调整前后的图像对比一下(<code>l1_32_lr1e-3</code> 与
 <code>l3_256_lr1e-3</code>)</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/03/4dQr/problem1_l1_32_vs_l3_256_lr1e-3.png" /></p>
+src="https://files.seeusercontent.com/2026/08/03/4dQr/problem1_l1_32_vs_l3_256_lr1e-3.png" decoding="async" loading="lazy"></p>
 <p><strong>Problem 2</strong> 评估使用随机采样候选序列进行优化的 MPC
 动作选择效果</p>
 <p>要求完成 <code>get_dynamics_predictions</code> 和
@@ -1476,7 +1476,7 @@ src="https://files.seeusercontent.com/2026/08/03/4dQr/problem1_l1_32_vs_l3_256_l
 就考虑优化, 不过没有用, 它又给撤回了</p>
 <p>Problem 3 如下</p>
 <p><img
-src="https://files.seeusercontent.com/2026/08/03/qWb8/problem3_return_curves.png" /></p>
+src="https://files.seeusercontent.com/2026/08/03/qWb8/problem3_return_curves.png" decoding="async" loading="lazy"></p>
 <p>Obstacles 环境中的动力学模型或 MPC 规划对数据分布和随机采样较为敏感,
 寄寄了, 其他都不错啊</p>
 <p><strong>Problem 4</strong> 就是调超参的 trade-off<br />
@@ -1799,7 +1799,7 @@ s&#39;)-Q_\theta(\mathbf s,\mathbf a)\right)^2\right]
 <h3 id="code-4">Code</h3>
 <p>总的基础还是 hw3 的 <code>dqn_agent.py</code></p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/21/5Wwf/PointmassHard-v0_random.png" /></p>
+src="https://files.seeusercontent.com/2026/09/21/5Wwf/PointmassHard-v0_random.png" decoding="async" loading="lazy"></p>
 <p>在 Random exploration 下, 可怜的小点根本跑不到 target</p>
 <p>先写 <code>rnd_agent.py</code><br />
 <code>rnd_net</code> 和 <code>rnd_target_net</code> 都给你了,
@@ -1807,7 +1807,7 @@ src="https://files.seeusercontent.com/2026/09/21/5Wwf/PointmassHard-v0_random.pn
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">redictions = self.rnd_net(observations) <span class="comment">#[B, rnd_dim]</span></span><br><span class="line">targets = self.rnd_target_net(observations) <span class="comment">#[B, rnd_dim]</span></span><br><span class="line">rnd_error = torch.norm(predictions - targets, dim=-<span class="number">1</span>) <span class="comment">#[B]</span></span><br><span class="line">rnd_loss = nn.MSELoss()(prediction, target) <span class="comment">#[1]</span></span><br></pre></td></tr></table></figure>
 <p>然后探索稍微变好了一点, 10k step 是这样的</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/21/nsN8/image-20260921224512902.png" /></p>
+src="https://files.seeusercontent.com/2026/09/21/nsN8/image-20260921224512902.png" decoding="async" loading="lazy"></p>
 <p>CQL 只用实现一个 loss, 我们改掉 <code>dqn_agent.py</code> 让它输出
 qa_value 和 q_value 的 variable, 然后在这里后处理一下就行</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">compute_critic_loss</span>(<span class="params">...</span>) -&gt; <span class="type">Tuple</span>[torch.Tensor, <span class="built_in">dict</span>, <span class="built_in">dict</span>]:</span><br><span class="line">        loss, metrics, variables = <span class="built_in">super</span>().compute_critic_loss(obs, action, reward, next_obs, done)</span><br><span class="line">        qa_values = variables[<span class="string">&quot;qa_values&quot;</span>]</span><br><span class="line">        q_values = variables[<span class="string">&quot;q_values&quot;</span>]</span><br><span class="line">        cql_loss = (self.cql_temperature*torch.logsumexp(qa_values/self.cql_temperature, dim=<span class="number">1</span>) - q_values).mean()</span><br><span class="line">        loss = loss + self.cql_alpha * cql_loss</span><br><span class="line">        metrics[<span class="string">&quot;cql_loss&quot;</span>] = cql_loss.item()</span><br><span class="line">        metrics[<span class="string">&quot;critic_loss&quot;</span>] = loss.item()</span><br><span class="line">        <span class="keyword">return</span> loss, metrics, variables</span><br></pre></td></tr></table></figure>
@@ -1823,12 +1823,12 @@ a}} \left[ T\log\sum_j e^{Q_j/T} \right] =
 <p>然后看一下 CQL 与 DQN 在 pointmass_easy 下的 100k eval return,
 这不是没区别吗？<strong>(｀皿´＃)</strong></p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/22/ie2R/fa610d6d33bff56b3b6e29a8dd62e824.png" /></p>
+src="https://files.seeusercontent.com/2026/09/22/ie2R/fa610d6d33bff56b3b6e29a8dd62e824.png" decoding="async" loading="lazy"></p>
 <p>在 pointmass_medium 下确实是 CQL 更好, 不过都是一坨, Pointmass
 使用稀疏奖励, 普通步 -1, 到达终点 0<br />
 现在都是 -60 ~ -40 之间</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/22/1nZj/94dae258ed1b7d2e1422ad77dcf912ee.png" /></p>
+src="https://files.seeusercontent.com/2026/09/22/1nZj/94dae258ed1b7d2e1422ad77dcf912ee.png" decoding="async" loading="lazy"></p>
 <p>然后先写 AWAC 再写 IQL, 本质上 IQL 只比 AWAC 多训了一个 <span
 class="math inline">\(V(\mathbf s&#39;)\)</span> 来代替 <span
 class="math inline">\(\mathbb E_{\mathbf a&#39; \sim
@@ -1864,7 +1864,7 @@ temperature</p>
 offline 也没得学, 但是看效果 DQN&gt;CQL&gt;AWAC=IQL, 估计是我代码的问题,
 还是说一定要 online 微调, 唉唉, 也许上面列出的代码都是错的</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/23/1pkT/a729d8454d1e782880720a716425ae6b.png" /></p>
+src="https://files.seeusercontent.com/2026/09/23/1pkT/a729d8454d1e782880720a716425ae6b.png" decoding="async" loading="lazy"></p>
 <p>接下来完成 offline to online, 还是在 CQL 上 tuning 吧, 用 100k
 离线数据与 100k 在线数据<br />
 按照代码难度, <code>run_hw5_finetune.py</code> 是最大的,
@@ -1884,19 +1884,12 @@ AWAC 和 IQL 代码跑不起来的原因？应该是个小问题, 因为 10k ste
 这就要求几乎不能有多余动作了, 试一下 100k 离线与 400k 在线, 即使这样,
 我的 reward 也只会收敛在 -35 左右</p>
 <p><img
-src="https://files.seeusercontent.com/2026/09/24/7bJa/9f9c862098c91cd3d899782a1de5a77d.png" /></p>
+src="https://files.seeusercontent.com/2026/09/24/7bJa/9f9c862098c91cd3d899782a1de5a77d.png" decoding="async" loading="lazy"></p>
 <p>我在网络上查了一些别人的实现, 也问了 AI, 但看来就是这样了,
 这里倍感抱歉</p>
-</div><div class="article-licensing box"><div class="licensing-title"><p>CS285 Assignment 笔记</p><p><a href="https://frankly6.cn/2026/10/09/CS285-homework/">https://frankly6.cn/2026/10/09/CS285-homework/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Frankly6</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2026-10-09</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2026-10-09</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习, </a><a class="link-muted" rel="tag" href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习, </a><a class="link-muted" rel="tag" href="/tags/python/">python </a></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2026/10/09/CS285-notes/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">CS285 笔记</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2026/10/09/Codeforces-exercises-2025/"><span class="level-item">Codeforces exercises 2025</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Frankly6"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Frankly6</p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">文章</p><div><p class="title">8</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">分类</p><div><p class="title">3</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">标签</p><div><p class="title">7</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">总字数</p><div><p class="title">20.3W</p></div></div></a></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#assignment-1-模仿学习"><span class="level-left"><span class="level-item">1</span><span class="level-item">Assignment 1 模仿学习</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#analysis"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">Analysis</span></span></a></li><li><a class="level is-mobile" href="#code"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">Code</span></span></a></li><li><a class="level is-mobile" href="#extra"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">Extra</span></span></a></li></ul></li><li><a class="level is-mobile" href="#assignment-2-策略梯度"><span class="level-left"><span class="level-item">2</span><span class="level-item">Assignment 2 策略梯度</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#review"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">Review</span></span></a></li><li><a class="level is-mobile" href="#review-analysis"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">Review Analysis</span></span></a></li><li><a class="level is-mobile" href="#code-1"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">Code</span></span></a></li><li><a class="level is-mobile" href="#analysis-1"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">Analysis</span></span></a></li></ul></li><li><a class="level is-mobile" href="#assignment-3-q-learning-与-actor-critic-算法"><span class="level-left"><span class="level-item">3</span><span class="level-item">Assignment 3
+</div><div class="article-licensing box"><div class="licensing-title"><p>CS285 Assignment 笔记</p><p><a href="https://frankly6.cn/2026/10/09/CS285-homework/">https://frankly6.cn/2026/10/09/CS285-homework/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Frankly6</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2026-10-09</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2026-10-09</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/python/">python, </a><a class="link-muted" rel="tag" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习, </a><a class="link-muted" rel="tag" href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习 </a></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2026/10/09/CS285-notes/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">CS285 笔记</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2026/10/09/Codeforces-exercises-2025/"><span class="level-item">Codeforces exercises 2025</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.webp" alt="Frankly6" decoding="async" loading="lazy" width="128" height="128"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Frankly6</p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">文章</p><div><p class="title">8</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">分类</p><div><p class="title">3</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">标签</p><div><p class="title">7</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">总字数</p><div><p class="title">20.3W</p></div></div></a></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#assignment-1-模仿学习"><span class="level-left"><span class="level-item">1</span><span class="level-item">Assignment 1 模仿学习</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#analysis"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">Analysis</span></span></a></li><li><a class="level is-mobile" href="#code"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">Code</span></span></a></li><li><a class="level is-mobile" href="#extra"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">Extra</span></span></a></li></ul></li><li><a class="level is-mobile" href="#assignment-2-策略梯度"><span class="level-left"><span class="level-item">2</span><span class="level-item">Assignment 2 策略梯度</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#review"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">Review</span></span></a></li><li><a class="level is-mobile" href="#review-analysis"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">Review Analysis</span></span></a></li><li><a class="level is-mobile" href="#code-1"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">Code</span></span></a></li><li><a class="level is-mobile" href="#analysis-1"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">Analysis</span></span></a></li></ul></li><li><a class="level is-mobile" href="#assignment-3-q-learning-与-actor-critic-算法"><span class="level-left"><span class="level-item">3</span><span class="level-item">Assignment 3
 Q-learning 与 Actor-Critic 算法</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#questionnaire"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">Questionnaire</span></span></a></li><li><a class="level is-mobile" href="#code-2"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">Code</span></span></a></li></ul></li><li><a class="level is-mobile" href="#assignment-4-model-based-rl"><span class="level-left"><span class="level-item">4</span><span class="level-item">Assignment 4 Model-Based RL</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#analysis-2"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">Analysis</span></span></a></li><li><a class="level is-mobile" href="#overview"><span class="level-left"><span class="level-item">4.2</span><span class="level-item">Overview</span></span></a></li><li><a class="level is-mobile" href="#code-3"><span class="level-left"><span class="level-item">4.3</span><span class="level-item">Code</span></span></a></li></ul></li><li><a class="level is-mobile" href="#assignment-5-exploration-与-offline-rl"><span class="level-left"><span class="level-item">5</span><span class="level-item">Assignment 5 Exploration
-与 Offline RL</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#analysis-3"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">Analysis</span></span></a></li><li><a class="level is-mobile" href="#review-1"><span class="level-left"><span class="level-item">5.2</span><span class="level-item">Review</span></span></a></li><li><a class="level is-mobile" href="#code-4"><span class="level-left"><span class="level-item">5.3</span><span class="level-item">Code</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/newlogo.png" alt="frankly6" height="28"></a><p class="is-size-7"><span>&copy; 2026 Frankly6</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
-            }
-        };</script><script data-pjax src="/js/column.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+与 Offline RL</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#analysis-3"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">Analysis</span></span></a></li><li><a class="level is-mobile" href="#review-1"><span class="level-left"><span class="level-item">5.2</span><span class="level-item">Review</span></span></a></li><li><a class="level is-mobile" href="#code-4"><span class="level-left"><span class="level-item">5.3</span><span class="level-item">Code</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/newlogo-optimized.png" alt="frankly6" height="28" decoding="async"></a><p class="is-size-7"><span>&copy; 2026 Frankly6</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script data-pjax>window.IcarusThemeSettings = {"article":{"highlight":{"clipboard":true,"fold":"unfolded"}},"features":{"clipboard":"https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js","mathjax":"https://cdnjs.loli.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","gallery":{"js":"https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js","css":"https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"},"justifiedGallery":{"js":"https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js","css":"https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"}}};</script><script data-pjax src="/js/column.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
       window.cookieconsent.initialise({
         type: "info",
         theme: "edgeless",
@@ -1921,26 +1914,6 @@ Q-learning 与 Actor-Critic 算法</span></span></a><ul class="menu-list"><li><a
           },
         },
       });
-    });</script><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
-            if (typeof $.fn.lightGallery === 'function') {
-                $('.article').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof $.fn.justifiedGallery === 'function') {
-                if ($('.justified-gallery > p > .gallery-item').length) {
-                    $('.justified-gallery > p > .gallery-item').unwrap();
-                }
-                $('.justified-gallery').justifiedGallery();
-            }
-        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
-      },
-      svg: {
-        fontCache: 'global'
-      },
-      chtml: {
-        matchFontHeight: false
-      }
-    };</script><script src="https://cdnjs.loli.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script><script src="https://cdnjs.loli.net/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+    });</script><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script src="/js/features.js" defer></script><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
             loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
         });</script></body></html>

@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>EECS498 笔记 - frankly6</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="frankly6"><meta name="msapplication-TileImage" content="/img/newfavicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="frankly6"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="深度学习下的计算机视觉基础"><meta property="og:type" content="blog"><meta property="og:title" content="EECS498 笔记"><meta property="og:url" content="https://frankly6.cn/2025/03/27/EECS498-notes/"><meta property="og:site_name" content="frankly6"><meta property="og:description" content="深度学习下的计算机视觉基础"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://s2.loli.net/2025/03/28/lfdSAEtRhQ5HGN6.jpg"><meta property="article:published_time" content="2025-03-27T04:24:38.000Z"><meta property="article:modified_time" content="2026-10-09T10:10:31.160Z"><meta property="article:author" content="Frankly6"><meta property="article:tag" content="深度学习"><meta property="article:tag" content="python"><meta property="article:tag" content="计算机视觉"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://s2.loli.net/2025/03/28/lfdSAEtRhQ5HGN6.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://frankly6.cn/2025/03/27/EECS498-notes/"},"headline":"EECS498 笔记","image":["https://s2.loli.net/2025/03/28/lfdSAEtRhQ5HGN6.jpg"],"datePublished":"2025-03-27T04:24:38.000Z","dateModified":"2026-10-09T10:10:31.160Z","author":{"@type":"Person","name":"Frankly6"},"publisher":{"@type":"Organization","name":"frankly6","logo":{"@type":"ImageObject","url":"https://frankly6.cn/img/newlogo.png"}},"description":"深度学习下的计算机视觉基础"}</script><link rel="canonical" href="https://frankly6.cn/2025/03/27/EECS498-notes/"><link rel="icon" href="/img/newfavicon.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/6.0.0/css/all.min.css"><link data-pjax rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.loli.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>EECS498 笔记 - frankly6</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="frankly6"><meta name="msapplication-TileImage" content="/img/newfavicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="frankly6"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="深度学习下的计算机视觉基础"><meta property="og:type" content="blog"><meta property="og:title" content="EECS498 笔记"><meta property="og:url" content="https://frankly6.cn/2025/03/27/EECS498-notes/"><meta property="og:site_name" content="frankly6"><meta property="og:description" content="深度学习下的计算机视觉基础"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://s2.loli.net/2025/03/28/lfdSAEtRhQ5HGN6.jpg"><meta property="article:published_time" content="2025-03-27T04:24:38.000Z"><meta property="article:modified_time" content="2026-10-09T10:10:31.160Z"><meta property="article:author" content="Frankly6"><meta property="article:tag" content="python"><meta property="article:tag" content="深度学习"><meta property="article:tag" content="计算机视觉"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://s2.loli.net/2025/03/28/lfdSAEtRhQ5HGN6.jpg"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://frankly6.cn/2025/03/27/EECS498-notes/"},"headline":"EECS498 笔记","image":["https://s2.loli.net/2025/03/28/lfdSAEtRhQ5HGN6.jpg"],"datePublished":"2025-03-27T04:24:38.000Z","dateModified":"2026-10-09T10:10:31.160Z","author":{"@type":"Person","name":"Frankly6"},"publisher":{"@type":"Organization","name":"frankly6","logo":{"@type":"ImageObject","url":"https://frankly6.cn/img/newlogo-optimized.png"}},"description":"深度学习下的计算机视觉基础"}</script><link rel="canonical" href="https://frankly6.cn/2025/03/27/EECS498-notes/"><link rel="icon" href="/img/newfavicon.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/6.0.0/css/all.min.css"><link data-pjax rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.loli.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
   (function () {
       function switchTab() {
           if (!location.hash) {
@@ -29,7 +29,7 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/newlogo.png" alt="frankly6" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="https://s2.loli.net/2025/03/28/lfdSAEtRhQ5HGN6.jpg" alt="EECS498 笔记"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><i class="far fa-calendar-alt"> </i><time datetime="2025-03-27T04:24:38.000Z" title="2025-03-27T04:24:38.000Z">2025-03-27</time></span><span class="level-item is-hidden-mobile"><i class="far fa-calendar-check"> </i><time datetime="2026-10-09T10:10:31.160Z" title="2026-10-09T10:10:31.160Z">2026-10-09</time></span><span class="level-item"><a class="link-muted" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a></span><span class="level-item">5 小时读完 (大约44495个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">EECS498 笔记</h1><div class="content"><!--more-->
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/newlogo-optimized.png" alt="frankly6" height="28" decoding="async"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="https://s2.loli.net/2025/03/28/lfdSAEtRhQ5HGN6.jpg" alt="EECS498 笔记" decoding="async" loading="eager" fetchpriority="high"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><i class="far fa-calendar-alt"> </i><time datetime="2025-03-27T04:24:38.000Z" title="2025-03-27T04:24:38.000Z">2025-03-27</time></span><span class="level-item is-hidden-mobile"><i class="far fa-calendar-check"> </i><time datetime="2026-10-09T10:10:31.160Z" title="2026-10-09T10:10:31.160Z">2026-10-09</time></span><span class="level-item"><a class="link-muted" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a></span><span class="level-item">5 小时读完 (大约44495个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">EECS498 笔记</h1><div class="content"><!--more-->
 <p><a
 target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV1zg411a7Wi/?spm_id_from=333.337.search-card.all.click&amp;vd_source=3c7a1f24975adfc55be9f992101dddab">课程视频
 19fall</a> <a
@@ -69,7 +69,7 @@ target="_blank" rel="noopener" href="https://colab.research.google.com/">Google 
 <p>电脑看图像只是一个巨大的数字表格,
 对图像的简单更改都可能会改变整个表格, 这是一个<strong>语义鸿沟(semantic
 gap)</strong><br />
-<img src="https://s2.loli.net/2025/03/26/9ju27LHotwOqgNA.png" style="zoom:80%;" /><br />
+<img src="https://s2.loli.net/2025/03/26/9ju27LHotwOqgNA.png" style="zoom:80%;" decoding="async" loading="lazy"><br />
 图像分类有多个挑战: 视角变化(viewpoint variation) / 类内变化(intraclass
 variation) / 细粒度分类(fine-grained classification) /
 背景干扰(background clutter) / 光照变化(illumination changes) /
@@ -95,13 +95,13 @@ ImageNet: 1000 类物体, 可处理为 256x256 图像, 训练集大小 1.3M,
 将测试集和训练集的每个图像使用一个相似度函数比较并输出相似度最高的对应的标签<br />
 需要用到一些<strong>距离度量(distance metric)</strong>,
 例如像素值的曼哈顿距离, 然后加起来之类的<br />
-<img src="https://s2.loli.net/2025/02/09/uAmKGga9XBTpVUb.png" style="zoom:50%;" /></p>
+<img src="https://s2.loli.net/2025/02/09/uAmKGga9XBTpVUb.png" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>这种算法不能满足我们对于测试高性能的需要, 而且的确太简单了<br />
 另一种 K最近邻 思想的算法是构造出一种决策边界(decision boundaries)<br />
-<img src="https://s2.loli.net/2025/02/09/C1Fc7Yzo9wGgL65.png" alt="" style="zoom:50%;" /></p>
+<img src="https://s2.loli.net/2025/02/09/C1Fc7Yzo9wGgL65.png" alt="" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>这种方法很容易被离群值影响<br />
 简单的优化是找 K 个最近邻居去个众数, 使得决策边界更加平滑<br />
-<img src="https://s2.loli.net/2025/02/09/bO8XFimMkEQ9rwB.png" style="zoom:50%;" />
+<img src="https://s2.loli.net/2025/02/09/bO8XFimMkEQ9rwB.png" style="zoom:50%;" decoding="async" loading="lazy">
 距离度量也可以改为欧几里得距离使其更平滑<br />
 <a
 target="_blank" rel="noopener" href="http://vision.stanford.edu/teaching/cs231n-demos/knn/">K最近邻算法
@@ -123,7 +123,7 @@ target="_blank" rel="noopener" href="http://vision.stanford.edu/teaching/cs231n-
 <p>一种更更好的方法是<a
 target="_blank" rel="noopener" href="https://zh.wikipedia.org/zh-cn/交叉驗證">交叉验证</a>,
 训练代价会很昂贵, 但效果最好
-<img src="https://s2.loli.net/2025/02/09/vo7f9abrLXIpwNU.png" style="zoom:50%;" /></p>
+<img src="https://s2.loli.net/2025/02/09/vo7f9abrLXIpwNU.png" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>随着输入空间的维度增加, 这个算法需要的数据量会对应指数级增加</p>
 <h2 id="assignment-1-pytorch-knn">Assignment 1 Pytorch &amp; kNN</h2>
 <h3 id="pytorch">Pytorch</h3>
@@ -299,7 +299,7 @@ import</p>
 <p>可以得到:</p>
 <figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line">k = 1 got accuracies: [26.3, 25.7, 26.4, 27.8, 26.6]</span><br><span class="line">k = 3 got accuracies: [23.9, 24.9, 24.0, 26.6, 25.4]</span><br><span class="line">k = 5 got accuracies: [24.8, 26.6, 28.0, 29.2, 28.0]</span><br><span class="line">k = 8 got accuracies: [26.2, 28.2, 27.3, 29.0, 27.3]</span><br><span class="line">k = 10 got accuracies: [26.5, 29.6, 27.6, 28.4, 28.0]</span><br><span class="line">k = 12 got accuracies: [26.0, 29.5, 27.9, 28.3, 28.0]</span><br><span class="line">k = 15 got accuracies: [25.2, 28.9, 27.8, 28.2, 27.4]</span><br><span class="line">k = 20 got accuracies: [27.0, 27.9, 27.9, 28.2, 28.5]</span><br><span class="line">k = 50 got accuracies: [27.1, 28.8, 27.8, 26.9, 26.6]</span><br><span class="line">k = 100 got accuracies: [25.6, 27.0, 26.3, 25.6, 26.3]</span><br></pre></td></tr></table></figure>
 <div data-align="center">
-<img src="https://s2.loli.net/2025/02/09/3gjWlmh9Po2ZUps.png" style="zoom:50%;" />
+<img src="https://s2.loli.net/2025/02/09/3gjWlmh9Po2ZUps.png" style="zoom:50%;" decoding="async" loading="lazy">
 </div>
 <p>将所有的 k 的准确率平均值作比较, 我们就可以选出最好的 k 为 k=10
 在整个测试集上跑了十五分钟后, 最后的准确率为 33.86%</p>
@@ -325,7 +325,7 @@ class="math inline">\(W_{cat}, W_{dog},...\)</span>,
 仅考虑这一部分与图像的作用,
 线性分类器其实是在试图学习每类图像得分最高的"模板", 在 CIFAR-10
 中是这样的:</p>
-<p><img src="https://s2.loli.net/2025/02/09/2CKWp3cUdqThZGQ.png" style="zoom:67%;" /></p>
+<p><img src="https://s2.loli.net/2025/02/09/2CKWp3cUdqThZGQ.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>这给了我们一种关于分类器的直觉,
 比如说森林里的汽车可能因为背景的绿色更容易被分类为鹿或者是鸟<br />
 线性分类器只能对于一个类学习一种模板, 在上图中为了匹配不同模式的马,
@@ -333,11 +333,11 @@ class="math inline">\(W_{cat}, W_{dog},...\)</span>,
 <strong>从几何角度理解</strong>,
 你可以想象线性分类器是高维的一个超平面切割这个高维空间,
 以二维(两个像素为例):</p>
-<p><img src="https://s2.loli.net/2025/02/09/4LVUWnqRaPCSu5m.png" style="zoom: 60%;" /></p>
+<p><img src="https://s2.loli.net/2025/02/09/4LVUWnqRaPCSu5m.png" style="zoom: 60%;" decoding="async" loading="lazy"></p>
 <p>此时的分类器就是一条直线,
 垂直于直线方向移动可以最快地使得图片趋向/远离某种分类</p>
 <p>线性分类器无法解决异或问题,
-你可以把整个异或问题想象为一个这样的平面<img src="https://s2.loli.net/2025/02/09/XU6zC9eVMdwj7ok.png" alt="" style="zoom:10%;" />,
+你可以把整个异或问题想象为一个这样的平面<img src="https://s2.loli.net/2025/02/09/XU6zC9eVMdwj7ok.png" alt="" style="zoom:10%;" decoding="async" loading="lazy">,
 显然无法找到一条直线划分两个类别(0/1)</p>
 <p>我们如何确定权重 <span class="math inline">\(W\)</span> ？<br />
 (1). 用<strong>损失函数(loss function)</strong>量化 <span
@@ -357,7 +357,7 @@ L_i(f(x_i,W),y_i)\)</span></p>
 y_i} {\rm max}(0,s_j-s_{y_i}+ \Delta)\)</span> , 针对不对的类别 <span
 class="math inline">\(j\)</span> 有一个 loss, 至少比正确类型的得分小
 <span class="math inline">\(\Delta\)</span><br />
-<img src="https://s2.loli.net/2025/02/09/9hwvbjXtulNDxdM.png" style="zoom:50%;" /></p>
+<img src="https://s2.loli.net/2025/02/09/9hwvbjXtulNDxdM.png" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>例如在这里, frog 类的得分并不是 frog 中最高的, 那么别的类多出来的得分
 +1 将成为损失的一部分<br />
 总的 loss 为 (2.9 + 0 + 12.9)/3 = 5.27<br />
@@ -445,14 +445,14 @@ matrix)</a>的特征值比率有关, 我们在此略去<br />
 在函数的黑塞矩阵在梯度为零时特征值有正有负称为鞍点<br />
 
 <div data-align="center">
-<img src="https://s2.loli.net/2025/02/09/XKrpNngQ9cjuP72.png" style="zoom:50%;" />
+<img src="https://s2.loli.net/2025/02/09/XKrpNngQ9cjuP72.png" style="zoom:50%;" decoding="async" loading="lazy">
 </div>
 <p>此时 SGD 将局部最小值当全局最小值了<br />
 第三个问题是, 因为我们使用的是数据集的一部分,
 所以估计出的梯度可能噪音比较大(乱抖)</p>
 <p>所以我们要给 SGD 加上<strong>动量(momentum)</strong>优化,
 使用物理思想, 建立一个速度的概念, 对梯度平滑处理
-<img src="https://s2.loli.net/2025/02/09/OqkyrnJsFIDPevo.png" style="zoom:50%;" /></p>
+<img src="https://s2.loli.net/2025/02/09/OqkyrnJsFIDPevo.png" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>动量的使用可以帮助优化算法跳出局部最小值或鞍点。在这些区域, 纯 SGD
 可能会陷入停滞, 因为梯度接近 0。但是, 如果有足够的累积动量,
 算法可能会由于之前的"惯性"而跨过这些最小值, 达到更低的损失区域<br />
@@ -463,7 +463,7 @@ class="math inline">\(\rho\)</span> 值意味着保留更多的过去信息,
 <p>在此基础上, 我们可以继续优化, 不使用当前点的梯度与速度合成,
 而是直接"展望"速度向量指向点的梯度来更新, 可以帮助我们更好地调整方向,
 这称为 Nesterov momentum
-<img src="https://s2.loli.net/2025/02/09/NOfx8UYbBTuEs5w.png" alt="" style="zoom:50%;" /></p>
+<img src="https://s2.loli.net/2025/02/09/NOfx8UYbBTuEs5w.png" alt="" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>数学推导是这样的: <span class="math display">\[
 \begin{aligned}
 &amp;\tilde x_t = x_t + \rho v_t\\
@@ -504,13 +504,13 @@ L-BFGS 算法, 由于黑塞矩阵元素数量过多且矩阵求逆复杂度过�
 <h2 id="lecture-5-神经网络">Lecture 5 神经网络</h2>
 <p>如何克服线性分类器的局限性? 一种方法是<strong>特征变化(feature
 transform)</strong>:</p>
-<p><img src="https://s2.loli.net/2025/02/09/zF9swbVtEXhiydf.png" style="zoom:50%;" /></p>
+<p><img src="https://s2.loli.net/2025/02/09/zF9swbVtEXhiydf.png" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>一种简单的特征变化是<strong>颜色直方图(color histogram)</strong>,
 通过不同颜色的出现频率分类, 抛弃空间信息<br />
 另一种方法是定向梯度方法的直方图<strong>(Histogram of Oriented
 Gradients)(HoG)</strong>，通过捕捉图像中局部区域的边缘方向信息来描述物体的形状和轮廓,
 抛弃颜色信息
-<img src="https://s2.loli.net/2025/02/09/Ck4meyLatBdGogh.png" alt="" style="zoom:50%;" /></p>
+<img src="https://s2.loli.net/2025/02/09/Ck4meyLatBdGogh.png" alt="" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>这些方法的本质都是提取特征并调整特征以获得更高的得分<br />
 神经网络的本质也类似, 只不过它有多层, 一个两层的神经网络可以这么表示:
 <span class="math display">\[
@@ -520,12 +520,12 @@ f = W_2 {\rm max}(0,W_1x),\;W_2 \in \mathbb{R}^{C \times H}, W_1 \in
 class="math inline">\(D\)</span> 为原始的图片 flatten 后的大小(eg.
 3x32x32=3072), <span class="math inline">\(x\)</span> 是一个 <span
 class="math inline">\(\mathbb{R}^D\)</span> 上的向量表示图片
-<img src="https://s2.loli.net/2025/02/09/nCoy4BFVEJ1Wtha.png" style="zoom:50%;" /></p>
+<img src="https://s2.loli.net/2025/02/09/nCoy4BFVEJ1Wtha.png" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>这叫做<strong>全连接网络(fully-connected neural
 network)</strong>或者<strong>多层感知器(multi-layer
 perceptron)(MLP)</strong> 类似于线性分类器, <span
 class="math inline">\(W_1\)</span> 给出了 100 个模板,<br />
-<img src="https://s2.loli.net/2025/02/09/8vnyqXcuiALNCMB.png" style="zoom:50%;" /></p>
+<img src="https://s2.loli.net/2025/02/09/8vnyqXcuiALNCMB.png" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>这时候就可以对于一个类学习多种模板了,
 比如说红框部分是两种不同朝向的马, 这叫做<strong>分布表示(distributed
 representation) </strong><br />
@@ -539,16 +539,16 @@ class="math inline">\({\rm ReLU}(x) = {\rm max}(0,x)\)</span>,
 激活函数是非线性函数, 如果不施加的话我们得到的还是一个线性分类器 <span
 class="math inline">\(f = W_2W_1 x = Wx\)</span><br />
 还有很多的激活函数:
-<img src="https://s2.loli.net/2025/02/09/NEr7JZiK1HPLCut.png" style="zoom:50%;" />
+<img src="https://s2.loli.net/2025/02/09/NEr7JZiK1HPLCut.png" style="zoom:50%;" decoding="async" loading="lazy">
 通过激活函数进行特征变化, 我们得到了新的数据分布,
 就可以通过线性分类器分类了
-<img src="https://s2.loli.net/2025/02/09/dNFuGgYJxKfTLwW.png" style="zoom:50%;" /></p>
+<img src="https://s2.loli.net/2025/02/09/dNFuGgYJxKfTLwW.png" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>随着神经网络的层数增加, 就可以表示出更加复杂的决策边界,
 增加正则化项并调整 <span class="math inline">\(\lambda\)</span>​
 可以防止过拟合(不要通过减少层数来防止过拟合), 你可以在<a
 target="_blank" rel="noopener" href="https://cs.stanford.edu/people/karpathy/convnetjs/demo/classify2d.html">在线
 2D 数据点分类</a>这里试一试
-<img src="https://s2.loli.net/2025/02/09/6nPNZQmycWSxBbv.png" style="zoom:50%;" /></p>
+<img src="https://s2.loli.net/2025/02/09/6nPNZQmycWSxBbv.png" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>在一个有界的输入空间中, 神经网络可以逼近任何函数, 你可以想象无数的
 ReLU 图像拼接成一个函数, 但即使是 kNN 也能逼近所有函数,
 这个性质并没有保证神经网络在实战中能学习任意函数</p>
@@ -562,7 +562,7 @@ function)</strong>, <span class="math inline">\(f = x^2\)</span>
 为例, 绿线永远在蓝线上面:<br />
 
 <div data-align="center">
-<img src="https://s2.loli.net/2025/02/11/rMLtX2lUB6dqNG4.png" style="zoom: 60%;" />
+<img src="https://s2.loli.net/2025/02/11/rMLtX2lUB6dqNG4.png" style="zoom: 60%;" decoding="async" loading="lazy">
 </div>
 <p>凸函数有一些很好的性质:
 局部最值即为全局最值、可以使用其他优化算法、收敛更快并保证收敛<br />
@@ -577,11 +577,11 @@ target="_blank" rel="noopener" href="https://www.bilibili.com/video/BV16x411V7Qg
 由于直接推导梯度的解析式过于繁杂, 数值计算梯度又不够精确,
 所以我们选择<strong>反向传播(backpropagation)</strong>来计算梯度,
 个人理解其本质就是复杂一点的链式法则</p>
-<p><img src="https://s2.loli.net/2025/02/09/tkpEra4qWcyiJYe.png" style="zoom:50%;" /></p>
+<p><img src="https://s2.loli.net/2025/02/09/tkpEra4qWcyiJYe.png" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>计算图帮助我们分解函数的计算, 见上, 蓝色节点为得分, 传入红色节点(SVM
 loss 计算节点)后得到 data loss, 加上 <span
 class="math inline">\(R(W)\)</span> 正则项后得到最终损失
-<img src="https://s2.loli.net/2025/02/09/a3yLkqO85eRgY1f.png" alt="" style="zoom:50%;" /></p>
+<img src="https://s2.loli.net/2025/02/09/a3yLkqO85eRgY1f.png" alt="" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>以 <span class="math inline">\(f(x,y,z) = (x+y)z\)</span> 为例,
 <strong>前向传播(forward pass)</strong>指计算 <span
 class="math inline">\(f\)</span> 的过程, 而<strong>反向传播(backward
@@ -611,7 +611,7 @@ x}\)</span>​​ 称为<strong>局部梯度(local gradient)</strong>,
 你可以在计算图上看到, 边的上部为函数计算结果, 边的下部为各部分梯度<br />
 注意上游梯度和下游梯度是相对的, 根据当前的计算而定,
 这种传播就不需要考虑全局的函数结构, 只需要计算自己的一小部分</p>
-<p><img src="https://s2.loli.net/2025/02/09/qswXvgMPAZhbkmF.png" style="zoom:50%;" /></p>
+<p><img src="https://s2.loli.net/2025/02/09/qswXvgMPAZhbkmF.png" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>有时候我们不用把整个式子拆成单步的运算, 例如蓝框的部分为激活函数
 <span class="math inline">\(\sigma(x) =
 \displaystyle\frac{1}{1+e^{-x}}\)</span>, 它的梯度有:<br />
@@ -620,7 +620,7 @@ x}\)</span>​​ 称为<strong>局部梯度(local gradient)</strong>,
 <span class="math inline">\(\sigma(x)\)</span> 前后的上下游梯度, 有 0.2
 = (1-0.73)*0.73*1</p>
 <p>对于一些简单运算有一些简单的算梯度方法, 可以见下图</p>
-<p><img src="https://s2.loli.net/2025/02/09/8l7bGHOVzmEAa4W.png" style="zoom:40%;" /></p>
+<p><img src="https://s2.loli.net/2025/02/09/8l7bGHOVzmEAa4W.png" style="zoom:40%;" decoding="async" loading="lazy"></p>
 <p>现代的 API 将各种类型的门,
 以及反向传播时不同门的梯度计算方法封装起来, 这样修改 loss function
 时只需要修改 loss function 的代码, 其他地方不需要任何修改, pytorch
@@ -641,13 +641,13 @@ class="math inline">\(\displaystyle\frac{\partial y}{\partial x} \in
 class="math inline">\(\displaystyle\frac{\partial y_n}{\partial
 x_m}\)</span> 表示 <span class="math inline">\(y_n\)</span> 对 <span
 class="math inline">\(x_m\)</span> 的偏导</p>
-<p><img src="https://s2.loli.net/2025/02/09/V8ga5JbDc7OLxWu.png" style="zoom:50%;" /></p>
+<p><img src="https://s2.loli.net/2025/02/09/V8ga5JbDc7OLxWu.png" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>以向量为例, 设 <span class="math inline">\(x, y, z\)</span>
 的维度分别为 <span class="math inline">\(D_x, D_y, D_z\)</span>,
 注意到损失 <span class="math inline">\(L\)</span> 一直是一个标量,
 数据的计算结果与梯度维度是对应的<br />
 雅可比矩阵一般都是稀疏的, 以 ReLU(x) = max(0,x) 为例:<br />
-<img src="https://s2.loli.net/2025/02/09/EZNDvlnmiH1xbu2.png" style="zoom:50%;" />
+<img src="https://s2.loli.net/2025/02/09/EZNDvlnmiH1xbu2.png" style="zoom:50%;" decoding="async" loading="lazy">
 因为 ReLU 函数是元素对元素(elementwise)的,
 所以其雅可比矩阵仅在对角线处有取值, 对于上述情况,
 矩阵乘法可以简化为:<br />
@@ -697,7 +697,7 @@ class="math inline">\(\displaystyle\frac{\partial L}{\partial w} = x^T
 target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/518296942">reverse-mode automatic
 differentation</a> 来避免算一些抽象大小的雅可比矩阵</p>
 <p>反向传播的思想也可以用来计算二阶梯度黑塞矩阵, 也就是梯度变化的速度
-<img src="https://s2.loli.net/2025/02/09/heavYrGPzyMBsx1.png" style="zoom:50%;" />
+<img src="https://s2.loli.net/2025/02/09/heavYrGPzyMBsx1.png" style="zoom:50%;" decoding="async" loading="lazy">
 这里仅做了解</p>
 <h2 id="assignment-2-线性分类器-双层神经网络">Assignment 2 线性分类器
 &amp; 双层神经网络</h2>
@@ -815,7 +815,7 @@ h&#39;}\)</span> 的第零维(dim=0)取平均</p>
 越大(网络容量越大), 拟合越好
 如果初始模型在训练集和验证集上的表现非常相似, 这说明模型是欠拟合的,
 如果我们增加网络容量, 其性能可能会提高</p>
-<p><img src="https://s2.loli.net/2025/02/12/ZQDhy2riNdO7qwE.png" alt="output" style="zoom: 80%;" /></p>
+<p><img src="https://s2.loli.net/2025/02/12/ZQDhy2riNdO7qwE.png" alt="output" style="zoom: 80%;" decoding="async" loading="lazy"></p>
 <p>上面是 H = 2, 8, 32, 128, 512 时在训练集和验证集上的准确率, 每一个
 epoch 代表使用训练集的全部数据进行一次完整训练<br />
 模型训练和验证准确度之间的小差距的另一个解释是正则化,
@@ -828,18 +828,18 @@ epoch 代表使用训练集的全部数据进行一次完整训练<br />
 为了解决这个问题, 我们引入一些可以用在二维空间上的结构/运算,
 例如卷积层、池化层、标准化层等</p>
 <p>全连接层(fully-connected layer)完全破坏了空间结构<br />
-<img src="https://s2.loli.net/2025/02/13/TMEGO16rkWlXpZf.png" />
+<img src="https://s2.loli.net/2025/02/13/TMEGO16rkWlXpZf.png" decoding="async" loading="lazy">
 而<strong>卷积层(convolution layer)</strong>不同,
 它接受一个三维的张量(通道数(Channels)/高度/宽度)作为输入图像,
 将其与<strong>卷积核/滤波器(filter)</strong>进行点积运算,
 卷积核在输入图像上移动, 计算每个位置的点积,
 从而生成<strong>特征图(feature map)</strong></p>
-<p><img src="https://s2.loli.net/2025/02/13/FIH2MbityTQJcqP.png" style="zoom:80%;" /></p>
+<p><img src="https://s2.loli.net/2025/02/13/FIH2MbityTQJcqP.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>卷积核在每个位置上的运算会返回一个数字(点积得到) <span
 class="math inline">\(w^Tx+b\)</span>,
 所有的数字构成一层<strong>激活图(activation map)</strong>,
 可能有不同的卷积核, 所有的激活图构成特征图
-<img src="https://s2.loli.net/2025/02/13/KrAqlZGbUICjMp7.png" alt="d3733ae17c46d87b3a720eba8b22eadd" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/02/13/KrAqlZGbUICjMp7.png" alt="d3733ae17c46d87b3a720eba8b22eadd" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>具体来讲, 若输入的 shape 为 <span
 class="math inline">\((N,C_{in},H,W)\)</span>, 则卷积核的 shape 为 <span
 class="math inline">\((C_{out},C_{in},K_w,K_h)\)</span>, 输出的 shape 为
@@ -847,7 +847,7 @@ class="math inline">\((C_{out},C_{in},K_w,K_h)\)</span>, 输出的 shape 为
 在这里我们没有额外操作, 于是 <span class="math inline">\(H&#39; =
 H-K_h+1, W&#39;=W-K_w+1\)</span></p>
 <p>卷积神经网络不是在学习图像的模板, 而是学习图像的边缘与颜色 <img
-src="https://s2.loli.net/2025/02/13/fpZ7iYrEe2lXKR9.png" />
+src="https://s2.loli.net/2025/02/13/fpZ7iYrEe2lXKR9.png" decoding="async" loading="lazy">
 上图是卷积层的架构, 我们仍要加入激活函数否则卷几次都和卷一次没区别,
 我们可视化了 Alexnet 第一层的 64 个卷积核, 有水平边缘、垂直边缘,
 有不同的频率, 有对立颜色。你可以理解为卷积输出了特征向量的网格</p>
@@ -880,7 +880,7 @@ target="_blank" rel="noopener" href="https://pytorch.org/docs/stable/generated/t
 池化层可以在神经网络中<strong>下采样(downsampling)</strong>,
 卷积层也可以下采样, 但是池化层不学习任何新的参数,
 只有三个超参数在起作用: 核大小, 步长和池化函数(max,avg,...)
-<img src="https://s2.loli.net/2025/02/13/Ad52fZgUIeJlFbO.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/02/13/Ad52fZgUIeJlFbO.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>上图是一个池化的例子, 图中核大小与步长一样为 2, 池化区域不重叠,
 我们使用 max pooling 作为池化函数, 也就是取最大值出来<br />
 max 操作具有不变性, max pooling 相当于允许"模型中的少量平移",
@@ -890,7 +890,7 @@ max pooling 引入了非线性, 理论上我们以及不用紧接着引入激活
 <p>有了这些层后我们就能构建简单的卷积神经网络了, 以经典的 <a
 target="_blank" rel="noopener" href="https://blog.csdn.net/lucklycoder/article/details/128606200">LeNet-5</a>
 为例, 一般是一些卷积层后面跟上一些全连接层:
-<img src="https://s2.loli.net/2025/02/13/c6Jn4lvaEujWGIL.png" style="zoom:80%;" />
+<img src="https://s2.loli.net/2025/02/13/c6Jn4lvaEujWGIL.png" style="zoom:80%;" decoding="async" loading="lazy">
 可以注意到在我们经过整个网络时, 我们倾向于减小空间尺寸并增加通道尺寸</p>
 <p><strong>标准化层(normalization
 layers)</strong>帮助我们更好地训练神经网络(加速),
@@ -898,7 +898,7 @@ layers)</strong>帮助我们更好地训练神经网络(加速),
 如果我们想要使层符合一些目标分布, 比如说平均值为 0, 单位方差(unit
 variance)(将特征的尺度统一为相似的范围), 这叫做<strong>批量归一化(Batch
 Normalization)(BN)</strong>
-<img src="https://s2.loli.net/2025/02/13/rNtUIDjmxC3sTQg.png" alt="a50ca43cb73ec4bd1375eb088c2465f9" style="zoom:80%;" />
+<img src="https://s2.loli.net/2025/02/13/rNtUIDjmxC3sTQg.png" alt="a50ca43cb73ec4bd1375eb088c2465f9" style="zoom:80%;" decoding="async" loading="lazy">
 最后为了防止除以 0 在分母加入了 <span
 class="math inline">\(\epsilon\)</span><br />
 直接归一化会使得模型的学习能力受到一定限制, 因为输出被严格限制在均值为 0
@@ -924,7 +924,7 @@ class="math inline">\(\gamma, \beta\)</span> 是常量,
 norm(仅在空间维度平均) 和 <a
 target="_blank" rel="noopener" href="https://arxiv.org/abs/1803.08494">group norm</a>,
 有一张图很好体现了它们的区别, 蓝色部分为标准化部分:<br />
-<img src="https://s2.loli.net/2025/02/13/mpNBgDqGxnOYSXP.png" alt="9d8faf24d6b9e35cfba8b2f12d739451" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/02/13/mpNBgDqGxnOYSXP.png" alt="9d8faf24d6b9e35cfba8b2f12d739451" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>不同标准化方法有不同的使用场景, 这里按下不表 <a
 target="_blank" rel="noopener" href="https://cs.stanford.edu/people/karpathy/convnetjs/demo/cifar10.html">一个可视化的在
 CIFAR-10 上的卷积神经网络 demo</a></p>
@@ -936,7 +936,7 @@ CIFAR-10 上的卷积神经网络 demo</a></p>
 target="_blank" rel="noopener" href="https://proceedings.neurips.cc/paper_files/paper/2012/file/c399862d3b9d6b76c8436e924a68c45b-Paper.pdf">Alexnet</a>:
 五层卷积层、Max Pooling 方法、三层全连接层、ReLU 激活函数、分在两个 GPU
 上跑
-<img src="https://s2.loli.net/2025/02/15/kmlXiaNERsQgx1h.png" style="zoom:80%;" />
+<img src="https://s2.loli.net/2025/02/15/kmlXiaNERsQgx1h.png" style="zoom:80%;" decoding="async" loading="lazy">
 图中省略了紧跟在卷积层(conv)后的激活函数 ReLU<br />
 这里的 params 指可学习参数的数量, 以 conv1 层举例,<br />
 <span class="math inline">\({\rm params} = \underline{C_{out} \times
@@ -951,14 +951,14 @@ ${} = {} = (C_{out} H' W') (C_{in} K K) $<br />
 9216 * 4096 = 37748736</p>
 <p>左边层数的架构怎么想出来的？硬试出来的！<del>这我学个毛</del><br />
 我们可以学习的是, 右边的内存、params 和 flop 显现出一些趋势
-<img src="https://s2.loli.net/2025/02/14/9zyNeUCsg2u7fRE.png" style="zoom:80%;" />
+<img src="https://s2.loli.net/2025/02/14/9zyNeUCsg2u7fRE.png" style="zoom:80%;" decoding="async" loading="lazy">
 内存主要前期用, params 在全连接层多, flop 在卷积层多</p>
 <p>在 Alexnet 后 ImageNet 比赛下一年的冠军是 ZFnet, 基本就是大一号的
 Alexnet, 体现一种趋向: 更大的网络更好</p>
 <p>从 2014 年开始, 人们不再追求这种 Ad hoc 的网络配置,
 手动调整每一层的大小, 而是转向一种更规范的设计理念, 下面介绍 <a
 target="_blank" rel="noopener" href="https://arxiv.org/pdf/1409.1556">VGG</a> 网络架构 <img
-src="https://s2.loli.net/2025/02/14/wvC8c3iLusEghAY.png" /> 卷积层都是
+src="https://s2.loli.net/2025/02/14/wvC8c3iLusEghAY.png" decoding="async" loading="lazy"> 卷积层都是
 3*3 的卷积核, 步长与填充为 1, 池化层都是 2*2 的核大小, 步长为 2 的<br />
 固定经历五个阶段的卷积(conv-conv-pool), 在池化层后翻倍通道数量<br />
 这个网络的可解释性更强一点, 比起用一个 5*5 的卷积核, 花费 25, 不如用两个
@@ -969,10 +969,10 @@ src="https://s2.loli.net/2025/02/14/wvC8c3iLusEghAY.png" /> 卷积层都是
 和前面的卷积层相比 flop 不变,
 这里的设计思想就是希望让每个卷积层有相同数量的 flop 运算<br />
 和 Alexnet 相比, VGG 是一个更加巨大的网络
-<img src="https://s2.loli.net/2025/02/14/frRqc3Bk4MKAZj9.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/02/14/frRqc3Bk4MKAZj9.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>再介绍一下其他网络架构, GoogleNet 希望更高的网络效率,
 于是它进行了快速的下采样:
-<img src="https://s2.loli.net/2025/02/15/AbXysxFwNlPoLrO.png" style="zoom:80%;" />
+<img src="https://s2.loli.net/2025/02/15/AbXysxFwNlPoLrO.png" style="zoom:80%;" decoding="async" loading="lazy">
 原始图像从 224*224 到 28*28, GoogleNet 的开销平均仅有 VGG 的 1/10
 左右</p>
 <p>GoogleNet 还引入了一种模块叫做 inception module,
@@ -995,7 +995,7 @@ ImageNet 比赛, 一年内神经网络的层数从 22 变成了 152,
 层的网络表现更差, 但 56 层网络应该能模拟 20 层网络,
 只要弃用一些层让它们为恒等函数就行, 欠拟合说明了它不能完成这些学习,
 也就是不能学习恒等函数
-<img src="https://s2.loli.net/2025/02/14/xgBDUNrEnkdTY4S.png" style="zoom:80%;" />
+<img src="https://s2.loli.net/2025/02/14/xgBDUNrEnkdTY4S.png" style="zoom:80%;" decoding="async" loading="lazy">
 ResNet 主要使用<strong>残差块(residual block)</strong>构建,
 我们加入了一些"捷径", 如果这些卷积层的权重为 0,
 则我们就能模拟恒等函数来输出 x, 这样也更有利于梯度的反向传播, ResNet
@@ -1003,9 +1003,9 @@ ResNet 主要使用<strong>残差块(residual block)</strong>构建,
 残差块也有多种, 普通块就是由两个 3*3 的卷积层加上捷径构成的,
 <strong>瓶颈块(Bottleneck block)</strong>由 1*1, 3*3, 1*1
 的三个卷积层构成, 并在开头和结尾改变通道数<br />
-<img src="https://s2.loli.net/2025/02/15/NTi1WUz4BLhwrlQ.png" alt="" style="zoom:80%;" />
+<img src="https://s2.loli.net/2025/02/15/NTi1WUz4BLhwrlQ.png" alt="" style="zoom:80%;" decoding="async" loading="lazy">
 下图是五种 ResNet 的数据:<br />
-<img src="https://s2.loli.net/2025/02/14/NGfoL8CsYjq5uJD.png" style="zoom:80%;" />
+<img src="https://s2.loli.net/2025/02/14/NGfoL8CsYjq5uJD.png" style="zoom:80%;" decoding="async" loading="lazy">
 我们可以继续改进残差剩余网络, 比如将多个瓶颈块并行以获得更高的性能</p>
 <p>ImageNet 比赛终止于 2017 年, 你现在可以在 <a
 target="_blank" rel="noopener" href="https://www.kaggle.com/">Kaggle 网站</a> 上自己打比赛</p>
@@ -1033,7 +1033,7 @@ Module(更大的模块抽象化, 比如说一层神经网络)<br />
 在创建 Tensor 时, 通过设置 <code>requires_grad = True</code>, PyTorch
 就会帮你建立计算图算梯度, 你可以使用 <code>.grad</code> 方法来调用,
 这部分可以见 PPT 47-61 页解释<br />
-<img src="https://s2.loli.net/2025/02/16/4hLTAPSWJkdDV3x.png" style="zoom:80%;" />
+<img src="https://s2.loli.net/2025/02/16/4hLTAPSWJkdDV3x.png" style="zoom:80%;" decoding="async" loading="lazy">
 PyTorch 允许我们写 tensor 的函数, 比如可以写个 sigmoid 函数,
 但这种简单的激活函数 PyTorch 里面已经有实现了,
 自己写可能会有数值计算的问题</p>
@@ -1061,7 +1061,7 @@ target="_blank" rel="noopener" href="https://blog.csdn.net/qq_41656402/article/d
 <p>感谢 <a target="_blank" rel="noopener" href="https://www.zhihu.com/people/1-95-6-43">爱吃蛋黄派 -
 知乎</a> 的笔记与解析, 本节课主要讲神经网络训练前的一些技巧</p>
 <p><strong>激活函数</strong><br />
-<img src="https://s2.loli.net/2025/02/09/NEr7JZiK1HPLCut.png" style="zoom:50%;" /></p>
+<img src="https://s2.loli.net/2025/02/09/NEr7JZiK1HPLCut.png" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>sigmoid 激活函数: <span class="math inline">\(\sigma(x) =
 \displaystyle\frac{1}{1+e^{-x}}\)</span> 非常流行<br />
 它的好处是将输入压缩到 [0,1] 之间的概率,
@@ -1088,7 +1088,7 @@ max}(0.1x,x)\)</span> 解决了梯度问题, 运算也快, 但是存在超参数
 <p><span class="math inline">\({\rm ELU}(x)\)</span> (见上图) 更加光滑,
 能够更高对抗噪音, 但是需要设置超参数 <span
 class="math inline">\(\alpha\)</span>​, 以及指数计算较为昂贵</p>
-<p><img src="https://s2.loli.net/2025/02/17/bTuKehVpBalCmcz.png" style="zoom: 50%;" /></p>
+<p><img src="https://s2.loli.net/2025/02/17/bTuKehVpBalCmcz.png" style="zoom: 50%;" decoding="async" loading="lazy"></p>
 <p>最抽象的激活函数是这个 SELU, 它有一种 "自归一化" 的性质, 这是用 <a
 target="_blank" rel="noopener" href="https://arxiv.org/abs/1706.02515">91 页的论文附录</a>算出来的</p>
 <p>最后总结, 不要用 sigmoid 或 tanh, 一般用 ReLU 就行, 如果强调 0.1%
@@ -1116,7 +1116,7 @@ class="math inline">\(C = E[{\rm x x^T}] =
 x_i^T}\)</span><br></p>
 </div>
 </article>
-<p><img src="https://s2.loli.net/2025/02/26/uShExK36sqCmVf4.png" style="zoom:67%;" /></p>
+<p><img src="https://s2.loli.net/2025/02/26/uShExK36sqCmVf4.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>去相关化就是要把数据的协方差矩阵变为对角矩阵, 我们设协方差矩阵为
 <span class="math inline">\(C\)</span>, 做特征值分解, <span
 class="math inline">\(C = U \Lambda U^T\)</span>, 设处理前的数据为 <span
@@ -1144,7 +1144,7 @@ ResNet 减去了每个通道的平均值并除以每个通道的标准值</p>
 使得无法进行学习<br />
 我们最常见的做法是拿小的随机数(符合高斯分布, std=0.01)来做初始化,
 这对浅层的网络很有用, 但对深层网络不是很有用<br />
-<img src="https://s2.loli.net/2025/02/17/LQud9AXjcovsp8W.png" style="zoom: 67%;" /></p>
+<img src="https://s2.loli.net/2025/02/17/LQud9AXjcovsp8W.png" style="zoom: 67%;" decoding="async" loading="lazy"></p>
 <p>例如上图是一个用 tanh 的六层网络, 梯度正在逐步向 0 崩溃(梯度消失),
 就没得学了, 把 std 调大一点则可能会梯度爆炸(梯度随着层数指数型增长)</p>
 <p>一种好用的初始化方法叫做 <a
@@ -1153,12 +1153,12 @@ Initialization</a>, 设置
 <code>W = np.random.randn(Din, Dout) / np.sqrt(Din)</code> 没有超参数,
 <span class="math inline">\({\rm std} = 1/\sqrt{n}\)</span>, 其中 <span
 class="math inline">\(n\)</span>​ 是输入参数的个数
-<img src="https://s2.loli.net/2025/02/17/cCWVgPFRvxHmAnq.png" style="zoom:67%;" />
+<img src="https://s2.loli.net/2025/02/17/cCWVgPFRvxHmAnq.png" style="zoom:67%;" decoding="async" loading="lazy">
 这背后的数学思想是我们想要使输入和输出的方差相等, 这部分推导可以见 PPT
 P59</p>
 <p>这样设置对于 tanh 很好, 但是对于 ReLU 和其他激活函数,
 仍然可能梯度消失或爆炸
-<img src="https://s2.loli.net/2025/02/17/AGYTLWydUKeDmHp.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/02/17/AGYTLWydUKeDmHp.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>上图是 ReLU 应用了 <span class="math inline">\({\rm std} =
 1/\sqrt{n}\)</span> 的情况, 我们要重新进行数学推导, 此时要设置 <span
 class="math inline">\({\rm std} = 2/\sqrt{n}\)</span> (正态分布 + ReLU
@@ -1171,13 +1171,13 @@ Initialization</a>, 也叫做 Kaiming Initialization
 <p>对于残差神经网络, 为了防止直接将输入增加到输出上时方差在 block
 间不断变大 <span class="math inline">\({\rm Var}(F(x)+x) &gt; {\rm
 Var}(x)\)</span>, 我们将第一个卷积层做 MSRA, 而将第二个卷积层置为 0
-<img src="https://s2.loli.net/2025/02/26/BTcq1bUgr4tfJKX.png" style="zoom: 67%;" /></p>
+<img src="https://s2.loli.net/2025/02/26/BTcq1bUgr4tfJKX.png" style="zoom: 67%;" decoding="async" loading="lazy"></p>
 <p>我们已经介绍过 L2 正则化来防止模型过拟合了,
 但还有一些其他的正则化想法, 下面介绍 <strong>Dropout</strong><br />
 Dropout 法如其名, 在前向传播的过程中, 我们随机将一些神经元置 0
 以防止神经元适应相同的特征, 强迫网络产生冗余<br />
 每个神经元被 "drop" 的概率为超参数, 一般设置为 0.5<br />
-<img src="https://s2.loli.net/2025/02/17/G37oIk4CjnrMgRi.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/02/17/G37oIk4CjnrMgRi.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>例如在上图中我们就能学习更多猫的特征</p>
 <p>在测试环境是我们需要让 Dropout 有一定稳定性, Dropout
 引入了随机<strong>掩码(mask)</strong> <span
@@ -1206,7 +1206,7 @@ learning rate 乘以一个 0.1 的系数, 你会注意到当 learning rate 降�
 loss 会骤减, 最终不再骤减并稳定, 这种方法显然引入了一坨超参数</p>
 <p>设置 learning rate 还有一种余弦策略(Cosine), 根据图中的式子设置
 learning rate:<br />
-<img src="https://s2.loli.net/2025/02/26/thzGbqy3XrWHYJe.png" style="zoom:67%;" />
+<img src="https://s2.loli.net/2025/02/26/thzGbqy3XrWHYJe.png" style="zoom:67%;" decoding="async" loading="lazy">
 一般训练时间越长越好, 你就只用调整初始 learning rate 就行</p>
 <p>相似的策略为线性衰减(linear decay) <span
 class="math inline">\(\alpha_t = \alpha_0(1-t/T)\)</span>
@@ -1225,7 +1225,7 @@ Stopping)</strong>: 训练集的准确率会不断增加,
 为每个超参数划一个选择区间, 每次在区间内随机试一个组合</p>
 <p>一般随机选择更好, 因为随机搜索可以尝试更多重要超参数的值, <a
 target="_blank" rel="noopener" href="https://dl.acm.org/doi/pdf/10.5555/2188385.2188395">这篇论文</a>论证了这点
-<img src="https://s2.loli.net/2025/02/26/nqV3bal57FPsgZ9.png" style="zoom: 67%;" />
+<img src="https://s2.loli.net/2025/02/26/nqV3bal57FPsgZ9.png" style="zoom: 67%;" decoding="async" loading="lazy">
 还有一种策略是用梯度下降的方法学习超参数, 目前还过于昂贵</p>
 <p>像我们这样的穷鬼怎么选超参数呢？<br />
 (1). 检查最初损失, 例如 Softmax 函数的初始 loss 约为 log(C)<br />
@@ -1247,7 +1247,7 @@ epochs, 可以尝试学习率衰减<br />
 的准确率<br />
 一种抽象的方法是在训练时设置学习率的循环,
 最后相当于使用多个模型在训练时的快照
-<img src="https://s2.loli.net/2025/02/26/xaEBN3GdkugtAyj.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/02/26/xaEBN3GdkugtAyj.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>另一种抽象方法是测试时不使用最终的训练权重,
 而是选择训练参数的运行平均值</p>
 <article class="message message-immersive is-primary">
@@ -1266,7 +1266,7 @@ learning)</strong>是属于机器学习的一种研究领域,
 (2). 删除最后一层(分类层), 冻结剩下层的权重, 相当于用 CNN
 提取了图像特征<br />
 (3). 加入我们需要的分类层, 在任务的数据集上训练(可选)<br />
-<img src="https://s2.loli.net/2025/02/18/7p2hNXJRGecCPt9.png" style="zoom:67%;" />
+<img src="https://s2.loli.net/2025/02/18/7p2hNXJRGecCPt9.png" style="zoom:67%;" decoding="async" loading="lazy">
 <strong>微调(Fine-Tuning)</strong>: 如果我们拥有较大的数据集,
 我们可以在原来网络的基础上进行微调训练,
 可以冻结层数较低的层以节省训练资源, 建议以原始学习率的 1/10
@@ -1276,7 +1276,7 @@ learning)</strong>是属于机器学习的一种研究领域,
 <p>还有一种<strong>分布式训练(distributed training)</strong>的思想<br />
 你可以以<strong>数据并行</strong>的方式在每一个 GPU 上复制模型,
 原理大致见下:
-<img src="https://s2.loli.net/2025/02/18/FwThvC9m2Zxi61E.png" style="zoom:67%;" />
+<img src="https://s2.loli.net/2025/02/18/FwThvC9m2Zxi61E.png" style="zoom:67%;" decoding="async" loading="lazy">
 如果你有很多 GPU, 可以通过并行 GPU 来提高采样的数量(Large-Batch
 Training), 这样可以加速训练, 但注意批归一化只能在 GPU 内部进行<br />
 在具体实现上, 如果有 k 个 GPU, 我们将 batch size 改为 kN 并把 learning
@@ -1303,10 +1303,10 @@ target="_blank" rel="noopener" href="https://cs231n.github.io/neural-networks-2/
 <p>然后我们可以模仿两层的 MLP 来封装这个 FullyConnectedNet 类</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br><span class="line">51</span><br><span class="line">52</span><br><span class="line">53</span><br><span class="line">54</span><br><span class="line">55</span><br><span class="line">56</span><br><span class="line">57</span><br><span class="line">58</span><br><span class="line">59</span><br><span class="line">60</span><br><span class="line">61</span><br><span class="line">62</span><br><span class="line">63</span><br><span class="line">64</span><br><span class="line">65</span><br><span class="line">66</span><br><span class="line">67</span><br><span class="line">68</span><br><span class="line">69</span><br><span class="line">70</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">class</span> <span class="title class_">FullyConnectedNet</span>(<span class="title class_ inherited__">object</span>):</span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">__init__</span>(<span class="params">self, hidden_dims, input_dim=<span class="number">3</span>*<span class="number">32</span>*<span class="number">32</span>, num_classes=<span class="number">10</span>,</span></span><br><span class="line"><span class="params">               dropout=<span class="number">0.0</span>, reg=<span class="number">0.0</span>, weight_scale=<span class="number">1e-2</span>, seed=<span class="literal">None</span>,</span></span><br><span class="line"><span class="params">               dtype=torch.<span class="built_in">float</span>, device=<span class="string">&#x27;cpu&#x27;</span></span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    初始化 FullyConnectedNet 类</span></span><br><span class="line"><span class="string">    输入:</span></span><br><span class="line"><span class="string">    - hidden_dims: python list, 包含每个隐藏层的大小</span></span><br><span class="line"><span class="string">    - input_dim: 输入的大小</span></span><br><span class="line"><span class="string">    - num_classes: 需要分类的种类数</span></span><br><span class="line"><span class="string">    - dropout: 0~1 的标量, 代表 drop 的概率</span></span><br><span class="line"><span class="string">    - reg: (float), 为 L2 正则化因子</span></span><br><span class="line"><span class="string">    - weight_scale: 初始权重根据 weight_scale 比例高斯分布</span></span><br><span class="line"><span class="string">    - seed: 随机数种子</span></span><br><span class="line"><span class="string">    - dtype: 数据种类</span></span><br><span class="line"><span class="string">    - device: 设备种类, &#x27;cpu&#x27; 或 &#x27;cuda&#x27;</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    self.use_dropout = dropout != <span class="number">0</span></span><br><span class="line">    self.reg, self.dtype = reg, dtype</span><br><span class="line">    self.num_layers = <span class="number">1</span> + <span class="built_in">len</span>(hidden_dims)</span><br><span class="line">    self.params = &#123;&#125;</span><br><span class="line">    self.params[<span class="string">&#x27;W1&#x27;</span>] = weight_scale*torch.randn(input_dim, hidden_dims[<span class="number">0</span>], device=device, dtype=dtype)</span><br><span class="line">    self.params[<span class="string">&#x27;b1&#x27;</span>] = torch.zeros(hidden_dims[<span class="number">0</span>], device=device, dtype=dtype)</span><br><span class="line">    L = self.num_layers</span><br><span class="line">    </span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">2</span>,L):</span><br><span class="line">		self.params[<span class="string">&#x27;W&#x27;</span>+<span class="built_in">str</span>(i)] = weight_scale*torch.randn(hidden_dims[i-<span class="number">2</span>], hidden_dims[i-<span class="number">1</span>], device=device, dtype=dtype)</span><br><span class="line">		self.params[<span class="string">&#x27;b&#x27;</span>+<span class="built_in">str</span>(i)] = torch.zeros(hidden_dims[i-<span class="number">1</span>], device=device, dtype=dtype)</span><br><span class="line">        </span><br><span class="line">    self.params[<span class="string">&#x27;W&#x27;</span>+<span class="built_in">str</span>(L)] = weight_scale*torch.randn(hidden_dims[L-<span class="number">2</span>], num_classes, device=device, dtype=dtype)</span><br><span class="line">    self.params[<span class="string">&#x27;b&#x27;</span>+<span class="built_in">str</span>(L)] = torch.zeros(num_classes, device=device, dtype=dtype)</span><br><span class="line">    self.dropout_param = &#123;&#125;</span><br><span class="line">    <span class="keyword">if</span> self.use_dropout:</span><br><span class="line">        self.dropout_param = &#123;<span class="string">&#x27;mode&#x27;</span>: <span class="string">&#x27;train&#x27;</span>, <span class="string">&#x27;p&#x27;</span>: dropout&#125;</span><br><span class="line">        <span class="keyword">if</span> seed <span class="keyword">is</span> <span class="keyword">not</span> <span class="literal">None</span>:</span><br><span class="line">        	self.dropout_param[<span class="string">&#x27;seed&#x27;</span>] = seed</span><br><span class="line">        </span><br><span class="line">  <span class="keyword">def</span> <span class="title function_">loss</span>(<span class="params">self, X, y=<span class="literal">None</span></span>): <span class="comment"># 算 loss 和梯度</span></span><br><span class="line">    X = X.to(self.dtype)</span><br><span class="line">    mode = <span class="string">&#x27;test&#x27;</span> <span class="keyword">if</span> y <span class="keyword">is</span> <span class="literal">None</span> <span class="keyword">else</span> <span class="string">&#x27;train&#x27;</span></span><br><span class="line">    <span class="keyword">if</span> self.use_dropout:</span><br><span class="line">		self.dropout_param[<span class="string">&#x27;mode&#x27;</span>] = mode</span><br><span class="line">    L, h = self.num_layers, X</span><br><span class="line">    caches, drop_caches = [], []</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,L): <span class="comment"># 正向传播 Layer 1 ~ L-1  </span></span><br><span class="line">        w, b = self.params[<span class="string">&#x27;W&#x27;</span>+<span class="built_in">str</span>(i)], self.params[<span class="string">&#x27;b&#x27;</span>+<span class="built_in">str</span>(i)]</span><br><span class="line">        h, ci = Linear_ReLU.forward(h,w,b)</span><br><span class="line">        caches.append(ci)</span><br><span class="line">        <span class="keyword">if</span>(self.use_dropout): <span class="comment"># Dropout</span></span><br><span class="line">            h, di = Dropout.forward(h, self.dropout_param)</span><br><span class="line">            drop_caches.append(di)</span><br><span class="line">    <span class="comment"># 正向传播 Layer L</span></span><br><span class="line">    scores, cL = Linear.forward(h,self.params[<span class="string">&#x27;W&#x27;</span>+<span class="built_in">str</span>(L)], self.params[<span class="string">&#x27;b&#x27;</span>+<span class="built_in">str</span>(L)])</span><br><span class="line">    caches.append(cL)</span><br><span class="line">    <span class="comment"># If test mode return early</span></span><br><span class="line">    <span class="keyword">if</span> mode == <span class="string">&#x27;test&#x27;</span>: <span class="keyword">return</span> scores</span><br><span class="line">    loss, grads = <span class="number">0.0</span>, &#123;&#125;</span><br><span class="line">    loss, ds = softmax_loss(scores,y) <span class="comment"># softmax 算 loss, d(scores)</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(L):</span><br><span class="line">		loss += self.reg*torch.<span class="built_in">sum</span>(self.params[<span class="string">&#x27;W&#x27;</span>+<span class="built_in">str</span>(i+<span class="number">1</span>)] ** <span class="number">2</span>)</span><br><span class="line">    dout, dw, db = Linear.backward(ds,caches[L-<span class="number">1</span>]) <span class="comment"># 反向传播 linear, dw = dWL</span></span><br><span class="line">    grads[<span class="string">&#x27;W&#x27;</span>+<span class="built_in">str</span>(L)] = dw + <span class="number">2</span>*self.reg*self.params[<span class="string">&#x27;W&#x27;</span> + <span class="built_in">str</span>(L)]</span><br><span class="line">    grads[<span class="string">&#x27;b&#x27;</span>+<span class="built_in">str</span>(L)] = db</span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(L-<span class="number">1</span>,<span class="number">0</span>,-<span class="number">1</span>): <span class="comment"># 反向传播 linear - ReLU, 从 layer L-1 ~ 1</span></span><br><span class="line">        <span class="keyword">if</span> self.use_dropout:</span><br><span class="line">        	dout = Dropout.backward(dout,drop_caches[i-<span class="number">1</span>]) <span class="comment"># 有 dropout 先 dropout 反向 </span></span><br><span class="line">        dout, dw, db = Linear_ReLU.backward(dout,caches[i-<span class="number">1</span>])</span><br><span class="line">        grads[<span class="string">&#x27;W&#x27;</span>+<span class="built_in">str</span>(i)] = dw + <span class="number">2</span>*self.reg*self.params[<span class="string">&#x27;W&#x27;</span> + <span class="built_in">str</span>(i)]</span><br><span class="line">        grads[<span class="string">&#x27;b&#x27;</span>+<span class="built_in">str</span>(i)] = db</span><br><span class="line">    <span class="keyword">return</span> loss, grads</span><br></pre></td></tr></table></figure>
 <p>发现 dropout 效果真不错啊真不错, hidden_size 越大, 效果也是越好<br />
-<img src="https://s2.loli.net/2025/02/18/vPuNxw8XrhL9Yti.png" style="zoom:67%;" /><br />
+<img src="https://s2.loli.net/2025/02/18/vPuNxw8XrhL9Yti.png" style="zoom:67%;" decoding="async" loading="lazy"><br />
 之后照着 Lecture 4 的代码抄抄又实现了 SGD+Momentum、RMSProp 和 Adam,
 发现 Adam 还真好用<br />
-<img src="https://s2.loli.net/2025/02/18/eEyI7ldYwxWi83n.png" alt="" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/02/18/eEyI7ldYwxWi83n.png" alt="" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <h3 id="cnn">CNN</h3>
 <p>原作业建议在 colab 上完成, CNN 要通过 google drive 导入一部分上文 MLP
 的代码, 在本地完成作业的我直接把 MLP 的 .py 代码全导进去再跑一遍了,
@@ -1358,14 +1358,14 @@ target="_blank" rel="noopener" href="https://www.51cto.com/article/805044.html">
 \epsilon}}\)</span> 怎么做反向传播, 作业让我们翻<a
 target="_blank" rel="noopener" href="https://arxiv.org/pdf/1502.03167">原论文</a>去,
 我们在第四页可以找到</p>
-<p><img src="https://s2.loli.net/2025/02/22/sS9eGuvOafYPHQ2.png" style="zoom:67%;" /></p>
+<p><img src="https://s2.loli.net/2025/02/22/sS9eGuvOafYPHQ2.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>主要代码见下, <strong>注意 eps</strong>, 在 test
 时候使用的是在训练阶段累积的全局均值和方差, 代码不同:</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">mode, x, xhat, gamma, beta, mean, var, eps = cache  </span><br><span class="line"><span class="keyword">if</span> mode == <span class="string">&#x27;train&#x27;</span>:</span><br><span class="line">    N = x.shape[<span class="number">0</span>]</span><br><span class="line">    dxhat = dout*gamma <span class="comment"># [N, D]</span></span><br><span class="line">    dvar = (dxhat*(-<span class="number">1</span>/<span class="number">2</span>)*(x-mean)*((var+eps)**(-<span class="number">1.5</span>))).<span class="built_in">sum</span>(dim=<span class="number">0</span>) <span class="comment"># [D]</span></span><br><span class="line">    dmean = dvar*((<span class="number">2</span>*mean-<span class="number">2</span>*x).mean(dim=<span class="number">0</span>)) - (dxhat/torch.sqrt(var+eps)).<span class="built_in">sum</span>(dim=<span class="number">0</span>) <span class="comment">#[D]</span></span><br><span class="line">    dx = dxhat/(torch.sqrt(var+eps)) + dvar*(<span class="number">2</span>*(x-mean))/N + dmean/N <span class="comment">#[N, D]</span></span><br><span class="line">    dgamma = (dout*xhat).<span class="built_in">sum</span>(dim=<span class="number">0</span>) <span class="comment">#[D]</span></span><br><span class="line">    dbeta = dout.<span class="built_in">sum</span>(dim=<span class="number">0</span>) <span class="comment">#[D]</span></span><br></pre></td></tr></table></figure>
 <p>如果找不到式子就只能推计算图了, <a
 target="_blank" rel="noopener" href="https://kratzert.github.io/2016/02/12/understanding-the-gradient-flow-through-the-batch-normalization-layer.html">这篇文章</a>给出了
 BN 层的计算图, 可以参考</p>
-<p><img src="https://s2.loli.net/2025/02/22/q4PA3uYvREF1obC.png" style="zoom:67%;" /></p>
+<p><img src="https://s2.loli.net/2025/02/22/q4PA3uYvREF1obC.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>实战中我们可以换一种简单的计算图表达出 <span
 class="math inline">\(x\)</span>, 因为 <span class="math inline">\(\mu =
 \displaystyle\frac{1}{N}\sum\limits_{k=1}^N x_k, \; v =
@@ -1374,7 +1374,7 @@ class="math inline">\(x\)</span>, 因为 <span class="math inline">\(\mu =
 \sqrt{v + \epsilon}\)</span>, 以及标准分 <span
 class="math inline">\(\;y_i = \displaystyle\frac{x_i -
 \mu}{\sigma}\)</span>​ 来推式子, 我们可以画出新的计算图</p>
-<p><img src="https://s2.loli.net/2025/02/22/iEbe1CTK4V5QLRa.png" style="zoom:67%;" /></p>
+<p><img src="https://s2.loli.net/2025/02/22/iEbe1CTK4V5QLRa.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>故有 <span class="math inline">\(\displaystyle\frac{\partial
 L}{\partial x} = \displaystyle\frac{\partial L}{\partial y} \times
 (\displaystyle\frac{\partial y}{\partial \sigma} \times
@@ -1429,14 +1429,14 @@ network)(FNN)</strong>, 在这种网络中, 信息仅在一个方向上流动,
 更具体的, 我们的图像分类网络是 one to one 的, 一个图像对应一个分类标签,
 还有一些其他任务, 比如图像字幕(one to many), 视频分类(many to one),
 机器翻译(many to many) 等……<br />
-<img src="https://s2.loli.net/2025/02/22/i3G4LsuQyfrDeOE.png" style="zoom:67%;" /><strong>循环神经网络(recurrent
+<img src="https://s2.loli.net/2025/02/22/i3G4LsuQyfrDeOE.png" style="zoom:67%;" decoding="async" loading="lazy"><strong>循环神经网络(recurrent
 neural network)(RNN)</strong> 就是用来处理序列数据用的</p>
 <p>RNN 的核心思想是其内部有一些状态(internal state)随着序列的处理而更新
-<img src="https://s2.loli.net/2025/02/22/cDxm1elk5svqRFG.png" alt="" style="zoom: 50%;" /></p>
+<img src="https://s2.loli.net/2025/02/22/cDxm1elk5svqRFG.png" alt="" style="zoom: 50%;" decoding="async" loading="lazy"></p>
 <p>我们在每个时间步(time step)上应用<strong>递归公式 (Recurrence
 Formula)</strong>来处理向量序列 <span class="math inline">\(x\)</span>,
 注意在每个时间步上权重矩阵都是<strong>相同的</strong>
-<img src="https://s2.loli.net/2025/02/23/sGwSRCeFNpd2YP5.png" style="zoom:67%;" />
+<img src="https://s2.loli.net/2025/02/23/sGwSRCeFNpd2YP5.png" style="zoom:67%;" decoding="async" loading="lazy">
 对于 many to many 任务, 计算图是这样的, 只存在 <span
 class="math inline">\(y_T\)</span> 就是 many to one 任务, 只存在 <span
 class="math inline">\(x_1\)</span> 就是 one to many 任务</p>
@@ -1455,7 +1455,7 @@ layer)</strong>的概念<br />
 嵌入层在输入层与隐藏层之间, 将稀疏矩阵变为稠密矩阵,
 同时也能体现输出的相关性, 总的网络长这样:</p>
 <div data-align="center">
-<img src="https://s2.loli.net/2025/02/23/vNA6wdli8Ej5r2y.png" style="zoom: 33%;" />
+<img src="https://s2.loli.net/2025/02/23/vNA6wdli8Ej5r2y.png" style="zoom: 33%;" decoding="async" loading="lazy">
 </div>
 <p>还有一种有趣应用是<strong>图像字幕(image captioning)</strong>,
 我们先把图片喂给 CNN, 再把 CNN 提取出的特征喂给 RNN,
@@ -1467,13 +1467,13 @@ time)(TBPTT)</strong>算法, 我们将序列分为不同的区块(chunk),
 在每个区块中展开计算图计算 loss 并反向传播至那个区块,
 直到遍历完整序列</p>
 <p>下面观察一下 RNN 的梯度流<br />
-<img src="https://s2.loli.net/2025/02/22/c7XCLSZx6M4TPG2.png" style="zoom:67%;" />
+<img src="https://s2.loli.net/2025/02/22/c7XCLSZx6M4TPG2.png" style="zoom:67%;" decoding="async" loading="lazy">
 当多个 RNN 单元连接时, 我们会重复乘以同样的权重矩阵 W, 要么会梯度爆炸,
 要么会梯度消失 当梯度爆炸时, 我们可以做<strong>梯度裁剪(gradient
 clipping)</strong>, 设置一个梯度上限, 大于上限就乘以一个小系数,
 幽默但有用 但是梯度消失怎么办呢？下面介绍一种新的 RNN 架构:
 <strong>长短期记忆(Long Short Term Memory)(LSTM)</strong><br />
-<img src="https://s2.loli.net/2025/02/23/3puYHhSB4TorPGW.png" style="zoom:67%;" /><br />
+<img src="https://s2.loli.net/2025/02/23/3puYHhSB4TorPGW.png" style="zoom:67%;" decoding="async" loading="lazy"><br />
 LSTM 通过把权重矩阵从梯度流中排除解决了上面的问题 与普通 RNN
 每时间步一个状态 <span class="math inline">\(h_t\)</span> 不同, LSTM
 有两个状态, <strong>细胞状态(cell state)</strong> <span
@@ -1485,7 +1485,7 @@ state)</strong> <span class="math inline">\(h_t\)</span><br />
 class="math inline">\(i,f,o,g\)</span> 来更新新的细胞状态和隐藏状态,
 图中的 <span class="math inline">\(\odot\)</span>
 表示两个矩阵对应元素进行乘积<br />
-<img src="https://s2.loli.net/2025/02/22/8X2svTnzIROtqki.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/02/22/8X2svTnzIROtqki.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>我们不直接把 <span class="math inline">\(W
 \displaystyle\binom{h_{t-1}}{x_t}\)</span> 拿来做下一个隐藏状态, 相反,
 我们将输出分为四个向量: 输入(<span
@@ -1504,7 +1504,7 @@ class="math inline">\(g\)</span> 决定程度(+/-)<br />
 然后 <span class="math inline">\(h_t = o \odot {\rm tanh}(c_t)\)</span>
 代表 LSTM 可以通过 输出 <span class="math inline">\(o\)</span>,
 选择展现每个时间段的部分细胞状态<br />
-<img src="https://s2.loli.net/2025/02/22/EgcSQ2jfsoeiKDw.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/02/22/EgcSQ2jfsoeiKDw.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>这时候我们就能注意到反向传播时不会经过权重 W, 只会乘以遗忘 <span
 class="math inline">\(f\)</span> 的系数, 没有非线性也没有矩阵乘法,
 一般我们用 <span class="math inline">\(h_t\)</span> 做预测, <span
@@ -1529,7 +1529,7 @@ class="math inline">\(c\)</span> 作为<strong>解码器 (decoder)</strong>
 所以我们选择在编码器的每个时间步上计算一个上下文向量,
 解码器可以选择上下文向量, 或者说关注输入序列的不同部分,
 我们称之为注意力机制(Attention)<br />
-<img src="https://s2.loli.net/2025/02/23/napzrDus8N9HT7f.png" style="zoom:67%;" /><br />
+<img src="https://s2.loli.net/2025/02/23/napzrDus8N9HT7f.png" style="zoom:67%;" decoding="async" loading="lazy"><br />
 首先, 我们还是要算隐藏层 <span class="math inline">\(h_t =
 f_W(x_t,h_{t-1})\)</span> 以及最初的解码器状态 <span
 class="math inline">\(s_0\)</span><br />
@@ -1560,10 +1560,10 @@ class="math inline">\(e_{t,i,j}\)</span>, softmax 得到 <span
 class="math inline">\(a_{t,i,j}\)</span>, 和 <span
 class="math inline">\(h\)</span> 一起喂进去得到上下文向量 <span
 class="math inline">\(c\)</span>......, 都是类似的<br />
-<img src="https://s2.loli.net/2025/02/23/9AunP5YbLFrQtBy.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/02/23/9AunP5YbLFrQtBy.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>你可以可视化这些注意力来获得一些直觉, 这里每张图只有一块注意力,
 这需要一些额外的技术实现<br />
-<img src="https://s2.loli.net/2025/02/23/pRBEo6ztmPVI9L3.png" style="zoom: 50%;" /></p>
+<img src="https://s2.loli.net/2025/02/23/pRBEo6ztmPVI9L3.png" style="zoom: 50%;" decoding="async" loading="lazy"></p>
 <p>因为注意力太好用了, 我们想要抽象出一个新的神经网络层,
 叫做<strong>注意力层(attention layer)</strong></p>
 <p>对于单个询问, 我们输入查询向量(query vector) <span
@@ -1585,14 +1585,14 @@ dim = 1})\)</span>, 输出 $Y = AX, Y_i = <em>j A</em>{i,j}X_j $</p>
 class="math inline">\(W_K, W_v\)</span>, 用 <span
 class="math inline">\(K = XW_K\)</span> 来做相似性, 用 <span
 class="math inline">\(V = XW_V\)</span> 来做输出, 总的流程如下:<br />
-<img src="https://s2.loli.net/2025/02/23/osJdagWUtrb8vcT.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/02/23/osJdagWUtrb8vcT.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p><strong>自注意力层(self-attention
 layer)</strong>是注意力层的一个特例, 我们只有一个输入向量 <span
 class="math inline">\(X\)</span>,
 将每一个输入向量与其他所有输入向量进行比较(将输入向量转化为询问向量
 <span class="math inline">\(Q\)</span>​),
 以此确定它们之间的相互关系<br />
-<img src="https://s2.loli.net/2025/02/23/NlL7keIQamAEBof.png" style="zoom: 50%;" /></p>
+<img src="https://s2.loli.net/2025/02/23/NlL7keIQamAEBof.png" style="zoom: 50%;" decoding="async" loading="lazy"></p>
 <p>如果我们改变输入的顺序, 可以注意到输出的顺序也会同步改变,
 这说明自注意力层是有<strong>置换同变性(permutation
 equivariance)(PE)</strong>的, 它不关心输入的顺序,
@@ -1603,7 +1603,7 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/454482273">这
 <p><strong>掩码自注意力层(masked self-attention
 layer)</strong>是自注意力层的一个特例,
 有时我们希望防止模型知道未来的时间步的信息, 所以要相应更改权重掩码(mask)
-<img src="https://s2.loli.net/2025/02/23/XoxTvCnMmUrHRew.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/02/23/XoxTvCnMmUrHRew.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>在一些语言任务中, 我们要对句子进行填充(padding)使它们长度相同,
 因为填充部分不参与计算, 所以要 mask 为负无穷, 这样 softmax 后得到 0
 的概率</p>
@@ -1620,7 +1620,7 @@ RNN适合处理长序列但是不能并行计算隐藏状态<br />
 自注意力模型既适合处理长序列也具有高度的并行性，但是需要大量的内存</p>
 <p>怎么解决这些问题？<strong>ATTENTION IS ALL YOU NEED!</strong><br />
 我们需要建立新的一种块: <strong>Transformer 块</strong><br />
-<img src="https://s2.loli.net/2025/02/23/hGlXmOf7YSkngPa.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/02/23/hGlXmOf7YSkngPa.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>在 transformer 块中, 输入向量 <span
 class="math inline">\(X_i\)</span> 仅在自注意部分互相交互,
 在其余部分都是独立的</p>
@@ -1659,7 +1659,7 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/445122996">这
 FC7 层有 4096 个特征向量, 我们可以做 kNN, 将每张测试集图像与 4096
 个特征向量进行搜索,
 理解分类器如何在<strong>特征空间</strong>学习彼此的接近程度<br />
-<img src="https://s2.loli.net/2025/02/24/f3ZtzGyD6xjiWV5.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/02/24/f3ZtzGyD6xjiWV5.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>以第二行的大象为例, 尽管背景有极大区别, 但是 Alexnet 编码出了 "大象"
 的概念, 很好完成了分类</p>
 <p>另一种可视化方法是降维方法 人类难以理解 4096 维空间, 就降维而言,
@@ -1683,7 +1683,7 @@ t-SNE 可视化 CNN 的样例</p>
 <p>我们也可以激活中间的卷积层, 因为激活函数的存在,
 可能会有大量的纯黑色图像, 对于一些非零的卷积核,
 我们可以将其与图片对齐以猜测其响应了什么特征<br />
-<img src="https://s2.loli.net/2025/02/24/XmgVqirGKlHfEbc.png" style="zoom:50%;" /></p>
+<img src="https://s2.loli.net/2025/02/24/XmgVqirGKlHfEbc.png" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>例如这个卷积核可能对应人脸</p>
 <p>我们接下来引入<strong>最大激活区域(maximally activationg
 patches)</strong>的概念, 它描述的是在给定神经网络层级中,
@@ -1694,14 +1694,14 @@ patches)</strong>的概念, 它描述的是在给定神经网络层级中,
 我们比较原图和原图<strong>遮蔽(occlusion)</strong>后的神经元的响应,
 通过相应的区别大小就可以估计输入像素的重要性,
 对整张图片的每个部分都尝试抹去, 就可以得到一个神经元的感受野
-<img src="https://s2.loli.net/2025/02/24/KLQj9WRIdiDCpAn.png" alt="pixel" style="zoom:50%;" /></p>
+<img src="https://s2.loli.net/2025/02/24/KLQj9WRIdiDCpAn.png" alt="pixel" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>我们还可以通过反向传播的方式获得输入图像中每个像素的梯度,
 这告诉我们对于每个像素其对于决定分类分数的重要性<br />
 这其实还引出了一个根据像素梯度来分割图像主体的想法</p>
 <p>同理, 我们也可以用反向传播去寻找中间特征, 这里用的是一种 guided
 backprop, 对上游传过来的负梯度设置为 0,
 不知道为什么这会让图像更好看<br />
-<img src="https://s2.loli.net/2025/02/24/VxDaZ2Ap6wniRKg.png" style="zoom:50%;" /></p>
+<img src="https://s2.loli.net/2025/02/24/VxDaZ2Ap6wniRKg.png" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>我们不一定要用测试图像来做可视化,
 还可以去合成一个最大化神经元输出的图像,
 这引入了<strong>梯度上升(gradient ascent)</strong>的概念<br />
@@ -1711,30 +1711,30 @@ backprop, 对上游传过来的负梯度设置为 0,
 \underline{f(I)}_{神经元输出} +\underline{R(I)}_{正则化}\)</span>​</p>
 <p>生成的图像会长这样, 这叫做<strong>显著图(saliency
 maps)</strong>:<br />
-<img src="https://s2.loli.net/2025/02/24/HWvq8gLlFkdxbAU.png" style="zoom:50%;" /></p>
+<img src="https://s2.loli.net/2025/02/24/HWvq8gLlFkdxbAU.png" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>更好的正则化函数会让函数更自然, 所选的梯度上升的神经元越高层,
 生成的图像就更有语义<br />
-<img src="https://s2.loli.net/2025/02/24/YhIwTzpSCE4KobR.png" /></p>
+<img src="https://s2.loli.net/2025/02/24/YhIwTzpSCE4KobR.png" decoding="async" loading="lazy"></p>
 <p>但是这其实不完全是 CNN 在真实寻找的,
 课程教授更倾向于选择更简单的正则化函数</p>
 <p><strong>对抗性样本(adversarial
 examples)</strong>是在一个分类的图片加入另一个分类最大化输出的噪声生成的,
 即使噪声人类完全无法看出来, 但神经网络会改变其预测结果<br />
-<img src="https://s2.loli.net/2025/02/24/ZcVIHtKCwPOxgjB.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/02/24/ZcVIHtKCwPOxgjB.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p><a
 target="_blank" rel="noopener" href="https://blog.csdn.net/StarandTiAmo/article/details/126978601">这篇文章</a>介绍了对抗性攻击及其防御措施</p>
 <p>下面介绍一下<strong>特征反转(feature inversion)</strong>的想法<br />
 和梯度上升类似, 我们通过前向传播得到图像的特征,
 并定义损失函数为另一张图片的特征与我们得到的特征的差异,
 尝试最小化这个损失会让我们生成一些奇妙图像
-<img src="https://s2.loli.net/2025/02/24/JjDMWTyKGSXnofq.png" alt="" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/02/24/JjDMWTyKGSXnofq.png" alt="" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>例如, 浅层的图像会与原始图像相似, 越深层学习的特征就越抽象,
 越来越多的低级信息丢失(纹理和颜色), 但是保留了图像的整体结构和形状</p>
 <p>Google 的 DeepDream 项目尝试放大图像中的特征, 思想是令 <span
 class="math inline">\(I^* = {\rm arg\;max}_I \sum_I f_{i}(I)^2\)</span>,
 这样图像会越来越像网络的 "梦境",
 网络将其学到的所有特征都叠加在原始图像上<br />
-<img src="https://s2.loli.net/2025/02/24/vN21buyWIcEHk73.png" /></p>
+<img src="https://s2.loli.net/2025/02/24/vN21buyWIcEHk73.png" decoding="async" loading="lazy"></p>
 <p>例如学习动物的神经网络可以从云彩中看出各种动物来</p>
 <p>计算机图形学中有<strong>纹理合成(texture synthesis)</strong>的概念,
 使用 kNN 就能在简单材质上做得很好<br />
@@ -1746,10 +1746,10 @@ class="math inline">\(I^* = {\rm arg\;max}_I \sum_I f_{i}(I)^2\)</span>,
 这个矩阵扔掉了所有空间信息但是告诉了我们哪些特征两两关联<br />
 通过使用梯度上升匹配目标的格拉姆矩阵, 我们期望得到一些相同纹理的图片
 整个流程的思想是这样的:<br />
-<img src="https://s2.loli.net/2025/02/24/AnzkeVIPSs8M2rw.png" style="zoom: 50%;" /></p>
+<img src="https://s2.loli.net/2025/02/24/AnzkeVIPSs8M2rw.png" style="zoom: 50%;" decoding="async" loading="lazy"></p>
 <p>一些人将纹理合成与特征重建结合起来, 一个提供特征, 一个提供空间结构,
 这就弄出来了<strong>神经风格迁移(neural style transfer)</strong><br />
-<img src="https://s2.loli.net/2025/02/24/PnrIYjloqMp4cvk.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/02/24/PnrIYjloqMp4cvk.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>你可以把多个风格图像放一起应用在内容图片上,
 现在的风格迁移已经足够快够实时迁移视频了</p>
 <p>总结一下: 我们可以用 <strong>kNN, 降维, 最大激活, 遮蔽, 显著图,
@@ -1864,7 +1864,7 @@ size 为 N, 输入图片集的 shape 为 [N,3,112,112], 字幕(captions)的 shap
 为 [N,T], 在最后一维上前面 T-1 个为输入, 后面 T-1 个为输出,
 这是因为输出会作为下一个时间步的输入<br />
 总的流程大体可见这张图, 最好和 Lecture 12 带嵌入层的图一起看<br />
-<img src="https://s2.loli.net/2025/02/27/HYPCAUBcaEveFZm.png" style="zoom:50%;" /></p>
+<img src="https://s2.loli.net/2025/02/27/HYPCAUBcaEveFZm.png" style="zoom:50%;" decoding="async" loading="lazy"></p>
 <p>注意 h 到 y 的过程中要先 embedding 得到下一层的 h 后再算 y 和
 loss<br />
 训练的前向传播一共是五步: CNN 特征到 h0, embedding, 算新的 h, 算得分, 算
@@ -1890,12 +1890,12 @@ softmax loss<br />
 基准事实):<br />
 
 <div data-align="center">
-<img src="https://s2.loli.net/2025/02/27/CQ7Gjqs5xogP3b9.png" style="zoom: 67%;" />
+<img src="https://s2.loli.net/2025/02/27/CQ7Gjqs5xogP3b9.png" style="zoom: 67%;" decoding="async" loading="lazy">
 </div>
 而测试集的句子简直错到奶奶家去了, <del>但好歹语法是对的</del><br />
 
 <div data-align="center">
-<img src="https://s2.loli.net/2025/02/27/ClrwBV2skyfAiY8.png" style="zoom: 65%;" />
+<img src="https://s2.loli.net/2025/02/27/ClrwBV2skyfAiY8.png" style="zoom: 65%;" decoding="async" loading="lazy">
 </div>
 <h4 id="lstm-attention-lstm">LSTM &amp; Attention LSTM</h4>
 <p>与普通 RNN (又称 vanilla RNN) 相同的是, 每个时间步我们接受输入 <span
@@ -1907,7 +1907,7 @@ class="math inline">\(c_{t-1} \in \mathbb R^H\)</span>​,
 class="math inline">\(b \in \mathbb R^{4H}\)</span>​</p>
 <p>LSTM 的反向传播全部用 autograd 实现, 我们先写一个时间步上的前向传播,
 根据 Lecture 12 的图来就行:<br />
-<img src="https://s2.loli.net/2025/02/22/8X2svTnzIROtqki.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/02/22/8X2svTnzIROtqki.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>设一个中间量 <span class="math inline">\(a \in \mathbb R^{4H}, a =
 W_xx_t+W_hh_{t-1} +b\)</span>, 即 <span class="math inline">\(a = W
 \displaystyle\binom{h_{t-1}}{x_t}\)</span> , 有</p>
@@ -1965,13 +1965,13 @@ Attention LSTM 做图像字幕会更准确</p>
 target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/600017263">这篇文章</a>了解其用法</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">compute_saliency_maps</span>(<span class="params">X, y, model</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    输入:</span></span><br><span class="line"><span class="string">    - X: 输入图像, shape (N, 3, H, W)</span></span><br><span class="line"><span class="string">    - y: X 的标签, shape (N,)</span></span><br><span class="line"><span class="string">    - model: 预训练的模型</span></span><br><span class="line"><span class="string">    输出:</span></span><br><span class="line"><span class="string">    - saliency: 显著性张量, shape (N, H, W)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    model.<span class="built_in">eval</span>()</span><br><span class="line">    X.requires_grad_()</span><br><span class="line">    scores = model(X) <span class="comment">#[N, 1000] all classes(C = 1000)</span></span><br><span class="line">    correct_scores = torch.gather(scores, <span class="number">1</span>, y.view(-<span class="number">1</span>,<span class="number">1</span>)) <span class="comment"># gather only correct class</span></span><br><span class="line">    loss = torch.<span class="built_in">sum</span>(correct_scores)</span><br><span class="line">    loss.backward()</span><br><span class="line">    grad = X.grad <span class="comment">#[N, 3, H, W]</span></span><br><span class="line">    saliency = torch.<span class="built_in">abs</span>(grad).<span class="built_in">max</span>(dim=<span class="number">1</span>)[<span class="number">0</span>]</span><br><span class="line">    <span class="keyword">return</span> saliency</span><br></pre></td></tr></table></figure>
 <p>在对 saliency 可视化后得到的显著图是这样的:<br />
-<img src="https://s2.loli.net/2025/03/02/4BLvglPXneS7w1R.png" style="zoom: 80%;" /></p>
+<img src="https://s2.loli.net/2025/03/02/4BLvglPXneS7w1R.png" style="zoom: 80%;" decoding="async" loading="lazy"></p>
 <p>对抗性攻击要求我们通过微调输入图像 X, 通过梯度上升使其分类为
 target_y<br />
 我们把 target_y 对应的分数反向传播, 让 X 往 dX 方向移动</p>
 <figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">make_adversarial_attack</span>(<span class="params">X, target_y, model</span>):</span><br><span class="line">    X_adv = X.clone()</span><br><span class="line">    X_adv = X_adv.requires_grad_()</span><br><span class="line">    learning_rate = <span class="number">1</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="number">1</span>,<span class="number">10000</span>):</span><br><span class="line">        score = model(X_adv) <span class="comment">#[1, 1000]</span></span><br><span class="line">        <span class="keyword">if</span> score.argmax(dim=<span class="number">1</span>)==torch.tensor(target_y): <span class="keyword">break</span></span><br><span class="line">        score[<span class="number">0</span>,target_y].backward()</span><br><span class="line">        grad = X_adv.grad <span class="comment">#[1, 3, H, W]</span></span><br><span class="line">        dX = learning_rate * grad / torch.norm(grad,<span class="number">2</span>)</span><br><span class="line">        <span class="keyword">with</span> torch.no_grad(): <span class="comment"># 原地操作时不要算梯度</span></span><br><span class="line">            X_adv += dX</span><br><span class="line">    <span class="keyword">return</span> X_adv</span><br></pre></td></tr></table></figure>
 <p>可视化后是这样的:
-<img src="https://s2.loli.net/2025/03/02/gS3a6HsEF9iQqNr.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/02/gS3a6HsEF9iQqNr.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>类可视化要求我们从随机噪声开始执行梯度上升生成目标类的图像,<br />
 目标是 <span class="math inline">\(I^* = {\rm arg\;max}_I (s_y(I) -
 \lambda \|I\|_2^2)\)</span>, 其中 <span
@@ -1999,7 +1999,7 @@ x_{i,j,c})^2 + \sum_{c=1}^3\sum_{i=1}^{H}\sum_{j=1}^{W - 1} (x_{i,j+1,c}
 <h2 id="lecture-15-目标检测">Lecture 15 目标检测</h2>
 <p>除图像分类外, 计算机视觉的其他任务还有很多,
 本节课着重关心<strong>目标检测(object detection)</strong>任务<br />
-<img src="https://s2.loli.net/2025/03/10/mt3EiIYCsSJT4He.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/03/10/mt3EiIYCsSJT4He.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>我们输入一张 RGB 图像, 期望得到一个对象的集合,
 对于每个对象包含标签以及一个<strong>边界框(bounding box)</strong>,
 这就是目标检测任务, 难度在于多分类输出, 多种输出(标签和框),
@@ -2025,19 +2025,19 @@ CNN<br />
 R-CNN 需要额外学习边界框, 施加某种变化(transform),
 希望边界框更好地包含图像,
 这是一个<strong>回归(regression)</strong>的想法</p>
-<p><img src="https://s2.loli.net/2025/03/10/BoCcqLF4S5DabZl.png" style="zoom:67%;" /></p>
+<p><img src="https://s2.loli.net/2025/03/10/BoCcqLF4S5DabZl.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>这其中有很多指标和细节, 我们来下面一一介绍</p>
 <p>比较边界框需要用到<strong>交并比(Intersection over
 Union)(IoU)</strong>的概念,
 将边界框的交集(预测框与基准框)面积除以并集面积得到 IoU<br />
-<img src="https://s2.loli.net/2025/03/10/WPapOYCrkIwbUtd.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/03/10/WPapOYCrkIwbUtd.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>上图左下和右上的紫色部分是作图的失误<br />
 评价指标为: IoU &gt; 0.5, 还行; IoU &gt; 0.7, 挺好; IoU &gt; 0.9,
 几乎完美</p>
 <p>对象检测算法可能对于相同对象输出多个检测框,
 此时我们需要应用<strong>非极大值抑制(Non-Maximum
 Suppression)(NMS)</strong>算法来消除冗余的边界框<br />
-<img src="https://s2.loli.net/2025/03/10/qjsYIGltrOnbHZJ.png" alt="" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/03/10/qjsYIGltrOnbHZJ.png" alt="" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>NMS 听起来高级, 其实就是一类贪心, 以这张图为例, 我们选择最高分的框,
 把与它 IoU &gt; 0.7 的框全丢了就行,
 然而对于高度重叠的多个对象这方法就不好用了</p>
@@ -2066,7 +2066,7 @@ class="math inline">\({\rm p=presicion} =
 有多少被判断出来了<br><br />
 如果让一个已经训练好的模型在测试集上运行一次, 准确度和召回率是确定的,
 以横轴为 r, 纵轴为 p 可以画出 PR 曲线(累计形式)<br />
-<img src="https://s2.loli.net/2025/03/10/LBDV2SiPTzKbvpQ.jpg" style="zoom: 67%;" /><br />
+<img src="https://s2.loli.net/2025/03/10/LBDV2SiPTzKbvpQ.jpg" style="zoom: 67%;" decoding="async" loading="lazy"><br />
 目标是获得同时具有高准确度和召回率的分类器,
 在图形上的表现是曲线与坐标轴围成的区域面积尽可能大</p>
 </div>
@@ -2075,7 +2075,7 @@ class="math inline">\({\rm p=presicion} =
 <p>这个指标平衡了准确率和召回率, 被广泛接受</p>
 <p>上文的 R-CNN 显然会因为做 2000 个 CNN 而很慢, 我们可以通过交换 warped
 image 和 CNN 部分, 共享一部分计算来提高效率<br />
-<img src="https://s2.loli.net/2025/03/10/NguD7jkJHnZCsom.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/10/NguD7jkJHnZCsom.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>这种算法叫 Fast R-CNN, 因为大部分运算是在所谓的 backbone network
 (骨干部分, 对于 Alexnet, 指其中 CNN 的部分) 中完成的<br />
 这其中还有对候选区域裁剪的反向传播问题, 我们引入 <a
@@ -2083,7 +2083,7 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/82192101">感�
 Pool)</a> 这种池化方式, 对不固定尺寸输入图输出固定尺寸特征图,
 本质上就是先将区域先映射到特征图上再划分为需要的输出部分进行 max
 pooling, 可以想象两次映射会丢失很多边缘的数据<br />
-<img src="https://s2.loli.net/2025/03/10/iubPDQm3gTpoeB9.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/03/10/iubPDQm3gTpoeB9.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>Rol Align 可以解决这个问题, 大概思想是不对其单元格,
 在区域内采样对应输出 size 的点做双线性插值最终得到输出,
 这样也能解决反向传播问题, 可以见<a
@@ -2095,11 +2095,11 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/161540817">这
 Network)(RPN)</strong>, 这就叫做 <a
 target="_blank" rel="noopener" href="https://arxiv.org/abs/1506.01497">Faster R-CNN</a>
 <del>名字真烂</del><br />
-<img src="https://s2.loli.net/2025/03/10/AGFvNyBui4Vm9UL.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/03/10/AGFvNyBui4Vm9UL.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>这个 RPN 是这样工作的: 先想象 backbone network 已经输出了特征图,
 有一个固定大小的<strong>锚框(anchor box)</strong>在特征图上滑动, RPN
 其实是在训练一个二分类问题, 即锚框是否包含一个对象<br />
-<img src="https://s2.loli.net/2025/03/10/y2JRMKBd9ickC1u.png" alt="" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/03/10/y2JRMKBd9ickC1u.png" alt="" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>固定大小的框很蠢, 我们还要训练一种边界框变化的参数(box transforms),
 把锚框变为边界框(上图黄框)<br />
 实践中, 有多种大小的锚框,
@@ -2125,7 +2125,7 @@ target="_blank" rel="noopener" href="https://paperswithcode.com/sota/object-dete
 有正类、负类和中性类, 它们可以通过与 GT 的 IoU 来判断,
 这里的阈值也是超参数</p>
 <div data-align="center">
-<img src="https://s2.loli.net/2025/03/11/DHuQVsvMdNj9rmY.png" alt="" style="zoom:40%;" />
+<img src="https://s2.loli.net/2025/03/11/DHuQVsvMdNj9rmY.png" alt="" style="zoom:40%;" decoding="async" loading="lazy">
 </div>
 <p>一般训练时会忽略中性框, 然后将剩下候选区域裁剪, reshape,
 将这些部分单独过一个 CNN 来预测类别和边界框回归变换,
@@ -2140,7 +2140,7 @@ target="_blank" rel="noopener" href="https://arxiv.org/abs/1808.01244">CornerNet
 segmentation)</strong>任务也是计算机视觉的一大分支,
 目标是标记图中的每个像素到一个类别中,
 并不关心同一类别的不同对象区别<br />
-<img src="https://s2.loli.net/2025/03/11/cnG5qzQrbIu34F6.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/03/11/cnG5qzQrbIu34F6.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>仍然可以用最简单的滑动窗口法来完成这个问题,
 但一般我们使用<strong>全连接卷积网络(fully convolutional
 network)(FCN)</strong>来做这个问题<br />
@@ -2149,14 +2149,14 @@ network)(FCN)</strong>来做这个问题<br />
 3*3 的卷积核需要很多层才能积累到较大的感受野,
 这样的计算可能在高精度图像上非常昂贵<br />
 于是我们需要通过下采样(downsampling)和<strong>上采样(upsampling)</strong>来加速过程<br />
-<img src="https://s2.loli.net/2025/03/11/wuSPHEjA6c52oMq.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/11/wuSPHEjA6c52oMq.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>上采样又被称为反池化, 有很多想法, 例如单纯填 0,
 或者做最近邻算法(<del>复制粘贴</del>), 聪明一点的方法是做双线性插值
-<img src="https://s2.loli.net/2025/03/11/47NdbyDFBYLw6ng.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/03/11/47NdbyDFBYLw6ng.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>这样显然更平滑, 我们还可以做三次近似, 这一般是默认的算法</p>
 <p>还有一种 Max Unpooling 算法, 它记住了 Max Pooling 时最大数的位置,
 在反池化时将数填到对应的位置上, 其它位置置 0<br />
-<img src="https://s2.loli.net/2025/03/11/d1QxLzaofXC7jNE.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/03/11/d1QxLzaofXC7jNE.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>上采样方法一般取决于下采样方法,
 我们上文提到的上采样方法没有可学习的参数<br />
 一种可学习的上采样方法叫做<strong>转置卷积(transposed
@@ -2166,7 +2166,7 @@ convolution)</strong>, 步长大于 1 的卷积可以理解为一种可学习的
 它的实现是这样的, 我们用输入张量的元素乘以卷积核得到 3*3 的输出,
 将输出加到输出张量上, 对重叠部分<strong>求和</strong>, 然后移动一格输入,
 移动两格输出, 继续反卷积下去<br />
-<img src="https://s2.loli.net/2025/03/11/PLHfv4TnUyeaKcO.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/03/11/PLHfv4TnUyeaKcO.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>在计算机视觉和语义分割中, 有 "stuff" 和 "thing" 的概念<br />
 "stuff" 是不可数的, 通常为背景的物体, 例如草地, 天空,
 没有明确的形状大小<br />
@@ -2179,10 +2179,10 @@ segmentation)</strong>, 要求把所有 "thing" 的实例都分割出来,
 <p>这叫做 <a target="_blank" rel="noopener" href="https://arxiv.org/abs/1703.06870">Mask R-CNN</a>,
 建立在 Faster R-CNN 的基础上, 对每个检测出的对象上再跑一个 FCN 结构,
 跑得非常好<br />
-<img src="https://s2.loli.net/2025/03/11/P9oxUcbBzN7Hkfq.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/03/11/P9oxUcbBzN7Hkfq.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>这些分割算法可以应用在人体位姿估计, 在人体各处设置多个关键点, 在 Mask
 R-CNN 上再加一个头(Head)来预测关键点就行<br />
-<img src="https://s2.loli.net/2025/03/11/NOes5ndbIMiL672.png" style="zoom:67%;" /></p>
+<img src="https://s2.loli.net/2025/03/11/NOes5ndbIMiL672.png" style="zoom:67%;" decoding="async" loading="lazy"></p>
 <p>加个 "头" 真的十分有用, 我们甚至可以从 2D 转向预测 3D 形状,
 下节课会讲述 3D 视觉方面的工作, stay tuned!</p>
 <h2 id="assignment-5-目标检测">Assignment 5 目标检测</h2>
@@ -2258,7 +2258,7 @@ NMS(<code>torchvision.ops.nms</code>), 注意在
 <h3 id="双阶段目标检测-faster-r-cnn">双阶段目标检测 Faster R-CNN</h3>
 先写区域候选网络 RPN, 第一部分是 <code>class ProposalModule()</code>
 <div data-align="center">
-<img src="https://s2.loli.net/2025/03/14/F4yxKsGMrLIUa12.png" style="zoom: 80%;" />
+<img src="https://s2.loli.net/2025/03/14/F4yxKsGMrLIUa12.png" style="zoom: 80%;" decoding="async" loading="lazy">
 </div>
 <p>对于 <code>ProposalModule</code>, 只要预测偏移量(offsets)(reg layer)
 以及建议得分(proposal scores)(cls layer)<br />
@@ -2282,16 +2282,16 @@ target="_blank" rel="noopener" href="https://pytorch.org/vision/master/generated
 形状做分类/分割任务<br />
 3D 视觉涉及的几何更多, 该领域存在更多非深度学习的传统算法</p>
 <p>3D 形状有很多表示方法, 各有优劣, 下面一一介绍<br />
-<img src="https://s2.loli.net/2025/03/18/qSl7a92yOwBeILp.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/18/qSl7a92yOwBeILp.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p><strong>深度图(depth map)</strong>是最基础的表示方式,
 对于输入图像中的每个像素, 它分配相机到该像素的距离, 这不是一个完整的 3D
 表示, 因为它不能捕捉被遮挡的结构, 可以被称为 RGB-D 图像或 2.5D
 图像<br />
-<img src="https://s2.loli.net/2025/03/18/gMljcdJu7ipEZ2A.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/18/gMljcdJu7ipEZ2A.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>这里有一个相关的任务叫做深度预测, 这其实是一个 FCN 的想法<br />
 这个任务的问题是<strong>尺度/深度歧义(scale/depth ambiguity)</strong>,
 对于一张图片无法区别远处大物体和近处小物体<br />
-<img src="https://s2.loli.net/2025/03/18/mDnu1odetP3xFiZ.jpg" alt="A big pigeon.jpg" style="zoom:150%;" /></p>
+<img src="https://s2.loli.net/2025/03/18/mDnu1odetP3xFiZ.jpg" alt="A big pigeon.jpg" style="zoom:150%;" decoding="async" loading="lazy"></p>
 <p><del>道理我都懂, 但是鸽子为什么这么大？</del><br />
 这个问题可以通过改变损失函数来解决,
 如果网络预测的深度为整个深度的一个固定比例, 我们认为这是 0 loss 的,
@@ -2317,13 +2317,13 @@ minecraft 吗</del></p>
 一个三维卷积核(立方体)会滑来滑去来计算内积<br />
 通过 RGB 图像预测体素网格需要在 CNN 后将 2D 特征转化为 3D 特 征,
 我们通过一个全连接层来完成这点<br />
-<img src="https://s2.loli.net/2025/03/18/vrFiQExGCDIN9oH.png" /></p>
+<img src="https://s2.loli.net/2025/03/18/vrFiQExGCDIN9oH.png" decoding="async" loading="lazy"></p>
 <p>3D 卷积非常昂贵, 有时人们用体素管(voxel tubes)的思想只使用 2D CNN
 来完成这个任务, 但有很多限制, 略</p>
 <p>为了解决体素网格占用空间过大的问题, 我们可以引入多重分辨率的体素,
 使用低分辨率体素去构建主要结构, 高分辨率体素去构建细节,
 一般用<strong>八叉树(Oct-trees)</strong>来实现这点<br />
-<img src="https://s2.loli.net/2025/03/18/EStua3GsBHicNo6.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/18/EStua3GsBHicNo6.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>另一种技巧是<strong>嵌套形状层(nested shape layers)</strong>,
 我们把整个形状用多个稀疏的体素层相加减来表示</p>
 <p>下面介绍<strong>隐式表面(implicit surface)</strong>的 3D 形状表示法,
@@ -2337,7 +2337,7 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/144392820">这
 <p><strong>点云(point
 cloud)</strong>的思想是将物体表示为三维空间中的点集,
 其具有丰富的空间信息, 但是缺少语义信息<br />
-<img src="https://s2.loli.net/2025/03/18/zZqctPo2JBekKvj.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/18/zZqctPo2JBekKvj.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>点云较体素网格稀疏很多, 这里的可视化是将点当成小球来处理的<br />
 在自动驾驶中一般就用点云来表示周围的环境, 然后来做出对应的决策<br />
 处理点云的著名网络叫做 PointNet, 读入一组点, 其中点的顺序不重要,
@@ -2352,7 +2352,7 @@ d_{CD}(S_1,S_2) = \sum\limits_{x \in S_1} \underset{y \in S_2}{\rm
 min}||x-y||_2^2  + \sum\limits_{y \in S_2} \underset{x \in S_1}{\rm
 min}||x-y||_2^2
 \]</span> <img
-src="https://s2.loli.net/2025/03/18/g8xjCWXsuFadeok.png" /></p>
+src="https://s2.loli.net/2025/03/18/g8xjCWXsuFadeok.png" decoding="async" loading="lazy"></p>
 <p>直观理解是这样的, 我们先对所有蓝点找到最近的橙点, 然后计算 L2
 距离之和, 之后对所有橙点找到最近的蓝点, 然后计算 L2 距离之和,
 再把两者相加<br />
@@ -2365,7 +2365,7 @@ mesh)</strong>的概念, 三维物体的表面被划分为许多小的三角形�
 target="_blank" rel="noopener" href="https://arxiv.org/pdf/1809.05910">MeshCNN</a> 以及 <a
 target="_blank" rel="noopener" href="https://arxiv.org/abs/1804.01654">Pixel2Mesh</a>
 我们介绍一下后者<br />
-<img src="https://s2.loli.net/2025/03/18/SuZgHMCr1nmViX3.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/18/SuZgHMCr1nmViX3.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>这里面有几个思想:<br />
 一是<strong>迭代精细化(iterative refinement)</strong>,
 我们不从头创建网格对象, 而是有一些初始模板(例如上图的椭球),
@@ -2374,16 +2374,16 @@ target="_blank" rel="noopener" href="https://arxiv.org/abs/1804.01654">Pixel2Mes
 层的输入是一个图以及附加到图各个顶点的特征向量,
 输出是各个顶点新的特征向量, 对于一个顶点,
 其特征向量应该取决于其局部感受野的输入特征向量<br />
-<img src="https://s2.loli.net/2025/03/18/3Xoy7shd8a9CSLl.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/18/3Xoy7shd8a9CSLl.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>三是<strong>顶点对齐特征</strong>,
 我们希望将图像信息混合到图卷积神经网络(GCN)中,
 这里我们将三角网格投影到图像上, 对于每个投影点用双线性插值,
 使得顶点的特征向量与图像平面中特征的位置对齐, 类似于 RoI-Align<br />
-<img src="https://s2.loli.net/2025/03/18/HfmW9LzFntGv624.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/18/HfmW9LzFntGv624.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>四是<strong>损失函数</strong>, 一种形状有多种表示,
 我们希望损失函数不受不同表示方式的影响, 所以我们将 GT 采样为点云(离线),
 同时将预测网格采用为点云(在线), 然后跑 chamber distance<br />
-<img src="https://s2.loli.net/2025/03/18/esCjFRmi1EhGcf9.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/18/esCjFRmi1EhGcf9.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>在二维中我们用 IoU 来比较形状, 到三维时我们可以用上文的那种方式, 算
 chamber distance 来比较 3D 图形<br />
 问题是 chamber distance 对离群值十分敏感, 一般我们用 F1 score 来比较 3D
@@ -2413,13 +2413,13 @@ r}\)</span></p>
 规范坐标系倾向于过拟合, 而视图坐标系泛化更好</p>
 <p>3D 形状有一些常用的数据集, 例如 ShapeNet(大型数据集, 合成, 孤立物体)
 以及 Pix3D(小型数据集, 真实, 更多上下文)<br />
-<img src="https://s2.loli.net/2025/03/18/maMPAx5jOWe9Tbt.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/18/maMPAx5jOWe9Tbt.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>Mesh R-CNN 是 R-CNN 的三维版本, 给出 RGB 图像中每个对象的 3D
 形状<br />
 我们希望得到一个三角网格, 但是初始模板会限制一些变形(拓扑上不一致),
 所以我们可以先生成一个粗糙的体素预测, 然后将其变为三角网格,
 再进行精细化迭代<br />
-<img src="https://s2.loli.net/2025/03/18/GrORL2qZBxM8iwF.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/18/GrORL2qZBxM8iwF.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>最后需要一些正则化来帮助可视化, 如果结果不尽如人意, 可能是 2D
 对象检测的问题, 例如在遮挡的部分猜错了</p>
 <h2 id="lecture-18-视频">Lecture 18 视频</h2>
@@ -2439,7 +2439,7 @@ shape 为 [T, 3, H, W]<br />
 其实已经足够好了</p>
 <p>稍微复杂一点的模型叫做<strong>后期融合(Late Fusion)</strong>, 在单帧
 CNN 的基础上, 把所有单帧特征融合并 flatten, 然后在上面跑 MLP 分类<br />
-<img src="https://s2.loli.net/2025/03/20/31ha7T2GuOdUzCL.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/20/31ha7T2GuOdUzCL.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>后期融合可能会过拟合, 小改进是用全局池化 + 线性层来做分类<br />
 后期融合的问题出在其难以学习帧期间的微小运动, 例如图中人物的抬脚</p>
 <p>所以我们提出<strong>早期融合(Early Fusion)</strong>, 先 reshape
@@ -2448,7 +2448,7 @@ CNN, 得到分类, 使用这种方法我们就能学习相邻帧之间的运动�
 但是这种学习只存在了一层, 可能不足够让模型学会</p>
 <p>改为 3D CNN 可以捕捉视频的时间和空间信息, 但是会很慢,
 训练也很困难<br />
-<img src="https://s2.loli.net/2025/03/20/KbAg4S57JvpFtcf.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/20/KbAg4S57JvpFtcf.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>如果比较上述三种方法的架构和感受野, 会发现 Late Fusion
 会在末尾突然扩张时间维度的感受野, Early Fusion
 会在开头突然扩张时间维度的感受野, 3D CNN 则是慢慢扩张, 因此也称为 "Slow
@@ -2470,11 +2470,11 @@ target="_blank" rel="noopener" href="https://arxiv.org/pdf/1412.0767">C3D</a> �
 CNN, 这个网络的启示是我们能不能让网络对运动更敏感,
 因为人类能很容易从运动本身获取很多信息,
 下面是一个由三个点表示的打篮球和跳舞的例子, 你能看出来吗?</p>
-<p><img src="/icarus_asset/overfit.gif" /></p>
+<p><img src="/icarus_asset/overfit.gif" decoding="async" loading="lazy"></p>
 <p>为了具体描述运动信息, 我们介绍<strong>光流(optical
 flow)</strong>的概念<br />
 光流法计算视频相邻帧之间的位移矢量场, 能够突出场景中的局部运动<br />
-<img src="https://s2.loli.net/2025/03/20/H6Oyr5PpeQZaREq.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/20/H6Oyr5PpeQZaREq.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>这方面的一篇<a
 target="_blank" rel="noopener" href="https://arxiv.org/abs/1406.2199">著名文章</a>提出了<strong>双流网络(Two-Stream
 Networks)</strong>的框架, 它有两个并行独立的 CNN 栈, 一个处理空间,
@@ -2488,7 +2488,7 @@ one 的视频分类<br />
 这里的小技巧是仅在 RNN 上反向传播, CNN 仅作为一个特征提取器,
 这样就可以在一个长时间上训练模型</p>
 <p>多层 RNN 的想法也可以在这里应用<br />
-<img src="https://s2.loli.net/2025/03/20/ZCOaqXsbGgUDJtI.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/20/ZCOaqXsbGgUDJtI.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>这种想法其实可以叫做 Recurrent CNN, 但这种架构无法并行处理,
 可能会在长序列时较慢<br />
 我们可以继续考虑注意力机制, 这里有名的工作是 2018 CVPR 的 <a
@@ -2499,7 +2499,7 @@ class="math inline">\(Q, K, V\)</span>, 得到注意力权重后再过一个 1x1
 在论文中叫做<strong>非局部块(Nonlocal Block)</strong><br />
 因为有残差链接, 这个非局部块可以插入 3D CNN 中微调应用, 非常有用,
 最后架构大概是这样的<br />
-<img src="https://s2.loli.net/2025/03/20/L1MtTZwDH2CvEWe.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/20/L1MtTZwDH2CvEWe.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>下面介绍几种好用的 3D CNN 架构, 一个想法是将成熟的 2D CNN
 架构<strong>膨胀(inflating)</strong>为 3D CNN 架构<br />
 将二维卷积改为三维卷积, 二维池化改为三维池化,
@@ -2535,7 +2535,7 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/150067666">密
 <p>我们想要区分<strong>判别模型(discriminative
 models)</strong>和<strong>生成模型(generative models)</strong>,
 它们的一处不同在于概率结构<br />
-<img src="https://s2.loli.net/2025/03/23/2huZ16yM4YEGJdQ.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/23/2huZ16yM4YEGJdQ.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>在判别模型中, 我们想要学习 p(y|x), 然而生成模型想要学习 p(x),
 其中条件生成模型想要学习 p(x|y)<br />
 以分类任务为例, 因为 p(x) 是归一化的( <span class="math inline">\(\sum
@@ -2553,13 +2553,13 @@ p(x) = 1\)</span>​​​ ), 这会带来某种图像的"竞争", 在 p(y|x) �
 条件生成模型则进一步能根据要求的分类(y)来生成图像(AIGC?)</p>
 <p>生成式模型的主要分类为显式密度函数(能计算
 p(x))和隐式密度函数(不能计算 p(x), 但能采样得到 p(x))<br />
-<img src="https://s2.loli.net/2025/03/23/wifyGUQvecKFSHq.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/23/wifyGUQvecKFSHq.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>这其中又有更细的分类, 我们会讨论其中的三种生成模型</p>
 <p><strong>自回归模型(autogegressive
 models)</strong>算是最简单的生成式模型,
 思想是输入数据(x)和可学习的权重(W), 然后获得概率密度函数 <span
 class="math inline">\(p(x) = f(x, W)\)</span><br />
-<img src="https://s2.loli.net/2025/03/23/cGCtHPObeNKoa46.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/23/cGCtHPObeNKoa46.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>对于显式密度函数, 我们希望数据集的可能性(likelihood)被最大化<br />
 再用 <span class="math inline">\(\sum\)</span> 把 <span
 class="math inline">\(\prod\)</span> 转化一下后可以得到损失函数 <span
@@ -2575,7 +2575,7 @@ x_{t-1})\)</span><br />
 这部分可以用 RNN 处理, 我们以 <a
 target="_blank" rel="noopener" href="https://arxiv.org/pdf/1601.06759">PixelRNN</a>
 举例来介绍自回归模型在图像生成上的应用<br />
-<img src="https://s2.loli.net/2025/03/27/acBkDQg1nfCvdHM.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/27/acBkDQg1nfCvdHM.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>从左上角开始, 我们对每个像素用 LSTM 算 RGB, 然后往右边和下方扩展,
 每个像素是显式依赖于左边和上方的像素,
 并隐式依赖于左上方所有的像素的<br />
@@ -2605,7 +2605,7 @@ class="math inline">\(||\hat{x} - x||_2^2\)</span>, 这里的 <span
 class="math inline">\(z\)</span> 要相对于 <span
 class="math inline">\(x\)</span> 而言非常低维,
 否则就不能叫做特征了<br />
-<img src="https://s2.loli.net/2025/03/23/J9lUfsZcXr4DB6w.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/23/J9lUfsZcXr4DB6w.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>在训练结束后, 我们就不需要 decoder 了, 而是使用 encoder
 来完成其他下游任务, 它是无监督的学习模型, 不是概率性的,
 所以无法生成新图像; 另一方面来说, 它的表现也堪忧</p>
@@ -2633,7 +2633,7 @@ class="math inline">\(p_\theta(x) =
 这里的问题是没法算 <span class="math inline">\(p_{\theta}(z|x)\)</span>,
 所以我们尝试训练另一个网络(encoder)学习 <span
 class="math inline">\(q_\phi(z|x) \approx p_\theta(z|x)\)</span><br />
-<img src="https://s2.loli.net/2025/03/23/HPlkU7iCgRnNITr.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/23/HPlkU7iCgRnNITr.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>KL 散度是两个分布之间差异的度量, 一通推导后 <span
 class="math inline">\(\log p_\theta(x)\)</span> 函数可以表示为 <span
 class="math display">\[
@@ -2650,7 +2650,7 @@ class="math inline">\(q_\phi(z|x) \approx p_\theta(z|x)\)</span>
 把这项直接扔掉了, 这就是我们不能计算概率密度函数的精确值的原因,
 这是一种经典的概率论技巧</p>
 <h2 id="lecture-20-生成式模型下">Lecture 20 生成式模型(下)</h2>
-<p><img src="https://s2.loli.net/2025/03/24/fyvJawcBT85L2bp.png" style="zoom:80%;" /></p>
+<p><img src="https://s2.loli.net/2025/03/24/fyvJawcBT85L2bp.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>训练 VAE 的流程是这样的, 我们想要最大化 <span
 class="math inline">\(E_{z \sim q_{\phi}(z|x)}[\log p_{\theta}(x|z)] -
 D_{KL}(q_{\phi}(z|x), p_\theta(z))\)</span><br />
@@ -2666,7 +2666,7 @@ p_{\theta}(x|z)]\)</span></p>
 <p>图中蓝色和绿色的部分相互矛盾, 蓝色希望更接近原始数据,
 而绿色部分希望限制 z 满足某种高斯分布<br />
 之后我们就能生成新数据了<br />
-<img src="https://s2.loli.net/2025/03/24/h7IkBvCL8rFSKwb.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/24/h7IkBvCL8rFSKwb.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>z 代表某种高维信息, 通过调整 z, 我们可以做到调整图像的不同特征,
 例如人的表情, 物体的朝向, <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/1312.6114">VAE
 论文</a>中有这样的可视化</p>
@@ -2694,12 +2694,12 @@ network)</strong>, 记作 <span class="math inline">\(D\)</span>,
 如果两个网络都会良好工作, 我们希望 <span
 class="math inline">\(p_G\)</span> 会收敛到 <span
 class="math inline">\(p_{data}\)</span><br />
-<img src="https://s2.loli.net/2025/03/24/k4rvINBsC1YuTPy.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/24/k4rvINBsC1YuTPy.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>这里的目标函数为: <span class="math display">\[
 \underset{G}{\rm min} \; \underset{D}{\rm max}(E_{X \sim p_{data}}[\log
 D(x)] + E_{z \sim p(z)}[\log (1 - D(G(z)) )])
 \]</span></p>
-<p><img src="https://s2.loli.net/2025/03/24/GadJzx69ElMSrup.png" style="zoom:80%;" /></p>
+<p><img src="https://s2.loli.net/2025/03/24/GadJzx69ElMSrup.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>我们用 1/0 表示数据为 真实/虚假 的, <span
 class="math inline">\(D\)</span> 想要使真实数据(<span
 class="math inline">\(x\)</span>)输出 1 并且错误数据( <span
@@ -2718,7 +2718,7 @@ V}{\partial G}\)</span>, 注意我们不是最小化总 loss, 因为两种 loss
 <p>在实践中, 我们一般训练 <span class="math inline">\(G\)</span> 最小化
 <span class="math inline">\(- \log ( D(G(z)) )\)</span>,
 避免开头的梯度消失问题使得训练无法开始<br />
-<img src="https://s2.loli.net/2025/03/24/jJQK6aPfwBxcReH.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/24/jJQK6aPfwBxcReH.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>这种 minmax 形式能够到达全局最小值 <span class="math inline">\(p_G =
 p_{data}\)</span>, 这里的 ppt 有个证明, 我会后续详细补充<br />
 可以证明得到最好的 <span class="math inline">\(D_G^*(x) =
@@ -2737,11 +2737,11 @@ target="_blank" rel="noopener" href="https://arxiv.org/pdf/1511.06434">DC-GAN</a
 和 GAN, 我们可以在 z 上进行插值, 可以生成平滑转化的插值图像,
 同时可以做某种抽象的向量数学, 将图片作为某种"向量"相加减, 这是 NLP
 中词向量的思想<br />
-<img src="https://s2.loli.net/2025/03/24/8GlxiCmVnuApb14.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/24/8GlxiCmVnuApb14.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>另一些进步是更高的分辨率, <a
 target="_blank" rel="noopener" href="https://ieeexplore.ieee.org/stamp/stamp.jsp?tp=&amp;arnumber=8953766">StyleGAN</a>
 能够控制图像不同层次的特征, 还研究了特征解耦的问题<br />
-<img src="https://s2.loli.net/2025/03/24/EJwmQLsSPXM8edy.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/24/EJwmQLsSPXM8edy.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>通过 <span class="math inline">\(\mathcal Z \rightarrow \mathcal
 W\)</span> 的变化, 使得在 <span class="math inline">\(\mathcal
 W\)</span> 到特征的过程中特征的线性被尽可能保留</p>
@@ -2758,20 +2758,20 @@ Learning)(RL)</strong>致力于构造能与环境交互的<strong>智能体(agen
 智能体会与环境(environment)交互并作出操作,
 基于这些操作智能体会得到奖励(reward),
 最终目标是让智能体做出最大化奖励的操作<br />
-<img src="https://s2.loli.net/2025/03/25/Z3yHMWvL4xibQRA.png" /></p>
+<img src="https://s2.loli.net/2025/03/25/Z3yHMWvL4xibQRA.png" decoding="async" loading="lazy"></p>
 <p>我们可以训练智能体, 但不能改变环境, 在强化学习中,
 环境先提供给智能体一种状态 <span class="math inline">\(s_t\)</span>,
 之后智能体做出某种操作 <span class="math inline">\(a_t\)</span>,
 最后环境基于操作给出奖励 <span class="math inline">\(r_t\)</span>,
 这是一个时间步上发生的<br />
 在多个时间步上展开时, 环境会因为操作而改变, 而智能体会学习<br />
-<img src="https://s2.loli.net/2025/03/25/CgoXAQOxBTGRUjH.png" alt="" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/25/CgoXAQOxBTGRUjH.png" alt="" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>强化学习的一个经典问题叫做倒立摆问题, 车上有一根竖杆,
 你要前后移动小车以让竖杆保持竖直<br />
 这里的系统状态有杆与竖直方向的夹角, 车速, 位置等;
 智能体小车能做的操作(action)是在水平方向对车施加一个力;
 环境的奖励可能是对于杆竖直的每一秒会给予一分<br />
-<img src="https://s2.loli.net/2025/03/25/IC9yUwSojxJ61mK.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/25/IC9yUwSojxJ61mK.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>另一个强化学习的例子是机器人运动, 我们希望机器人像人一样行走,
 这里的动作是对机器人各个关节施加的扭矩,
 并对机器人站立以及机器人移动距离(站立是大前提)给予奖励</p>
@@ -2835,7 +2835,7 @@ class="math inline">\(s_{t+1}\)</span></p>
 <p>我们介绍一个例子, 在二维网格中每个格子都是一个状态, 从随机状态开始,
 智能体可以一次往一个方向走一步, 我们设置一些目标状态有正奖励,
 每走一步有一定的惩罚<br />
-<img src="https://s2.loli.net/2025/03/25/bqu1563AnZThyIv.png" style="zoom:80%;" /></p>
+<img src="https://s2.loli.net/2025/03/25/bqu1563AnZThyIv.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>策略告诉智能体怎么行动, 糟糕的策略不关心状态,
 而最优的策略就是建议智能体往最近的奖励点移动</p>
 <p>为了去除寻找 <span class="math inline">\(\pi^*\)</span> 中的随机性,
@@ -2934,7 +2934,7 @@ class="math inline">\(\displaystyle\frac{\partial J}{\partial
 公式的部分解释是这样的, 当 f(x) 高时, 轨迹上的数据更有可能, 当 f(x)
 较小时则相反<br />
 策略梯度算法需要大量数据来采样以完成信用分配, 可能真的很难训练</p>
-<p><img src="https://s2.loli.net/2025/03/25/VFaURW7xmLbqdMH.png" style="zoom:80%;" /></p>
+<p><img src="https://s2.loli.net/2025/03/25/VFaURW7xmLbqdMH.png" style="zoom:80%;" decoding="async" loading="lazy"></p>
 <p>上图就是两种算法的总结, 我估计明早醒来就看不懂了,
 但这就是强化学习的入门简单算法<br />
 还有很多算法, 例如演员-评论家算法(Actor-Critic), Model-Based
@@ -2998,7 +2998,7 @@ class="math inline">\(G\)</span> 中要用到
 这次跑的效果挺好, 没有之前的残余噪点</p>
 <p>我们最后以一张隐变量 <span class="math inline">\(z\)</span>​
 上插值的生成的 MNIST 数字图像来结束这次作业<br />
-<img src="https://s2.loli.net/2025/03/26/MpYaKrsundj7oSN.png"  /></p>
+<img src="https://s2.loli.net/2025/03/26/MpYaKrsundj7oSN.png" decoding="async" loading="lazy"></p>
 <h2 id="lecture-22-总结-与-开放问题">Lecture 22 总结 与 开放问题</h2>
 <p>笔记本身就是总结了, 我再把课程的总结做成笔记岂不是总结的总结,
 那也太蠢了, 自己看网课吧</p>
@@ -3023,7 +3023,7 @@ target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/627072208">DL4
 甚至一个随机权重的神经网络在仅经过修建后能够完成分类任务; 模型会过拟合,
 但是在随机标签的 CIFAR-10 上甚至能够完美拟合, 有时候还会出现双拟合现象,
 在模型的复杂度超过一个临界点时, 突然就不过拟合了<br />
-<img src="https://s2.loli.net/2025/03/26/JZ3WmNsGRItg1vQ.png" /></p>
+<img src="https://s2.loli.net/2025/03/26/JZ3WmNsGRItg1vQ.png" decoding="async" loading="lazy"></p>
 <p>三是我们需要更多的数据, 但收集数据的成本很高, 一个解决方法是做
 low-shot learning, 在小样本上学习, 例如 Lecture 2 介绍过的 Omniglot
 数据集; 另一个方法是做自监督学习,
@@ -3058,16 +3058,9 @@ shape 的思想没学会前抄了很多前人的代码; 最后写到最简单的
 上看到这门课到下决定学习用的时间很短, 但学习的时间很长, 估计总共奔着
 120h 去了。我比较蠢, 尤其是记忆不好, 为了辅助学习开了这份笔记,
 如果它还能为某个有志于学习这门课的人提供一些帮助那就再好不过了</p>
-</div><div class="article-licensing box"><div class="licensing-title"><p>EECS498 笔记</p><p><a href="https://frankly6.cn/2025/03/27/EECS498-notes/">https://frankly6.cn/2025/03/27/EECS498-notes/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Frankly6</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2025-03-27</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2026-10-09</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习, </a><a class="link-muted" rel="tag" href="/tags/python/">python, </a><a class="link-muted" rel="tag" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉 </a></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2026/10/09/Codeforces-exercises-2025/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Codeforces exercises 2025</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2025/02/06/Matlab/"><span class="level-item">Matlab 基础入门</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Frankly6"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Frankly6</p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">文章</p><div><p class="title">8</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">分类</p><div><p class="title">3</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">标签</p><div><p class="title">7</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">总字数</p><div><p class="title">20.3W</p></div></div></a></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#lecture-1-介绍"><span class="level-left"><span class="level-item">1</span><span class="level-item">Lecture 1 介绍</span></span></a></li><li><a class="level is-mobile" href="#lecture-2-图像分类"><span class="level-left"><span class="level-item">2</span><span class="level-item">Lecture 2 图像分类</span></span></a></li><li><a class="level is-mobile" href="#assignment-1-pytorch-knn"><span class="level-left"><span class="level-item">3</span><span class="level-item">Assignment 1 Pytorch &amp; kNN</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#pytorch"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">Pytorch</span></span></a></li><li><a class="level is-mobile" href="#knn-分类器"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">kNN 分类器</span></span></a></li></ul></li><li><a class="level is-mobile" href="#lecture-3-线性分类器"><span class="level-left"><span class="level-item">4</span><span class="level-item">Lecture 3 线性分类器</span></span></a></li><li><a class="level is-mobile" href="#lecture-4-最优化"><span class="level-left"><span class="level-item">5</span><span class="level-item">Lecture 4 最优化</span></span></a></li><li><a class="level is-mobile" href="#lecture-5-神经网络"><span class="level-left"><span class="level-item">6</span><span class="level-item">Lecture 5 神经网络</span></span></a></li><li><a class="level is-mobile" href="#lecture-6-反向传播"><span class="level-left"><span class="level-item">7</span><span class="level-item">Lecture 6 反向传播</span></span></a></li><li><a class="level is-mobile" href="#assignment-2-线性分类器-双层神经网络"><span class="level-left"><span class="level-item">8</span><span class="level-item">Assignment 2 线性分类器
+</div><div class="article-licensing box"><div class="licensing-title"><p>EECS498 笔记</p><p><a href="https://frankly6.cn/2025/03/27/EECS498-notes/">https://frankly6.cn/2025/03/27/EECS498-notes/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Frankly6</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2025-03-27</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2026-10-09</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/python/">python, </a><a class="link-muted" rel="tag" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习, </a><a class="link-muted" rel="tag" href="/tags/%E8%AE%A1%E7%AE%97%E6%9C%BA%E8%A7%86%E8%A7%89/">计算机视觉 </a></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2026/10/09/Codeforces-exercises-2025/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">Codeforces exercises 2025</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2025/02/06/Matlab/"><span class="level-item">Matlab 基础入门</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.webp" alt="Frankly6" decoding="async" loading="lazy" width="128" height="128"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Frankly6</p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">文章</p><div><p class="title">8</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">分类</p><div><p class="title">3</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">标签</p><div><p class="title">7</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">总字数</p><div><p class="title">20.3W</p></div></div></a></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#lecture-1-介绍"><span class="level-left"><span class="level-item">1</span><span class="level-item">Lecture 1 介绍</span></span></a></li><li><a class="level is-mobile" href="#lecture-2-图像分类"><span class="level-left"><span class="level-item">2</span><span class="level-item">Lecture 2 图像分类</span></span></a></li><li><a class="level is-mobile" href="#assignment-1-pytorch-knn"><span class="level-left"><span class="level-item">3</span><span class="level-item">Assignment 1 Pytorch &amp; kNN</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#pytorch"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">Pytorch</span></span></a></li><li><a class="level is-mobile" href="#knn-分类器"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">kNN 分类器</span></span></a></li></ul></li><li><a class="level is-mobile" href="#lecture-3-线性分类器"><span class="level-left"><span class="level-item">4</span><span class="level-item">Lecture 3 线性分类器</span></span></a></li><li><a class="level is-mobile" href="#lecture-4-最优化"><span class="level-left"><span class="level-item">5</span><span class="level-item">Lecture 4 最优化</span></span></a></li><li><a class="level is-mobile" href="#lecture-5-神经网络"><span class="level-left"><span class="level-item">6</span><span class="level-item">Lecture 5 神经网络</span></span></a></li><li><a class="level is-mobile" href="#lecture-6-反向传播"><span class="level-left"><span class="level-item">7</span><span class="level-item">Lecture 6 反向传播</span></span></a></li><li><a class="level is-mobile" href="#assignment-2-线性分类器-双层神经网络"><span class="level-left"><span class="level-item">8</span><span class="level-item">Assignment 2 线性分类器
 &amp; 双层神经网络</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#线性分类器"><span class="level-left"><span class="level-item">8.1</span><span class="level-item">线性分类器</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#svm"><span class="level-left"><span class="level-item">8.1.1</span><span class="level-item">SVM</span></span></a></li><li><a class="level is-mobile" href="#softmax"><span class="level-left"><span class="level-item">8.1.2</span><span class="level-item">Softmax</span></span></a></li></ul></li><li><a class="level is-mobile" href="#双层神经网络"><span class="level-left"><span class="level-item">8.2</span><span class="level-item">双层神经网络</span></span></a></li></ul></li><li><a class="level is-mobile" href="#lecture-7-卷积神经网络-cnn"><span class="level-left"><span class="level-item">9</span><span class="level-item">Lecture 7 卷积神经网络 CNN</span></span></a></li><li><a class="level is-mobile" href="#lecture-8-cnn-架构"><span class="level-left"><span class="level-item">10</span><span class="level-item">Lecture 8 CNN 架构</span></span></a></li><li><a class="level is-mobile" href="#lecture-9-硬件和软件"><span class="level-left"><span class="level-item">11</span><span class="level-item">Lecture 9 硬件和软件</span></span></a></li><li><a class="level is-mobile" href="#lecture-10-训练神经网络上"><span class="level-left"><span class="level-item">12</span><span class="level-item">Lecture 10 训练神经网络(上)</span></span></a></li><li><a class="level is-mobile" href="#lecture-11-训练神经网络下"><span class="level-left"><span class="level-item">13</span><span class="level-item">Lecture 11 训练神经网络(下)</span></span></a></li><li><a class="level is-mobile" href="#assignment-3-mlp-cnn"><span class="level-left"><span class="level-item">14</span><span class="level-item">Assignment 3 MLP &amp; CNN</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#mlp"><span class="level-left"><span class="level-item">14.1</span><span class="level-item">MLP</span></span></a></li><li><a class="level is-mobile" href="#cnn"><span class="level-left"><span class="level-item">14.2</span><span class="level-item">CNN</span></span></a></li></ul></li><li><a class="level is-mobile" href="#lecture-12-循环神经网络-rnn"><span class="level-left"><span class="level-item">15</span><span class="level-item">Lecture 12 循环神经网络 RNN</span></span></a></li><li><a class="level is-mobile" href="#lecture-13-注意力-attention"><span class="level-left"><span class="level-item">16</span><span class="level-item">Lecture 13 注意力 Attention</span></span></a></li><li><a class="level is-mobile" href="#lecture-14-可视化与理解"><span class="level-left"><span class="level-item">17</span><span class="level-item">Lecture 14 可视化与理解</span></span></a></li><li><a class="level is-mobile" href="#assignment-4-自动梯度-图像字幕-可视化"><span class="level-left"><span class="level-item">18</span><span class="level-item">Assignment 4 自动梯度
-&amp; 图像字幕 &amp; 可视化</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#自动梯度"><span class="level-left"><span class="level-item">18.1</span><span class="level-item">自动梯度</span></span></a></li><li><a class="level is-mobile" href="#图像字幕"><span class="level-left"><span class="level-item">18.2</span><span class="level-item">图像字幕</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#vanilla-rnn"><span class="level-left"><span class="level-item">18.2.1</span><span class="level-item">Vanilla RNN</span></span></a></li><li><a class="level is-mobile" href="#lstm-attention-lstm"><span class="level-left"><span class="level-item">18.2.2</span><span class="level-item">LSTM &amp; Attention LSTM</span></span></a></li></ul></li><li><a class="level is-mobile" href="#可视化-风格迁移"><span class="level-left"><span class="level-item">18.3</span><span class="level-item">可视化 &amp; 风格迁移</span></span></a></li></ul></li><li><a class="level is-mobile" href="#lecture-15-目标检测"><span class="level-left"><span class="level-item">19</span><span class="level-item">Lecture 15 目标检测</span></span></a></li><li><a class="level is-mobile" href="#lecture-16-检测与分割"><span class="level-left"><span class="level-item">20</span><span class="level-item">Lecture 16 检测与分割</span></span></a></li><li><a class="level is-mobile" href="#assignment-5-目标检测"><span class="level-left"><span class="level-item">21</span><span class="level-item">Assignment 5 目标检测</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#单阶段目标检测-yolo"><span class="level-left"><span class="level-item">21.1</span><span class="level-item">单阶段目标检测 YOLO</span></span></a></li><li><a class="level is-mobile" href="#双阶段目标检测-faster-r-cnn"><span class="level-left"><span class="level-item">21.2</span><span class="level-item">双阶段目标检测 Faster R-CNN</span></span></a></li></ul></li><li><a class="level is-mobile" href="#lecture-17-3d-视觉"><span class="level-left"><span class="level-item">22</span><span class="level-item">Lecture 17 3D 视觉</span></span></a></li><li><a class="level is-mobile" href="#lecture-18-视频"><span class="level-left"><span class="level-item">23</span><span class="level-item">Lecture 18 视频</span></span></a></li><li><a class="level is-mobile" href="#lecture-19-生成式模型上"><span class="level-left"><span class="level-item">24</span><span class="level-item">Lecture 19 生成式模型(上)</span></span></a></li><li><a class="level is-mobile" href="#lecture-20-生成式模型下"><span class="level-left"><span class="level-item">25</span><span class="level-item">Lecture 20 生成式模型(下)</span></span></a></li><li><a class="level is-mobile" href="#lecture-21-强化学习"><span class="level-left"><span class="level-item">26</span><span class="level-item">Lecture 21 强化学习</span></span></a></li><li><a class="level is-mobile" href="#assignment-6-gan"><span class="level-left"><span class="level-item">27</span><span class="level-item">Assignment 6 GAN</span></span></a></li><li><a class="level is-mobile" href="#lecture-22-总结-与-开放问题"><span class="level-left"><span class="level-item">28</span><span class="level-item">Lecture 22 总结 与 开放问题</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/newlogo.png" alt="frankly6" height="28"></a><p class="is-size-7"><span>&copy; 2026 Frankly6</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
-            article: {
-                highlight: {
-                    clipboard: true,
-                    fold: 'unfolded'
-                }
-            }
-        };</script><script data-pjax src="/js/column.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+&amp; 图像字幕 &amp; 可视化</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#自动梯度"><span class="level-left"><span class="level-item">18.1</span><span class="level-item">自动梯度</span></span></a></li><li><a class="level is-mobile" href="#图像字幕"><span class="level-left"><span class="level-item">18.2</span><span class="level-item">图像字幕</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#vanilla-rnn"><span class="level-left"><span class="level-item">18.2.1</span><span class="level-item">Vanilla RNN</span></span></a></li><li><a class="level is-mobile" href="#lstm-attention-lstm"><span class="level-left"><span class="level-item">18.2.2</span><span class="level-item">LSTM &amp; Attention LSTM</span></span></a></li></ul></li><li><a class="level is-mobile" href="#可视化-风格迁移"><span class="level-left"><span class="level-item">18.3</span><span class="level-item">可视化 &amp; 风格迁移</span></span></a></li></ul></li><li><a class="level is-mobile" href="#lecture-15-目标检测"><span class="level-left"><span class="level-item">19</span><span class="level-item">Lecture 15 目标检测</span></span></a></li><li><a class="level is-mobile" href="#lecture-16-检测与分割"><span class="level-left"><span class="level-item">20</span><span class="level-item">Lecture 16 检测与分割</span></span></a></li><li><a class="level is-mobile" href="#assignment-5-目标检测"><span class="level-left"><span class="level-item">21</span><span class="level-item">Assignment 5 目标检测</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#单阶段目标检测-yolo"><span class="level-left"><span class="level-item">21.1</span><span class="level-item">单阶段目标检测 YOLO</span></span></a></li><li><a class="level is-mobile" href="#双阶段目标检测-faster-r-cnn"><span class="level-left"><span class="level-item">21.2</span><span class="level-item">双阶段目标检测 Faster R-CNN</span></span></a></li></ul></li><li><a class="level is-mobile" href="#lecture-17-3d-视觉"><span class="level-left"><span class="level-item">22</span><span class="level-item">Lecture 17 3D 视觉</span></span></a></li><li><a class="level is-mobile" href="#lecture-18-视频"><span class="level-left"><span class="level-item">23</span><span class="level-item">Lecture 18 视频</span></span></a></li><li><a class="level is-mobile" href="#lecture-19-生成式模型上"><span class="level-left"><span class="level-item">24</span><span class="level-item">Lecture 19 生成式模型(上)</span></span></a></li><li><a class="level is-mobile" href="#lecture-20-生成式模型下"><span class="level-left"><span class="level-item">25</span><span class="level-item">Lecture 20 生成式模型(下)</span></span></a></li><li><a class="level is-mobile" href="#lecture-21-强化学习"><span class="level-left"><span class="level-item">26</span><span class="level-item">Lecture 21 强化学习</span></span></a></li><li><a class="level is-mobile" href="#assignment-6-gan"><span class="level-left"><span class="level-item">27</span><span class="level-item">Assignment 6 GAN</span></span></a></li><li><a class="level is-mobile" href="#lecture-22-总结-与-开放问题"><span class="level-left"><span class="level-item">28</span><span class="level-item">Lecture 22 总结 与 开放问题</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/newlogo-optimized.png" alt="frankly6" height="28" decoding="async"></a><p class="is-size-7"><span>&copy; 2026 Frankly6</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script data-pjax>window.IcarusThemeSettings = {"article":{"highlight":{"clipboard":true,"fold":"unfolded"}},"features":{"clipboard":"https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js","mathjax":"https://cdnjs.loli.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","gallery":{"js":"https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js","css":"https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"},"justifiedGallery":{"js":"https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js","css":"https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"}}};</script><script data-pjax src="/js/column.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
       window.cookieconsent.initialise({
         type: "info",
         theme: "edgeless",
@@ -3092,26 +3085,6 @@ shape 的思想没学会前抄了很多前人的代码; 最后写到最简单的
           },
         },
       });
-    });</script><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
-            if (typeof $.fn.lightGallery === 'function') {
-                $('.article').lightGallery({ selector: '.gallery-item' });
-            }
-            if (typeof $.fn.justifiedGallery === 'function') {
-                if ($('.justified-gallery > p > .gallery-item').length) {
-                    $('.justified-gallery > p > .gallery-item').unwrap();
-                }
-                $('.justified-gallery').justifiedGallery();
-            }
-        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
-      tex: {
-        inlineMath: [['$', '$'], ['\\(', '\\)']]
-      },
-      svg: {
-        fontCache: 'global'
-      },
-      chtml: {
-        matchFontHeight: false
-      }
-    };</script><script src="https://cdnjs.loli.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script><script src="https://cdnjs.loli.net/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+    });</script><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script src="/js/features.js" defer></script><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
             loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
         });</script></body></html>
