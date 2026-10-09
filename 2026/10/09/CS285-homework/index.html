@@ -1,0 +1,1946 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>CS285 Assignment 笔记 - frankly6</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="frankly6"><meta name="msapplication-TileImage" content="/img/newfavicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="frankly6"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="CS285 笔记的 side product"><meta property="og:type" content="blog"><meta property="og:title" content="CS285 Assignment 笔记"><meta property="og:url" content="https://frankly6.cn/2026/10/09/CS285-homework/"><meta property="og:site_name" content="frankly6"><meta property="og:description" content="CS285 笔记的 side product"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://files.seeusercontent.com/2026/10/09/mS4v/40ece1d2ecc04f9a60b4650ccc38d0ac.png"><meta property="article:published_time" content="2026-10-09T04:00:00.000Z"><meta property="article:modified_time" content="2026-10-09T11:43:14.412Z"><meta property="article:author" content="Frankly6"><meta property="article:tag" content="深度学习"><meta property="article:tag" content="强化学习"><meta property="article:tag" content="python"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://files.seeusercontent.com/2026/10/09/mS4v/40ece1d2ecc04f9a60b4650ccc38d0ac.png"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://frankly6.cn/2026/10/09/CS285-homework/"},"headline":"CS285 Assignment 笔记","image":["https://files.seeusercontent.com/2026/10/09/mS4v/40ece1d2ecc04f9a60b4650ccc38d0ac.png"],"datePublished":"2026-10-09T04:00:00.000Z","dateModified":"2026-10-09T11:43:14.412Z","author":{"@type":"Person","name":"Frankly6"},"publisher":{"@type":"Organization","name":"frankly6","logo":{"@type":"ImageObject","url":"https://frankly6.cn/img/newlogo.png"}},"description":"CS285 笔记的 side product"}</script><link rel="canonical" href="https://frankly6.cn/2026/10/09/CS285-homework/"><link rel="icon" href="/img/newfavicon.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/6.0.0/css/all.min.css"><link data-pjax rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"><!--!--><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.loli.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/newlogo.png" alt="frankly6" height="28"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="https://files.seeusercontent.com/2026/10/09/mS4v/40ece1d2ecc04f9a60b4650ccc38d0ac.png" alt="CS285 Assignment 笔记"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><i class="far fa-calendar-alt"> </i><time datetime="2026-10-09T04:00:00.000Z" title="2026-10-09T04:00:00.000Z">2026-10-09</time></span><span class="level-item is-hidden-mobile"><i class="far fa-calendar-check"> </i><time datetime="2026-10-09T11:43:14.412Z" title="2026-10-09T11:43:14.412Z">2026-10-09</time></span><span class="level-item"><a class="link-muted" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a></span><span class="level-item">2 小时读完 (大约17973个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">CS285 Assignment 笔记</h1><div class="content"><p><a target="_blank" rel="noopener" href="https://rail.eecs.berkeley.edu/deeprlcourse-fa23/">CS 285
+2023 Fall</a><br />
+<a
+target="_blank" rel="noopener" href="https://github.com/berkeleydeeprlcourse/homework_fall2023">homework
+2023 fall</a></p>
+<p>为什么要写笔记？这个问题在 2026 年的回答(2026.3.7)已经有了很大变化,
+最开始的原因是我记忆力很差。大学阶段的笔记分为两类, 高数课上我手抄,
+pytorch 与 Qt 学习我上 Typora。自从大模型时代来临后一切都变了,
+有了真理机器喂 prompt 吐笔记, 比我考虑的周全很多, 但如果你看到了这句话,
+说明我还是把我的手工笔记发表到了网络上。<br />
+简单阐明两件事情: 一是我原先的网络笔记指望给素不相识的网友所阅读,
+以此带来一些学习的帮助,
+现在的我发表网络笔记不期盼这些；二是我对未来纯人工生成的文章的数量抱有悲观,
+很快大模型生成的文字将会占领 99% 甚至 100%
+的互联网(这篇笔记也会使用大模型, 但是这几段文字不是),
+我还是抱有一些朴素的想法, 为后人带来一些方便, 解决一些后人的问题,
+例如具体的代码背后的东西？一些带有抽象人类风味的解释(大模型也有对于抽象的理解,
+不过应该不会跟我的完全拟合)。<br />
+你可能会问(如果你是人类的话), 既然你不期盼他人阅读笔记,
+怎么为后人带来方便？我想的是, 这是我纯人工(半人工)生成的语料,
+应该算是优质数据(好歹是人类的而不是大模型反刍出来的(存疑)),
+后世的大模型也许能把我的笔记拉去机器学习。即使在未来网站毁灭了,
+这些东西还能在一些模型深处的神经元里传承下去, 带着我的一点人类风味抽象,
+也许这就足够了。</p>
+<p>下面是 CS 285 2023 Fall 五个 Assignment
+的理论作业解答与代码作业解答</p>
+<h2 id="assignment-1-模仿学习">Assignment 1 模仿学习</h2>
+<h3 id="analysis">Analysis</h3>
+<p>考虑一个具有有限步长 <span class="math inline">\(T\)</span>
+的离散马尔可夫决策过程 (MDP) 中的模仿学习问题, 以及一个专家策略 <span
+class="math inline">\(\pi^*\)</span><br />
+我们从 <span class="math inline">\(\pi^*\)</span> 收集专家演示,
+并根据这些轨迹拟合一个模仿策略 <span
+class="math inline">\(\pi_\theta\)</span>, 使得: <span
+class="math display">\[
+\mathbb{E}_{s \sim p_{\pi^*}} \pi_\theta(a \neq \pi^*(s) \mid s) =
+\frac{1}{T} \sum_{t=1}^{T} \mathbb{E}_{p_{\pi^*}(s_t)} \pi_\theta(a_t
+\neq \pi^*(s_t) \mid s_t) \leq \epsilon
+\]</span> 即: 在从随机专家轨迹中提取的训练状态分布 <span
+class="math inline">\(p_{\pi^*}\)</span>下, 学到的策略 <span
+class="math inline">\(\pi_\theta\)</span> 与专家 <span
+class="math inline">\(\pi^*\)</span> 不一致的预期可能性至多为 <span
+class="math inline">\(\epsilon\)</span></p>
+<p>为了方便起见, 符号 <span class="math inline">\(p_\pi(s_t)\)</span>
+表示在时间步 <span class="math inline">\(t\)</span> 时策略 <span
+class="math inline">\(\pi\)</span> 下的状态分布, 而 <span
+class="math inline">\(p(s)\)</span> 表示除非另有说明, 否则 <span
+class="math inline">\(\pi\)</span> 表示在所有时间步的状态边际分布</p>
+<ol type="1">
+<li>证明: <span class="math inline">\(\sum_{s_t} |p_{\pi_\theta}(s_t) -
+p_{\pi^*}(s_t)| \leq 2T\epsilon\)</span>​</li>
+</ol>
+<p>证明有限 MDP 摘出来中间项的差距上界是随着 T 线性增长的？</p>
+<blockquote>
+<p>符号注意: <span class="math inline">\(s \sim p_{\pi^*}\)</span> 时,
+它实际上是在描述一个两步走的采样过程, 先从时间范围 <span
+class="math inline">\(\{1, 2, \dots, T\}\)</span> 中随机均匀地选一个时刻
+<span class="math inline">\(t\)</span>, 再取出专家在那个时刻 <span
+class="math inline">\(t\)</span> 所处的具体状态 <span
+class="math inline">\(s_t\)</span>​</p>
+</blockquote>
+<p>和 Lecture 2 笔记中的 <span class="math inline">\(\mathbf s \sim
+p_{\text{train}}(\mathbf s)\)</span> 相关推导思路几乎一样,
+但数学细节需要强调处理</p>
+<p>我们设 <span class="math inline">\(M_t\)</span> 为事件: "在第 <span
+class="math inline">\(t\)</span> 步之前, 策略 <span
+class="math inline">\(\pi_\theta\)</span> 至少发生了一次与专家策略 <span
+class="math inline">\(\pi^*\)</span> 不同的动作选择"<br />
+然后改写 <span class="math inline">\(p_{\pi_\theta}\)</span>, 有 <span
+class="math display">\[
+p_{\pi_\theta}(s_t) = (1 - \Pr(M_t)) \cdot p_{\pi^*}(s_t) + \Pr(M_t)
+\cdot p_{\text{mistake}}(s_t)
+\]</span> 于是重构 <span class="math inline">\(p_{\pi_\theta}(s_t) -
+p_{\pi^*}(s_t)\)</span>, 有 <span class="math display">\[
+p_{\pi_\theta}(s_t) - p_{\pi^*}(s_t) = \Pr(M_t) \cdot
+(p_{\text{mistake}}(s_t) - p_{\pi^*}(s_t))
+\]</span> 于是 <span class="math display">\[
+\begin{aligned}
+\sum_{s_t} |p_{\pi_\theta}(s_t) - p_{\pi^*}(s_t)|
+&amp;= \sum_{s_t} \left| \Pr(M_t) \cdot (p_{\text{mistake}}(s_t) -
+p_{\pi^*}(s_t)) \right| \\
+&amp;= \Pr(M_t) \cdot \sum_{s_t} |p_{\text{mistake}}(s_t) -
+p_{\pi^*}(s_t)| \\
+&amp;= 2\Pr(M_t)
+\end{aligned}
+\]</span> 接下来估计 <span class="math inline">\(\Pr(M_t)\)</span>, 即前
+<span class="math inline">\(t-1\)</span>
+步至少犯错一次的概率的上限<br />
+设 <span class="math inline">\(E_i\)</span> 为事件: "在专家分布的状态下,
+第 <span class="math inline">\(i\)</span> 步 <span
+class="math inline">\(\pi_\theta\)</span> 选择的动作与 <span
+class="math inline">\(\pi^*\)</span> 不同", 有 <span
+class="math display">\[
+\Pr(M_t) = \Pr\left(\bigcup_{i=1}^{t-1} E_i\right) \leq \sum_{i=1}^{t-1}
+\Pr(E_i)
+\]</span> 我们已知 <span class="math inline">\(\Pr(E_i) =
+\mathbb{E}_{p_{\pi^*}(s_i)} [\pi_\theta(a \neq \pi^*(s_i) \mid
+s_i)]\)</span>, 又有 <span class="math inline">\(\sum_{i=1}^T
+\mathbb{E}_{p_{\pi^*}(s_i)} [\pi_\theta(a_i \neq \pi^*(s_i) \mid s_i)]
+\leq T\epsilon\)</span><br />
+故大放缩, 对于任意 <span class="math inline">\(t \leq T\)</span>, 有
+<span class="math display">\[
+\Pr(M_t) \leq \sum_{i=1}^{t-1} \mathbb{E}_{p_{\pi^*}(s_i)}[\dots] \leq
+\sum_{i=1}^T \mathbb{E}_{p_{\pi^*}(s_i)}[\dots] \leq T\varepsilon
+\]</span> 回代, 故 <span class="math inline">\(\sum_{s_t}
+|p_{\pi_\theta}(s_t) - p_{\pi^*}(s_t)| \leq 2T\epsilon\)</span></p>
+<ol start="2" type="1">
+<li>考虑学习策略 <span class="math inline">\(\pi_\theta\)</span>
+对于状态相关奖励 <span class="math inline">\(r(s_t)\)</span> 的期望回报,
+其中我们假设奖励是有界的, 即 <span class="math inline">\(|r(s_t)| \leq
+R_{\text{max}}\)</span>:<br />
+<span class="math display">\[
+J(\pi) = \sum_{t=1}^{T} \mathbb{E}_{p_\pi(s_t)}r(s_t)
+\]</span>
+<ol type="a">
+<li>证明当奖励仅取决于最后一个状态时 (即对于所有 <span
+class="math inline">\(t &lt; T, r(s_t) = 0\)</span>), <span
+class="math inline">\(J(\pi^*) - J(\pi_\theta) =
+\mathcal{O}(T\epsilon)\)</span><br />
+</li>
+<li>证明对于任意奖励, <span class="math inline">\(J(\pi^*) -
+J(\pi_\theta) = \mathcal{O}(T^2\epsilon)\)</span></li>
+</ol></li>
+</ol>
+<p>其中 <span class="math inline">\(\epsilon\)</span> 表示策略 <span
+class="math inline">\(\pi_\theta\)</span> 与最优策略 <span
+class="math inline">\(\pi^*\)</span> 在单步分布上的最大差异</p>
+<ol type="a">
+<li>此时 <span class="math inline">\(J(\pi^*) - J(\pi_\theta) =
+\mathbb{E}_{p_{\pi^*}(s_T)}r(s_T) -
+\mathbb{E}_{p_{\pi_\theta}(s_T)}r(s_T)\)</span><br />
+期望的分布不一样, 但我们得到了差距估计 <span
+class="math inline">\(\sum_{s_t} |p_{\pi_\theta}(s_t) - p_{\pi^*}(s_t)|
+\leq 2T\epsilon\)</span></li>
+</ol>
+<p>于是 <span class="math inline">\(\mathbb{E}_{p_{\pi^*}(s_T)}r(s_T) -
+\mathbb{E}_{p_{\pi_\theta}(s_T)}r(s_T) = r(s_T) \displaystyle\sum_{s_T}
+(p_{\pi^*}(s_T) - p_{\pi_\theta}(s_T)) \leq R_\max \cdot 2T\epsilon =
+\mathcal{O}(T\epsilon)\)</span></p>
+<ol start="2" type="a">
+<li>类似有 <span class="math display">\[
+\begin{aligned}
+J(\pi^*) - J(\pi_\theta) &amp;= \sum_{t=1}^{T} \left(
+\mathbb{E}_{p_{\pi^*}(s_t)}r(s_t) -
+\mathbb{E}_{p_{\pi_\theta}(s_t)}r(s_t) \right) \\
+&amp;= \sum_{t=1}^{T} r(s_t) \sum_{s_t} (p_{\pi^*}(s_t) -
+p_{\pi_\theta}(s_t)) \\
+&amp;= R_\max \sum_{t=1}^{T} \sum_{s_t} (p_{\pi^*}(s_t) -
+p_{\pi_\theta}(s_t)) \\
+&amp;= R_\max T(T+1)\epsilon \\
+&amp;= \mathcal{O}(T^2\epsilon)
+\end{aligned}
+\]</span></li>
+</ol>
+<h3 id="code">Code</h3>
+<p>现在都用 <a target="_blank" rel="noopener" href="https://gymnasium.farama.org/">Gymnasium</a> 了,
+而我们作业用的是 <code>gym</code>, 名字短一截啊<br />
+先看 run_hw1.py, 定义了一个 <code>run_training_loop(params)</code>, 然后
+<code>main</code> 函数把 <code>params</code> 弄好<br />
+在 <code>gym</code> 中, 重要的是环境
+<code>env = gym.make(params['env_name'], render_mode=None)</code></p>
+<p>环境 <a target="_blank" rel="noopener" href="https://gymnasium.farama.org/api/env/">Env</a> 是比一坨
+<span class="math inline">\(\mathcal{M} = \{ \mathcal{S}, \mathcal{A},
+\mathcal{O}, \mathcal{T}, \mathcal{E}, r \}\)</span> 更大的东西,
+我们主要用 <code>step()</code> 方法在 MDP 上步进<br />
+在 run_hw1.py 里面, Agent 就是个 MLP, 有个 <code>replay_buffer</code> 是
+off-policy 用的？我们主要写训练部分</p>
+<p><img src="https://files.seeusercontent.com/2026/03/05/yX0d/8fdcf2e6b3968745ae379bf8855d7acd.png" style="zoom:80%;" /></p>
+<p>第一次 (iter 0) 是做<strong>行为克隆(Behavior Cloning, BC)</strong>,
+后面是在做 DAGGER<br />
+在 Step 3, 要把人类对 <span class="math inline">\(\mathbf o_t\)</span>
+的标记 <span class="math inline">\(\mathbf a_t\)</span> 替换掉原来的
+<code>paths[i]["actions"]</code>, 个人感觉就是下面这样的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(<span class="built_in">len</span>(paths)):</span><br><span class="line">    paths[i][<span class="string">&quot;action&quot;</span>] = expert_policy.get_action(paths[i][<span class="string">&quot;observation&quot;</span>])</span><br></pre></td></tr></table></figure>
+<p>在 Step 1, 我们要从 <code>replay_buffer</code> 中打包
+<code>ob_batch, ac_batch</code> 去训练, 需要 <code>random_shuffle</code>
+一下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">size = params[<span class="string">&#x27;train_batch_size&#x27;</span>]</span><br><span class="line">shuffle_index = np.random.permutation(<span class="built_in">len</span>(replay_buffer))[:size]</span><br><span class="line">ob_batch = replay_buffer.obs[shuffle_index]</span><br><span class="line">ac_batch = replay_buffer.acs[shuffle_index]</span><br></pre></td></tr></table></figure>
+<p>在 utils.py 里面, 我们需要具体完成
+<code>sample_trajectory</code>函数, 把轨迹采样出来, 主要用
+<code>env.step(ac)</code> 来步进</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">ac = policy.get_action(ob)</span><br><span class="line">...</span><br><span class="line">next_ob, rew, done, _ = env.step(ac)</span><br><span class="line">...</span><br><span class="line">rollout_done = done</span><br></pre></td></tr></table></figure>
+<p>我得说这个 <code>ac</code> 即 action 原来获取的方式太蠢了,
+搞了半天这个 <code>get_action</code> 函数在基类
+<code>base_policy.py</code> 里还没写, 这层抽象化在原作业中暗示你在
+utils.py 写是错误的<br />
+action 怎么从 observation 得到？我们从 observation
+可以得到对应的高斯分布, 从这个分布中采样出一个动作<br />
+数据格式的变化是 numpy(obs) -&gt; tensor(dist) -&gt; numpy(action),
+还要注意 observation 的维度问题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_action</span>(<span class="params">self, obs: np.ndarray</span>) -&gt; np.ndarray:</span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(obs.shape) &gt; <span class="number">1</span>: observation = obs</span><br><span class="line">    <span class="keyword">else</span>: observation = obs[<span class="literal">None</span>]</span><br><span class="line">    obs_tensor = ptu.from_numpy(observation)</span><br><span class="line">    dist = self.forward(obs_tensor) <span class="comment"># 1. 拿到分布对象</span></span><br><span class="line">    action_tensor = dist.sample() <span class="comment"># 2. 从分布中采样出一个真正的 Tensor</span></span><br><span class="line">    action = ptu.to_numpy(action_tensor) <span class="comment"># 3. 将采样出来的 Tensor 转成 NumPy</span></span><br><span class="line">    <span class="keyword">if</span> <span class="built_in">len</span>(obs.shape) == <span class="number">1</span>:</span><br><span class="line">        <span class="keyword">return</span> action.flatten() </span><br><span class="line">    <span class="keyword">return</span> action</span><br></pre></td></tr></table></figure>
+<p>最后在 MLP_policy.py 里实现 <code>forward</code> 与
+<code>update</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, observation: torch.FloatTensor</span>) -&gt; <span class="type">Any</span>:</span><br><span class="line">    mean = self.mean_net(observation)</span><br><span class="line">    std = torch.exp(self.logstd)</span><br><span class="line">    dist = torch.distributions.Normal(mean, std)</span><br><span class="line">    <span class="keyword">return</span> dist</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">update</span>(<span class="params">self, observations, actions</span>):</span><br><span class="line">    self.optimizer.zero_grad() </span><br><span class="line">    observations = ptu.from_numpy(observations)</span><br><span class="line">    actions = ptu.from_numpy(actions)</span><br><span class="line">    dist = self.forward(observations) <span class="comment"># 最大似然估计</span></span><br><span class="line">    log_probs = dist.log_prob(actions) <span class="comment"># 专家动作在当前高斯分布下的对数概率</span></span><br><span class="line">    loss = -log_probs.<span class="built_in">sum</span>(dim=-<span class="number">1</span>).mean()</span><br><span class="line">    loss.backward()            </span><br><span class="line">    self.optimizer.step()</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">&#x27;Training Loss&#x27;</span>: ptu.to_numpy(loss),</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>按照要求跑 run_hw1.py, 在 tensorboard 看结果, 发现几乎不用训 10 个
+epoch, 我一个 epoch 就够了<br />
+借助 AI 神力解释一下, 我们在这里的 loss 是负对数极大似然估计, <span
+class="math inline">\(\text{Loss} = \dfrac{(a_{\text{expert}} -
+\mu_\theta(s))^2}{2\sigma^2} + \log \sigma + \text{const}\)</span>,
+而传统的简单 loss 一般就是 MSE, 算两个分布之间的距离 <span
+class="math inline">\(\| \mu_\theta(s) - a_{\text{expert}}
+\|^2\)</span>, 我们的方法收敛快, 不容易漂移, 但容易因为 <span
+class="math inline">\(\sigma\)</span> 震荡, 因为其对于 <span
+class="math inline">\(\sigma\)</span> 太敏感了</p>
+<h3 id="extra">Extra</h3>
+<p>在课程中讨论过的 DAGGER 算法的缺点之一是,
+它需要人类专家对机器人收集的状态标注最优动作。这可能有悖直觉,
+因为人类通常是在不断获得环境反馈的情况下选择动作的</p>
+<p>在本题中, 你将分析一种 DAGGER 算法的变体, 该变体在轨迹铺展 (rollouts)
+期间的某些时刻将控制权交给人类专家, 从而允许他们提供交互式演示<br />
+我们考虑一个视界 (horizon) 为 <span class="math inline">\(T\)</span>
+的离散 MDP 和一个专家策略 <span class="math inline">\(\pi^{*}\)</span>,
+在每次迭代 <span class="math inline">\(n=1,...,N\)</span> 中,
+我们都有一个策略 <span class="math inline">\(\pi^{n}\)</span>,
+我们从该策略中 rollout 轨迹, 使得在每条轨迹中, 我们在某个随机时间步
+<span class="math inline">\(X^{*}+1\)</span> 将控制权转移给专家,
+直到轨迹结束<br />
+我们将以一定概率交出控制权的 <span
+class="math inline">\(\pi^{n}\)</span> 版本表示为 <span
+class="math inline">\(\tilde{\pi}^{n}\)</span></p>
+<p>形式上, 定义 <span
+class="math inline">\(S^{X}(\pi_{1},\pi_{2})\)</span> 为先执行策略 <span
+class="math inline">\(\pi_{1}\)</span> 共 <span
+class="math inline">\(X\)</span> 步, 然后从当前状态切换到执行策略 <span
+class="math inline">\(\pi_{2}\)</span> 直到轨迹剩余步骤结束的策略,
+我们如下定义我们的算法 SWITCHDAGGER。为了方便起见, 我们设定 <span
+class="math inline">\(\tilde{\pi}^{0}\leftarrow\pi^{*}\)</span> 和 <span
+class="math inline">\(\pi^{0}\leftarrow\hat{\pi}^{1}\)</span>, 在每一步
+<span class="math inline">\(n=1,...,N\)</span> 中, 我们执行以下更新:</p>
+<ul>
+<li><span class="math inline">\(\hat{\pi}^{n}\leftarrow\)</span> 对来自
+<span class="math inline">\(s\sim p_{\tilde{\pi}^{n-1}}\)</span>
+的专家动作 <span class="math inline">\(\pi^{*}(s)\)</span> 进行拟合</li>
+<li><span class="math inline">\(\tilde{\pi}^{n}\leftarrow
+S^{X_{n}}(\hat{\pi}^{n},\tilde{\pi}^{n-1})\)</span>, 其中 <span
+class="math inline">\(X_{n}+1\sim \text{Geom}(1-\alpha)\)</span></li>
+<li><span class="math inline">\(\pi^{n}\leftarrow
+S^{X_{n}}(\hat{\pi}^{n},\pi^{n-1})\)</span>, 或等价于对 <span
+class="math inline">\(X^{*}=\sum_{i=1}^{n}X_{i}\)</span> 使用 <span
+class="math inline">\(S^{X^{*}}(\tilde{\pi}^{n},\pi^{0})\)</span></li>
+</ul>
+<p>其中我们假设 <span class="math inline">\(\hat{\pi}^{n}\)</span> 在
+<span class="math inline">\(\tilde{\pi}^{n-1}\)</span>
+的状态边缘分布上进行拟合, 使得: <span class="math display">\[
+\mathbb{E}_{s\sim
+p_{\tilde{\pi}^{n-1}}}Pr[\hat{\pi}^{n}(s)\ne\pi^{*}(s)]\le\epsilon
+\]</span> 我们将代价 (cost) 定义为一个策略所犯错误的期望数量: <span
+class="math display">\[
+C(\pi)=\sum_{t=1}^{T}\mathbb{E}_{s_{t}\sim
+p_{\pi}}Pr[\pi(s_{t})\ne\pi^{*}(s_{t})]
+\]</span> 我们的目标是最小化 SWITCHDAGGER 产生的不使用专家的最终策略
+<span class="math inline">\(\pi^{N}\)</span> 的代价<br />
+在下面的部分中, 你将证明, 对于适当的 <span
+class="math inline">\(N\)</span> 和 <span
+class="math inline">\(\alpha\)</span> 的选择, 我们可以将该策略的代价
+<span class="math inline">\(C(\pi^{N})\)</span> 限界为 <span
+class="math inline">\(\mathcal{O}(T\epsilon~log(1/\epsilon))\)</span></p>
+<blockquote>
+<p>上面是题目背景翻译, 我在这说点能听懂的</p>
+<p><span class="math inline">\(\tilde{\pi}^{n-1}\)</span> 训练了 <span
+class="math inline">\(\hat{\pi}^{n}\)</span>, 使其在 <span
+class="math inline">\(\tilde{\pi}^{n-1}\)</span> 的分布下,
+与专家动作不一致的概率小于 <span
+class="math inline">\(\epsilon\)</span><br />
+<span class="math inline">\(\hat{\pi}^{n}\)</span> 被我们嵌入了 <span
+class="math inline">\(\pi^n\)</span> 中, 我们实际上训练了 <span
+class="math inline">\(\{\hat{\pi}^1, \hat{\pi}^2, \dots,
+\hat{\pi}^n\}\)</span>, 然后拼接成了 <span
+class="math inline">\(\pi^n\)</span>, 随着概率 <span
+class="math inline">\(\alpha\)</span> 切换为 "下级" 策略</p>
+</blockquote>
+<ol type="1">
+<li>证明 <span class="math inline">\(C(\tilde{\pi}^{n})\le
+A(T,n)\)</span>, 其中 <span class="math inline">\(A(t,n)\)</span>
+由以下条件定义:<br />
+<span class="math inline">\(A(0,n)=0, A(t,0)=0, A(t,n)=\alpha\epsilon
+t+\alpha(1-\epsilon)A(t-1,n)+(1-\alpha)A(t,n-1)\)</span></li>
+</ol>
+<p>我们可以展开 <span class="math inline">\(\tilde\pi\)</span> 来看一眼,
+<span class="math inline">\(\tilde{\pi}^{2} = S^{X_{2}}(\hat{\pi}^{2},
+\tilde{\pi}^{1}) = S^{X_{2}}(\hat{\pi}^{2}, S^{X_{1}}(\hat{\pi}^{1},
+\pi^{*}))\)</span>, 有 <span class="math display">\[
+\tilde{\pi}^{n} = \underbrace{\hat{\pi}^{n} \to \hat{\pi}^{n-1} \to
+\dots \to \hat{\pi}^{1}}_{\text{运行总步数 } X^{*}} \to
+\underbrace{\pi^{*}}_{\text{专家接管}}
+\]</span> 其中总步数 <span class="math inline">\(X^{*} =
+\sum\limits_{i=1}^{n} X_{i}\)</span>, 并且 <span
+class="math inline">\(X_n + 1 \sim \text{Geom}(1-\alpha)\)</span><br />
+证明这个概率就是从 <span class="math inline">\(\pi^*\)</span> 开始倒推,
+一一对应, 首先专家是不会出错的, <span class="math inline">\(C(\pi^*) =
+A(0,n) = 0\)</span><br />
+从 <span class="math inline">\(\tilde{\pi}^{n}\)</span> 到 <span
+class="math inline">\(\tilde{\pi}^{n-1}\)</span> 的概率为 <span
+class="math inline">\(1-\alpha\)</span>, 剩余 <span
+class="math inline">\(t\)</span> 步的期望错误上限为 <span
+class="math inline">\(A(t, n-1)\)</span><br />
+以 <span class="math inline">\(\alpha\)</span> 的概率, 我们会继续执行
+<span class="math inline">\(\hat{\pi}^n\)</span>, 在这个单步中, <span
+class="math inline">\(\hat{\pi}^n\)</span> 犯错的概率最高为 <span
+class="math inline">\(\epsilon\)</span>, 全错了的概率为 <span
+class="math inline">\(\alpha\epsilon t\)</span><br />
+如果不犯错, 剩余 <span class="math inline">\(t-1\)</span> 步由 <span
+class="math inline">\(\tilde{\pi}^n\)</span> 控制, 代价为 <span
+class="math inline">\(A(t-1,n)\)</span><br />
+组合一下, 总期望为 <span class="math inline">\(A(t,n)=\alpha\epsilon
+t+\alpha(1-\epsilon)A(t-1,n)+(1-\alpha)A(t,n-1)\)</span></p>
+<ol start="2" type="1">
+<li>证明 <span class="math inline">\(C(\tilde{\pi}^{n})\le
+Tn\alpha\epsilon\)</span></li>
+</ol>
+<p>归纳法解决, 略</p>
+<ol start="3" type="1">
+<li>证明当 <span class="math inline">\(n\ge T\)</span> 且 <span
+class="math inline">\(\alpha\le1/T\)</span> 时, <span
+class="math inline">\(C(\pi^{n})\le
+C(\tilde{\pi}^{n})+Te^{\frac{-n}{(1-\alpha)T}}\)</span></li>
+</ol>
+<p><span class="math inline">\(\pi^n\)</span> 和 <span
+class="math inline">\(\tilde{\pi}^n\)</span>
+行为的唯一区别在于当时间步超过 <span class="math inline">\(X^* =
+\sum_{i=1}^n X_i\)</span> 时, <span
+class="math inline">\(\tilde{\pi}^n\)</span> 切换为专家 <span
+class="math inline">\(\pi^*\)</span> (后续无错误), 而 <span
+class="math inline">\(\pi^n\)</span> 切换为初始策略 <span
+class="math inline">\(\pi^0\)</span> (然后后面全错了)<br />
+当 <span class="math inline">\(X^* \ge T\)</span> 时无区别, 当 <span
+class="math inline">\(X^* &lt; T\)</span> 时, 作业给出了 Chernoff 界
+<span class="math inline">\(\Pr[X^{*} \le T] \le
+e^{\frac{-n}{(1-\alpha)T}}\)</span>​, 那不就证完了吗</p>
+<ol start="4" type="1">
+<li>证明 <span
+class="math inline">\(C(\pi^{N})=\mathcal{O}(T\epsilon~log(1/\epsilon))\)</span></li>
+</ol>
+<p>我们有 <span class="math inline">\(C(\pi^N) \le T n \alpha \epsilon +
+Te^{\frac{-n}{(1-\alpha)T}}\)</span>, 选择 <span
+class="math inline">\(\alpha = 1/T\)</span>, 有 <span
+class="math inline">\(C(\pi^N) \le  n \epsilon +
+Te^{\frac{-n}{T-1}}\)</span><br />
+我们希望两项差不多, 令 <span class="math inline">\(T \cdot
+e^{\frac{-n}{T-1}} = T\epsilon\)</span>, 则 <span
+class="math inline">\(n = \Theta(T \log(1/\epsilon))\)</span>, 则总项为
+<span
+class="math inline">\(\mathcal{O}(T\epsilon~log(1/\epsilon))\)</span></p>
+<h2 id="assignment-2-策略梯度">Assignment 2 策略梯度</h2>
+<p>大概要学完 Lecture 6 才能写, 推荐一下 <a
+target="_blank" rel="noopener" href="https://github.com/Zhangkuns/UCB_cs285_Deep-Reinforcement-Learning/blob/main/homework_fall2023/hw2/template/hw2_template.pdf">Zhangkuns</a>
+的实验报告</p>
+<h3 id="review">Review</h3>
+<p>下文我的笔记有 1-index 与 0-index 混用, 要不还是去看作业原文吧</p>
+<p>策略梯度 <span class="math inline">\(\nabla_{\theta} J(\theta) =
+E_{\tau \sim p_{\theta}(\tau)} [\nabla_{\theta} \log p_{\theta}(\tau)
+r(\tau)]\)</span>​</p>
+<p>策略梯度的近似 <span class="math inline">\(\nabla_\theta J(\theta)
+\approx \dfrac{1}{N} \sum\limits_{i=1}^N \left[ \left(
+\sum\limits_{t=1}^T \nabla_\theta \log \pi_\theta(\mathbf
+a_{i,t}|\mathbf s_{i,t}) \right) \left( \sum\limits_{t=1}^T
+r(\mathbf{s}_{i,t}, \mathbf{a}_{i,t}) \right) \right]\)</span></p>
+<p>课程介绍的降低方差的方式有 因果假设(reward to
+go)、基线(baseline)、折扣因子(discounting) 三种</p>
+<p>因果假设: <span class="math inline">\(\nabla_\theta J(\theta) \approx
+\dfrac{1}{N} \sum\limits_{i=1}^N \left[ \left( \sum\limits_{t=1}^T
+\nabla_\theta \log \pi_\theta(\mathbf a_{i,t}|\mathbf s_{i,t}) \right)
+\left( \sum\limits_{t&#39;=t}^T r(\mathbf{s}_{i,t&#39;},
+\mathbf{a}_{i,t&#39;}) \right) \right]\)</span></p>
+<p>基线: <span class="math inline">\(\nabla_\theta J(\theta) \approx
+\dfrac{1}{N} \sum\limits_{i=1}^N    \nabla_\theta \log
+p_\theta(\tau)  \left[r(\tau)-b \right]\)</span></p>
+<p>折扣因子: <span class="math inline">\(\nabla_\theta J(\theta) \approx
+\dfrac{1}{N} \sum\limits_{i=1}^N \left[ \left( \sum\limits_{t=1}^T
+\nabla_\theta \log \pi_\theta(\mathbf a_{i,t}|\mathbf s_{i,t}) \right)
+\left( \sum\limits_{t=1}^T \gamma^{t-1} r(\mathbf{s}_{i,t},
+\mathbf{a}_{i,t}) \right) \right]\)</span></p>
+<p>因果假设 + 折扣因子: <span class="math inline">\(\nabla_\theta
+J(\theta) \approx \dfrac{1}{N} \sum\limits_{i=1}^N \left[ \left(
+\sum\limits_{t=1}^T \nabla_\theta \log \pi_\theta(\mathbf
+a_{i,t}|\mathbf s_{i,t}) \right) \left( \sum\limits_{t&#39;=t}^T
+\gamma^{t&#39;-t} r(\mathbf{s}_{i,t}, \mathbf{a}_{i,t}) \right)
+\right]\)</span></p>
+<p>在本次作业中, 我们会实现状态价值函数 <span
+class="math inline">\(V_\phi^\pi\)</span>
+作为一个依赖状态的基线(baseline), 训练它去拟合未来奖励之和, 有 <span
+class="math display">\[
+V_\phi^\pi(\mathbf s_t) \approx \sum_{t&#39;=t}^T \mathbb E_{\pi_\theta}
+[r(\mathbf s_{t&#39;}, \mathbf a_{t&#39;})|\mathbf s_t]
+\]</span> 总的策略梯度为: <span class="math inline">\(\nabla_\theta
+J(\theta) \approx \dfrac{1}{N} \sum\limits_{i=1}^N  \sum\limits_{t=1}^T
+\nabla_\theta \log \pi_\theta(\mathbf a_{i,t}|\mathbf s_{i,t}) \left(
+\left( \sum\limits_{t&#39;=t}^T \gamma^{t&#39;-t} r(\mathbf{s}_{i,t},
+\mathbf{a}_{i,t}) \right) - V_\phi^\pi(\mathbf s_{i,t})
+\right)\)</span></p>
+<p>前一个策略梯度表达式中的量 <span
+class="math inline">\(\left(\sum_{t&#39;=t}^{T}
+\gamma^{t&#39;-t}r(\mathbf s_{t&#39;}, \mathbf a_{t&#39;})\right) -
+V^{\pi, \phi}(\mathbf s_t)\)</span> 可以被解释为优势函数的估计值</p>
+<p><span class="math display">\[
+A^\pi(\mathbf s_t, \mathbf a_t) = Q^\pi(\mathbf s_t, \mathbf a_t) -
+V^\pi(\mathbf s_t)
+\]</span> 其中 <span class="math inline">\(Q^\pi(\mathbf s_t, \mathbf
+a_t)\)</span> 使用蒙特卡洛回报进行估计, 而 <span
+class="math inline">\(V^\pi(\mathbf s_t)\)</span> 使用学习到的价值函数
+<span class="math inline">\(V_\phi^{\pi}\)</span> 进行估计<br />
+我们可以通过进一步使用 <span class="math inline">\(V_\phi^{\pi}\)</span>
+来替代蒙特卡洛回报以估计优势函数, 从而进一步降低方差 <span
+class="math display">\[
+A^\pi(\mathbf s_t, \mathbf a_t) \approx \delta_t = r(\mathbf s_t,
+\mathbf a_t) + \gamma V_\phi^{\pi}(\mathbf s_{t+1}) -
+V_\phi^{\pi}(\mathbf s_t)
+\]</span> 其中边界情况为 <span class="math inline">\(\delta_{T} =
+r(\mathbf s_{T}, \mathbf a_{T}) - V_\phi^{\pi}(\mathbf
+s_{T})\)</span><br />
+然而, 由于 <span class="math inline">\(V_\phi^{\pi}\)</span>
+中的建模误差, 这会给我们策略梯度的估计引入偏差 (bias)<br />
+我们可以转而使用 <span class="math inline">\(n\)</span> 步蒙特卡洛回报与
+<span class="math inline">\(V_\phi^{\pi}\)</span> 的组合来估计优势函数：
+<span class="math display">\[
+A_n^{\pi}(\mathbf s_t, \mathbf a_t) = \sum_{t&#39;=t}^{t+n}
+\gamma^{t&#39;-t}r(\mathbf s_{t&#39;}, \mathbf a_{t&#39;}) + \gamma^n
+V_\phi^{\pi}(\mathbf s_{t+n+1}) - V_\phi^{\pi}(\mathbf s_t)
+\]</span> 增大 <span class="math inline">\(n\)</span>
+会在优势估计中更多地纳入蒙特卡洛回报, 这会降低偏差但增加方差, 而减小
+<span class="math inline">\(n\)</span> 则效果相反<br />
+注意，当 <span class="math inline">\(n = T - t - 1\)</span> 时,
+恢复为最初使用的无偏但方差较高的蒙特卡洛优势估计<br />
+而当 <span class="math inline">\(n = 0\)</span> 时,
+则恢复为方差较低但偏差较高的优势估计 <span
+class="math inline">\(\delta_t\)</span></p>
+<p>我们可以将多个 <span class="math inline">\(n\)</span>
+步优势估计组合为指数加权和, 这被称为广义优势估计器 (GAE)<br />
+设 <span class="math inline">\(\lambda \in [0, 1]\)</span>, 那么我们定义
+(0-index): <span class="math display">\[
+A_\text{GAE}^{\pi}(\mathbf s_t, \mathbf a_t) =
+\frac{1-\lambda^{T-t-1}}{1-\lambda} \sum_{n=1}^{T-t-1} \lambda^{n-1}
+A_n^{\pi}(\mathbf s_t, \mathbf a_t)
+\]</span> 其中 <span
+class="math inline">\(\dfrac{1-\lambda^{T-t-1}}{1-\lambda}\)</span>
+是一个归一化常数<br />
+注意, 较高的 <span class="math inline">\(\lambda\)</span> 会强调具有较大
+<span class="math inline">\(n\)</span> 值的优势估计, 而较低的 <span
+class="math inline">\(\lambda\)</span> 则相反<br />
+因此, <span class="math inline">\(\lambda\)</span> 充当了偏差 - 方差权衡
+(bias-variance tradeoff) 的控制参数: 增加 <span
+class="math inline">\(\lambda\)</span> 会减少偏差但增加方差</p>
+<p>在无限时间范围 (inftyite horizon) 的情况下 (<span
+class="math inline">\(T = \infty\)</span>), 我们可以证明: <span
+class="math display">\[
+\begin{aligned}
+A_\text{GAE}^{\pi}(\mathbf s_t, \mathbf a_t) &amp;= \frac{1}{1-\lambda}
+\sum_{n=1}^{\infty} \lambda^{n-1} A_n^{\pi}(\mathbf s_t, \mathbf a_t) \\
+&amp;= \sum_{t&#39;=t}^{\infty} (\gamma\lambda)^{t&#39;-t}
+\delta_{t&#39;}
+\end{aligned}
+\]</span> 出于简洁考虑, 我们省略了推导过程 (详细信息请参阅 <a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/1506.02438.pdf">GAE 论文</a>）</p>
+<p>在有限时间范围 (finite horizon) 的情况下, 我们可以写为:</p>
+<p><span class="math display">\[
+A_\text{GAE}^{\pi}(\mathbf s_t, \mathbf a_t) = \sum_{t&#39;=t}^{T-1}
+(\gamma\lambda)^{t&#39;-t} \delta_{t&#39;}
+\]</span> 这提供了一种高效实现广义优势估计器的方法,
+因为我们可以递归地计算:</p>
+<p><span class="math display">\[
+A_\text{GAE}^{\pi}(\mathbf s_t, \mathbf a_t) = \delta_t + \gamma\lambda
+A_\text{GAE}^{\pi}(\mathbf s_{t+1}, \mathbf a_{t+1})
+\]</span></p>
+<h3 id="review-analysis">Review Analysis</h3>
+<p>这里引入了一些神奇妙妙符号, 我们解释一下<br />
+<span class="math inline">\(\delta_t\)</span> 被称为<strong>时序差分误差
+(TD Error)</strong>, <span class="math inline">\(V_{\phi}^{\pi}(\mathbf
+s_{t})\)</span> 是行动前对当前状态能拿多少分的旧预测,<br />
+而 <span class="math inline">\(r(\mathbf s_{t},\mathbf a_{t}) + \gamma
+V_{\phi}^{\pi}(\mathbf s_{t+1})\)</span> 是你实际走了一步后,
+拿到的真实奖励加上对未来的新预测<br />
+因为 <span class="math inline">\(Q^{\pi}(\mathbf s_t, \mathbf a_t) =
+\mathbb{E}_{\mathbf s_{t+1}}[r(\mathbf s_t, \mathbf a_t) + \gamma
+V^{\pi}(\mathbf s_{t+1})]\)</span>, 不求期望, 做单步采样就是上面的式子
+<span class="math inline">\(A^\pi(\mathbf s_t, \mathbf a_t) \approx
+\delta_t = \dots\)</span></p>
+<p>我们可以转向做 <span class="math inline">\(n\)</span> 步的估计,
+多一点采样步数, 少一点预测步数, 就是下面的式子 <span
+class="math display">\[
+A_{n}^{\pi}(s_{t},a_{t})=\underbrace{\sum_{t^{\prime}=t}^{t+n}\gamma^{t^{\prime}-t}r(s_{t^{\prime}},a_{t^{\prime}})}_{\text{1.真实的多步体验}}
++
+\underbrace{\gamma^{n}V_{\phi}^{\pi}(s_{t+n+1})}_{\text{2.对远期未来的预测}}
+- \underbrace{V_{\phi}^{\pi}(s_{t})}_{\text{3.最初的期望基线}}
+\]</span> 那问题变成了, <span class="math inline">\(n\)</span>
+为多少的时候效果最好？GAE 的解决方法是: 把所有可能的 <span
+class="math inline">\(n\)</span> 步优势估计 <span
+class="math inline">\(A_n^{\pi}(\mathbf s_t, \mathbf a_t)\)</span>
+全都算出来, 然后给它们做一个加权平均 <span class="math display">\[
+A_{GAE}^{\pi}(\mathbf s_t, \mathbf a_t) =
+\underbrace{\frac{1-\lambda^{T-t-1}}{1-\lambda}}_{\text{1.归一化常数}}
+\sum_{n=1}^{T-t-1} \underbrace{\lambda^{n-1}}_{\text{2.指数衰减}}
+\underbrace{A_n^{\pi}(\mathbf s_t, \mathbf a_t)}_{\text{3.各个 n
+步的优势估计}}
+\]</span> 用 <span class="math inline">\(\delta_t\)</span>
+重写这个优势函数, 就是 <span
+class="math inline">\(A_\text{GAE}^{\pi}(\mathbf s_t, \mathbf a_t) =
+\delta_t + \gamma\lambda A_\text{GAE}^{\pi}(\mathbf s_{t+1}, \mathbf
+a_{t+1})\)</span></p>
+<h3 id="code-1">Code</h3>
+<p>先看 pg_agent.py, 这部分内容照着我们上面的 Review 和 Analysis
+可以完成, GAE 可能难一点</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">batch_size = obs.shape[<span class="number">0</span>]</span><br><span class="line">values = np.append(values, [<span class="number">0</span>])</span><br><span class="line">advantages = np.zeros(batch_size + <span class="number">1</span>)</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">reversed</span>(<span class="built_in">range</span>(batch_size)):</span><br><span class="line">    advantages[i] = rewards[i] + (<span class="number">1</span>-terminals[i])*self.gamma*values[i+<span class="number">1</span>] - values[i] <span class="comment"># A^\pi = \gamma_t</span></span><br><span class="line">    advantages[i] += self.gamma * self.gae_lambda * advantages[i+<span class="number">1</span>] <span class="comment"># A_&#123;GAE&#125;^\pi</span></span><br><span class="line">advantages = advantages[:-<span class="number">1</span>] <span class="comment"># remove dummy advantage</span></span><br></pre></td></tr></table></figure>
+<p>再之后还能用 advantage normalisation 方法, 直接变成 <span
+class="math inline">\(\mathcal N(0,1)\)</span> 上的优势函数</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> self.normalize_advantages:</span><br><span class="line">    <span class="keyword">return</span> (advantages - advantages.mean()) / (advantages.std() + <span class="number">1e-8</span>)</span><br></pre></td></tr></table></figure>
+<p>在 critics.py 中, 我们要训练 <span
+class="math inline">\(V_\phi^{\pi}\)</span>, <code>forward</code>
+方法就是直接 <code>self.network(obs)</code> 了, 问题是怎么
+<code>update</code><br />
+我们一般使用 TD 误差(时序差分误差), 在 lecture 6 中有 <span
+class="math inline">\(\mathcal L(\phi) = \dfrac{1}{2} \sum\limits_i \|
+\hat V_{\phi}^\pi - y_i \|^2\)</span>, 这里的 <span
+class="math inline">\(y_i\)</span> 就是 Q 函数的单步采样, 即 <span
+class="math inline">\(y_{i,t} \approx r(\mathbf s_{i,t}, \mathbf
+a_{i,t}) + \gamma \hat V_{\phi}^\pi (\mathbf s_{i,t+1})\)</span>​,
+不过代码好像直接给了 q_values？<br />
+于是有代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">update</span>(<span class="params">self, obs: np.ndarray, q_values: np.ndarray</span>) -&gt; <span class="built_in">dict</span>:</span><br><span class="line">    obs = ptu.from_numpy(obs)</span><br><span class="line">    q_values = ptu.from_numpy(q_values)</span><br><span class="line">    self.optimizer.zero_grad() </span><br><span class="line">    logits = self.forward(obs)</span><br><span class="line">    <span class="comment"># <span class="doctag">TODO:</span> update the critic using the observations and q_values</span></span><br><span class="line">    loss = F.mse_loss(logits, q_values)</span><br><span class="line">    loss.backward()            </span><br><span class="line">    self.optimizer.step()</span><br><span class="line">    <span class="keyword">return</span> &#123;</span><br><span class="line">        <span class="string">&quot;Baseline Loss&quot;</span>: ptu.to_numpy(loss),</span><br><span class="line">    &#125;</span><br></pre></td></tr></table></figure>
+<p>然后想要启动 run_hw2.py, 发现 utils.py 中
+<code>sample_trajectory</code> 还没写, utils.py 进去一看发现 policies.py
+中的 <code>MLPPolicy</code> 类也没写</p>
+<p>在离散动作空间里, <code>self.logits_net</code> 输出每个动作的相对概率
+<code>logits</code>,<br />
+在连续动作空间里, 还是 Assignment 1 中的
+<code>self.mean_net</code><br />
+在 <code>MLPPolicyPG</code> 类里的 update 是 actor-critic 中的 update,
+使用 <span class="math inline">\(\nabla_\theta J(\theta) \approx \sum_i
+\ \nabla_\theta \log \pi_\theta \left(\mathbf a_i|\mathbf s_i \right)
+\hat A^\pi(\mathbf s_i, \mathbf a_i)\)</span></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">self.optimizer.zero_grad() </span><br><span class="line">dist = self.forward(obs)</span><br><span class="line">log_probs = dist.log_prob(actions) <span class="comment"># 专家动作在当前高斯分布下的对数概率</span></span><br><span class="line"><span class="keyword">if</span> <span class="keyword">not</span> self.discrete:</span><br><span class="line">    log_probs = log_probs.<span class="built_in">sum</span>(dim=-<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># 连续情况下, log_probs 维度是 (Batch, Action_Dim), 需要对 Action_Dim 求和</span></span><br><span class="line">loss = -(log_probs * advantages).mean()</span><br><span class="line">loss.backward()            </span><br><span class="line">self.optimizer.step()</span><br></pre></td></tr></table></figure>
+<p>回到 utils.py, 发现和 Assignment 1 中的一样, 略<br />
+回到 run_hw2.py, 一行
+<code>utils.sample_trajectories(env, agent, args.batch_size, max_ep_len)</code>
+就行了<br />
+下面 <code>agent.update</code> 调用一下 <code>trajs_dict</code> 的内容,
+记得 <code>obs</code> 和 <code>acs</code> 要做
+<code>np.concatenate()</code></p>
+<p>然后我们会在不同的 batch-size, reward-to-go, advantage normalization
+设置下跑八次代码,<br />
+下面是 <a
+target="_blank" rel="noopener" href="https://www.zhihu.com/people/zhang-kun-shen">blacefeather</a>
+的结论</p>
+<p><img src="https://files.seeusercontent.com/2026/03/14/Qe6z/301b942d850272b2c15f946979da3b88.png" style="zoom:80%;" /></p>
+<p>tensorboard 上的图表有很多, 我们主要关心 Average Return<br />
+我这边最好的结果来自 大 batch + advantage normalization, 稳得很,
+否则会抖</p>
+<p>在 HalfCheetah-v4 任务上, 增加 baseline 后会变好很多,
+但是仍然很抽象<br />
+这个任务是控制一个二维机器人向右奔跑, 即使训练了 100
+轮还是只能抽抽着走一两步</p>
+<p>在 LunarLander-v2 任务上, 我们要应用 GAE, 做一个飞船降落的问题, 300
+轮在我的 CPU pytorch 上跑死了, 这部分主要是教你调整 GAE 的 <span
+class="math inline">\(\lambda\)</span> 以获得偏差与方差的权衡,
+这个任务震荡的非常厉害, 设置 <span class="math inline">\(\lambda =
+0.99\)</span> 比较好</p>
+<p>我们略过调超参的问题, 直接看最后一个问题, 在 Humanoid-v4
+任务上训练能走的人类, 1000 轮, batch_size = 50000, 我一轮在 GPU 上训 70s
+左右, 寄, 应该把一些 list 改成 tensor, 更聪明点就自己写并行, 作业建议 <a
+target="_blank" rel="noopener" href="https://gymnasium.farama.org/introduction/speed_up_env/">vectorize</a></p>
+<p>我能给后来人的建议是, 200 轮左右就收敛的差不多了, 训 4h
+左右应该就行?</p>
+<p><img src="https://files.seeusercontent.com/2026/03/15/0sXo/08151a433d5effeff55a8908694700e2.png" style="zoom:80%;" /></p>
+<h3 id="analysis-1">Analysis</h3>
+<p>考虑下面这个无限视界 MDP <span class="math display">\[
+\mathbf a_1 \circlearrowright \mathbf s_1 \stackrel{\mathbf
+a_2}{\longrightarrow} \mathbf s_F
+\]</span> 在每一步, agent 如果选择动作 <span
+class="math inline">\(\mathbf a_1\)</span> 会停留在 <span
+class="math inline">\(\mathbf s_1\)</span> 并获得 1 点奖励, 否则会获得 0
+奖励并且终止<br />
+我们可以把策略写成这样, <span class="math inline">\(\theta\)</span>
+表示概率: <span class="math display">\[
+\pi_\theta(\mathbf a_1|\mathbf s_1) = \theta, \pi_\theta(\mathbf
+a_2|\mathbf s_1) = 1-\theta
+\]</span></p>
+<ol type="1">
+<li><strong>使用 policy gradient</strong></li>
+</ol>
+<p>​ a. <strong>使用 policy gradient 计算奖励 <span
+class="math inline">\(R(\tau)\)</span> 的期望的梯度(<span
+class="math inline">\(\nabla_\theta J(\theta)\)</span>) , 不考虑折扣因子
+<span class="math inline">\(\gamma\)</span></strong></p>
+<p>套公式 <span class="math inline">\(\nabla_\theta J(\theta) = E_{\tau
+\sim p_\theta(\tau)} \left[ \left( \sum\limits_{t=1}^T \nabla_\theta
+\log \pi_\theta(\mathbf a_t|\mathbf o_t) \right) \left( r(\tau) \right)
+\right]\)</span>, 然后思考, <span class="math inline">\(\tau\)</span>
+是啥, <span class="math inline">\(\nabla_\theta \log \pi_\theta(\mathbf
+a_t|\mathbf o_t)\)</span> 是啥？<br />
+设 <span class="math inline">\(\tau_i\)</span> 代表它选择了 <span
+class="math inline">\(i\)</span> 次动作 <span
+class="math inline">\(\mathbf a_1\)</span>, 然后选择了一次 <span
+class="math inline">\(\mathbf a_2\)</span>, 故 <span
+class="math inline">\(r(\tau_i) = i\)</span><br />
+思考 <span class="math inline">\(\nabla_\theta \log \pi_\theta(\mathbf
+a_t|\mathbf o_t)\)</span>, 要么是 <span
+class="math inline">\(\nabla_\theta \log \theta\)</span> 要么是 <span
+class="math inline">\(\nabla_\theta \log (1-\theta)\)</span>, 求和, 对于
+<span class="math inline">\(\tau_i\)</span>, 其为 <span
+class="math inline">\(\dfrac{i}{\theta}+
+\dfrac{-1}{1-\theta}\)</span><br />
+对于 <span class="math inline">\(\tau_i\)</span>, 其出现的概率为 <span
+class="math inline">\(\theta^i(1-\theta)\)</span><br />
+于是 <span class="math inline">\(\nabla_\theta J(\theta) =
+\sum\limits_{i=0}^{\infty} \theta^i(1-\theta)[(\dfrac{i}{\theta}+
+\dfrac{-1}{1-\theta})i] = \sum\limits_{i=0}^{\infty} (\theta^{i-1} i^2
+-\theta^i i^2 -\theta^{i} i)\)</span><br />
+我们在高数课上牢记过 <span
+class="math inline">\(\sum\limits_{i=0}^{\infty} \theta^i = 1 + \theta +
+\theta^2 + \theta^3 + \dots = \dfrac{1}{1 - \theta}\)</span>,
+这个式子两边对 <span class="math inline">\(\theta\)</span>
+求任意次导再乘(或不乘) <span class="math inline">\(\theta\)</span>
+可以获得 <span class="math inline">\(\sum\limits_{i=0}^{\infty}
+i\theta^{i-1}, \sum\limits_{i=0}^{\infty} i\theta^{i},
+\sum\limits_{i=0}^{\infty} i^2\theta^{i}\)</span> 等的值, 最后可以推出
+<span class="math inline">\(\nabla_\theta J(\theta) =
+\dfrac{1}{(1-\theta)^2}\)</span></p>
+<p>​ b. <strong>直接通过对 <span class="math inline">\(J(\theta)\)</span>
+求导来计算 <span class="math inline">\(\nabla_\theta
+J(\theta)\)</span></strong></p>
+<p><span class="math inline">\(J(\theta) = E_{\tau \sim
+p_{\theta}(\tau)} [r(\tau)] = \sum\limits_{i=0}^{\infty}
+\theta^i(1-\theta)i = \dfrac{\theta}{1-\theta}\)</span>, 求导可得 <span
+class="math inline">\(\nabla_\theta J(\theta) =
+\dfrac{1}{(1-\theta)^2}\)</span></p>
+<ol start="2" type="1">
+<li><strong>计算策略梯度的方差 <span
+class="math inline">\(\text{Var}(\nabla_\theta J(\theta))\)</span>, 当
+<span class="math inline">\(\theta\)</span>​ 为何值时方差最小?
+最大?</strong></li>
+</ol>
+<p>套公式, 我们在概率论课上记过, <span
+class="math inline">\(\text{Var}(\nabla_\theta J(\theta)) =
+E[(\nabla_\theta J(\theta))^2] - (E[\nabla_\theta
+J(\theta)])^2\)</span><br />
+其中 <span class="math inline">\(E[\nabla_\theta J(\theta)] =
+\nabla_\theta J(\theta)\)</span>, 但是 <span
+class="math inline">\(E[(\nabla_\theta J(\theta))^2]\)</span>
+就不好弄了, 这是个二阶矩, 有 <span class="math display">\[
+\begin{aligned}
+E[(\nabla_\theta J(\theta))^2] &amp;= \sum_{i=0}^\infty
+\theta^i(1-\theta) [(\dfrac{i-1}{\theta}+ \dfrac{-1}{1-\theta})i]^2 \\
+&amp;= \sum_{i=0}^\infty \theta^i(1-\theta) \left[ \frac{i^2(1-\theta) -
+i}{\theta(1-\theta)} \right]^2 \\
+&amp;= \frac{1}{\theta^2(1-\theta)} \sum_{i=0}^\infty \theta^i \left[
+i^4(1-\theta)^2 - 2i^3(1-\theta) + i^2 \right] \\
+&amp;= \frac{\mathbb{E}[T^4]}{\theta^2} -
+\frac{2\mathbb{E}[T^3]}{\theta(1-\theta)} +
+\frac{\mathbb{E}[T^2]}{(1-\theta)^2} \quad 带入 2-4 阶原点矩\\
+&amp;= \frac{1 + 9\theta + 4\theta^2}{\theta(1-\theta)^4}
+\end{aligned}
+\]</span> 于是 <span class="math inline">\(\text{Var}(\nabla_\theta
+J(\theta)) = E[(\nabla_\theta J(\theta))^2] - (E[\nabla_\theta
+J(\theta)])^2 = \dfrac{1 + 9\theta + 4\theta^2}{\theta(1-\theta)^4} -
+\dfrac{1}{(1-\theta)^4} = \dfrac{1 + 8\theta +
+4\theta^2}{\theta(1-\theta)^4}\)</span><br />
+当 <span class="math inline">\(\theta \to 0\)</span> 或 <span
+class="math inline">\(\theta \to 1\)</span> 时, <span
+class="math inline">\(\text{Var} \to +\infty\)</span>, 当 <span
+class="math inline">\(\theta \approx 0.1099\)</span> 时, <span
+class="math inline">\(\text{Var}_\min \approx 27.9411\)</span></p>
+<ol start="3" type="1">
+<li><strong>应用因果假设(reward to go)技巧</strong></li>
+</ol>
+<p>​ a. <strong>应用因果假设(reward to go)技巧下计算 <span
+class="math inline">\(\nabla_\theta J(\theta)\)</span></strong></p>
+<p>此时 <span class="math inline">\(\nabla_\theta J(\theta) = E_{\tau
+\sim p_\theta(\tau)} \left[ \left( \sum\limits_{t=1}^T \nabla_\theta
+\log \pi_\theta(\mathbf a_t|\mathbf o_t) \right) \left(
+\sum\limits_{t&#39;=t}^T r(\mathbf{s}_{t&#39;}, \mathbf{a}_{t&#39;})
+\right) \right]\)</span>, 主要是 <span class="math inline">\(r\)</span>
+不好算了, 我们令 <span class="math inline">\(r_{i,t}\)</span> 表示第
+<span class="math inline">\(i+1\)</span> 步走到 <span
+class="math inline">\(\mathbf s_F\)</span>, 从 <span
+class="math inline">\(t\)</span> 步开始的总奖励, 有 <span
+class="math inline">\(r_{i,t} = i-t+1\)</span><br />
+对于 <span class="math inline">\(\tau_i\)</span>, 其梯度为 <span
+class="math inline">\(\sum\limits_{t=0}^i
+\dfrac{1}{\theta}(i-t+1)\)</span>, 在 <span
+class="math inline">\(i+1\)</span> 步的终结不贡献梯度<br />
+于是 <span class="math inline">\(\nabla_\theta J(\theta) =
+\sum\limits_{i=0}^{\infty} \theta^i(1-\theta)[\sum\limits_{t=1}^i
+\dfrac{1}{\theta}(i-t+1)] = \dfrac{1}{(1-\theta)^2}\)</span>,
+和之前一样</p>
+<p>​ b. <strong>应用因果假设(reward to go)技巧下计算方差, 并与 1.b 一起在
+<span class="math inline">\(\theta - \text{Var}\)</span>​
+坐标系上绘图</strong></p>
+<p>单个轨迹的样本梯度 <span class="math inline">\(g(\tau_i) =
+\sum\limits_{t=1}^i \dfrac{1}{\theta}(i-t+1) =
+\dfrac{i(i+1)}{2\theta}\)</span>, 故有 <span class="math display">\[
+\begin{aligned}
+E[(\nabla_\theta J(\theta))^2] &amp;= \sum_{i=0}^{\infty}
+\theta^i(1-\theta)  \left[ \frac{i(i+1)}{2\theta} \right]^2 \\
+(E[\nabla_\theta J(\theta)])^2 &amp;= \left( \sum_{i=0}^{\infty}
+\theta^i(1-\theta) \left[ \frac{i(i+1)}{2\theta} \right] \right)^2 \\
+\text{Var}(\nabla_\theta J(\theta)) &amp;= E[(\nabla_\theta
+J(\theta))^2] - (E[\nabla_\theta J(\theta)])^2 \\
+&amp;= \dfrac{\theta^2 + 3\theta + 1}{\theta(1-\theta)^4}
+\end{aligned}
+\]</span></p>
+<p>绘图, 有</p>
+<p><img src="https://files.seeusercontent.com/2026/07/11/Ltg9/6e6c021504efc31f8b914d4a94e9e4ac.png" style="zoom:80%;" /></p>
+<p>应用 reward-to-go 将方差极值从 B(约 27.94) 点降低到了 C 点(约
+18.79)</p>
+<ol start="4" type="1">
+<li>考虑下图这个 H 步的 MDP</li>
+</ol>
+<p><img src="https://files.seeusercontent.com/2026/03/14/o1tL/cb4a941c1e3cd0310f53b0328579c9d3.png" style="zoom:80%;" /></p>
+<p>​ 如果到达 <span class="math inline">\(\mathbf s_H\)</span>, 有奖励
+<span class="math inline">\(R_{\max}=1\)</span>, 否则如果到达 <span
+class="math inline">\(\mathbf s_F\)</span> 获得 0 奖励并且终止</p>
+<p>​ a. <strong>通过重要性采样方法列出 policy-gradient​</strong></p>
+<p>除非整条轨迹都是 <span class="math inline">\(\mathbf a_1\)</span>​,
+奖励为 1, 否则奖励为 0, 可以抽象为两条轨迹, 故 <span
+class="math display">\[
+\nabla_\theta J(\theta) = \theta^H \cdot \frac{H}{\theta} =
+H\theta^{H-1}
+\]</span> 啊, 但这不叫作重要性采样, 我们得从 <span
+class="math inline">\(\theta&#39;\)</span> 上采集样本, 此时 <span
+class="math inline">\(\nabla_\theta J(\theta) = \mathbb E_{\tau \sim
+\pi_{\theta&#39;}} \left[
+R(\tau)\dfrac{p_{\theta}(\tau)}{p_{\theta&#39;}(\tau)} \nabla_{\theta}
+\log p_{\theta}(\tau) \right]\)</span><br />
+因为只有一条轨迹有奖励, 有 <span class="math display">\[
+\begin{aligned}
+\nabla_\theta J(\theta) &amp;= (\theta&#39;)^H \cdot 1 \cdot
+\frac{(\theta)^H}{(\theta&#39;)^H} \cdot \frac{H}{\theta} =
+H\theta^{H-1}
+\end{aligned}
+\]</span> ​ b. <strong>通过重要性采样方法计算其方差</strong></p>
+<p>还是 <span class="math inline">\(\text{Var}(X) = \mathbb E[X^2] -
+(\mathbb E[X])^2\)</span> 老一套, 但是我们的样本梯度 <span
+class="math inline">\(\hat{g}(\tau) =
+R(\tau)\dfrac{p_{\theta}(\tau)}{p_{\theta&#39;}(\tau)} \nabla_{\theta}
+\log p_{\theta}(\tau)\)</span><br />
+第二项很好算, <span class="math inline">\((\mathbb E_{\tau \sim
+\pi_{\theta&#39;}}[\hat{g}(\tau)])^2 = (H\theta^{H-1})^2 =
+H^2\theta^{2H-2}\)</span><br />
+我们算第一项, 有 <span class="math display">\[
+\begin{aligned}
+\mathbb E_{\tau \sim \pi_{\theta&#39;}}[\hat{g}(\tau)^2]
+&amp;= p_{\theta&#39;}(\tau_{succ}) \left( 1 \cdot
+\frac{p_{\theta}(\tau_{succ})}{p_{\theta&#39;}(\tau_{succ})}
+\nabla_{\theta} \log p_{\theta}(\tau_{succ}) \right)^2 \\
+&amp;= (\theta&#39;)^H \cdot \left( \frac{\theta^H}{(\theta&#39;)^H}
+\cdot \frac{H}{\theta} \right)^2 \\
+&amp;= \frac{H^2\theta^{2H-2}}{(\theta&#39;)^H}
+\end{aligned}
+\]</span> 故 $<em>{</em>{'}}[()] = H<sup>2</sup>{2H-2} ( - 1 ) $</p>
+<h2 id="assignment-3-q-learning-与-actor-critic-算法">Assignment 3
+Q-learning 与 Actor-Critic 算法</h2>
+<h3 id="questionnaire">Questionnaire</h3>
+<p>考虑 Lecture 8 中的 n 步奖励 Q-learning, 我们通过以下步骤学习 <span
+class="math inline">\(Q_{\phi_{k+1}}\)</span> <span
+class="math display">\[
+y_{j,t}\leftarrow(\sum_{t^{\prime}=t}^{t+N-1}\gamma^{t^{\prime}-t}r_{j,t^{\prime}})+\gamma^{N}
+\max_{\mathbf a_{j,t+N}}Q_{\phi_{k}}(\mathbf s_{j,t+N},\mathbf
+a_{j,t+N}) \quad (1) \\
+\phi_{k+1}\leftarrow \arg
+\min_{\phi\in\Phi}\sum_{j,t}(y_{j,t}-Q_{\phi}(\mathbf s_{j,t},\mathbf
+a_{j,t}))^{2} \quad (2)
+\]</span> 在这些等式中, <span class="math inline">\(j\)</span>
+表示轨迹回放缓冲区 <span class="math inline">\(\mathcal D_{k}\)</span>
+中的索引<br />
+我们首先使用策略 rollout 一批包含 B 个轨迹的数据, 以更新 <span
+class="math inline">\(\mathcal{D}_{k}\)</span> 并计算等式 (1)
+中的目标值, 然后我们使用等式 (2) 将 <span
+class="math inline">\(Q_{\phi_{k+1}}\)</span> 拟合到这些目标值上<br />
+在估计出 <span class="math inline">\(Q_{\phi_{k+1}}\)</span>​ 之后,
+我们可以通过 argmax 更新策略 <span class="math display">\[
+\pi_{k+1}(\mathbf a_{t}|\mathbf s_{t})\leftarrow
+\begin{cases}
+1 \text{ if } \mathbf a_{t} = \arg \max_{\mathbf
+a_{t}}Q_{\phi_{k+1}}(\mathbf s_{t},\mathbf a_{t})\\
+0~\text{otherwise}.
+\end{cases}
+\quad (3)
+\]</span> 我们将等式 (1) 到 (3) 中的步骤重复 K
+次以改进策略。在这个问题中, 你将分析下文算法 1 的一些性质</p>
+<p><img src="https://files.seeusercontent.com/2026/04/09/Jh6p/97eabc549adefebdd87ad78bd26bc90c.png" style="zoom:80%;" /></p>
+<p><strong>Q1-1 TD-Learning Bias</strong><br />
+我们说使用从过程 <span class="math inline">\(P\)</span> 采样的数据 <span
+class="math inline">\(\mathcal D\)</span> 构建的 <span
+class="math inline">\(f\)</span> 的估计器 <span
+class="math inline">\(f_{\mathcal{D}}\)</span> 是无偏的, 当且仅当在每个
+<span class="math inline">\(x\)</span> 处 <span
+class="math inline">\(\mathbb{E}_{\mathcal{D}\sim P}[f_{\mathcal{D}}(x)-
+f(x)]=0\)</span><br />
+假设 <span class="math inline">\(\hat{Q}\)</span> 是对 <span
+class="math inline">\(Q\)</span> 的一个带噪声 (但无偏) 的估计,
+贝尔曼备份 <span class="math inline">\(\mathcal{B}\hat{Q}=r(\mathbf
+s,\mathbf a)+\gamma\max_{\mathbf a^{\prime}}\hat{Q}(\mathbf
+s^{\prime},\mathbf a^{\prime})\)</span> 是否是 <span
+class="math inline">\(\mathcal BQ\)</span> 的无偏估计？</p>
+<blockquote>
+<p>显然不对, <span class="math inline">\(\mathbb{E}[\hat{Q}(\mathbf
+s,\mathbf a)] = Q(\mathbf s,\mathbf a)\)</span>, <span
+class="math inline">\(\mathbb{E}[\max \hat{Q}(\mathbf s,\mathbf a)] \geq
+\max Q(\mathbf s, \mathbf a)\)</span>,<br />
+因为对于凸函数 <span class="math inline">\(f\)</span>, 有 <span
+class="math inline">\(\mathbb{E}[f(X)] \geq f(\mathbb{E}[X])\)</span>,
+而 <span class="math inline">\(\max\)</span> 是凸函数</p>
+</blockquote>
+<p><strong>Q1-2 Tabular Learning</strong><br />
+在上述算法每次经过等式 (2) 的更新后, <span
+class="math inline">\(Q_{\phi_{k}}\)</span> 可以被看作是对真实最优 <span
+class="math inline">\(Q^{*}\)</span> 的估计, 考虑以下陈述</p>
+<p><strong>i.</strong> <span
+class="math inline">\(Q_{\phi_{k+1}}\)</span> 是上一策略的 Q 函数 <span
+class="math inline">\(Q^{\pi_{k}}\)</span> 的无偏估计<br />
+<strong>ii.</strong> 当 <span class="math inline">\(k \to
+\infty\)</span>, 对于某个固定的 B, <span
+class="math inline">\(Q_{\phi_{k}}\)</span> 是 <span
+class="math inline">\(Q^{*}\)</span> 的无偏估计, 即 <span
+class="math inline">\(\lim_{k\rightarrow\infty}\mathbb{E}[Q_{\phi_{k}}(s,a)-Q^{*}(s,a)]=0\)</span><br />
+<strong>iii.</strong> 在无限次迭代和无限数据的极限情况下,
+我们能恢复出最优的 <span class="math inline">\(Q^{*}\)</span>, 即 <span
+class="math inline">\(\lim_{k,B\rightarrow\infty}\mathbb{E}[\|Q_{\phi_{k}}-Q^{*}\|_{\infty}]=0\)</span></p>
+<p>我们做出以下额外假设:<br />
+状态和动作空间是有限的;
+每个批次至少包含在每个状态下采取的每种动作的一次经验; 在表格型设置中,
+<span class="math inline">\(Q_{\phi_{k}}\)</span> 可以表达任何函数, 即
+<span
+class="math inline">\(\{Q_{\phi_{k}}:\phi\in\Phi\}=\mathbb{R}^{S\times
+A}\)</span>​</p>
+<p>当在算法 1 的第 3 行使用 B 条新轨迹更新缓冲区 <span
+class="math inline">\(\mathcal{D}_{k}\)</span> 时, 我们说:<br />
+当进行 <strong>on-policy</strong> 学习时, <span
+class="math inline">\(\mathcal{D}_{k}\)</span> 被设置为仅包含 <span
+class="math inline">\(\pi_{k}\)</span> 的 B 个新 rollout (因此 <span
+class="math inline">\(|\mathcal{D}_{k}|=B\)</span>), 因此,
+我们只在当前策略的 rollout 上进行训练<br />
+当进行 <strong>off-policy</strong> 学习时, 我们使用来自另一个策略 <span
+class="math inline">\(\pi^{\prime}\)</span> 的 B 条轨迹构成的固定数据集
+<span class="math inline">\(\mathcal{D}_{k}=\mathcal{D}\)</span></p>
+<p>指出在以下情况下哪些陈述 i-iii 始终成立, 下表每个格子填写三个
+<strong>T/F</strong>, 表示是否遵守陈述 i-iii, 例: <strong>T T
+F</strong></p>
+<table>
+<thead>
+<tr>
+<th></th>
+<th>on-policy</th>
+<th>off-policy</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math inline">\(N=1\)</span></td>
+<td><strong>F F T</strong></td>
+<td><strong>F F T</strong></td>
+</tr>
+<tr>
+<td><span class="math inline">\(N&gt;1\)</span></td>
+<td><strong>F F T</strong></td>
+<td><strong>F F F</strong></td>
+</tr>
+<tr>
+<td><span class="math inline">\(N\rightarrow\infty\)</span>
+且无自举</td>
+<td><strong>T F T</strong></td>
+<td><strong>F F F</strong></td>
+</tr>
+</tbody>
+</table>
+<blockquote>
+<p>解释一下, i 到 iii 的假设是逐渐减弱的,
+我们用<strong>表格表示</strong>而不是神经网络来拟合 Q 函数,
+这使无偏变得可能<br />
+首先, ii 不可能成立, 因为 <span class="math inline">\(\max\)</span>
+必然引入高估的误差<br />
+然后, <span class="math inline">\(N&gt;1\)</span> 时 off-policy
+的策略会被 <span class="math inline">\(\sum r\)</span> 污染,
+不可能还原最优解而满足 iii, 其他情况不被污染能满足 iii<br />
+最后, 无偏估计 <span class="math inline">\(Q^{\pi_{k}}\)</span>
+就不能引入自举, 否则 <span class="math inline">\(\max\)</span> 有偏差,
+所以仅 <span class="math inline">\(N\rightarrow\infty\)</span>
+且无自举且 on-policy 下成立</p>
+</blockquote>
+<p><strong>Q1-3 Variance of Q Estimate</strong><br />
+在无限次迭代的极限情况下, 对于固定的数据集大小 B, 您预计这三种情况
+(<span class="math inline">\(N=1\)</span>、<span
+class="math inline">\(N&gt;1\)</span>、<span
+class="math inline">\(N\rightarrow\infty\)</span>​) 中哪一种对 Q
+的估计方差最高？哪一种方差最低</p>
+<blockquote>
+<p><span class="math inline">\(N\rightarrow\infty\)</span> 方差最高,
+<span class="math inline">\(N=1\)</span> 方差最低, 因为 <span
+class="math inline">\(N\)</span>​ 越大累加的随机变量越多</p>
+</blockquote>
+<p><strong>Q1-4 Function Approximation</strong><br />
+现在假设我们希望通过函数逼近而不是表格型表示来表示 <span
+class="math inline">\(Q\)</span>, 假设对于任何确定性策略 (包括最优策略
+<span class="math inline">\(\pi^{*}\)</span>),
+函数逼近都能准确无误地表示真实的 <span
+class="math inline">\(Q^{\pi}\)</span>, 以下哪些陈述是正确的？</p>
+<ol type="i">
+<li>当 <span class="math inline">\(N=1\)</span> 时, <span
+class="math inline">\(Q_{\phi_{k+1}}\)</span> 是上一策略的 Q 函数 <span
+class="math inline">\(Q^{\pi_{k}}\)</span> 的无偏估计<br />
+</li>
+<li>当 <span class="math inline">\(N=1\)</span> 且在 <span
+class="math inline">\(B\rightarrow\infty\)</span>、<span
+class="math inline">\(k\rightarrow\infty\)</span> 的极限下, <span
+class="math inline">\(Q_{\phi_{k}}\)</span> 收敛到 <span
+class="math inline">\(Q^{*}\)</span><br />
+</li>
+<li>当 <span class="math inline">\(N&gt;1\)</span> (但有限) 且在 <span
+class="math inline">\(B\rightarrow\infty\)</span>、<span
+class="math inline">\(k\rightarrow\infty\)</span> 的极限下, <span
+class="math inline">\(Q_{\phi_{k}}\)</span> 收敛到 <span
+class="math inline">\(Q^{*}\)</span><br />
+</li>
+<li>当 <span class="math inline">\(N\rightarrow\infty\)</span> 且在
+<span class="math inline">\(B\rightarrow\infty\)</span>、<span
+class="math inline">\(k\rightarrow\infty\)</span> 的极限下, <span
+class="math inline">\(Q_{\phi_{k}}\)</span> 收敛到 <span
+class="math inline">\(Q^*\)</span></li>
+</ol>
+<blockquote>
+<p>这里应该默认是 on-policy 的, 我们使用函数逼近时, 比 tabular
+引入了自举的互相影响, 所以仅有 iiii 成立, 即使函数能准确无误地表示真实的
+<span class="math inline">\(Q^\pi\)</span></p>
+</blockquote>
+<p><strong>Q1-5 Multistep Importance Sampling</strong><br />
+我们可以使用<strong>重要性采样(Importance Sampling)</strong> 使 N
+步更新在 off-policy 的情况下利用从任意策略抽样的轨迹工作<br />
+重写等式 (1) 以正确逼近一个 <span
+class="math inline">\(Q_{\phi_{K}}\)</span>, 使得当它在包含其他策略
+<span class="math inline">\(\pi^{\prime}(\mathbf a_{t}|\mathbf
+s_{t})\)</span> 的 B 个 rollout 的数据 <span
+class="math inline">\(\mathcal D\)</span> 上进行训练时,
+能够带来改进<br />
+当 <span class="math inline">\(N=1\)</span> 时我们需要改变等式 (1)
+吗？当 <span class="math inline">\(N\rightarrow\infty\)</span>
+时呢？你可以假设 <span class="math inline">\(\pi^{\prime}\)</span>
+始终为每个动作分配正的概率质量<br />
+[提示: 使用来自当前策略和 <span
+class="math inline">\(\pi^{\prime}\)</span> 的似然比 (ratio of
+likelihoods) 对总和中的每一项进行重新加权]</p>
+<blockquote>
+<p>原来是 <span class="math display">\[
+y_{j,t}\leftarrow(\sum_{t^{\prime}=t}^{t+N-1}\gamma^{t^{\prime}-t}r_{j,t^{\prime}})+\gamma^{N}
+\max_{\mathbf a_{j,t+N}}Q_{\phi_{k}}(\mathbf s_{j,t+N},\mathbf
+a_{j,t+N}) \quad (1)
+\]</span></p>
+<p>模仿 Lecture 4 与 Lecture 9 的方法, 令 <span
+class="math inline">\(\rho_t = \dfrac{\pi&#39;(\mathbf{a}_t |
+\mathbf{s}_t)}{\pi(\mathbf{a}_t | \mathbf{s}_t)}\)</span>, 更改后即
+<span class="math display">\[
+y_{j,t} \leftarrow r_{j,t} +
+\left(\sum_{t&#39;=t+1}^{t+N-1}\gamma^{t^{\prime}-t} \left(
+\prod_{t&#39;&#39;=t+1}^{t&#39;} \rho_{t&#39;&#39;}
+\right)  r_{j,t^{\prime}} \right)+\gamma^{N} \left(
+\prod_{t&#39;=t+1}^{t+N-1} \rho_{t&#39;} \right) \max_{\mathbf
+a_{j,t+N}}Q_{\phi_{k}}(\mathbf s_{j,t+N},\mathbf a_{j,t+N})
+\]</span> 我们修正的是错误的动作, 其中第一个动作是正确的, 不修正,
+最后一个动作(t+N)是自举的, 不修正<br />
+当 <span class="math inline">\(N=1\)</span> 时不需要重要性采样, 当 <span
+class="math inline">\(N \to \infty\)</span> 时仍然需要修正 <span
+class="math inline">\(r\)</span></p>
+</blockquote>
+<h3 id="code-2">Code</h3>
+<p>先来读代码, 为了假装我们努力过了, 我们不直接把
+<code>dqn_agent.py</code> 与 <code>run_hw3_dqn.py</code> 扔进 ai
+里面让它填完所有的 TODO, 相反, 我们先看完
+<code>dqn_basic_config.py</code> 与 <code>dqn_atari_config.py</code>,
+当然, 不会的地方还得问 ai</p>
+<p>在 <code>dqn_basic_config.py</code> 中<br />
+<code>def basic_dqn_config()</code> 接收了一系列 DQN 训练必需的超参数,
+例如 <code>clip_grad_norm</code> 对梯度 clip, <code>use_double_q</code>
+决定是否使用 DDQN, <code>discount</code> 就是折扣因子 <span
+class="math inline">\(\gamma\)</span>​, <code>target_update_period</code>
+是目标网络同步参数的频率<br />
+<code>def make_critic()</code> 构建了 Q 网络, 用一个 MLP 作为 Q
+拟合器<br />
+<code>def make_optimizer()</code> 与 <code>def make_lr_schedule()</code>
+定义如何更新网络, 注意 <code>exploration_schedule</code></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">exploration_schedule = PiecewiseSchedule(</span><br><span class="line">    [</span><br><span class="line">        (<span class="number">0</span>, <span class="number">1</span>),</span><br><span class="line">        (total_steps * <span class="number">0.1</span>, <span class="number">0.02</span>),</span><br><span class="line">    ],</span><br><span class="line">    outside_value=<span class="number">0.02</span>,</span><br><span class="line">)</span><br></pre></td></tr></table></figure>
+<p>这里用 <span class="math inline">\(\epsilon\)</span>​-greedy, 第一步
+100% 随机, 在总进度的 10% 时, 随机探索率直线下降到 2%,
+之后一直不变<br />
+<code>def make_env()</code> 里面使用了
+<code>RecordEpisodeStatistics()</code> Wrapper, Wrapper
+可以看成一种更高级的装饰器, 可以无限套娃,
+在这里它的作用是自动帮你记录每个 Episode 的总奖励和耗时步数</p>
+<p>在 <code>dqn_atari_config.py</code> 中:<br />
+我们的 Q 网络用上了 CNN, 而且有 <code>PreprocessAtari()</code> 把 uint8
+归一化到 [0,1] 浮点数<br />
+<code>wrap_deepmind</code> 是一个 <strong>Wrapper 大礼包 !</strong>
+(from gemini pro 3.1), 其中包含: 灰度化与缩放, 跳帧, 帧堆叠(把连续的 4
+张处理后的画面叠在一起, 就可以知道速度, 方向, 加速度)<br />
+做 Atari 游戏的 RL 可比做 cartpole 困难多了, 这里可以看到
+<code>total_steps</code> 更大, <code>make_lr_schedule</code> 更复杂,
+<code>exploration_schedule</code> 时间更长</p>
+<p>在 <code>replay_buffer.py</code> 中:<br />
+<code>class ReplayBuffer</code> 适用于状态是一维向量的情况,<br />
+<code>insert(obs, act, rew, next_obs, done)</code>: 将单步交互产生的
+<span class="math inline">\((\mathbf s, \mathbf a, \mathbf s&#39;,
+r,  d)\)</span> 五元组存入对应数组的指定位置, 并将
+<code>self.size</code> 加 1, 这里的 d 是完成标记位<br />
+<code>sample(batch_size)</code>: 组装好的一个 Batch 的数据,
+供神经网络进行梯度下降<br />
+<code>class MemoryEfficientReplayBuffer</code> 用于 Atari
+游戏等以图像作为状态输入的环境</p>
+<p>在 <code>atari_wrappers.py</code> 中:<br />
+<code>class FireResetEnv</code> 帮忙按 "开始",
+跳过无意义的"等待开局"阶段<br />
+<code>class ClipRewardEnv</code> 统一奖励尺度<br />
+<code>def wrap_deepmind()</code> 就是<strong>大礼包 !</strong>, 记录
+reward, AtariPreprocessing, FrameStack</p>
+<p>我们先来完成 <code>dqn_agent.py</code>, 先写 <code>get_action</code>,
+使用 <span class="math inline">\(\epsilon\)</span>- greedy, 记得用
+tensor</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_action</span>(<span class="params">self, observation: np.ndarray, epsilon: <span class="built_in">float</span> = <span class="number">0.02</span></span>) -&gt; <span class="built_in">int</span>:</span><br><span class="line">    observation = ptu.from_numpy(np.asarray(observation))[<span class="literal">None</span>]</span><br><span class="line">    <span class="keyword">if</span> np.random.random() &lt; epsilon:</span><br><span class="line">        action = torch.tensor(np.random.randint(self.num_actions)).to(ptu.device)</span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        <span class="keyword">with</span> torch.no_grad(): </span><br><span class="line">            q_values = self.critic(observation) <span class="comment"># [1, num_actions]</span></span><br><span class="line">        action = torch.argmax(q_values, dim=-<span class="number">1</span>)</span><br><span class="line">        <span class="comment"># 找到最后一个维度中最大值的索引, 并转换为 Python int</span></span><br><span class="line">    <span class="keyword">return</span> ptu.to_numpy(action).squeeze(<span class="number">0</span>).item()</span><br></pre></td></tr></table></figure>
+<p>然后 <code>update_critic</code>, 先写 target 网络, 不管 DDQN,
+其实这里的 <code>next_action</code> 没用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">    next_qa_values = self.target_critic(next_obs)</span><br><span class="line">    <span class="keyword">if</span> self.use_double_q:</span><br><span class="line">        <span class="keyword">raise</span> NotImplementedError <span class="comment"># DDQN 先不管</span></span><br><span class="line">    <span class="keyword">else</span>:</span><br><span class="line">        next_action = next_qa_values.argmax(dim=-<span class="number">1</span>)   </span><br><span class="line">    next_q_values = torch.<span class="built_in">max</span>(next_qa_values, dim=-<span class="number">1</span>)[<span class="number">0</span>]</span><br><span class="line">    target_values = reward + self.discount*next_q_values*(~done)</span><br></pre></td></tr></table></figure>
+<p>在考虑 DDQN 时代码是这样</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">with</span> torch.no_grad():</span><br><span class="line">    next_qa_values = self.target_critic(next_obs)</span><br><span class="line">    <span class="keyword">if</span> self.use_double_q:</span><br><span class="line">        main_next_qa_values = self.critic(next_obs)</span><br><span class="line">        next_action = main_next_qa_values.argmax(dim=-<span class="number">1</span>)    </span><br><span class="line">        next_q_values = torch.gather(next_qa_values, dim=<span class="number">1</span>, </span><br><span class="line">                                     index=next_action.unsqueeze(<span class="number">1</span>)).squeeze(-<span class="number">1</span>)</span><br><span class="line">    <span class="keyword">else</span>: </span><br><span class="line">        next_q_values = torch.<span class="built_in">max</span>(next_qa_values, dim=-<span class="number">1</span>)[<span class="number">0</span>]</span><br><span class="line">    target_values = reward + self.discount*next_q_values*(~done)</span><br></pre></td></tr></table></figure>
+<p>然后 MSE 算 loss</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">qa_values = self.critic(obs)</span><br><span class="line">q_values = torch.gather(qa_values, dim=<span class="number">1</span>, index=action.unsqueeze(<span class="number">1</span>)).squeeze(<span class="number">1</span>)</span><br><span class="line">loss = self.critic_loss(q_values, target_values)</span><br></pre></td></tr></table></figure>
+<p>最后 <code>update</code> 就很好写了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">critic_stats = self.update_critic(obs, action, reward, next_obs, done)</span><br><span class="line"><span class="keyword">if</span>(step % self.target_update_period == <span class="number">0</span>):</span><br><span class="line">	self.update_target_critic()</span><br></pre></td></tr></table></figure>
+<p>继续完成 <code>run_hw3_dqn.py</code>, 和之前的很像,</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">action = agent.get_action(observation,epsilon)</span><br><span class="line">next_observation, reward, done, info = env.step(action)</span><br></pre></td></tr></table></figure>
+<p>replay_buffer insert 分辨一下是普通的还是 Memory 的</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> <span class="built_in">isinstance</span>(replay_buffer, MemoryEfficientReplayBuffer):</span><br><span class="line">    replay_buffer.insert(action=action, </span><br><span class="line">                     reward=reward, </span><br><span class="line">                     next_observation=next_observation[-<span class="number">1</span>], </span><br><span class="line">                     done=done)</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    replay_buffer.insert(observation=observation, </span><br><span class="line">                     action=action, </span><br><span class="line">                     reward=reward, </span><br><span class="line">                     next_observation=next_observation, </span><br><span class="line">                     done=done)</span><br></pre></td></tr></table></figure>
+<p>之后直接从 buffer 里面 sample batch, 然后调用 agent.update,
+其实还算简单</p>
+<p>完成这些之后可以跑跑 cartpole 与 LunarLander 任务, 有一些结论:<br />
+DQN 不稳定: <span class="math inline">\(Q\)</span>
+值发散、目标不平稳、高估偏置, 把 lr 调高会爆炸(Q 与 Critic loss)<br />
+DDQN 还可以, 效果比 DQN 好一些</p>
+<p><img src="https://files.seeusercontent.com/2026/04/20/W3gk/fd813e1a61f03654951fe3126e69a1ed.png" style="zoom:80%;" /></p>
+<p>我们在 LunarLander 上跑个 300k step, 上图红线是 DDQN, 黄线是 DQN,
+好的比较有限, 可能因为 <span class="math inline">\(\phi,
+\phi&#39;\)</span> 相关性太大了, 应该从头训两套网络<br />
+有点怪, eval return 在 0 左右, 我们第二次作业做 policy gradient 的 eval
+return 在 100 左右震荡<br />
+好像是还没收敛, DQN 就是慢啊, 得等到 500k 步左右才有 200+ reward<br />
+之后再试一下 mspacman 任务</p>
+<blockquote>
+<p>MsPacman 是一个假人在一个固定的环境中尽量躲避敌人并得分的游戏,
+每次被敌人碰到就会丧失一次机会,一共有三次机会, 没有时间限制,
+目的是尽可能的获得高的分数.<br />
+MsPacman 的动作空间维度是 9, 是从数字 0 到 8 的离散空间, gym
+游戏中给出的 reward 空间为[0, 10, 50]</p>
+<p><img
+src="https://files.seeusercontent.com/2026/04/21/npP2/MsPacman301.png" /></p>
+<p>当然, Wrapper 包裹之后, RL 接受的输入就是 4 帧一次的 resize
+的模糊灰度图</p>
+</blockquote>
+<p>这个作业其实只关心最后的 eval_return, 我们跑 1M step(约 4h), reward
+能有 1600 左右</p>
+<p><img
+src="https://files.seeusercontent.com/2026/04/21/1vAq/3521237ed65c0bec0e66152a967944df.png" /></p>
+<p>其中黄线是 eval return, 绿线是 train return</p>
+<p>接下来我们进入连续动作的部分<br />
+在连续动作时, 我们还要训练一个 policy <span
+class="math inline">\(\pi\)</span> 去最大化 <span
+class="math inline">\(\mathbb E_{\mathbf a \sim \pi(\mathbf a|\mathbf
+s)}Q(\mathbf s, \mathbf a)\)</span>​</p>
+<p><code>run_hw3_sac.py</code> 的逻辑与 <code>run_hw3_dqn.py</code>
+相同, 故略去, 我们主要看怎么写 <code>soft_actor_critic.py</code><br />
+这里的花活很多, 除了 DDQN, 还有 min, mean, <a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/324201806">REDQ</a> 方法, actor
+也可以用 reinforce 或 reparametrize(重参数化)</p>
+<p>对于不同类型的 q_strategy, 就是对一堆 critic 网络进行简单操作</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> self.target_critic_backup_type == <span class="string">&quot;doubleq&quot;</span>:</span><br><span class="line">    next_qs=next_qs[[<span class="number">1</span>,<span class="number">0</span>]]</span><br><span class="line"><span class="keyword">elif</span> self.target_critic_backup_type == <span class="string">&quot;min&quot;</span>:</span><br><span class="line">    next_qs=torch.<span class="built_in">min</span>(next_qs, dim=<span class="number">0</span>)[<span class="number">0</span>]</span><br><span class="line"><span class="keyword">elif</span> self.target_critic_backup_type == <span class="string">&quot;mean&quot;</span>:</span><br><span class="line">    next_qs=torch.mean(next_qs, dim=<span class="number">0</span>)</span><br><span class="line"><span class="keyword">else</span>: <span class="keyword">pass</span></span><br></pre></td></tr></table></figure>
+<p>考虑 <code>update_critic</code> 怎么写, 其他部分同上, argmax 变
+sample 额外提一下</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">next_action_distribution: torch.distributions.Distribution = self.actor(obs)</span><br><span class="line">next_action = next_action_distribution.sample()</span><br></pre></td></tr></table></figure>
+<p>在连续空间中, 为了产生类似于 <span
+class="math inline">\(\epsilon\)</span>-greedy 中的探索噪声,
+我们要给予熵惩罚, 以鼓励 actor 具有高熵(更随机), 我们用温度系数 <span
+class="math inline">\(\beta\)</span> 来缩放熵并慢慢退火, 此时总 loss
+大致为 <span class="math display">\[
+\mathcal{L}_{\pi}=Q(\mathbf s,\mu_{\theta}(\mathbf
+s)+\sigma_{\theta}(\mathbf s)\epsilon)+\beta\mathcal{H}(\pi(\mathbf
+a|\mathbf s))
+\]</span> 这里的 <span class="math inline">\(\mu_{\theta}(\mathbf
+s)+\sigma_{\theta}(\mathbf s)\epsilon\)</span> 利用了重参数化技巧,
+以此传递梯度<br />
+其中熵定义为 <span class="math inline">\(\mathcal{H}(\pi(\mathbf
+a|\mathbf s))=\mathbb{E}_{\mathbf a\sim\pi}[-\log~\pi(\mathbf a|\mathbf
+s)]\)</span>, 为确保熵也被纳入 Q 函数中, 我们还应该在目标值中考虑它
+<span class="math display">\[
+y\leftarrow r_{t}+\gamma(1-d_{t})[Q_{\phi}(\mathbf s_{t+1},\mathbf
+a_{t+1})+\beta\mathcal{H}(\pi(\mathbf a_{t+1}|\mathbf s_{t+1}))]
+\]</span> 由于 <code>torch.distributions.Distribution</code>
+自带了很好的 <code>rsample()</code> 与 <code>log_prob()</code> 方法,
+我们直接用</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">update_critic</span>(<span class="params">...</span>):</span><br><span class="line">    ...</span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        <span class="keyword">if</span> self.use_entropy_bonus <span class="keyword">and</span> self.backup_entropy:</span><br><span class="line">            next_action_entropy = self.entropy(next_action_distribution)</span><br><span class="line">            next_qs += self.temperature * next_action_entropy</span><br><span class="line">	...</span><br><span class="line"><span class="keyword">def</span> <span class="title function_">entropy</span>(<span class="params">self, action_distribution: torch.distributions.Distribution</span>):</span><br><span class="line">    <span class="keyword">return</span> -action_distribution.log_prob(action_distribution.rsample())</span><br></pre></td></tr></table></figure>
+<p>软更新与硬更新很好写, 因为软更新的方法已经帮你写好了,
+你就是调个接口而已</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">if</span> self.soft_target_update_rate <span class="keyword">is</span> <span class="literal">None</span>:</span><br><span class="line">    <span class="keyword">if</span>(step % self.target_update_period == <span class="number">0</span>):</span><br><span class="line">        self.update_target_critic()</span><br><span class="line"><span class="keyword">else</span>:</span><br><span class="line">    self.soft_update_target_critic(self.soft_target_update_rate)</span><br></pre></td></tr></table></figure>
+<p>我们不希望我们的目标 <span class="math inline">\(\mathbf y\)</span>
+一直移动, 所以我们有时也不希望 actor 一直动, 有</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(self.num_critic_updates):</span><br><span class="line">    stats = self.update_critic(observations, actions, rewards, next_observations, dones)</span><br><span class="line">    critic_infos.append(stats)</span><br><span class="line">actor_info = self.update_actor(observations)</span><br></pre></td></tr></table></figure>
+<p>即 critic 更新 <code>self.num_critic_updates</code> 后再更新 actor,
+这个数字叫做 <strong>UTD(Update-To-Data Ratio, UTD)</strong><br />
+在传统的 SAC 中, UTD = 1, 这是因为我们只有 1 或 2 个 critic, UTD
+太大容易过拟合, 同时 actor 会高估<br />
+我们其实还没有实现 REDQ 方法, REDQ 有 10 个 Critic, 每次计算目标值时,
+它从 10 个目标网络里随机抽 2 个并取最小值, 把 Q 值的爆炸压住了</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">elif</span> self.target_critic_backup_type == <span class="string">&quot;redq&quot;</span>:</span><br><span class="line">    random_indices = torch.randperm(next_qs.size(<span class="number">0</span>))[:<span class="number">2</span>]</span><br><span class="line">    next_qs = torch.<span class="built_in">min</span>(next_qs[random_indices[<span class="number">0</span>]], next_qs[random_indices[<span class="number">1</span>]])</span><br></pre></td></tr></table></figure>
+<p>我们在 hopper 任务中比较 DQN, DDQN, clipped-DQN, REDQ(critic=10,
+UTD=20) 方法</p>
+<p><img
+src="https://files.seeusercontent.com/2026/04/21/Mlj7/67b4d19e8aa72a7835a3941015e77d41.png" /></p>
+<p>从 eval_return 来看, clipped-DQN&gt;DDQN&gt;REDQ&gt;DQN</p>
+<p><img
+src="https://files.seeusercontent.com/2026/04/21/lCe4/837a259ee5c03af8e5975b34d5916a58.png" /></p>
+<p>从最终估计的 Q 值来看, clipped-DQN 明显较小<br />
+AI 说因为 Hopper 是容易失败的任务, 所以最悲观的 clipped-DQN
+表现最好<br />
+但是我看网上也有 DDQN&gt;clipped-DQN 的情节, 如果我 REDQ
+的代码没写错的话, 我更倾向与种子在 RL 中还是太重要了</p>
+<p><code>actor_loss_reinforce()</code> 方法要求随机采样
+<code>num_actor_samples</code> 个后算 loss</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">actor_loss_reinforce</span>(<span class="params">self, obs: torch.Tensor</span>):</span><br><span class="line">    batch_size = obs.shape[<span class="number">0</span>]</span><br><span class="line">    action_distribution: torch.distributions.Distribution = self.actor(obs)</span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        action = action_distribution.sample((self.num_actor_samples,))</span><br><span class="line">        obs_expand = obs.unsqueeze(<span class="number">0</span>).expand(self.num_actor_samples, -<span class="number">1</span>, -<span class="number">1</span>)</span><br><span class="line">        q_values = self.critic(obs_expand, action)</span><br><span class="line">        q_values = torch.mean(q_values, axis=<span class="number">0</span>)</span><br><span class="line">        advantage = q_values</span><br><span class="line">    log_probs = action_distribution.log_prob(action)</span><br><span class="line">    loss = torch.mean(-log_probs * advantage)</span><br><span class="line">    <span class="keyword">return</span> loss, torch.mean(self.entropy(action_distribution))</span><br></pre></td></tr></table></figure>
+<p>而 REPARAMETRIZE 方法只需要一个样本就可以了, 我们在正态分布 <span
+class="math inline">\(\mathcal N\)</span> 上采样, 方差自然小,
+还能传梯度</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">actor_loss_reparametrize</span>(<span class="params">self, obs: torch.Tensor</span>):</span><br><span class="line">    batch_size = obs.shape[<span class="number">0</span>]</span><br><span class="line">    action_distribution: torch.distributions.Distribution = self.actor(obs)</span><br><span class="line">    action = action_distribution.rsample() <span class="comment"># rsample 直接重参数化</span></span><br><span class="line">    q_values = self.critic(obs, action)</span><br><span class="line">    loss = -torch.mean(q_values)</span><br><span class="line">    <span class="keyword">return</span> loss, torch.mean(self.entropy(action_distribution))</span><br></pre></td></tr></table></figure>
+<p>我们在 halfcheetah 任务上测试 单样本REINFORCE, 十样本REINFORCE, 以及
+REPARAMETRIZE方法</p>
+<p><img src="https://files.seeusercontent.com/2026/04/23/Pn4u/81e0d8f5d2385fcb0be8fae379d58337.png" style="zoom:80%;" /></p>
+<p>发现 REPARAMETRIZE 方法遥遥领先,
+把"随机性"和"网络参数"剥离就是好用啊<br />
+最后其实还要测试一个 5M 步的 Humanoid, 但是因为在我电脑上要跑 30h
+作罢了</p>
+<h2 id="assignment-4-model-based-rl">Assignment 4 Model-Based RL</h2>
+<p>Model-Based RL 主要包含两个部分,
+一是学习一个动力学函数来模拟观察到的状态转换,
+二是以某种方式利用该模型的预测结果来决定下一步该做什么</p>
+<p>我们先过一些采样效率的理论部分(see lecture 17), 再完成代码</p>
+<h3 id="analysis-2">Analysis</h3>
+<p>有一个带折扣的表格型 MDP <span
+class="math inline">\(M=(\mathcal{S},\mathcal{A},P,r,\gamma)\)</span>,
+其中 <span class="math inline">\(\mathcal S, \mathcal A\)</span>
+是有限的状态和动作集合,<br />
+<span class="math inline">\(P\)</span> 是动力学模型 (<span
+class="math inline">\(P(\cdot\vert{}s,a)\)</span> 是状态上的概率分布),
+<span class="math inline">\(r\)</span> 是奖励函数(在 <span
+class="math inline">\([0, 1]\)</span> 之间), <span
+class="math inline">\(\gamma\in(0,1)\)</span> 是折扣因子</p>
+<p>考虑最朴素的基于模型的算法, 假设我们可以访问环境的模拟器,
+并且在每个状态-动作对 <span class="math inline">\((s, a)\)</span> 处,
+我们调用模拟器 <span class="math inline">\(N\)</span> 次来获取样本 <span
+class="math inline">\(s^{\prime}\sim P(\cdot\vert{}s,a)\)</span>​, 然后,
+我们简单地按如下方式构建环境的动力学模型 <span class="math display">\[
+\widehat{P}(s^{\prime}\vert{}s,a)=\frac{\text{count}(s,a,s^{\prime})}{N}
+\]</span> 其中 <span class="math inline">\(\text{count}(s, a,
+s&#39;)\)</span> 是我们观察到 <span class="math inline">\((s,
+a)\)</span> 转移到 <span class="math inline">\(s^{\prime}\)</span>
+的次数<br />
+对于表格型 MDP <span class="math inline">\(M\)</span>, 我们可以将 <span
+class="math inline">\(\widehat{P}\)</span> 视为一个大小为 <span
+class="math inline">\(\vert{}\mathcal{S}\vert{}\vert{}\mathcal{A}\vert{}\times\vert{}\mathcal{S}\vert{}\)</span>
+的矩阵</p>
+<p><span class="math inline">\(\widehat{M}\)</span> 为一个与 M
+完全相同的 MDP, 唯一的区别是真实的动力学 <span
+class="math inline">\(P\)</span> 被替换为了模型 <span
+class="math inline">\(\widehat{P}\)</span><br />
+令 <span class="math inline">\(\widehat{V}^{\pi}\)</span>、<span
+class="math inline">\(\widehat{Q}^{\pi}\)</span>、<span
+class="math inline">\(\widehat{V}^{*}\)</span> 和 <span
+class="math inline">\(\widehat{Q}^{*}\)</span> 分别表示在 <span
+class="math inline">\(\widehat {M}\)</span>​
+中的价值函数、状态-动作价值函数,
+以及最优价值函数和最优状态-动作价值函数</p>
+<p><strong>Q1.</strong> 在第 17 讲中, 我们看到了一个被称为 "模拟引理"
+(Simulation Lemma) 的证明, 该引理指出对于任意策略 <span
+class="math inline">\(\pi\)</span>: <span class="math display">\[
+Q^{\pi}-\widehat{Q}^{\pi}=\gamma(I-\gamma\widehat{P}^{\pi})^{-1}(P-\widehat{P})V^{\pi}
+\]</span> 证明以下类似的引理, 我们将其称为 "替代模拟引理" (Alternative
+Simulation Lemma):<br />
+对于任意策略, 我们有 <span class="math display">\[
+Q^{\pi}-\widehat Q^{\pi}=\gamma(I-\gamma P^{\pi})^{-1}(P-\widehat
+P)\widehat V^{\pi}
+\]</span></p>
+<blockquote>
+<p><strong>Proof.</strong> 看一眼 lec 17 的笔记回忆一下 <span
+class="math inline">\(Q^{\pi}-\widehat{Q}^{\pi}=\gamma(I-\gamma\widehat{P}^{\pi})^{-1}(P-\widehat{P})V^{\pi}\)</span>​
+是怎么推导的</p>
+<p>然后猜一猜, 之前是展开 <span
+class="math inline">\(\widehat{Q}^{\pi}\)</span>, 现在展开 <span
+class="math inline">\(Q^\pi\)</span> 能不能凑出来对应的项, 我试试 <span
+class="math display">\[
+\begin{aligned}
+Q^{\pi}-\widehat Q^{\pi}
+&amp;= (I - \gamma P^\pi)^{-1}r - \widehat Q^{\pi} \\
+&amp;= (I - \gamma P^\pi)^{-1}r - (I - \gamma P^\pi)^{-1}(I - \gamma
+P^\pi)\widehat Q^{\pi} \\
+&amp;= (I - \gamma P^\pi)^{-1}(I - \gamma\widehat{P}^{\pi})\widehat
+Q^{\pi} - (I - \gamma P^\pi)^{-1}(I - \gamma P^\pi)\widehat Q^{\pi} \\
+&amp;= \gamma(I - \gamma P^\pi)^{-1}(P^\pi - \widehat P^{\pi})\widehat
+Q^{\pi} \\
+&amp;= \gamma(I - \gamma P^\pi)^{-1}(P - \widehat P)\Pi\widehat Q^{\pi}
+\\
+&amp;= \gamma(I-\gamma P^{\pi})^{-1}(P-\widehat P)\widehat V^{\pi}
+\end{aligned}
+\]</span> 啊哈哈, 终于有会做的题了</p>
+</blockquote>
+<p><strong>Q2.</strong> 在第 17 讲中,
+我们了解了如何使用模拟引理和标准的集中度论证(concentration
+arguments)来对 <span
+class="math inline">\(\vert{}\vert{}Q^{\pi}-\hat{Q}^{\pi}\vert{}\vert{}_{\infty}\)</span>
+进行有界分析, 我们将尝试使用在问题 2.1 中推导出的 "替代模拟引理"
+来做同样的事情<br />
+以下哪些陈述 (可能是多个) 是正确的</p>
+<p><strong>A. 对于任意策略和 <span
+class="math inline">\(\delta&gt;0\)</span>, 以下情况以至少 <span
+class="math inline">\(1-\delta\)</span>​ 的概率成立</strong> <span
+class="math display">\[
+\begin{aligned}
+\vert{}\vert{}(P-\widehat{P})\widehat{V}^{\pi}\vert{}\vert{}_{\infty}
+&amp;\le
+\max_{s,a}\vert{}\vert{}P(\cdot\vert{}s,a)-\widehat{P}(\cdot\vert{}s,a)\vert{}\vert{}_{1}\vert{}\vert{}\widehat{V}^{\pi}\vert{}\vert{}_{\infty}
+\\
+&amp;\le\frac{1}{1-\gamma}\sqrt{\frac{4\vert{}\mathcal{S}\vert{}\log(\vert{}\mathcal{S}\vert{}\vert{}\mathcal{A}\vert{}/\delta)}{N}}
+\end{aligned}
+\]</span> <strong>B. 对于任意策略和 <span
+class="math inline">\(\delta&gt;0\)</span>, 以下情况以至少 <span
+class="math inline">\(1-\delta\)</span> 的概率成立</strong> <span
+class="math display">\[
+\vert{}\vert{}(P-\widehat{P})\widehat{V}^{\pi}\vert{}\vert{}_{\infty}\le\frac{1}{1-\gamma}\sqrt{\frac{2~\log(2\vert{}\mathcal{S}\vert{}\vert{}\mathcal{A}\vert{}/\delta)}{N}}
+\]</span> <strong>C. 对于 <span
+class="math inline">\(\delta&gt;0\)</span>, 以下情况以至少 <span
+class="math inline">\(1-\delta\)</span>​ 的概率成立</strong> <span
+class="math display">\[
+\vert{}\vert{}(P-\widehat{P})V^{*}\vert{}\vert{}_{\infty}\le\frac{1}{1-\gamma}\sqrt{\frac{2~\log(2\vert{}\mathcal{S}\vert{}\vert{}\mathcal{A}\vert{}/\delta)}{N}}
+\]</span> <strong>D. 对于 <span
+class="math inline">\(\delta&gt;0\)</span>, 以下情况以至少 <span
+class="math inline">\(1-\delta\)</span>​ 的概率成立</strong> <span
+class="math display">\[
+\vert{}\vert{}(P-\widehat{P})\widehat{V}^{*}\vert{}\vert{}_{\infty}\le\frac{1}{1-\gamma}\sqrt{\frac{2~\log(2\vert{}\mathcal{S}\vert{}\vert{}\mathcal{A}\vert{}/\delta)}{N}}
+\]</span></p>
+<blockquote>
+<p>[!TIP]</p>
+<p>使用霍夫丁不等式</p>
+<p>如果所引用的不等式被正确应用, 并且在应用它们之前其假设成立,
+则该陈述是正确的</p>
+<p>对于从 <span class="math inline">\((s, a)\)</span> 到 <span
+class="math inline">\(s^{\prime}\)</span> 的每一次观测转移,
+你可以定义一个随机变量 <span
+class="math inline">\(X=\mathbb{I}_{s^{\prime}}\cdot V\)</span>, 它是
+<span class="math inline">\(s^{\prime}\)</span> 处的指示向量 <span
+class="math inline">\(\mathbb{I}_{s^{\prime}}\in\mathbb{R}^{\vert{}\mathcal{S}\vert{}}\)</span>
+与向量 <span
+class="math inline">\(V\in\mathbb{R}^{\vert{}\mathcal{S}\vert{}}\)</span>
+之间的点积, 其期望值为 <span
+class="math inline">\(\mathbb{E}[X]=P(\cdot\vert{}s,a)\cdot
+V\)</span><br />
+当以此方式将霍夫丁不等式应用于从 <span class="math inline">\((s,
+a)\)</span> 观测到的所有 <span class="math inline">\(N\)</span>
+次转移时, 它是什么样的？<br />
+霍夫丁不等式可以应用于任何向量 <span class="math inline">\(V\)</span>​
+吗？</p>
+</blockquote>
+<p>对于 A 选项, <span class="math inline">\(\| ab \|_{\infty} \leq \max
+\| a \|_1 \| b \|_{\infty}\)</span> 放一放就出来了, 是对的</p>
+<p>对于 BCD, 这里不用 <span class="math inline">\(\| ab \|_{\infty} \leq
+\max \| a \|_1 \| b \|_{\infty}\)</span> 这样的技巧,
+而是直接构造一个随机变量<br />
+如果直接用 <span class="math inline">\(\Pr\left(\Vert{}\hat{q} -
+\vec{q}\Vert{}_1 \ge \sqrt{d}(1/\sqrt{N} + \epsilon)\right) \le
+e^{-N\epsilon^2}\)</span> 式子的话, 不可避免会引入状态数, 在这里是 <span
+class="math inline">\(\sqrt {\mathcal S}\)</span>, 究其原因是 <span
+class="math inline">\(\Vert{}\hat{q} - \vec{q}\Vert{}_1 \le \sqrt{d}
+\Vert{}\hat{q} - \vec{q}\Vert{}_2\)</span> 放缩太糙了, 只在 <span
+class="math inline">\(\hat{q} - \vec{q} = \mathbf 1\)</span>
+上是紧的</p>
+<p>如果我们直接处理 <span class="math inline">\((\widehat{P} - P) \cdot
+V\)</span>, 对于从 <span class="math inline">\((s, a)\)</span> 到 <span
+class="math inline">\(s^{\prime}\)</span> 的每一次观测转移 <span
+class="math inline">\(i\)</span>, 我们定义随机变量 <span
+class="math inline">\(X_{i}=\mathbb{I}_{s^{\prime}}\cdot V\)</span>,
+它是 <span class="math inline">\(s^{\prime}\)</span> 处的指示向量 <span
+class="math inline">\(\mathbb{I}_{s^{\prime}}\in\mathbb{R}^{\vert{}\mathcal{S}\vert{}}\)</span>
+与向量 <span class="math inline">\(V\)</span> 的点积, <span
+class="math inline">\(X_i\)</span> 就是一个标量, 其范围在 <span
+class="math inline">\([-\Vert V\Vert_\infty, \Vert
+V\Vert_\infty]\)</span>​ 内</p>
+<p>于是有 <span class="math inline">\(\mathbb{E}[X_{i}]=P(\cdot\vert
+s,a)\cdot V,\; \bar X = \widehat P(\cdot\vert s,a)\cdot V\)</span><br />
+于是根据 <span class="math inline">\(P(\bar{X} - \mathbb{E}[X] \ge
+\epsilon) \le \exp \left( {-\dfrac{2N\epsilon^2}{4\| V\|_\infty^2}}
+\right)\)</span>, 令 <span class="math inline">\(\delta = \exp \left(
+{-\dfrac{N\epsilon^2}{2\| V\|_\infty^2}} \right)\)</span>, 则 <span
+class="math inline">\(\epsilon = \sqrt{\dfrac{2\Vert V\Vert_\infty^2
+\ln(1/\delta)}{N}}\)</span></p>
+<p>于是有 <span class="math inline">\(1-\delta\)</span> 的概率, <span
+class="math inline">\((P(\cdot\vert{}s,a)-\widehat{P}(\cdot\vert{}s,a))\cdot
+V\le \sqrt{\dfrac{2\Vert V\Vert_\infty^2 \ln(1/\delta)}{N}} =
+\dfrac{1}{1-\gamma} \sqrt{\dfrac{2 \log(1/\delta)}{N}}\)</span></p>
+<p>于是你在想, ABCD 难道都是对的？<br />
+但这么做有个前提, <span
+class="math inline">\(V\in\mathbb{R}^{\vert{}\mathcal{S}\vert{}}\)</span>
+是不依赖于观测到的转移 <span class="math inline">\(\widehat P\)</span>
+的, 所有的 <span class="math inline">\(X_{i}\)</span> 都是独立的,
+不然霍夫丁不等式用不了</p>
+<p>于是这题选择 AC, 我也不用继续于是于是了</p>
+<blockquote>
+<p><strong>想用 <span class="math inline">\(L_1\)</span>
+拆分解耦法:</strong> 通杀所有价值向量(管你带不带帽), 但代价是误差界包含
+<span class="math inline">\(\sqrt{\vert\mathcal{S}\vert}\)</span>,
+状态一多就爆炸<br />
+<strong>想用标量期望 Trick 法: </strong>误差界极小, 去掉了 <span
+class="math inline">\(\sqrt{\vert\mathcal{S}\vert}\)</span>​, 但条件苛刻,
+<strong>向量必须是真实的、不依赖经验数据的</strong></p>
+</blockquote>
+<h3 id="overview">Overview</h3>
+<p>我们要完成神经网络动力学模型 <span
+class="math inline">\(f_{\theta}\)</span>: <span
+class="math inline">\(\hat{\Delta}_{t+1}=f_{\theta}(\mathbf
+s_{t},\mathbf a_{t})\)</span><br />
+它在给定当前状态和动作的情况下预测<strong>状态的变化</strong><br />
+给定预测值 <span class="math inline">\(\hat{\Delta}_{t+1}\)</span>,
+你可以通过 <span class="math inline">\(\hat{\mathbf s}_{t+1}=\mathbf
+s_{t}+\hat{\Delta}_{t+1}\)</span> 生成下一个状态的预测</p>
+<article class="message message-immersive is-primary">
+<div class="message-body">
+<p><i class="fas fa-book-open mr-2"></i> 根据 <a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/1708.02596">NN Dynamics for MBDRL with
+Model-Free Fine-Tuning</a> 文章,
+预测下一个状态的变化而不是预测下一个状态的原因如下:<br />
+相邻状态过于相似 动作对输出结果产生的影响难以体现<br />
+当两个状态之间的时间间隔 <span class="math inline">\(\Delta t\)</span>​​
+变小时, 学习困难会变得更加明显</p>
+</div>
+</article>
+<p>我们在标准的监督学习设置中训练 <span
+class="math inline">\(f_{\theta}\)</span>​, 对以下目标函数执行梯度下降
+<span class="math display">\[
+\begin{aligned}
+\mathcal{L}(\theta)
+&amp;=\sum_{(\mathbf s_{t},\mathbf a_{t},\mathbf
+s_{t+1})\in\mathcal{D}}\vert{}\vert{}(\mathbf s_{t+1}-\mathbf
+s_{t})-f_{\theta}(\mathbf s_{t},\mathbf a_{t})\vert{}\vert{}_{2}^{2} \\
+&amp;=\sum_{(\mathbf s_{t},\mathbf a_{t},\mathbf
+s_{t+1})\in\mathcal{D}}\vert{}\vert{}\Delta_{t+1}-\hat{\Delta}_{t+1}\vert{}\vert{}_{2}^{2}
+\end{aligned}
+\]</span> 在实践中, 进行对神经网络的目标值进行归一化很有用,
+我们预测状态变化的归一化版本 <span class="math display">\[
+\mathcal{L}(\theta)=\sum_{(\mathbf s_{t},\mathbf a_{t},\mathbf
+s_{t+1})\in\mathcal{D}}\vert{}\vert{}\text{Normalize}(\mathbf
+s_{t+1}-\mathbf s_{t})-f_{\theta}(\mathbf s_{t},\mathbf
+a_{t})\vert{}\vert{}_{2}^{2}
+\]</span> 由于 <span class="math inline">\(f_{\theta}\)</span>
+是被训练来预测归一化的状态差值, 通过下式生成下一个预测状态 <span
+class="math display">\[
+\hat{\mathbf s}_{t+1}=\mathbf
+s_{t}+\text{Unnormalize}(f_{\theta}(\mathbf s_{t},\mathbf a_{t}))
+\]</span></p>
+<hr />
+<p><strong>动作选择</strong></p>
+<p>给定学到的动力学模型,
+我们现在希望选择并执行能够最小化已知成本函数(或最大化已知奖励函数)的动作<br />
+理想情况下, 你可以通过求解以下优化问题来计算这些动作 <span
+class="math display">\[
+\mathbf a_{t}^{z}=\arg\min_{\mathbf
+a_{t:\infty}}\sum_{t^{\prime}=t}^{\infty}c(\hat{\mathbf
+s}_{t^{\prime}},\mathbf a_{t^{\prime}}), 其中\; \hat{\mathbf
+s}_{t^{\prime}+1}=\hat{\mathbf s}_{t^{\prime}}+f_{\theta}(\hat{\mathbf
+s}_{t^{\prime}},\mathbf a_{t^{\prime}})
+\]</span> 求解上式是不切实际的<br />
+1). 对无限长度的动作序列进行规划是不可能的<br />
+2). 学到的动力学模型是不完美的,
+以这种开环方式进行规划会导致误差随时间累积, 规划将变得非常不准确</p>
+<p>一种替代方法是求解以下无梯度的优化问题 <span class="math display">\[
+\mathbf A^{*}=\arg \min_{\{\mathbf A^{(0)},...,\mathbf
+A^{(K-1)}\}}\sum_{t^{\prime}=t}^{t+H-1}c(\hat{\mathbf
+s}_{t^{\prime}},\mathbf a_{t^{\prime}}) \\
+\text{s.t.} \quad \hat{\mathbf s}_{t^{\prime}+1}=\hat{\mathbf
+s}_{t^{\prime}}+f_{\theta}(\hat{\mathbf s}_{t^{\prime}},\mathbf
+a_{t^{\prime}})
+\]</span> 其中, 每个 <span class="math inline">\(\mathbf
+A^{(k)}=(a_{t}^{(k)},...,a_{t+H-1}^{(k)})\)</span> 都是长度为 <span
+class="math inline">\(H\)</span> 的随机动作序列<br />
+上式的含义是: 考虑 <span class="math inline">\(K\)</span> 个长度为 <span
+class="math inline">\(H\)</span> 的随机动作序列, 使用学到的动力学模型
+<span class="math inline">\(f_{\theta}\)</span>
+预测采取每个动作序列的结果 (即未来状态),
+评估与每个候选动作序列相关的成本/奖励, 然后选择最佳的动作序列</p>
+<p>这种方法仅规划未来 <span class="math inline">\(H\)</span> 步,
+防止误差累积但不适应 long-horizon 任务</p>
+<p>更好的替代方案是交叉熵方法(CEM), 我们会学习一个动作的高斯分布 <span
+class="math inline">\(p(\mathbf A)\)</span><br />
+随机挑选可以认为从均匀分布中选择动作<br />
+而我们可以设一个高斯分布, 从其中选择 <span
+class="math inline">\(N\)</span> 个动作, 并选择 <span
+class="math inline">\(M&lt;N\)</span>
+个表现最好的<strong>精英样本(elites)</strong>, 使用这 <span
+class="math inline">\(M\)</span> 个样本重新拟合(做最大似然拟合)概率分布
+<span class="math inline">\(p(\mathbf A)\)</span></p>
+<p>由于我们的模型并不完美, 并且事情永远不会完全按计划进行,
+我们采用了模型预测控制 (MPC) 方法<br />
+即在每个时间步, 我们执行随机打靶或 CEM 以选择最佳的 <span
+class="math inline">\(H\)</span>​ 步动作序列,
+但随后我们仅执行该序列中的第一个动作,
+然后在使用更新后的状态信息在下一个时间步重新进行规划</p>
+<hr />
+<p><strong>On-Policy 数据收集</strong></p>
+<p>尽管 MBRL 理论上是 off-policy 的,
+这意味着它可以从任何数据中学习<br />
+但在实践中, 如果没有 on-policy 数据, 它的表现会很差</p>
+<p><img
+src="https://files.seeusercontent.com/2026/08/01/eNy5/fe09c4fa5b481068d51a1204e2efb118.png" /></p>
+<hr />
+<p><strong>模型集成 (Ensembles)</strong></p>
+<p>训练 <span class="math inline">\(N\)</span> 个独立初始化的网络 <span
+class="math inline">\(\{f_{\theta_{n}}\}_{n=1}^{N}\)</span><br />
+在测试时, 对于每个候选动作序列, 我们将生成 <span
+class="math inline">\(N\)</span>​ 个独立的 rollouts,
+并对这些轨迹的奖励求平均, 以此来选择最佳的动作序列</p>
+<h3 id="code-3">Code</h3>
+<p><strong>Problem 1</strong> 要求收集数据并训练 <span
+class="math inline">\(f\)</span>, 然后自己在 <code>halfcheetah</code>
+任务上调整超参<br />
+对于 MBA 中的 <code>update</code> 方法编写, 注意 Normalize 就行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line">delta_scale = ((next_obs-obs)-self.obs_delta_mean)/(self.obs_delta_std+<span class="number">1e-8</span>)</span><br><span class="line">criterion = nn.MSELoss()</span><br><span class="line">obs_acs = (torch.cat([obs,acs], dim=-<span class="number">1</span>)-self.obs_acs_mean)/(self.obs_acs_std+<span class="number">1e-8</span>)</span><br><span class="line">pred = self.dynamics_models[i](obs_acs)</span><br><span class="line">loss = criterion(delta_scale, pred)</span><br></pre></td></tr></table></figure>
+<p><code>update_statistics</code> 方法就是 <code>torch.cat</code>,
+<code>torch.mean</code> 和 <code>torch.std</code></p>
+<p>编写 <code>run_training_loop</code> 时要注意模型集成的问题</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(mb_agent.ensemble_size):</span><br><span class="line">    batch = replay_buffer.sample(config[<span class="string">&quot;train_batch_size&quot;</span>])</span><br><span class="line">    step_losses.append(mb_agent.update(i, batch[<span class="string">&quot;observations&quot;</span>], batch[<span class="string">&quot;actions&quot;</span>], batch[<span class="string">&quot;next_observations&quot;</span>],))</span><br><span class="line">all_losses.append(np.mean(step_losses))</span><br></pre></td></tr></table></figure>
+<p>至于调超参, 我已经抛弃传统方法, 让 gpt 5.6 调去了……也许 AI 比较理解
+RL……</p>
+<p>我在这里放调整前后的图像对比一下(<code>l1_32_lr1e-3</code> 与
+<code>l3_256_lr1e-3</code>)</p>
+<p><img
+src="https://files.seeusercontent.com/2026/08/03/4dQr/problem1_l1_32_vs_l3_256_lr1e-3.png" /></p>
+<p><strong>Problem 2</strong> 评估使用随机采样候选序列进行优化的 MPC
+动作选择效果</p>
+<p>要求完成 <code>get_dynamics_predictions</code> 和
+<code>evaluate_action_sequences</code><br />
+前者还是之前 Normalize 的套路, Unnormalize 就是 x*std + mean<br />
+后者记得把 shape 对好了, 时刻牢记在处理模型集合</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">evaluate_action_sequences</span>(<span class="params">self, obs: np.ndarray, action_sequences: np.ndarray</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;</span></span><br><span class="line"><span class="string">    Evaluate a batch of action sequences using the ensemble of dynamics models.</span></span><br><span class="line"><span class="string">    Args:</span></span><br><span class="line"><span class="string">        obs: starting observation, shape (ob_dim,)</span></span><br><span class="line"><span class="string">        action_sequences: shape (mpc_num_action_sequences, horizon, ac_dim)</span></span><br><span class="line"><span class="string">    Returns:</span></span><br><span class="line"><span class="string">        sum_of_rewards: shape (mpc_num_action_sequences,)</span></span><br><span class="line"><span class="string">    &quot;&quot;&quot;</span></span><br><span class="line">    sum_of_rewards = np.zeros(</span><br><span class="line">        (self.ensemble_size, self.mpc_num_action_sequences), dtype=np.float32</span><br><span class="line">    )</span><br><span class="line">    obs = np.tile(obs, (self.ensemble_size, self.mpc_num_action_sequences, <span class="number">1</span>))</span><br><span class="line">    <span class="comment"># for [seq, ac_dim] in [horizon, seq, ac_dim]</span></span><br><span class="line">    <span class="keyword">for</span> acs <span class="keyword">in</span> action_sequences.transpose(<span class="number">1</span>, <span class="number">0</span>, <span class="number">2</span>): </span><br><span class="line">        next_obs_list = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(self.ensemble_size):</span><br><span class="line">            next_obs_list.append(self.get_dynamics_predictions(i,obs[i],acs))</span><br><span class="line">        next_obs = np.stack(next_obs_list, axis=<span class="number">0</span>)</span><br><span class="line">        rewards = []</span><br><span class="line">        <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(self.ensemble_size):</span><br><span class="line">            reward, _ = self.env.get_reward(next_obs[i], acs)</span><br><span class="line">            rewards.append(reward)</span><br><span class="line">        rewards = np.stack(rewards, axis=<span class="number">0</span>)</span><br><span class="line">        sum_of_rewards += rewards</span><br><span class="line">        obs = next_obs</span><br><span class="line">    <span class="keyword">return</span> sum_of_rewards.mean(axis=<span class="number">0</span>)</span><br></pre></td></tr></table></figure>
+<p>最终 MPC 的 Average eval return 在 -29.3250 左右</p>
+<p><strong>Problem 3-4</strong> 就是开训, 调超参, 这部分都让 AI 干</p>
+<p>AI 训练比较聪明的一点是会主动优化程序,
+例如它看到了每个模型预测都把数据在 NumPy 与 GPU 之间来回转换,
+就考虑优化, 不过没有用, 它又给撤回了</p>
+<p>Problem 3 如下</p>
+<p><img
+src="https://files.seeusercontent.com/2026/08/03/qWb8/problem3_return_curves.png" /></p>
+<p>Obstacles 环境中的动力学模型或 MPC 规划对数据分布和随机采样较为敏感,
+寄寄了, 其他都不错啊</p>
+<p><strong>Problem 4</strong> 就是调超参的 trade-off<br />
+经验是在 reacher 任务上用三个模型集成就足够了,
+<code>num_action_sequences=1000</code> 就足够了以及
+<code>horizon = 10</code> 是最好的, 不过这些数据都是 problem specific
+的</p>
+<p><strong>Problem 5</strong> 是实现 CEM 方法</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">elif</span> self.mpc_strategy == <span class="string">&quot;cem&quot;</span>:</span><br><span class="line">    elite_mean, elite_std = <span class="literal">None</span>, <span class="literal">None</span></span><br><span class="line">    <span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(self.cem_num_iters):</span><br><span class="line">        <span class="keyword">if</span> i!=<span class="number">0</span>: </span><br><span class="line">            action_sequences = np.random.normal(elite_mean, elite_std, size=(self.mpc_num_action_sequences, self.mpc_horizon, self.ac_dim))</span><br><span class="line">            action_sequences = np.clip(action_sequences, self.env.action_space.low, self.env.action_space.high)</span><br><span class="line">        rewards = self.evaluate_action_sequences(obs, action_sequences)</span><br><span class="line">        elite_indices = np.argsort(rewards)[-self.cem_num_elites:]</span><br><span class="line">        elite_actions = action_sequences[elite_indices] </span><br><span class="line">        <span class="comment"># shape [cem_num_elites, mpc_horizon, ac_dim]</span></span><br><span class="line">        new_mean = elite_actions.mean(axis=<span class="number">0</span>)</span><br><span class="line">        new_std = elite_actions.std(axis=<span class="number">0</span>)</span><br><span class="line">        <span class="keyword">if</span> i==<span class="number">0</span>: elite_mean, elite_std = new_mean, new_std</span><br><span class="line">        <span class="keyword">else</span>:</span><br><span class="line">            elite_mean = self.cem_alpha*new_mean + (<span class="number">1</span>-self.cem_alpha)*elite_mean</span><br><span class="line">            elite_std = self.cem_alpha*new_std + (<span class="number">1</span>-self.cem_alpha)*elite_std</span><br><span class="line">    <span class="keyword">return</span> elite_mean[<span class="number">0</span>]</span><br></pre></td></tr></table></figure>
+<p>这里的细节是区分 i=0 与 i ≠ 0, 使用 numpy 的 argsort 以及使用
+<code>self.cem_alpha</code> 滑动更新 elite</p>
+<p>CEM 训练是真慢啊,<br />
+每一个真实 step 对应 4 次 CEM 迭代 × 15 步规划长度 × 3 个 dynamics
+models × 1000 条候选动作序列<br />
+规划 15 步只取一步, 我要是有个 actor 神经网络一下子就走出来了<br />
+不过 model-based RL 中的 model 训练飞快, 这可能也是一种 trade-off</p>
+<p>5 次 iteration 就已经把之前的 HalfCheetah 的 400 pts 打爆了<br />
+avg return 变化为 <span class="math inline">\(241 \to 577 \to 797 \to
+888 \to 943\)</span>, 看来动力学是完全拟合上了<br />
+另一方面来说, 5 次 iteration 花了我 2.5h, 这是肯定不能实时用的</p>
+<p><strong>Problem 6</strong> 是实现 MBPO 的 rollout, 额,
+动态控制部分几乎没有, 只是单纯 short rollout 罢了<br />
+我们保留 Actor 网络了！真实的数据和 model 的虚拟数据一齐训 SAC, 让 SAC
+选 action<br />
+我们比较 model-free SAC, Dyna-style(rollout_length = 1) 与
+MBPO(rollout_length = 10) 的区别</p>
+<p>在 <code>run_hw4.py</code> 中编写 <code>collect_mbpo_rollout</code>
+时还是注意模型集成的问题, 最后的 <code>next_ob</code> 求了平均</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line">ac = sac_agent.get_action(ob)</span><br><span class="line">ac_batch, ob_batch = ac[<span class="literal">None</span>], ob[<span class="literal">None</span>]</span><br><span class="line">next_ob = []</span><br><span class="line"><span class="keyword">for</span> i <span class="keyword">in</span> <span class="built_in">range</span>(mb_agent.ensemble_size):</span><br><span class="line">    next_ob.append(mb_agent.get_dynamics_predictions(i,ob_batch,ac_batch))</span><br><span class="line">next_ob = np.mean(next_ob, axis=<span class="number">0</span>)[<span class="number">0</span>]</span><br><span class="line">rew, _ = env.get_reward(next_ob, ac)</span><br></pre></td></tr></table></figure>
+<p>最后的实验结果你肯定能猜到, MBPO &gt; Dyna-style &gt; model-free SAC,
+多步预测真是力大砖飞啊</p>
+<h2 id="assignment-5-exploration-与-offline-rl">Assignment 5 Exploration
+与 Offline RL</h2>
+<h3 id="analysis-3">Analysis</h3>
+<p>回忆一下 Soft Actor-Critic, 它大概是 DDPG + doubleQ + noise +
+MaxEntropy<br />
+我们优化下面的奖励, <span class="math inline">\(b(\mathbf s,\mathbf
+a)=-\log\pi(\mathbf a\mid \mathbf s)\)</span>
+负责为策略施加最大熵正则化, 在下文直接加入奖励了 <span
+class="math display">\[
+\begin{aligned}
+\mathbb{E}_{\mathbf s,\mathbf a\sim p_\pi}\bigl[r(\mathbf s,\mathbf
+a)+\lambda b(\mathbf s,\mathbf a)\bigr]
+&amp;=\frac{1}{H}J(\pi)-\lambda\,
+\mathbb{E}_{\mathbf s\sim p_\pi}\mathbb{E}_{\pi(\mathbf a\mid \mathbf
+s)}\log\pi(\mathbf a\mid \mathbf s)\\
+&amp;=\frac{1}{H}J(\pi)+\lambda\,
+\mathbb{E}_{\mathbf s\sim p_\pi}\mathcal{H}\!\left[\pi(\mathbf a\mid
+\mathbf s)\right]
+\end{aligned}
+\]</span></p>
+<hr />
+<p>现在我们希望从离线数据 <span
+class="math inline">\(\mathcal{D}\)</span> 中学习一个 <span
+class="math inline">\(Q\)</span> 函数和策略 <span
+class="math inline">\(\pi\)</span>, 同时满足约束 <span
+class="math inline">\(D(\pi,\pi_\beta)\leq\varepsilon\)</span><br />
+采用如下更新 <span class="math display">\[
+Q(\mathbf s,\mathbf a)\leftarrow r(\mathbf s,\mathbf
+a)+\mathbb{E}_{\mathbf a&#39;\sim\pi}\left[Q(\mathbf s&#39;,\mathbf
+a&#39;)\right] \\
+\text{其中}\; \pi=\operatorname*{arg\,max\;}_{\pi}\mathbb{E}_{\mathbf
+s,\mathbf a\sim p_\pi}[Q(\mathbf s,\mathbf a)]\quad
+\text{满足}\; D(\pi,\pi_\beta)\leq\varepsilon
+\]</span> 像 Lec 16 中的那样, 把约束通过拉格朗日方式隐式施加在奖励中,
+<span class="math inline">\(\bar r(\mathbf s,\mathbf a)=r(\mathbf
+s,\mathbf a)+\lambda b(\mathbf s,\mathbf a)\)</span>, 即 <span
+class="math display">\[
+Q(\mathbf s,\mathbf a)\leftarrow \bar r(\mathbf s,\mathbf
+a)+\mathbb{E}_{\mathbf a&#39;\sim\pi}\left[Q(\mathbf s&#39;,\mathbf
+a&#39;)\right] \\
+\text{其中}\; \pi=\operatorname*{arg\,max\;}_{\pi}\mathbb{E}_{\mathbf
+s,\mathbf a\sim p_\pi}[Q(\mathbf s,\mathbf a)]
+\]</span> 假设已经适当地选择了 <span
+class="math inline">\(\lambda&gt;0\)</span>, 并且假设能够获得分布 <span
+class="math inline">\(\pi(\mathbf a\mid \mathbf s)\)</span> 和 <span
+class="math inline">\(\pi_\beta(\mathbf a\mid \mathbf s)\)</span></p>
+<p><strong>Q1.</strong> 假设我们希望在 KL 散度约束下学习策略 <span
+class="math inline">\(\pi\)</span>​, 即 <span class="math display">\[
+D(\pi,\pi_\beta)=
+\mathbb{E}_{\mathbf s\sim p_\pi}D_{\mathrm{KL}}\left[\pi(\mathbf a\mid
+\mathbf s)\,\|\,\pi_\beta(\mathbf a\mid \mathbf s)\right]
+\]</span> 如何通过向奖励 <span class="math inline">\(\bar r(\mathbf
+s,\mathbf a)=r(\mathbf s,\mathbf a)+\lambda b(\mathbf s,\mathbf
+a)\)</span> 中加入 <span class="math inline">\(\lambda b(\mathbf
+s,\mathbf a)\)</span> 来施加约束? 将答案写成 <span
+class="math inline">\(b(\mathbf s, \mathbf a)\)</span>​ 的表达式</p>
+<blockquote>
+<p><strong>Sol.</strong><br />
+我猜是数据凑凑<br />
+<span class="math inline">\(D_{\text{KL}}(\pi \| \pi_\beta) = \mathbb
+E_{\pi} [\log \pi(\mathbf a|\mathbf s) - \log \pi_\beta(\mathbf
+a|\mathbf s)]\)</span>, 故 <span class="math inline">\(D(\pi,\pi_\beta)
+= \mathbb E_{\mathbf s\sim p_\pi} \mathbb E_{\mathbf a\sim\pi(\cdot\mid
+\mathbf s)} \left[ \log\dfrac{\pi(\mathbf a\mid \mathbf
+s)}{\pi_\beta(\mathbf a\mid \mathbf s)} \right]\)</span><br />
+一个小细节是这一堆期望套不套, 我们设 <span
+class="math inline">\(b(\mathbf s, \mathbf a) = - \log\dfrac{\pi(\mathbf
+a\mid \mathbf s)}{\pi_\beta(\mathbf a\mid \mathbf s)}\)</span><br />
+要对 <span class="math inline">\(\mathbb{E}_{\mathbf s,\mathbf a\sim
+p_\pi}[Q(\mathbf s,\mathbf a)]\)</span> 求 arg max, 这样设 <span
+class="math inline">\(b(\mathbf s, \mathbf a)\)</span>
+后套期望后正好是优化 <span class="math inline">\(\mathbb E_{\mathbf
+s,\mathbf a\sim p_\pi}[Q(\mathbf s,\mathbf a)] -\lambda
+D(\pi,\pi_\beta)\)</span></p>
+</blockquote>
+<p><strong>Q2.</strong> <span class="math inline">\(f\)</span>-散度是 KL
+散度的一种推广, 对于分布 <span class="math inline">\(P\)</span> 和 <span
+class="math inline">\(Q\)</span>​, 它可以定义为 <span
+class="math display">\[
+D_f[P\|Q]=\int Q(x)\,f\!\left(\frac{P(x)}{Q(x)}\right)\,\mathrm{d}x
+\]</span> 其中 <span class="math inline">\(f\)</span> 是一个凸函数,
+并且在 1 处取值为零, 我们可以将一个 <span
+class="math inline">\(f\)</span>-散度策略约束写成 <span
+class="math display">\[
+D(\pi,\pi_\beta)=\mathbb{E}_{\mathbf s\sim p_\pi}D_f
+\left[\pi(\mathbf a\mid \mathbf s)\,\|\,\pi_\beta(\mathbf a\mid \mathbf
+s)\right]
+\]</span> 也即 <span class="math display">\[
+D(\pi,\pi_\beta)=\mathbb{E}_{\mathbf s\sim
+p_\pi}\mathbb{E}_{\pi_\beta(\mathbf a\mid \mathbf s)}
+f\!\left(\frac{\pi(\mathbf a\mid \mathbf s)}{\pi_\beta(\mathbf a\mid
+\mathbf s)}\right)
+\]</span> 通过 <span class="math inline">\(f\)</span>-散度约束,
+我们可以指定许多其他形式的约束, 以限制 <span
+class="math inline">\(\pi\)</span> 与 <span
+class="math inline">\(\pi_\beta\)</span> 之间的散度<br />
+例如, 当取 <span class="math inline">\(f(x)=\dfrac{1}{2}|x-1|\)</span>
+时, <span
+class="math inline">\(f\)</span>-散度等价于<strong>总变差距离(Total
+Variation Distance, TVD)</strong><br />
+当取 <span class="math inline">\(f(x) =
+-(x+1)\log\!\left(\dfrac{x+1}{2}\right) +x\log x\)</span> 时, <span
+class="math inline">\(f\)</span>-散度等价于 Jensen–Shannon 散度<br />
+当取 <span class="math inline">\(f(x) = x \log x\)</span> 时,
+我们就恢复了标准的 KL 散度<br />
+如何扩展在 <strong>Q1.</strong> 中的答案, 使其能够处理任意的 <span
+class="math inline">\(f\)</span>-散度? 答案应当使用 <span
+class="math inline">\(f\)</span> 给出更加一般化的 <span
+class="math inline">\(b(\mathbf s, \mathbf a)\)</span>​ 表达式</p>
+<blockquote>
+<p><strong>Sol.</strong><br />
+寄寄, <span class="math inline">\(\pi_\beta\)</span> 不是 <span
+class="math inline">\(\pi\)</span>,
+能不能做类似重要性采样的东西把分布换掉？<br />
+我们能不能说<br />
+<span class="math display">\[
+D_f[P\|Q]=\displaystyle\int
+Q(x)\,f\!\left(\dfrac{P(x)}{Q(x)}\right)\,\mathrm{d}x =
+\displaystyle\int P(x)
+\dfrac{Q(x)}{P(x)}\,f\!\left(\dfrac{P(x)}{Q(x)}\right)\,\mathrm{d}x =
+\mathbb{E}_{P(x)} \dfrac{Q(x)}{P(x)}
+f\!\left(\frac{P(x)}{Q(x)}\right)
+\]</span> 于是可以说 <span class="math display">\[
+D(\pi,\pi_\beta) = \mathbb{E}_{\mathbf s\sim
+p_\pi}\mathbb{E}_{\pi(\mathbf a\mid \mathbf s)} \dfrac{\pi_\beta(\mathbf
+a\mid \mathbf s)}{\pi(\mathbf a\mid \mathbf s)}
+f\!\left(\dfrac{\pi(\mathbf a\mid \mathbf s)}{\pi_\beta(\mathbf a\mid
+\mathbf s)}\right)
+\]</span> 于是 <span class="math inline">\(b(\mathbf s, \mathbf a) =
+-\dfrac{\pi_\beta(\mathbf a\mid \mathbf s)}{\pi(\mathbf a\mid \mathbf
+s)} f\!\left(\dfrac{\pi(\mathbf a\mid \mathbf s)}{\pi_\beta(\mathbf
+a\mid \mathbf s)}\right)\)</span></p>
+</blockquote>
+<p><strong>Q3.</strong> 假设 MDP 的时域长度为 <span
+class="math inline">\(H\)</span>, 我们继续约束策略 <span
+class="math inline">\(\pi\)</span> 与 <span
+class="math inline">\(\pi_\beta\)</span>
+所产生的状态轨迹分布之间的散度<br />
+对于轨迹 <span class="math inline">\(\tau=(s_1,s_2,\ldots,s_H)\)</span>,
+状态轨迹分布之间的 KL 散度可以表示为 <span class="math display">\[
+D(\pi,\pi_\beta)=
+D_{\mathrm{KL}}\left[p_\pi(\tau)\,\|\,p_{\pi_\beta}(\tau)\right]
+\]</span> 应当使用怎样的 <span class="math inline">\(b(\mathbf s,
+\mathbf a)\)</span> 表达式来施加这一约束？可以假设能够获得环境动力学
+<span class="math inline">\(p(\mathbf s&#39;|\mathbf s, \mathbf
+a)\)</span></p>
+<blockquote>
+<p>[!TIP]</p>
+<p>对动作进行边缘化, 得到一个依赖于 <span class="math inline">\(\mathbf
+s&#39;\)</span> 的加成 <span class="math inline">\(b(\mathbf s,\mathbf
+a,\mathbf s&#39;)\)</span><br />
+怎样才能将其转换为能够与 <span class="math inline">\(r(\mathbf s,\mathbf
+a)\)</span> 一起使用的加成 <span class="math inline">\(b(\mathbf
+s,\mathbf a)\)</span>?</p>
+</blockquote>
+<blockquote>
+<p><strong>Sol.</strong><br />
+啊, 从单个 <span class="math inline">\((\mathbf s, \mathbf a)\)</span>
+变成 <span class="math inline">\(\tau\)</span> 了, 需要写出
+transition<br />
+考虑策略 <span class="math inline">\(\pi\)</span> 诱导的状态转移概率,
+下面假设动作空间连续, 离散同理 <span class="math display">\[
+p_\pi(\mathbf s&#39;| \mathbf s)=\int_{\mathcal A}\pi(\mathbf a| \mathbf
+s)p(\mathbf s&#39;| \mathbf s,\mathbf a)\,\mathrm d\mathbf a
+\]</span> 故 <span class="math inline">\(p_\pi(\tau) = g(\mathbf s_1)
+\prod_{t=1}^{H-1} p_\pi(\mathbf s_{t+1}\mid \mathbf s_t)\)</span>,
+这里的 <span class="math inline">\(g(\mathbf s_1)\)</span>
+代表初始状态分布, 其实无所谓, 肯定能消掉, 于是 <span
+class="math display">\[
+\begin{aligned}
+D(\pi, \pi_\beta) &amp;= D_{\text{KL}} [p_\pi(\tau) \|
+p_{\pi_\beta}(\tau)] \\
+&amp;= \mathbb E_{\tau \sim p_\pi} [\log
+\frac{p_\pi(\tau)}{p_{\pi_\beta}(\tau)}] \\
+&amp;= \mathbb E_{\tau \sim p_\pi} [\log \frac{g(\mathbf s_1)
+\prod_{t=1}^{H-1} p_\pi(\mathbf s_{t+1}\mid \mathbf s_t)}{g(\mathbf s_1)
+\prod_{t=1}^{H-1} p_{\pi_\beta}(\mathbf s_{t+1}\mid \mathbf s_t)}] \\
+&amp;= \mathbb E_{\tau \sim p_\pi} [\log \frac{\prod_{t=1}^{H-1}
+p_\pi(\mathbf s_{t+1}\mid \mathbf s_t)}{\prod_{t=1}^{H-1}
+p_{\pi_\beta}(\mathbf s_{t+1}\mid \mathbf s_t)}]
+\end{aligned}
+\]</span> 故 <span class="math inline">\(b(\mathbf s, \mathbf a, \mathbf
+s&#39;) = - \log \dfrac{ p_\pi(\mathbf s&#39;\mid \mathbf s)}{
+p_{\pi_\beta}(\mathbf s&#39;\mid \mathbf s)}\)</span>, 于是 <span
+class="math inline">\(b(\mathbf s, \mathbf a) = \mathbb E_{\mathbf
+s&#39; \sim p(\cdot|\mathbf s, \mathbf a)} [-\log \dfrac{ p_\pi(\mathbf
+s&#39;\mid \mathbf s)}{ p_{\pi_\beta}(\mathbf s&#39;\mid \mathbf
+s)}]\)</span><br />
+这其实告诉我们抽象的 <span class="math inline">\(\tau\)</span>​
+想不出来还是往细了想更好</p>
+</blockquote>
+<h3 id="review-1">Review</h3>
+<p>首先实现 RND 的探索方法, 并使用该探索过程收集数据<br />
+然后把 CQL, AWAC, IQL 轮着来一遍</p>
+<p><strong>随机网络蒸馏(Random Network Distillation,
+RND)算法</strong><br />
+常见的探索方法是访问某个量的预测误差较大的状态, 这个量可以是 TD 误差,
+甚至可以是一个随机函数<br />
+形式化地, 令 <span class="math inline">\(f_{\theta^*}(\mathbf
+s&#39;)\)</span> 表示一个随机选择的由神经网络表示的向量值函数<br />
+RND 会训练另一个神经网络 <span class="math inline">\(\hat f_\phi(\mathbf
+s&#39;)\)</span>, 使其在缓冲区数据点的分布上匹配 <span
+class="math inline">\(f_{\theta^*}(\mathbf s&#39;)\)</span> 的预测 <span
+class="math display">\[
+\phi^*=\operatorname*{arg\,min}_{\phi}\mathbb E_{\mathbf s,\mathbf
+a,\mathbf s&#39;\sim\mathcal D}
+\left[\underbrace{\left\|\hat f_\phi(\mathbf
+s&#39;)-f_{\theta^*}(\mathbf s&#39;)\right\|}_{\mathcal E_\phi(\mathbf
+s&#39;)}\right]
+\]</span> 如果某个状态转移 <span class="math inline">\((\mathbf
+s,\mathbf a,\mathbf s&#39;)\)</span> 位于数据缓冲区的数据分布之中,
+那么其预测误差 <span class="math inline">\(\mathcal E_\phi(\mathbf
+s&#39;)\)</span> 应该较小</p>
+<p>为了把这一预测误差用作探索的奖励加成, RND 会训练两个 Critic:</p>
+<ul>
+<li><strong>利用评论家(exploitation critic)</strong> <span
+class="math inline">\(Q_R(\mathbf s,\mathbf a)\)</span>,
+用于估计策略在真实奖励函数下的回报</li>
+<li><strong>探索评论家(exploration critic)</strong> <span
+class="math inline">\(Q_E(\mathbf s,\mathbf a)\)</span>,
+用于估计策略在奖励加成下的回报</li>
+</ul>
+<p>在实践中, 我们会先对误差进行归一化, 再将其传入探索评论家,
+这是因为预测误差在不同状态下的数值大小可能相差很大,
+从而导致较差的优化动态</p>
+<p><strong>保守 Q 学习(Conservative Q-learning, CQL)算法</strong><br />
+额外降低 Q 值来学习一个保守的、作为下界的 Q 函数, 在训练 Q 函数时, CQL
+会加入一个正则项, 其会最小化 Q
+值的软最大值以及最大化数据集中实际出现的状态—动作对的 Q 值, 完整的 CQL
+目标为 <span class="math display">\[
+\alpha\frac{1}{N}\sum_{i=1}^{N}
+\left(\log\left(\sum_{\mathbf a}\exp(Q(\mathbf s_i,\mathbf
+a))\right)-Q(\mathbf s_i,\mathbf a_i)\right)
+\]</span> <strong>优势加权演员—评论家(Advantage-Weighted Actor-Critic,
+AWAC)算法</strong><br />
+AWAC 使用下面的 Actor 更新来改进策略训练 <span class="math display">\[
+\theta\leftarrow\operatorname*{arg\,max}_{\theta}\;
+\mathbb E_{\mathbf s,\mathbf a\sim\mathcal B}
+\left[\log\pi_\theta(\mathbf a\mid \mathbf
+s)\exp\left(\frac{1}{\lambda}A^{\pi_k}(\mathbf s,\mathbf
+a)\right)\right]
+\]</span> 这一更新类似于加权行为克隆。当 Q 函数退化时,
+该方法就会化为加权行为克隆<br />
+在上述更新中, 智能体会用较大的权重拟合高优势动作,
+而几乎忽略低优势动作<br />
+Q 函数通过时序差分损失(TD Loss)学习, 其目标如下 <span
+class="math display">\[
+\mathbb E_{\mathcal D}
+\left[\left(Q(\mathbf s,\mathbf a)-r(\mathbf s,\mathbf a)+\gamma\mathbb
+E_{\mathbf a&#39;\sim\pi}\left[Q_{\phi_{k-1}}(\mathbf s&#39;,\mathbf
+a&#39;)\right]\right)^2\right]
+\]</span> 下一步动作 <span class="math inline">\(\mathbf a&#39;\)</span>
+是从学得的策略 <span class="math inline">\(\pi\)</span> 中采样的<br />
+这意味着, 如果 <span class="math inline">\(\pi\)</span>
+能够很好地拟合经过加权的行为策略, 就不会采样到 OOD 动作</p>
+<p><strong>隐式 Q 学习(Implicit Q-learning, IQL)算法</strong><br />
+它通过学习 Q 值的期望分位数(expectile)来将 Critic 的学习与 Actor
+学习解耦<br />
+期望分位数是一种与分位数类似的统计量,
+可以视为某个分布所能达到的最大值的一种软版本</p>
+<p>对于随机变量 <span class="math inline">\(X\)</span>, 其期望分位数
+<span class="math inline">\(m_\tau(X)\)</span> 可以通过以下优化问题得到
+<span class="math display">\[
+\operatorname*{arg\,min}_{m_\tau}\;\mathbb E_{x\sim
+X}\left[L_2^\tau(x-m_\tau)\right], \\
+其中\; L_2^\tau(\mu)=\left|\tau-\mathbf 1\{\mu\leq 0\}\right|\mu^2
+\]</span> 当样本 <span class="math inline">\(X\)</span> 高于预测值 <span
+class="math inline">\(m\)</span> 时, 权重为 <span
+class="math inline">\(\tau\)</span>, 当样本 <span
+class="math inline">\(X\)</span> 低于预测值 <span
+class="math inline">\(m\)</span> 时, 权重为 <span
+class="math inline">\(1-\tau\)</span><br />
+这一备份会对数据集中已经采取过的动作保持乐观</p>
+<p>为了避免对状态转移也持乐观估计, 我们需要学习一个独立的价值函数 <span
+class="math inline">\(V(\mathbf s)\)</span>, ,由它执行这种乐观估计<br />
+随后, 使用普通的均方误差损失回归, <span class="math inline">\(Q(\mathbf
+s,\mathbf a)\leftarrow r+\gamma V(\mathbf s&#39;)\)</span>​, 综合起来,
+两个目标函数为 <span class="math display">\[
+L_V(\phi)=\mathbb E_{(\mathbf s,\mathbf a)\sim\mathcal
+D}\left[L_2^\tau\left(Q_\theta(\mathbf s,\mathbf a)-V_\phi(\mathbf
+s)\right)\right], \\
+L_Q(\theta)=\mathbb E_{(\mathbf s,\mathbf a,\mathbf s&#39;)\sim\mathcal
+D}\left[\left(r(\mathbf s,\mathbf a)+\gamma V_\phi(\mathbf
+s&#39;)-Q_\theta(\mathbf s,\mathbf a)\right)^2\right]
+\]</span> Critic 的学习过程具有两个很好的性质<br />
+首先, 它从不查询 OOD 动作, 完全避免了对 OOD 动作的过高估计问题<br />
+然后, Critic 的学习可以在不更新 Actor 的情况下完成, 如果你愿意,
+可以先训练 Critic, 最后再单独训练 Actor</p>
+<h3 id="code-4">Code</h3>
+<p>总的基础还是 hw3 的 <code>dqn_agent.py</code></p>
+<p><img
+src="https://files.seeusercontent.com/2026/09/21/5Wwf/PointmassHard-v0_random.png" /></p>
+<p>在 Random exploration 下, 可怜的小点根本跑不到 target</p>
+<p>先写 <code>rnd_agent.py</code><br />
+<code>rnd_net</code> 和 <code>rnd_target_net</code> 都给你了,
+核心操作就四行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">redictions = self.rnd_net(observations) <span class="comment">#[B, rnd_dim]</span></span><br><span class="line">targets = self.rnd_target_net(observations) <span class="comment">#[B, rnd_dim]</span></span><br><span class="line">rnd_error = torch.norm(predictions - targets, dim=-<span class="number">1</span>) <span class="comment">#[B]</span></span><br><span class="line">rnd_loss = nn.MSELoss()(prediction, target) <span class="comment">#[1]</span></span><br></pre></td></tr></table></figure>
+<p>然后探索稍微变好了一点, 10k step 是这样的</p>
+<p><img
+src="https://files.seeusercontent.com/2026/09/21/nsN8/image-20260921224512902.png" /></p>
+<p>CQL 只用实现一个 loss, 我们改掉 <code>dqn_agent.py</code> 让它输出
+qa_value 和 q_value 的 variable, 然后在这里后处理一下就行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">compute_critic_loss</span>(<span class="params">...</span>) -&gt; <span class="type">Tuple</span>[torch.Tensor, <span class="built_in">dict</span>, <span class="built_in">dict</span>]:</span><br><span class="line">        loss, metrics, variables = <span class="built_in">super</span>().compute_critic_loss(obs, action, reward, next_obs, done)</span><br><span class="line">        qa_values = variables[<span class="string">&quot;qa_values&quot;</span>]</span><br><span class="line">        q_values = variables[<span class="string">&quot;q_values&quot;</span>]</span><br><span class="line">        cql_loss = (self.cql_temperature*torch.logsumexp(qa_values/self.cql_temperature, dim=<span class="number">1</span>) - q_values).mean()</span><br><span class="line">        loss = loss + self.cql_alpha * cql_loss</span><br><span class="line">        metrics[<span class="string">&quot;cql_loss&quot;</span>] = cql_loss.item()</span><br><span class="line">        metrics[<span class="string">&quot;critic_loss&quot;</span>] = loss.item()</span><br><span class="line">        <span class="keyword">return</span> loss, metrics, variables</span><br></pre></td></tr></table></figure>
+<p>这里使用了 <code>cql_temperature</code> 来控制 logsumexp, 有 <span
+class="math inline">\(T\log\sum_{\mathbf a} \exp(Q_{\mathbf
+a}/T)\)</span><br />
+因为 <span class="math inline">\(\dfrac{\partial}{\partial Q_{\mathbf
+a}} \left[ T\log\sum_j e^{Q_j/T} \right] =
+\operatorname{softmax}(Q/T)_{\mathbf a}\)</span>, 所以 T
+较小时梯度集中在最大 Q 动作, 较大时梯度更均匀</p>
+<p><code>metrics</code> 中保存 <code>.item()</code> 得到的 Python 数值,
+脱离计算图, 只能用于记录</p>
+<p>然后看一下 CQL 与 DQN 在 pointmass_easy 下的 100k eval return,
+这不是没区别吗？<strong>(｀皿´＃)</strong></p>
+<p><img
+src="https://files.seeusercontent.com/2026/09/22/ie2R/fa610d6d33bff56b3b6e29a8dd62e824.png" /></p>
+<p>在 pointmass_medium 下确实是 CQL 更好, 不过都是一坨, Pointmass
+使用稀疏奖励, 普通步 -1, 到达终点 0<br />
+现在都是 -60 ~ -40 之间</p>
+<p><img
+src="https://files.seeusercontent.com/2026/09/22/1nZj/94dae258ed1b7d2e1422ad77dcf912ee.png" /></p>
+<p>然后先写 AWAC 再写 IQL, 本质上 IQL 只比 AWAC 多训了一个 <span
+class="math inline">\(V(\mathbf s&#39;)\)</span> 来代替 <span
+class="math inline">\(\mathbb E_{\mathbf a&#39; \sim
+\pi_{new}}[Q(\mathbf s&#39;, \mathbf a&#39;)]\)</span>, 其中 <span
+class="math inline">\(V\)</span> 用了 expectile loss</p>
+<p>我们深入一点 DQN / AWAC / IQL 的细微区别 <span
+class="math display">\[
+y_{\mathrm{DQN}}=r+\gamma(1-d)\max_{a&#39;}Q_{\text{target}}(\mathbf
+s&#39;,\mathbf a&#39;) \\
+y_{\mathrm{AWAC}}=r+\gamma(1-d)\mathbb
+E_{a&#39;\sim\pi(\cdot|s&#39;)}[Q_{\text{target}}(\mathbf s&#39;,\mathbf
+a&#39;)] \\
+y_{\mathrm{IQL}}=r+\gamma(1-d)V_{\text{target}}(\mathbf s&#39;)
+\]</span> 于是 AWAC 需要乘以 prob 来算 advantage</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">compute_advantage</span>(<span class="params">self, observations: torch.Tensor, actions: torch.Tensor, action_dist: <span class="type">Optional</span>[torch.distributions.Categorical] = <span class="literal">None</span></span>):</span><br><span class="line">    qa_values = self.critic(observations)</span><br><span class="line">    q_values = torch.gather(qa_values, dim=<span class="number">1</span>, index=actions.unsqueeze(<span class="number">1</span>)).squeeze(<span class="number">1</span>)</span><br><span class="line">    action_probs = action_dist.probs <span class="comment"># [B, A]</span></span><br><span class="line">    values = torch.<span class="built_in">sum</span>(action_probs*qa_values, dim=<span class="number">1</span>)</span><br><span class="line">    advantages = q_values - values</span><br><span class="line">    <span class="keyword">return</span> advantages</span><br></pre></td></tr></table></figure>
+<p>在 AWAC update actor 时需要 weighted 加权, 在 Lec 16 中有 <span
+class="math display">\[
+\mathbf{\theta}_{\mathrm{new}}=
+\arg\max_{\mathbf{\theta}}\mathbb{E}_{(\mathbf{s},\mathbf{a})\sim\mathcal
+D}
+\left[\underbrace{\frac{1}{Z(\mathbf{s})}\exp\left(\frac{A^{\pi_{\mathrm{old}}}(\mathbf{s},\mathbf{a})}{\lambda}\right)}_{w(\mathbf{s},\mathbf{a})}
+\log\pi_{\mathbf{\theta}}(\mathbf{a}|\mathbf{s})
+\right]
+\]</span> 真实代码实现把归一化的 <span
+class="math inline">\(\dfrac{1}{Z(\mathbf s)}\)</span> 毙掉了, 加入了
+temperature</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">update_actor</span>(<span class="params">self, observations: torch.Tensor, actions: torch.Tensor</span>):</span><br><span class="line">    action_dist = self.actor(observations)</span><br><span class="line">    <span class="keyword">with</span> torch.no_grad():</span><br><span class="line">        advantages = self.compute_advantage(observations, actions, action_dist)</span><br><span class="line">        weights = torch.exp(advantages / self.temperature) <span class="comment"># exp(A/λ)</span></span><br><span class="line">    log_probs = action_dist.log_prob(actions.long())</span><br><span class="line">    loss = -(weights * log_probs).mean()</span><br><span class="line">    self.actor_optimizer.zero_grad()</span><br><span class="line">    loss.backward()</span><br><span class="line">    self.actor_optimizer.step()</span><br><span class="line">    <span class="keyword">return</span> loss.item()</span><br></pre></td></tr></table></figure>
+<p>IQL 真的十分类似, 我就单列个 expectile_loss 的代码吧</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">iql_expectile_loss</span>(<span class="params">expectile: <span class="built_in">float</span>, vs: torch.Tensor, target_qs: torch.Tensor</span></span><br><span class="line"><span class="params"></span>) -&gt; torch.Tensor:</span><br><span class="line">    diff = target_qs-vs</span><br><span class="line">    weight = torch.where(diff&gt;<span class="number">0</span>, expectile, <span class="number">1.0</span>-expectile)</span><br><span class="line">    <span class="keyword">return</span> (weight*diff.<span class="built_in">pow</span>(<span class="number">2</span>)).mean()</span><br></pre></td></tr></table></figure>
+<p>由于时间原因, 就不调超参了, 直接用 RND 收集 50k pointmass_hard
+数据然后比较一下 DQN/CQL/AWAC/IQL 吧</p>
+<p>感觉至少 20k 的数据还是必要的, 不然数据集里面根本没几个探索到终点的,
+offline 也没得学, 但是看效果 DQN&gt;CQL&gt;AWAC=IQL, 估计是我代码的问题,
+还是说一定要 online 微调, 唉唉, 也许上面列出的代码都是错的</p>
+<p><img
+src="https://files.seeusercontent.com/2026/09/23/1pkT/a729d8454d1e782880720a716425ae6b.png" /></p>
+<p>接下来完成 offline to online, 还是在 CQL 上 tuning 吧, 用 100k
+离线数据与 100k 在线数据<br />
+按照代码难度, <code>run_hw5_finetune.py</code> 是最大的,
+原因是代码内部除了 TODO 外也少了一些组件, 例如离线的 RND
+数据收集后我还要手动 <code>replay_buffer.insert(...)</code>, update info
+要注意 use reward<br />
+一个最后才更改的小问题是评估会改变正在采样的环境, 评估开始时会
+<code>env.reset()</code>, 但是返回训练脚本时，observation 不变,
+环境内部却停在评估结束时的状态。gpt 6 sol high 的改法是创建一个
+<code>eval_env</code>, 我不知道有没有用, 听起来挺有道理, 可能这也是上面
+AWAC 和 IQL 代码跑不起来的原因？应该是个小问题, 因为 10k step 才 eval
+一次, 而错配的 state 100 step 内迟早也要 reset 的</p>
+<p>代码可以弄一些 epsilon 退火或者 alpha 退火的花活, 但感觉没啥用,
+重要是 alpha = 0.1 量级而不是 alpha = 1/5/10, 不然太保守了训不出来</p>
+<p>finetune 了一下, 发现在线数据在 hard 环境非常有用, 100k
+在线完全没有收敛, 作业的要求 reward 为 -20 代表最多 20 次动作走到目标点,
+这就要求几乎不能有多余动作了, 试一下 100k 离线与 400k 在线, 即使这样,
+我的 reward 也只会收敛在 -35 左右</p>
+<p><img
+src="https://files.seeusercontent.com/2026/09/24/7bJa/9f9c862098c91cd3d899782a1de5a77d.png" /></p>
+<p>我在网络上查了一些别人的实现, 也问了 AI, 但看来就是这样了,
+这里倍感抱歉</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>CS285 Assignment 笔记</p><p><a href="https://frankly6.cn/2026/10/09/CS285-homework/">https://frankly6.cn/2026/10/09/CS285-homework/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Frankly6</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2026-10-09</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2026-10-09</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习, </a><a class="link-muted" rel="tag" href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习, </a><a class="link-muted" rel="tag" href="/tags/python/">python </a></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-start"><a class="article-nav-prev level level-item link-muted" href="/2026/10/09/CS285-notes/"><i class="level-item fas fa-chevron-left"></i><span class="level-item">CS285 笔记</span></a></div><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2026/10/09/Codeforces-exercises-2025/"><span class="level-item">Codeforces exercises 2025</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.png" alt="Frankly6"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Frankly6</p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">文章</p><div><p class="title">8</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">分类</p><div><p class="title">3</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">标签</p><div><p class="title">7</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">总字数</p><div><p class="title">20.3W</p></div></div></a></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#assignment-1-模仿学习"><span class="level-left"><span class="level-item">1</span><span class="level-item">Assignment 1 模仿学习</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#analysis"><span class="level-left"><span class="level-item">1.1</span><span class="level-item">Analysis</span></span></a></li><li><a class="level is-mobile" href="#code"><span class="level-left"><span class="level-item">1.2</span><span class="level-item">Code</span></span></a></li><li><a class="level is-mobile" href="#extra"><span class="level-left"><span class="level-item">1.3</span><span class="level-item">Extra</span></span></a></li></ul></li><li><a class="level is-mobile" href="#assignment-2-策略梯度"><span class="level-left"><span class="level-item">2</span><span class="level-item">Assignment 2 策略梯度</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#review"><span class="level-left"><span class="level-item">2.1</span><span class="level-item">Review</span></span></a></li><li><a class="level is-mobile" href="#review-analysis"><span class="level-left"><span class="level-item">2.2</span><span class="level-item">Review Analysis</span></span></a></li><li><a class="level is-mobile" href="#code-1"><span class="level-left"><span class="level-item">2.3</span><span class="level-item">Code</span></span></a></li><li><a class="level is-mobile" href="#analysis-1"><span class="level-left"><span class="level-item">2.4</span><span class="level-item">Analysis</span></span></a></li></ul></li><li><a class="level is-mobile" href="#assignment-3-q-learning-与-actor-critic-算法"><span class="level-left"><span class="level-item">3</span><span class="level-item">Assignment 3
+Q-learning 与 Actor-Critic 算法</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#questionnaire"><span class="level-left"><span class="level-item">3.1</span><span class="level-item">Questionnaire</span></span></a></li><li><a class="level is-mobile" href="#code-2"><span class="level-left"><span class="level-item">3.2</span><span class="level-item">Code</span></span></a></li></ul></li><li><a class="level is-mobile" href="#assignment-4-model-based-rl"><span class="level-left"><span class="level-item">4</span><span class="level-item">Assignment 4 Model-Based RL</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#analysis-2"><span class="level-left"><span class="level-item">4.1</span><span class="level-item">Analysis</span></span></a></li><li><a class="level is-mobile" href="#overview"><span class="level-left"><span class="level-item">4.2</span><span class="level-item">Overview</span></span></a></li><li><a class="level is-mobile" href="#code-3"><span class="level-left"><span class="level-item">4.3</span><span class="level-item">Code</span></span></a></li></ul></li><li><a class="level is-mobile" href="#assignment-5-exploration-与-offline-rl"><span class="level-left"><span class="level-item">5</span><span class="level-item">Assignment 5 Exploration
+与 Offline RL</span></span></a><ul class="menu-list"><li><a class="level is-mobile" href="#analysis-3"><span class="level-left"><span class="level-item">5.1</span><span class="level-item">Analysis</span></span></a></li><li><a class="level is-mobile" href="#review-1"><span class="level-left"><span class="level-item">5.2</span><span class="level-item">Review</span></span></a></li><li><a class="level is-mobile" href="#code-4"><span class="level-left"><span class="level-item">5.3</span><span class="level-item">Code</span></span></a></li></ul></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/newlogo.png" alt="frankly6" height="28"></a><p class="is-size-7"><span>&copy; 2026 Frankly6</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/moment.js/2.22.2/moment-with-locales.min.js"></script><script src="https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js" defer></script><script>moment.locale("zh-cn");</script><script>var IcarusThemeSettings = {
+            article: {
+                highlight: {
+                    clipboard: true,
+                    fold: 'unfolded'
+                }
+            }
+        };</script><script data-pjax src="/js/column.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><script src="https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js" defer></script><script src="https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js" defer></script><script>window.addEventListener("load", () => {
+            if (typeof $.fn.lightGallery === 'function') {
+                $('.article').lightGallery({ selector: '.gallery-item' });
+            }
+            if (typeof $.fn.justifiedGallery === 'function') {
+                if ($('.justified-gallery > p > .gallery-item').length) {
+                    $('.justified-gallery > p > .gallery-item').unwrap();
+                }
+                $('.justified-gallery').justifiedGallery();
+            }
+        });</script><!--!--><!--!--><script type="text/javascript" id="MathJax-script" async>MathJax = {
+      tex: {
+        inlineMath: [['$', '$'], ['\\(', '\\)']]
+      },
+      svg: {
+        fontCache: 'global'
+      },
+      chtml: {
+        matchFontHeight: false
+      }
+    };</script><script src="https://cdnjs.loli.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js"></script><script src="https://cdnjs.loli.net/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
