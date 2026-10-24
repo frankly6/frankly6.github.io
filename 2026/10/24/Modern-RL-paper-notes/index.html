@@ -1,0 +1,525 @@
+<!doctype html>
+<html lang="zh"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>前沿 RL 论文阅读 - frankly6</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="frankly6"><meta name="msapplication-TileImage" content="/img/newfavicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="frankly6"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="CS285 笔记的 follow-up, 默认读者拥有 RL 基础"><meta property="og:type" content="blog"><meta property="og:title" content="前沿 RL 论文阅读"><meta property="og:url" content="https://frankly6.cn/2026/10/24/Modern-RL-paper-notes/"><meta property="og:site_name" content="frankly6"><meta property="og:description" content="CS285 笔记的 follow-up, 默认读者拥有 RL 基础"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://frankly6.cn/images/covers/modern-rl-paper-notes.webp"><meta property="article:published_time" content="2026-10-24T15:00:00.000Z"><meta property="article:modified_time" content="2026-10-24T15:38:07.111Z"><meta property="article:author" content="Frankly6"><meta property="article:tag" content="python"><meta property="article:tag" content="深度学习"><meta property="article:tag" content="强化学习"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://frankly6.cn/images/covers/modern-rl-paper-notes.webp"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://frankly6.cn/2026/10/24/Modern-RL-paper-notes/"},"headline":"前沿 RL 论文阅读","image":["https://frankly6.cn/images/covers/modern-rl-paper-notes.webp"],"datePublished":"2026-10-24T15:00:00.000Z","dateModified":"2026-10-24T15:38:07.111Z","author":{"@type":"Person","name":"Frankly6"},"publisher":{"@type":"Organization","name":"frankly6","logo":{"@type":"ImageObject","url":"https://frankly6.cn/img/newlogo-optimized.png"}},"description":"CS285 笔记的 follow-up, 默认读者拥有 RL 基础"}</script><link rel="canonical" href="https://frankly6.cn/2026/10/24/Modern-RL-paper-notes/"><link rel="icon" href="/img/newfavicon.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/6.0.0/css/all.min.css"><link data-pjax rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.loli.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+  (function () {
+      function switchTab() {
+          if (!location.hash) {
+            return;
+          }
+
+          const id = '#' + CSS.escape(location.hash.substring(1));
+          const $tabMenu = document.querySelector(`.tabs a[href="${id}"]`);
+          if (!$tabMenu) {
+            return;
+          }
+
+          const $tabMenuContainer = $tabMenu.parentElement.parentElement;
+          Array.from($tabMenuContainer.children).forEach($menu => $menu.classList.remove('is-active'));
+          Array.from($tabMenuContainer.querySelectorAll('a'))
+              .map($menu => document.getElementById($menu.getAttribute("href").substring(1)))
+              .forEach($content => $content.classList.add('is-hidden'));
+
+          if ($tabMenu) {
+              $tabMenu.parentElement.classList.add('is-active');
+          }
+          const $activeTab = document.querySelector(id);
+          if ($activeTab) {
+              $activeTab.classList.remove('is-hidden');
+          }
+      }
+      switchTab();
+      window.addEventListener('hashchange', switchTab, false);
+  })();
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/newlogo-optimized.png" alt="frankly6" height="28" decoding="async"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/images/covers/modern-rl-paper-notes.webp" alt="前沿 RL 论文阅读" decoding="async" loading="eager" fetchpriority="high"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><i class="far fa-calendar-alt"> </i><time datetime="2026-10-24T15:00:00.000Z" title="2026-10-24T15:00:00.000Z">2026-10-24</time></span><span class="level-item is-hidden-mobile"><i class="far fa-calendar-check"> </i><time datetime="2026-10-24T15:38:07.111Z" title="2026-10-24T15:38:07.111Z">2026-10-24</time></span><span class="level-item"><a class="link-muted" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a></span><span class="level-item">1 小时读完 (大约6900个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">前沿 RL 论文阅读</h1><div class="content"><p>一些前沿(after 2025)的 RL 论文阅读, 纯粹个人偏见, 拒绝客观分析,
+滑香蕉皮式写作, 捉摸不定更新</p>
+<p>2026/10/24 更新 <a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2603.18202">R2-Dreamer</a></p>
+<h2 id="r2-dreamer">R2-Dreamer</h2>
+<p>默认读者拥有 Model-based RL 与 Dreamer 系列文章的基础</p>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2603.18202">R2-Dreamer —— ICLR 2026
+Poster</a><br />
+<a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/2014481883858249310">知乎分析 /
+翻译</a></p>
+<p>随着时代的发展, Model-based RL 的 RL 问题已经大部分被解决, 而 Model
+问题还仍然存在</p>
+<p>总的来说, Model
+的目标是现实环境的简化<strong>表征(representation)</strong>,<br />
+我们可以用监督学习来得到这种表征, 但它是最优的吗？</p>
+<p>什么是最优表征？对于 Model 而言, 关心我们想要关心的世界动态与交互,
+忽略背景(background)与 task-irrelevent 的东西,
+这和纯粹的监督学习目标可能有较大偏差</p>
+<p>近年来最成功的方法就是 <a
+target="_blank" rel="noopener" href="https://www.nature.com/articles/s41586-025-08744-2">Dreamer
+V3</a>, 原来它发了 Nature, 怪不得这么多 follow work<br />
+Dreamer-like 的文章通过<strong>优化像素级重建目标</strong>来学习表征, 以
+DreamerV3 为例, 原始图像为 <span class="math inline">\(x\)</span>,
+之前的 Seq Model 隐状态为 <span class="math inline">\(h\)</span>,
+先学表征 Model <span class="math inline">\(z \sim
+q_\phi(z|h,x)\)</span>, 再学 Decoder <span class="math inline">\(\hat x
+\sim p_\phi(\hat x|h,z)\)</span>, 然后做类似 ELBO 的东西来优化重建,
+也可以说这种方法是 Decoder-based 的。<br />
+这种做法会在什么任务上折戟？在一些 small but task-critical objects
+存在的任务上会失败</p>
+<p><img
+src="https://files.seeusercontent.com/2026/10/22/i9Ap/162c030b33e7d183e3c172f72b364174.png" decoding="async" loading="lazy"></p>
+<p>这是 Atari 100k benchmark 中的 Venture 游戏, 人物是那个 1x1 pixel
+的小点, 有四个开口的房间需要你探索, 进入其中会转变地图<br />
+有很多因素在阻碍 Dreamer 架构对我们人物的关心, 例如误差重建中会产生
+<span class="math inline">\(\| x - \hat x \|^2\)</span> 这样的项, 读入的
+CNN 会缩放和下采样, KL 正则化会取舍预测, 预测背景多么简单,
+它不会动又足够明显, 相反, 在按下移动键后像素点飞速移动怎么能看见呢？</p>
+<p>当然这个例子有点极端, 我倾向于当模型已经吃完重建背景的 easy-lunch
+后会去关心一下移动键到底造成了什么影响, 不过在这里 CNN
+的下采样可能都是致命的</p>
+<p><img
+src="https://files.seeusercontent.com/2026/10/22/g4Ph/1b85b47ff839bfa6da90e46ff25d0965.png" decoding="async" loading="lazy"></p>
+<p>Venture 的测试得分, 六列分别为 Random, Gamer, Human Record, PPO,
+MuZero, Dreamer 的得分, 在这里是 PPO 最优</p>
+<hr />
+<p>因此, 虽然 pixel-reconstruction 很自然并且常见,
+但我们有时候需要抛弃它, 抛弃这自然的监督方法<br />
+为了训练 Model, 我们需要<strong>自监督学习(Self-Supervised Learning,
+SSL)</strong>方法了, 要构建某种 self-supervised losses</p>
+<p>在这里需要引入 <strong>数据增强(Data Augmentation, DA)</strong> 技术,
+也引出了<strong>表征崩溃(representation collapse)</strong>的问题<br />
+数据增强的思想是这样的, 例如我们希望 Model 不要学习什么
+"背景颜色对运动的影响", 于是我们在输入做<strong>颜色抖动(color
+jittering)</strong>,
+并且强制颜色抖动前后模型学习的表征是<strong>一样</strong>的。我们 "增强"
+什么其实是希望模型 "不去学习" 某些东西</p>
+<p>这个方法有两个问题,<br />
+一是 Ad-hoc, 如果我们做一个红灯停绿灯行的 Model, 显然不能 color
+jittering; 如果我们的问题也有 small but task-critical objects,
+那就(可能)不能做 random shifting, etc.<br />
+更大的问题在于表征崩溃, 所有 DA 方法处于一种 "既要又要" 的状态,
+而对于模型最好的摆烂方法就是——对所有输入都输出同样的向量</p>
+<hr />
+<p>在两类方法之外, 更多的修修补补来源于<strong>辅助目标(auxiliary
+objectives) / 辅助输入</strong>, 可以预测奖励, 可以额外预测
+"事件"(画面的大幅改变)<a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2601.19336">From
+Observations to Events, ICLR 2026</a>,
+可以加入一个冻结的视觉分割模型并通过 few-shot 标注给后续 model
+输入直接把主角 mask 给出来<a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2501.16443">OC-STORM, ICLR 2026</a></p>
+<hr />
+<p>讲到这里, 我们还没有说文章想做什么, 简单来说是 DA-free
+的内部正则化</p>
+<p>我们可以说 R2-Dreamer 是把 DreamerV3 与 <a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2103.03230">Barlow Twins</a> 做了个 A+B,
+也可以说它 "开创了 Decoder-free + DA-free 的 Model-based RL 范式,
+伟大之作, <a
+target="_blank" rel="noopener" href="https://openreview.net/forum?id=Je2QqXrcQq">Openreview 8 8 4 4</a>
+实至名归"</p>
+<blockquote>
+<p>所以 Barlow Twins 是什么？<br />
+Barlow Twins 是篇 SSL 领域文章, 被引量 4000+<br />
+之前的 SSL
+文章是如何避免坍塌的？负样本、不对称结构、stop-gradient、etc.<br />
+本文在数学上更加本质, 首先, SSL 的核心,
+<strong>让同一张图像的两种增强视图产生一致的特征</strong>, 要保留</p>
+<p>然后, 重新审视, 坍塌是什么? 一种常见的坍塌,
+就是很多特征维度实际上只剩下同一个信号, 维度的相关系数接近 1,
+对于图像的两种视图, 计算相关性矩阵,
+对非对角元素(不同的特征)施加平方惩罚, 例如 <span
+class="math inline">\(\mathcal L_{\mathrm{redundancy}}
+=\lambda\sum_{i\ne j}C_{ij}^{2}\)</span>, 其中 <span
+class="math inline">\(C_{ij} =\dfrac{\operatorname{Cov}(a_i,b_j)}
+{\sigma_{a_i}\sigma_{b_j}} \in[-1,1]\)</span>
+就可以防止特征维度的直接复制、放大复制、反号复制<br />
+对于相关性矩阵的对角元素(两视图对应的特征), 我们要求其相关性接近 1, 于是
+<span class="math inline">\(\mathcal
+L_{\mathrm{invariance}}=\sum_i(1-C_{ii})^2\)</span></p>
+<p><img
+src="https://files.seeusercontent.com/2026/10/22/9Oaw/fe9fb2e4d7f7e54a26737884653bf079.png" decoding="async" loading="lazy"></p>
+<p>往深了扯, 这叫做去冗余, "神经科学家 Horace Barlow 提出,
+感官输入包含大量冗余, balabala"<br />
+往浅了讲, 这是不是类似白化操作加上一个对齐?</p>
+</blockquote>
+<p>Barlow Twin 的做法是对一个包含 <span class="math inline">\(N\)</span>
+张图像的 batch, 每张图像分别做两次随机增强，例如裁剪、颜色扰动、模糊,
+得到两种视图, <span class="math inline">\(x_b \longrightarrow
+\begin{cases} y_b^A=t_A(x_b)\\ y_b^B=t_B(x_b) \end{cases}\)</span>,
+然后经过<strong>共享参数</strong>的编码器和投影器 <span
+class="math inline">\(z_b^A=g_\theta(f_\theta(y_b^A)),\;
+z_b^B=g_\theta(f_\theta(y_b^B))\)</span>, 在两个(Twin) <span
+class="math inline">\(z\)</span> 上算 <span
+class="math inline">\(\mathcal L_{\text{BT}} = \mathcal
+L_{\mathrm{redundancy}} + \mathcal L_{\mathrm{invariance}}\)</span></p>
+<p>在 R2-Dreamer 的语境下呢? 我们不是说好 DA-free 了吗?</p>
+<p><img
+src="https://files.seeusercontent.com/2026/10/22/xX8t/c785b184cff5984e8e3f6510f3fa3451.png" decoding="async" loading="lazy"></p>
+<p>我们看看 图像/观察 是怎么在网络里处理流动的</p>
+<p><img
+src="https://files.seeusercontent.com/2026/10/22/Fa1g/5d95c683f1760f0c360945101b903323.png" decoding="async" loading="lazy"></p>
+<p><span class="math inline">\(\boldsymbol o\)</span> 是原始的图像观测,
+<span class="math inline">\(\boldsymbol e\)</span> 是图像的特征,
+已经是一种表征了, 我们做网络 <span class="math inline">\(e =
+f_\phi(o)\)</span> 得到<br />
+而 <span class="math inline">\(\boldsymbol z\)</span>
+才是世界模型的潜状态, ​它包含了历史信息 <span
+class="math inline">\(h\)</span>, 有网络 <span class="math inline">\(z =
+q_\phi(z|h,e)\)</span>, 内含了 Dynamic</p>
+<p>如果是 Dreamer, 我们要返回直到 <span class="math inline">\(\hat
+{\boldsymbol o}\)</span> 为止, 但这是 R2-Dreamer, 我们返回 <span
+class="math inline">\(k\)</span> 做 Barlow Twin 就行了, 这里的 <span
+class="math inline">\(\boldsymbol s = (\boldsymbol h, \boldsymbol
+z)\)</span>, 然后 Projector 比 Decoder 轻量多了, 只是一层不带 bias 的
+MLP, <span class="math inline">\(k = f_\phi(s)\)</span></p>
+<p>对于 Loss, 作者专门把 DreamerV3 的 Reconstruction Loss 摘了出来, 换成
+Barlow Twin Loss 就行了</p>
+<p><img
+src="https://files.seeusercontent.com/2026/10/22/jQo1/e81434f9bb2fb61d467091ed5080d6b5.png" decoding="async" loading="lazy"></p>
+<p>对于后面 RL 的 Actor-Critic 部分, 相较于 DreamerV3 没看到任何改动</p>
+<hr />
+<p>实验通常是 RL 不得不品的一环, 在这里不知道能烧掉多少 GPU Hour,
+我们对比的主要模型为</p>
+<ul>
+<li><p>DreamerV3</p></li>
+<li><p>Dreamer-InfoNCE(用来测试在不用图像重建时,
+对比学习是否足以替代冗余减少目标)<br />
+InfoNCE 用于对比学习, 使用负样本迫使模型必须将不同样本的表征推开,
+从而维持表征的多样性</p></li>
+<li><p>DreamerPro(感觉像是 DreamerV3 + DA)<br />
+同样不重建图像, 但使用随机图像平移等 DA, 有两个 Encoder</p></li>
+<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2107.09645">DrQ-v2</a>(model-free
+Actor–Critic baseline)<br />
+这文章本来就在我的 read list 上, 我们 divert 一下来讲这篇文章<br />
+我个人认为, model-free 与 DA 更为适宜, 如果本来 model-based
+就是为了减少采样, 再加入 DA 会不会导致某种误差的累计？当然也可以说
+model-based RL + DA 是极致 sample-efficient 的<br />
+DrQ-v2 是 <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2004.13649">DrQ</a> 的 robust
+版本, DA 方法包括</p>
+<ul>
+<li>随机平移 + 双线性插值(我上次看到这个还是做 Rol Align……)</li>
+<li>对下一状态的多个增强版本计算 target, 再取平均, <span
+class="math inline">\(y=r+\gamma\frac1K\sum_{k=1}^{K}
+Q_{\bar\theta}\big(f(s&#39;,\nu&#39;_k),a&#39;_k\big)\)</span>​</li>
+<li>让当前状态的多个增强版本拟合同一个 target, <span
+class="math inline">\(\mathcal L_Q= \frac1M\sum_{m=1}^{M}
+\left[Q_\theta(f(s,\nu_m),a)-y\right]^2\)</span>​</li>
+</ul>
+<p>无模型的 DrQ-v2 在采样效率上可以与基于模型的 Dreamer-v2,
+收敛速度大幅领先啊<br />
+DrQ 好像很简单, 它只是把 random shift 在 RL 上用到了极致,
+然后调参调到完美</p></li>
+<li><p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2310.16828">TD-MPC2, ICLR
+2024</a>: 学习潜在动力学, 再在线规划动作<br />
+这篇文章有很多 DreamerV3 的 Trick, see <a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/676110237">知乎分析</a></p>
+<blockquote>
+<p>MPC 大概都类似这样:<br />
+在推理阶段, 对于当前的状态 <span class="math inline">\(s\)</span>, 在
+Dynamic model 上使用 policy 先验地 rollout 多条轨迹, 再随机采样 action
+来 rollout 多条轨迹, 使用 Reward 和 Q function 进行判别评估, 选取最好的
+top k 条轨迹进行 CEM 优化, 经过多轮迭代最终找到一条表现最好的轨迹,
+将轨迹的第一个 action 提取出来在环境中执行</p>
+</blockquote>
+<p>我感觉应该单独分析一下这篇文章, idea 和 engineering 都很好,
+我只是想起了自己训 MPC 的悲伤回忆, 决策太慢了</p></li>
+</ul>
+<p>在 Meta-World, DMC, DMC-subtle(DMC 中的任务关键对象被缩小) benchmark
+上测试</p>
+<p><img
+src="https://files.seeusercontent.com/2026/10/22/si4K/bd8689759cb57ce7cc034ea5c92f97ee.png" decoding="async" loading="lazy"></p>
+<p>R2-Dreamer 当然是最优的, 这里的最优性在 DMC-Subtle 上最明显<br />
+R2-Dreamer 的显著性图清晰地聚焦于目标,
+表明其策略建立在任务关键的视觉证据之上</p>
+<p><img
+src="https://files.seeusercontent.com/2026/10/22/uK6n/cfd6aaff719650ad1f2b3e77230a59e1.png" decoding="async" loading="lazy"></p>
+<p>在消融实验中, R2-Dreamer 在加上 DA 后仅有小幅边际提升, 而在
+DMC-subtle 上用 DA 会导致性能下降, 证明确实其是 DA-free 的, 而
+DreamerPro 没了 DA 就崩塌了</p>
+<p><img
+src="https://files.seeusercontent.com/2026/10/22/A0cl/9339b72380d46cf5c225ddc222ec2c08.png" decoding="async" loading="lazy"></p>
+<p>同时, R2-Dreamer 更快, 速度是 DreamerV3 的 1.59x</p>
+<p>Future Work 是 Dynamic + Irrelevant Background, 以及 Scaling to
+high-dimensional tasks</p>
+<p>总体来讲我挺喜欢这篇文章, OpenReview 上的主要问题是没有 TD-MPC2
+比较(后面加上了), DMC-subtle 的实验把文章方法的优势完全体现出来了,
+传统的 benchmark 进步不算多</p>
+<p>Appendix A 把 Loss 的设计解释为互信息的光荣传统,
+是一些高级的没用公式, 噢, Barlow Twins
+原论文也有这一部分在算互信息<br />
+Appendix BCDE 放的 Detailed Result, 不看<br />
+Appendix F 是超参, 以后抄<br />
+Appendix G 是 representation loss 的 pseudo code, 以后一起抄</p>
+<hr />
+<p>我们看一下代码, 包括之前欠的 Dreamer 的 engineering 部分, 代码很简练,
+而且还有点注释</p>
+<p>论文有点不对劲, 没讲不同 Experiments 的 Model Size, 我看 DreamerV3
+训个 Atari100K 都要上 200M size 的 Model, 但代码库默认用的 12M size
+模型<br />
+一个复现的起点是用 12M para 的来训 DMC_walker 来验证论文声称的 4.4 RTX
+3080 Ti GPU hour,<br />
+但我没卡, 先看代码, 12M para model 的大头就是 RSSM</p>
+<figure class="highlight plaintext"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">Encoder CNN shapes: &#123;&#x27;image&#x27;: (64, 64, 3)&#125;</span><br><span class="line">Encoder MLP shapes: &#123;&#125;</span><br><span class="line">     5,979,648: rssm</span><br><span class="line">       791,052: actor</span><br><span class="line">       853,503: value</span><br><span class="line">       721,407: reward</span><br><span class="line">       656,129: cont</span><br><span class="line">       220,416: encoder</span><br><span class="line">     2,621,440: projector</span><br></pre></td></tr></table></figure>
+<p>RSSM 架构从 PlaNet 用到了 DreamerV3, 然后随着 Dreamer-like
+文章的发展弄得到处都是</p>
+<p><img
+src="https://files.seeusercontent.com/2026/08/23/6mcO/c8cd1f0691950c2695a211a57d29f7e6.png" decoding="async" loading="lazy"></p>
+<p>其示意图只出现在 PlaNet 中, 其中符号与 R2-Dreamer 不同,
+我们的符号如下</p>
+<p><img
+src="https://files.seeusercontent.com/2026/10/22/Fa1g/5d95c683f1760f0c360945101b903323.png" decoding="async" loading="lazy"></p>
+<table>
+<colgroup>
+<col style="width: 11%" />
+<col style="width: 10%" />
+<col style="width: 41%" />
+<col style="width: 36%" />
+</colgroup>
+<thead>
+<tr>
+<th>数学符号</th>
+<th>代码名</th>
+<th>作用</th>
+<th>默认单步形状(12M Para 下)</th>
+</tr>
+</thead>
+<tbody>
+<tr>
+<td><span class="math inline">\(h_t\)</span></td>
+<td><code>deter</code></td>
+<td>递归记忆, 保存历史信息</td>
+<td><code>[B, 2048]</code></td>
+</tr>
+<tr>
+<td><span class="math inline">\(z_t\)</span></td>
+<td><code>stoch</code></td>
+<td>根据当前信息采样的离散潜状态</td>
+<td><code>[B, 32, 16]</code></td>
+</tr>
+<tr>
+<td><span class="math inline">\(e_t\)</span></td>
+<td><code>embed</code></td>
+<td>当前观测的编码特征</td>
+<td><code>[B, E]</code></td>
+</tr>
+</tbody>
+</table>
+<p>其中还有大状态 <span class="math inline">\(s_t = (h_t, z_t)\)</span>​,
+这部分对应</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">get_feat</span>(<span class="params">self, stoch, deter</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Flatten stoch and concatenate with deter.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># stock shape (B, S, K), deter shape (B, D)</span></span><br><span class="line">    stoch = stoch.reshape(*stoch.shape[:-<span class="number">2</span>], self._stoch * self._discrete)</span><br><span class="line">    <span class="comment"># feature shape(B, S*K + D)</span></span><br><span class="line">    <span class="keyword">return</span> torch.cat([stoch, deter], -<span class="number">1</span>) <span class="comment"># s = (z,h)</span></span><br></pre></td></tr></table></figure>
+<p><code>class Deter(nn.Module):</code> 用来更新 <span
+class="math inline">\(h_t = f_\phi(z_{t-1}, h_{t-1}, a_{t-1})\)</span>,
+对应 <code>forward</code> 方法<br />
+一个有趣的细节在于块大小 <span class="math inline">\(G=8\)</span>,
+<code>BlockLinear</code>
+通过<strong>去除块间更新</strong>来大幅减少参数, 不然 Linear 层太大了,
+可以用 <span class="math inline">\(N_{\mathrm{hid}} =G\left(\frac
+DG+3U\right)\frac DG\)</span> 来算, 这里 <span
+class="math inline">\(U=256\)</span> 是 <span
+class="math inline">\(z,h,a\)</span> 的投影宽度, <span
+class="math inline">\(D = 2048\)</span>​</p>
+<blockquote>
+<p>块对角线性层: 权重矩阵的非对角线区域全为 0,
+只有对角线上的多个小矩阵块有参数</p>
+</blockquote>
+<p>GRU 作为这里的 RNN 架构, 回忆一下</p>
+<p><img
+src="https://files.seeusercontent.com/2026/10/24/1Jfv/v2-a6e1e233963e33a739ffc66bff19f.jpg" decoding="async" loading="lazy"></p>
+<p>于是有整体 <code>forward</code> 代码</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">forward</span>(<span class="params">self, stoch, deter, action</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Deterministic state transition (block-GRU style).&quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># (B, S, K), (B, D), (B, A)</span></span><br><span class="line">    B = action.shape[<span class="number">0</span>]</span><br><span class="line">    stoch = stoch.reshape(B, -<span class="number">1</span>) <span class="comment"># Flatten, (B, S*K)</span></span><br><span class="line">    action = action / torch.clip(torch.<span class="built_in">abs</span>(action), <span class="built_in">min</span>=<span class="number">1.0</span>).detach() <span class="comment"># normalize action, (B, U)</span></span><br><span class="line">    x0 = self._dyn_in0(deter) <span class="comment">#(B, U)</span></span><br><span class="line">    x1 = self._dyn_in1(stoch) <span class="comment">#(B, U)</span></span><br><span class="line">    x2 = self._dyn_in2(action) <span class="comment">#(B, U)</span></span><br><span class="line">    <span class="comment"># _dyn_in =&gt; nn.Sequential(Linear + RMSNorm + SiLU), 输出 256 维, 拼成 768 维的公共输入</span></span><br><span class="line">    x = torch.cat([x0, x1, x2], -<span class="number">1</span>) <span class="comment"># 拼接三个投影, (B, 3*U)</span></span><br><span class="line">    x = x.unsqueeze(-<span class="number">2</span>).expand(-<span class="number">1</span>, self.blocks, -<span class="number">1</span>) <span class="comment"># 将共享上下文提供给每个 block, (B, G, 3*U)</span></span><br><span class="line">    <span class="comment"># 辅助函数 self.flat2group = lambda x: x.reshape(*x.shape[:-1], self.blocks, -1)</span></span><br><span class="line">    <span class="comment"># 辅助函数 self.group2flat = lambda x: x.reshape(*x.shape[:-2], -1)</span></span><br><span class="line">    <span class="comment"># (B, G, D/G) -&gt; (B, G, D/G + 3*U) -&gt; (B, D + 3*U*G)</span></span><br><span class="line">    x = self.group2flat(torch.cat([self.flat2group(deter), x], -<span class="number">1</span>))</span><br><span class="line">    x = self._dyn_hid(x) <span class="comment"># (B, D)    </span></span><br><span class="line">    <span class="comment"># _dyn_hid =&gt; nn.Sequential(BlockLinear + RMSNorm + SiLU)    </span></span><br><span class="line">    x = self._dyn_gru(x) <span class="comment"># (B, 3*D)</span></span><br><span class="line">    <span class="comment"># _dyn_gru =&gt; nn.Sequential(BlockLinear + RMSNorm + SiLU), 后续分别生成各自需要的参数</span></span><br><span class="line">    gates = torch.chunk(self.flat2group(x), <span class="number">3</span>, dim=-<span class="number">1</span>) <span class="comment"># (B, G, 3*D/G) 拆分三个门</span></span><br><span class="line">    reset, cand, update = (self.group2flat(x) <span class="keyword">for</span> x <span class="keyword">in</span> gates) <span class="comment"># (B, D)</span></span><br><span class="line">    reset = torch.sigmoid(reset)</span><br><span class="line">    cand = torch.tanh(reset * cand)</span><br><span class="line">    update = torch.sigmoid(update - <span class="number">1</span>) <span class="comment"># 一个小超参, 使得新记忆占比变为 27%(σ(-1))左右</span></span><br><span class="line">    <span class="keyword">return</span> update * cand + (<span class="number">1</span> - update) * deter</span><br></pre></td></tr></table></figure>
+<p>这个代码得到了新的 <span class="math inline">\(h_t = f_\phi(z_{t-1},
+h_{t-1}, a_{t-1})\)</span></p>
+<p>然后后面的 <code>class RSSM</code> 要用刚得出来的 <span
+class="math inline">\(h_t\)</span> 去算 <span class="math inline">\(z_t,
+\hat z_t\)</span> 了, <code>self._deter_net = Deter(...)</code>
+加载上面架构<br />
+这个 <span class="math inline">\(z\)</span> 是 categorical 的, 在 12M
+para 模型下是 <span class="math inline">\(z_t\in\{0,1\}^{32\times
+16}\)</span> 的, 每一行是一个分类变量的 one-hot 结果</p>
+<p>后验 <span class="math inline">\(z_t \sim q_\phi(z_t | h_t,
+e_t)\)</span> 对应 <code>self._obs_net</code>, [Linear → RMSNorm → SiLU]
+× obs_layers 后接 linear + reshape<br />
+先验 <span class="math inline">\(\hat z_t \sim p_\phi(\hat
+z_t|h_t)\)</span>​ 对应 <code>self._img_net</code>, [Linear → RMSNorm →
+SiLU] × img_layers 后接 linear + reshape</p>
+<p>对于单个(后验)时间步, 有</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">obs_step</span>(<span class="params">self, stoch, deter, prev_action, embed, reset</span>):</span><br><span class="line">    <span class="string">&quot;&quot;&quot;Single posterior step.&quot;&quot;&quot;</span></span><br><span class="line">    <span class="comment"># (B, S, K), (B, D), (B, A), (B, E), (B,)</span></span><br><span class="line">    stoch = torch.where(rpad(reset, stoch.dim() - <span class="built_in">int</span>(reset.dim())), torch.zeros_like(stoch), stoch)</span><br><span class="line">    deter = torch.where(rpad(reset, deter.dim() - <span class="built_in">int</span>(reset.dim())), torch.zeros_like(deter), deter)</span><br><span class="line">    prev_action = torch.where(</span><br><span class="line">        rpad(reset, prev_action.dim() - <span class="built_in">int</span>(reset.dim())), torch.zeros_like(prev_action), prev_action</span><br><span class="line">    )</span><br><span class="line">    <span class="comment"># reset = true 时清零</span></span><br><span class="line">    deter = self._deter_net(stoch, deter, prev_action) <span class="comment"># (B, D)</span></span><br><span class="line">    x = torch.cat([deter, embed], dim=-<span class="number">1</span>) <span class="comment"># (B, D + E), 后验用</span></span><br><span class="line">    logit = self._obs_net(x) <span class="comment"># (B, S, K)</span></span><br><span class="line">    stoch = self.get_dist(logit).rsample() <span class="comment"># straight-through Gumbel-Softmax 技巧</span></span><br><span class="line">    <span class="keyword">return</span> stoch, deter, logit <span class="comment"># new_z, new_h, logit</span></span><br></pre></td></tr></table></figure>
+<p>这里的 straight-through Gumbel-Softmax 技巧解决了 argmax
+采样不可导问题, 就是把 argmax 变成 softmax 了, 类似于</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">sample = one_hot(draw(logits))       		<span class="comment"># sample has no gradient</span></span><br><span class="line">probs = softmax(logits)             		<span class="comment"># want gradient of this</span></span><br><span class="line">sample = sample + probs - stop_grad(probs)</span><br></pre></td></tr></table></figure>
+<p>单个先验时间步不用清零, 直接
+<code>logit = self._img_net(deter)</code>, 然后用上文技巧就行</p>
+<p><code>observe():</code> 把后验时间步 stack 掉,
+沿真实观测序列执行后验推断, 得到 stochs(B, T, S, K), deters(B, T, D),
+logits(B, T, S, K)</p>
+<p>最后算先验后验的 KL loss, 即 <span class="math inline">\(\mathcal
+L_{\rm dyn}(t)\)</span> 和 <span class="math inline">\(\mathcal L_{\rm
+rep}(t)\)</span>, 一个小细节是混入了 0.01 的均匀分布防止概率极端, 因为
+KL 散度是相对的, 为 0 不够稳定</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">kl_loss</span>(<span class="params">self, post_logit, prior_logit, free</span>):</span><br><span class="line">    kld = dists.kl</span><br><span class="line">    post_logit = dists.unimix_logits(post_logit, self._unimix_ratio)</span><br><span class="line">    prior_logit = dists.unimix_logits(prior_logit, self._unimix_ratio)</span><br><span class="line">    rep_loss = kld(post_logit, prior_logit.detach()).<span class="built_in">sum</span>(-<span class="number">1</span>)</span><br><span class="line">    dyn_loss = kld(post_logit.detach(), prior_logit).<span class="built_in">sum</span>(-<span class="number">1</span>)</span><br><span class="line">    <span class="comment"># Clipped gradients are not backpropagated using torch.clip.</span></span><br><span class="line">    rep_loss = torch.clip(rep_loss, <span class="built_in">min</span>=free) <span class="comment"># free = 1</span></span><br><span class="line">    dyn_loss = torch.clip(dyn_loss, <span class="built_in">min</span>=free) </span><br><span class="line">    <span class="keyword">return</span> dyn_loss, rep_loss</span><br></pre></td></tr></table></figure>
+<hr />
+<p>然后读核心的 <code>dreamer.py</code> 代码, 我看 <code>__init__</code>
+都要老半天, 组件太多了, 把 dreamerV3 / r2dreamer / dreamer-infoNCE /
+dreamerpro 都缝进来了, 我们只关心 R2-Dreamer</p>
+<p>加入 encoder <span class="math inline">\(e_t = f_\phi(o_t)\)</span>,
+这东西在 DreamerV3 中没有, 纯粹是为了 BT loss 出现的<br />
+encoder 的配置要适配所有的环境, 图像字段要配 CNN, 数值段要配 MLP,
+在具体的 <code>env</code> 里也会配置 encoder keys 来规定任务字段,
+例如默认 <code>dmc_vision</code> 配置如下, 说明只有 image</p>
+<figure class="highlight yaml"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line"><span class="attr">encoder:</span></span><br><span class="line">  <span class="attr">mlp_keys:</span> <span class="string">&#x27;$^&#x27;</span></span><br><span class="line">  <span class="attr">cnn_keys:</span> <span class="string">&#x27;image&#x27;</span></span><br></pre></td></tr></table></figure>
+<p>对于 CNN, 都是四层的, 每层做 2x2 的 MaxPool 来减半, 不同的 Model Size
+的 Channel 数量不一样, 12M Para 最后是 64x4x4 的特征 flatten 为
+1024<br />
+对于 MLP 会过三层后输出 256 维的向量, 最终的 Embed
+会沿着最后一维拼接(如果既有 CNN 又有 MLP)<br />
+得到的 shape 会传给 RSSM</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br></pre></td><td class="code"><pre><span class="line">shapes = &#123;k: <span class="built_in">tuple</span>(v.shape) <span class="keyword">for</span> k, v <span class="keyword">in</span> obs_space.spaces.items()&#125;</span><br><span class="line">self.encoder = networks.MultiEncoder(config.encoder, shapes)</span><br><span class="line">self.embed_size = self.encoder.out_dim</span><br><span class="line">self.rssm = rssm.RSSM(config.rssm, self.embed_size, self.act_dim, )</span><br></pre></td></tr></table></figure>
+<p>加入 reward predictor <span class="math inline">\(\hat r_t \sim
+p_\phi(\hat r_t | s_t)\)</span> 和 continue predictor <span
+class="math inline">\(\hat c_t \sim p_\phi(\hat c_t | s_t)\)</span></p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br></pre></td><td class="code"><pre><span class="line">self.reward = networks.MLPHead(config.reward, self.rssm.feat_size)</span><br><span class="line">self.cont = networks.MLPHead(config.cont, self.rssm.feat_size)</span><br></pre></td></tr></table></figure>
+<p>这里的 networks.MLPHead 调配网络类型, 大家的分布是不同的, reward 是
+<code>symexp_twohot</code>, 而 cont 就是个 <code>binary</code> 的 done
+啊, 这两个小网络只有一层隐藏层和一层输出层</p>
+<p>加入 actor-critic, actor 的梯度估计用 REINFORCE 方式进行<br />
+actor 支持 多离散动作/离散动作/连续动作, actor-critic 的诸多参数全藏在
+<code>model/_base_.yaml</code> 里面了, 总体都是三层隐藏层加上一层输出层,
+第一层是 <span class="math inline">\(s=(h,z) (2560)\to 256\)</span>,
+中间是 <span class="math inline">\(256 \to 256\)</span>, 最后一层对于
+Actor 是 <span class="math inline">\(256 \to 2A\)</span>, 这 <span
+class="math inline">\(2A\)</span> 是 <span
+class="math inline">\(A\)</span> 维独立高斯的参数, 具体还要
+bounded;<br />
+对于 critic, 最后一层是 255 个价值分布 logits, 然后 logits 转不同 reward
+概率, 最后加权平均得到 <span class="math inline">\(V(s)\)</span><br />
+然后有那些传统的 polyak 平均的 target network</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.slow_target_update = <span class="built_in">int</span>(config.slow_target_update) <span class="comment"># 1</span></span><br><span class="line">self.slow_target_fraction = <span class="built_in">float</span>(config.slow_target_fraction) <span class="comment"># \tau = 0.02</span></span><br><span class="line">self._slow_value = copy.deepcopy(self.value)</span><br></pre></td></tr></table></figure>
+<p>对于 R2-Dreamer, 会多一个 projector 和 barlow twin loss, projector
+真的连 bias 都没有噢</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br></pre></td><td class="code"><pre><span class="line">self.prj = Projector(self.rssm.feat_size, self.embed_size)</span><br><span class="line">modules.update(&#123;<span class="string">&quot;projector&quot;</span>: self.prj&#125;)</span><br><span class="line">self.barlow_lambd = <span class="built_in">float</span>(config.r2dreamer.lambd)</span><br></pre></td></tr></table></figure>
+<p>最终有七大网络, 按照默认的 12M para + dmc_vision, 其 shape 为</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br></pre></td><td class="code"><pre><span class="line">modules = &#123;</span><br><span class="line">    <span class="string">&quot;rssm&quot;</span>: self.rssm, <span class="comment"># s, a, embed -&gt; deter: (...,2048), stoch: (...,32,16)</span></span><br><span class="line">    <span class="string">&quot;actor&quot;</span>: self.actor, <span class="comment"># (..., 2560) -&gt; 2A</span></span><br><span class="line">    <span class="string">&quot;value&quot;</span>: self.value, <span class="comment"># (..., 2560) -&gt; 255</span></span><br><span class="line">    <span class="string">&quot;reward&quot;</span>: self.reward, <span class="comment"># (..., 2560) -&gt; 255</span></span><br><span class="line">    <span class="string">&quot;cont&quot;</span>: self.cont, <span class="comment"># (..., 2560) -&gt; 1(done or not)</span></span><br><span class="line">    <span class="string">&quot;encoder&quot;</span>: self.encoder, <span class="comment"># (..., 64, 64, 3) -&gt; (..., 1024)</span></span><br><span class="line">    <span class="string">&quot;projector&quot;</span>: self.prj, <span class="comment"># (..., 2560) -&gt; (..., 1024)</span></span><br><span class="line">&#125;</span><br></pre></td></tr></table></figure>
+<p>说怪不得 projector 只是一层 MLP 呢, 竟然有 2560x1024
+这么贵吗？想象一下, 算 Barlow Twins 的那个相关矩阵是 1024x1024 的,
+我算一次就是 <span class="math inline">\(O(1024^3) \approx
+1.07B\)</span><br />
+我翻了翻, Barlow Twins 原文在 ImageNet 上测了 projector size 与 accuracy
+的关系, 大体遵从 <span class="math inline">\({\rm acc} = k \log \rm size
++ b\)</span>, 不过 Barlow Twins 原文有大量 DA 啊,
+这个超参可能挺重要的</p>
+<p>然后是一些收集需要优化的参数, AGC 梯度裁剪, LaProp 优化器配置, lr
+warmup 的细节, 见论文 Appendix F</p>
+<hr />
+<p>基于训练更快的目的的工程, 例如 <code>autocast</code>, 就不讲了,
+<code>class Dreamer()</code> 重要的方法还有 <code>_act()</code>,
+<code>update()</code>, <code>_cal_grad()</code>,
+<code>_imagine()</code>, <code>_lambda_return()</code>,
+<code>clone_and_freeze()</code> 一堆没有说, 一个一个来</p>
+<p><code>_act()</code> 根据当前观测和上一步保留的内部状态, 选择当前动作,
+并生成下一步要用的内部状态</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">_act</span>(<span class="params">self, obs, state, <span class="built_in">eval</span>=<span class="literal">False</span></span>):</span><br><span class="line">    <span class="comment"># obs: dict of (B, *), state: (stoch: (B, S, K), deter: (B, D), prev_action: (B, A))</span></span><br><span class="line">    torch.compiler.cudagraph_mark_step_begin() <span class="comment"># CUDA Graphs 加速的安全保证</span></span><br><span class="line">    p_obs = self.preprocess(obs) <span class="comment"># 图像转为浮点并除以 255</span></span><br><span class="line">    embed = self._frozen_encoder(p_obs) <span class="comment"># (B, E)</span></span><br><span class="line">    prev_stoch, prev_deter, prev_action = (</span><br><span class="line">        state[<span class="string">&quot;stoch&quot;</span>], </span><br><span class="line">        state[<span class="string">&quot;deter&quot;</span>],</span><br><span class="line">        state[<span class="string">&quot;prev_action&quot;</span>],</span><br><span class="line">    )   </span><br><span class="line">    stoch, deter, _ = self._frozen_rssm.obs_step(prev_stoch, prev_deter, prev_action, embed, obs[<span class="string">&quot;is_first&quot;</span>]) <span class="comment"># 走上面 RSSM 的后验时间步</span></span><br><span class="line">    <span class="comment"># 用当前状态更新隐状态, 得到 new_z(B, S, K), new_h(B, D)</span></span><br><span class="line">    feat = self._frozen_rssm.get_feat(stoch, deter) <span class="comment"># (B, F)</span></span><br><span class="line">    action_dist = self._frozen_actor(feat) <span class="comment"># 隐状态特征生成动作分布, (B, A)</span></span><br><span class="line">    action = action_dist.mode <span class="keyword">if</span> <span class="built_in">eval</span> <span class="keyword">else</span> action_dist.rsample() </span><br><span class="line">    <span class="comment"># 训练采样动作, 评估选取众数 </span></span><br><span class="line">    <span class="keyword">return</span> action, TensorDict(</span><br><span class="line">        &#123;<span class="string">&quot;stoch&quot;</span>: stoch, <span class="string">&quot;deter&quot;</span>: deter, <span class="string">&quot;prev_action&quot;</span>: action&#125;,</span><br><span class="line">        batch_size=state.batch_size,</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<p><code>_act()</code> 只负责使用当前模型选择动作, 不更新参数, 这里的
+encoder, rssm, actor 都是 frozen 的</p>
+<p><code>update()</code> 方法从 replay buffer 中取出一批数据,
+完成一次训练更新<br />
+replay buffer 内含 image/reward/bool_label/action/stoch/deter/episode,
+这部分细节也很多, 忽略之<br />
+<code>update()</code> 的很大一部分是监控与保证梯度不会因为 autocast
+或什么而炸成 nan/inf, 另外有一大部分是记录参数给 tensorboard
+看(<code>metrics.update(mets)</code>), 核心只有几行</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br></pre></td><td class="code"><pre><span class="line">(stoch, deter), mets = self._cal_grad(p_data, initial) </span><br><span class="line"><span class="comment">#(在 autocast 下)计算梯度，内部执行 backward()</span></span><br><span class="line">self._agc(self._named_params.values()) </span><br><span class="line">self._optimizer.step()      <span class="comment"># 用梯度更新参数</span></span><br><span class="line">self._scheduler.step()  	<span class="comment"># 更新 scheduler</span></span><br><span class="line">replay_buffer.update(index, stoch.detach(), deter.detach())</span><br></pre></td></tr></table></figure>
+<p><code>_cal_grad()</code> 方法一共干四件事, 是写进注释里的</p>
+<ol type="1">
+<li><p>世界模型损失(动态 + 表征)</p></li>
+<li><p>可选的表征损失变体(Dreamer、R2-Dreamer、InfoNCE、DreamerPro)</p></li>
+<li><p>用于 Actor-Critic 更新的 Imagination 扩展</p></li>
+<li><p>基于回放的价值学习</p></li>
+</ol>
+<p>输入只有 data, 即 observation <span
+class="math inline">\(o_t\)</span>, 以 R2Dreamer 为例,<br />
+有 <span class="math inline">\(o \to e \to z, h, {\rm
+post\_logit}\)</span>, 也有 <span class="math inline">\(h \to {\rm
+prior\_logit} \to \mathcal L_{\rm dyn}, \mathcal L_{\rm rep}\)</span>,
+也有 <span class="math inline">\(s=(z,h)\)</span>, 也有 <span
+class="math inline">\(\mathcal L_{\rm BT} = \dots\)</span>, 也有 <span
+class="math inline">\(s \to r, c\)</span>, 最后还有 actor-critic 的
+imagined rollout 部分, log 部分, 以及 Replay-based value learning 部分,
+额, 拿符号不好总结了</p>
+<p>先是 World Model 部分的所有 loss 计算</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">_cal_grad</span>(<span class="params">self, data, initial</span>):</span><br><span class="line">	losses, metrics = &#123;&#125;, &#123;&#125;</span><br><span class="line">    B, T = data.shape</span><br><span class="line">    <span class="comment"># === World model: posterior rollout and KL losses ===</span></span><br><span class="line">    embed = self.encoder(data) <span class="comment"># (B, T, E)</span></span><br><span class="line">    post_stoch, post_deter, post_logit = self.rssm.observe(embed, data[<span class="string">&quot;action&quot;</span>], initial, data[<span class="string">&quot;is_first&quot;</span>]) <span class="comment"># (B, T, S, K), (B, T, D), (B, T, S, K)</span></span><br><span class="line">    _, prior_logit = self.rssm.prior(post_deter) <span class="comment"># (B, T, S, K)</span></span><br><span class="line">    dyn_loss, rep_loss = self.rssm.kl_loss(post_logit, prior_logit, self.kl_free)</span><br><span class="line">    losses[<span class="string">&quot;dyn&quot;</span>] = torch.mean(dyn_loss)</span><br><span class="line">    losses[<span class="string">&quot;rep&quot;</span>] = torch.mean(rep_loss)</span><br><span class="line">    <span class="comment"># === Representation / auxiliary losses ===</span></span><br><span class="line">    feat = self.rssm.get_feat(post_stoch, post_deter) <span class="comment"># (B, T, F)</span></span><br><span class="line">    <span class="keyword">if</span> self.rep_loss == <span class="string">&quot;r2dreamer&quot;</span>: <span class="comment"># Barlow Twins loss</span></span><br><span class="line">        <span class="comment"># Flatten batch/time dims for a single cross-correlation matrix.</span></span><br><span class="line">        x1 = self.prj(feat[:, :].reshape(B * T, -<span class="number">1</span>)) <span class="comment"># project, (B, T, F) -&gt; (B*T, F)</span></span><br><span class="line">        x2 = embed.reshape(B * T, -<span class="number">1</span>).detach() <span class="comment"># (B, T, E) -&gt; (B*T, E), detach</span></span><br><span class="line">        x1_norm = (x1 - x1.mean(<span class="number">0</span>)) / (x1.std(<span class="number">0</span>) + <span class="number">1e-8</span>)</span><br><span class="line">        x2_norm = (x2 - x2.mean(<span class="number">0</span>)) / (x2.std(<span class="number">0</span>) + <span class="number">1e-8</span>)</span><br><span class="line">        c = torch.mm(x1_norm.T, x2_norm) / (B * T) <span class="comment"># 其实 E=F, shape(E, E) </span></span><br><span class="line">        invariance_loss = (torch.diagonal(c) - <span class="number">1.0</span>).<span class="built_in">pow</span>(<span class="number">2</span>).<span class="built_in">sum</span>()</span><br><span class="line">        off_diag_mask = ~torch.eye(x1.shape[-<span class="number">1</span>], dtype=torch.<span class="built_in">bool</span>, device=x1.device)</span><br><span class="line">        redundancy_loss = c[off_diag_mask].<span class="built_in">pow</span>(<span class="number">2</span>).<span class="built_in">sum</span>()</span><br><span class="line">        losses[<span class="string">&quot;barlow&quot;</span>] = invariance_loss + self.barlow_lambd * redundancy_loss</span><br><span class="line">    losses[<span class="string">&quot;rew&quot;</span>] = torch.mean(-self.reward(feat).log_prob(to_f32(data[<span class="string">&quot;reward&quot;</span>])))</span><br><span class="line">    cont = <span class="number">1.0</span> - to_f32(data[<span class="string">&quot;is_terminal&quot;</span>])</span><br><span class="line">    losses[<span class="string">&quot;con&quot;</span>] = torch.mean(-self.cont(feat).log_prob(cont))</span><br></pre></td></tr></table></figure>
+<p><code>x2</code> 的 <code>.detach()</code> 是为了防止改变 embedding,
+虽然 loss 可以从 barlow loss → x1 → projector → RSSM → embed → encoder
+这条路传过去, <span class="math inline">\(\mathcal L_{\mathrm{barlow}} =
+\sum_i(C_{ii}-1)^2 +\lambda_{\mathrm{BT}}\sum_{i\ne
+j}C_{ij}^2\)</span>​<br />
+对角线有 <code>E</code> 项, 非对角线有 <code>E(E-1)</code> 项,
+所以还要用较小的 <code>lambd</code> 平衡两项, 默认为
+<code>5e-4</code></p>
+<p>接下来有 actor-critic 的 imagined rollout 训练, 有 <span
+class="math inline">\(M=BT\)</span> 个真实起点, 每个展开 15 步, 所谓
+"真实起点", 也就是某些 <span class="math inline">\((h_t, z_t)\)</span>,
+从真实的 rollout 中 <code>.detach()</code> 采出来, 接一个 short imagined
+rollout, 这是不是一种 Dyna-style？</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br><span class="line">21</span><br><span class="line">22</span><br><span class="line">23</span><br><span class="line">24</span><br><span class="line">25</span><br><span class="line">26</span><br><span class="line">27</span><br><span class="line">28</span><br><span class="line">29</span><br><span class="line">30</span><br><span class="line">31</span><br><span class="line">32</span><br><span class="line">33</span><br><span class="line">34</span><br><span class="line">35</span><br><span class="line">36</span><br><span class="line">37</span><br><span class="line">38</span><br><span class="line">39</span><br><span class="line">40</span><br><span class="line">41</span><br><span class="line">42</span><br><span class="line">43</span><br><span class="line">44</span><br><span class="line">45</span><br><span class="line">46</span><br><span class="line">47</span><br><span class="line">48</span><br><span class="line">49</span><br><span class="line">50</span><br></pre></td><td class="code"><pre><span class="line"><span class="meta">@torch.no_grad() </span><span class="comment"># 负责想象, 不负责训练</span></span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_imagine</span>(<span class="params">self, start, imag_horizon</span>): </span><br><span class="line">    <span class="string">&quot;&quot;&quot;Rollout the policy in latent space.&quot;&quot;&quot;</span></span><br><span class="line">    feats, actions = [], []</span><br><span class="line">    stoch, deter = start <span class="comment"># (B, S, K), (B, D)</span></span><br><span class="line">    <span class="keyword">for</span> _ <span class="keyword">in</span> <span class="built_in">range</span>(imag_horizon): <span class="comment"># 默认 15 steps</span></span><br><span class="line">        feat = self._frozen_rssm.get_feat(stoch, deter) <span class="comment"># (B, F)</span></span><br><span class="line">        action = self._frozen_actor(feat).rsample() <span class="comment"># (B, A)</span></span><br><span class="line">        feats.append(feat)</span><br><span class="line">        actions.append(action)</span><br><span class="line">        stoch, deter = self._frozen_rssm.img_step(stoch, deter, action)</span><br><span class="line">    <span class="comment"># Stack along sequence dim T_imag, (B, T_imag, F), (B, T_imag, A)</span></span><br><span class="line">    <span class="keyword">return</span> torch.stack(feats, dim=<span class="number">1</span>), torch.stack(actions, dim=<span class="number">1</span>)</span><br><span class="line">    </span><br><span class="line"><span class="keyword">def</span> <span class="title function_">_cal_grad</span>(<span class="params">self, data, initial</span>):</span><br><span class="line">	...</span><br><span class="line">    <span class="comment"># === Imagination rollout for actor-critic ===</span></span><br><span class="line">    start = (</span><br><span class="line">        post_stoch.reshape(-<span class="number">1</span>, *post_stoch.shape[<span class="number">2</span>:]).detach(), <span class="comment"># (B*T, S, K)</span></span><br><span class="line">        post_deter.reshape(-<span class="number">1</span>, *post_deter.shape[<span class="number">2</span>:]).detach(), <span class="comment"># (B*T, D)</span></span><br><span class="line">    ) <span class="comment"># (B, T, ...) -&gt; (B*T, ...)</span></span><br><span class="line">    imag_feat, imag_action = self._imagine(start, self.imag_horizon + <span class="number">1</span>)</span><br><span class="line">    imag_feat, imag_action = imag_feat.detach(), imag_action.detach() <span class="comment"># 生成轨迹不建立梯度</span></span><br><span class="line">    imag_reward = self._frozen_reward(imag_feat).mode() <span class="comment"># (B*T, T_imag, 1), </span></span><br><span class="line">    imag_cont = self._frozen_cont(imag_feat).mean <span class="comment"># (B*T, T_imag, 1), done 预测</span></span><br><span class="line">    imag_value = self._frozen_value(imag_feat).mode() <span class="comment"># (B*T, T_imag, 1)</span></span><br><span class="line">    imag_slow_value = self._frozen_slow_value(imag_feat).mode()</span><br><span class="line">    <span class="comment"># .mode() 取该分布实现定义的代表性预测, 通常表示众数</span></span><br><span class="line">    disc = <span class="number">1</span> - <span class="number">1</span> / self.horizon <span class="comment"># γ = 1-1/H</span></span><br><span class="line">    weight = torch.cumprod(imag_cont * disc, dim=<span class="number">1</span>) <span class="comment"># (B*T, T_imag, 1), 按距离衰减训练权重</span></span><br><span class="line">    last = torch.zeros_like(imag_cont)</span><br><span class="line">    term = <span class="number">1</span> - imag_cont</span><br><span class="line">    ret = self._lambda_return(</span><br><span class="line">        last, term, imag_reward, imag_value, imag_value, disc, self.lamb</span><br><span class="line">    )  <span class="comment"># (B*T, T_imag-1, 1)</span></span><br><span class="line">    ret_offset, ret_scale = self.return_ema(ret) <span class="comment"># EMA 平滑, (B*T, T_imag-1, 1)</span></span><br><span class="line">    adv = (ret - imag_value[:, :-<span class="number">1</span>]) / ret_scale <span class="comment"># 归一化 advantage 计算</span></span><br><span class="line">    policy = self.actor(imag_feat)</span><br><span class="line">    logpi = policy.log_prob(imag_action)[:, :-<span class="number">1</span>].unsqueeze(-<span class="number">1</span>) <span class="comment"># (B*T, T_imag-1, 1)</span></span><br><span class="line">    entropy = policy.entropy()[:, :-<span class="number">1</span>].unsqueeze(-<span class="number">1</span>)</span><br><span class="line">    losses[<span class="string">&quot;policy&quot;</span>] = torch.mean(weight[:, :-<span class="number">1</span>].detach() * -(logpi * adv.detach() + self.act_entropy * entropy)) <span class="comment"># policy 的策略梯度, 加熵</span></span><br><span class="line">    imag_value_dist = self.value(imag_feat) <span class="comment"># 想象特征的价值分布</span></span><br><span class="line">    tar_padded = torch.cat([ret, <span class="number">0</span> * ret[:, -<span class="number">1</span>:]], <span class="number">1</span>) </span><br><span class="line">    <span class="comment"># 末尾补一个 0，用于 shift, (B*T, T_imag, 1)</span></span><br><span class="line">    losses[<span class="string">&quot;value&quot;</span>] = torch.mean(</span><br><span class="line">        weight[:, :-<span class="number">1</span>].detach() <span class="comment"># 逐步权重(不传梯度)</span></span><br><span class="line">        * (-imag_value_dist.log_prob(tar_padded.detach())  <span class="comment"># 拟合 λ-return</span></span><br><span class="line">        - imag_value_dist.log_prob(imag_slow_value.detach())) <span class="comment"># 拟合 slow critic</span></span><br><span class="line">        [:, :-<span class="number">1</span>].unsqueeze(-<span class="number">1</span>) <span class="comment"># 去掉末端占位、补广播维</span></span><br><span class="line">    ) </span><br></pre></td></tr></table></figure>
+<p>见原论文 3.3 部分</p>
+<p><img
+src="https://files.seeusercontent.com/2026/10/24/5blV/095171af1abce63b30f08ea47cd6026a.png" decoding="async" loading="lazy"></p>
+<p>这里的衰减 <span class="math inline">\(\gamma = 1- \frac{1}{\rm
+horizon}\)</span>, 最终会乘以 0/1 的 done 来, 额, 额外把 done 的活完成
+然后 critic 学 λ-return, 通过 <code>self._lambda_return</code>
+从后往前卷过来, <span class="math inline">\(R_t = r_{t} +\gamma c_{t}
+\left[(1-\lambda)V_{t+1}+\lambda R_{t+1}\right]\)</span>, 其中 <span
+class="math inline">\(c\)</span> 是预测继续概率, 没有纯粹用 <span
+class="math inline">\(V\)</span>,
+因为后续想象轨迹的奖励修正估计可能更准一点？默认 <span
+class="math inline">\(\lambda = 0.95\)</span></p>
+<p>actor/policy 的策略梯度加了一点熵, <span
+class="math inline">\(\mathcal L_{\pi} = -\mathbb{E} \left[ w_t\left(
+\log\pi_\theta(a_t\mid f_t)\operatorname{sg}(A_t) +\eta\mathcal
+H(\pi_\theta(\cdot\mid f_t)) \right) \right]\)</span><br />
+value 的 loss 还要向 target network 靠拢, <span
+class="math inline">\(\mathcal L_V = \mathbb{E} \left[ w_t\left( -\log
+p_\phi(G_t\mid f_t) -\log p_\phi(V_{\mathrm{slow},t}\mid f_t) \right)
+\right]\)</span></p>
+<p>一些细节是 step 末尾加 0 去 0 以匹配价值分布形状 / 给 imagined
+的最后一步补上未来</p>
+<p>真实的 replay step 可以在训练 Critic 外训练 RSSM 与 encoder,
+对于每个真实 step 有真实的 reward, done/last</p>
+<figure class="highlight python"><table><tr><td class="gutter"><pre><span class="line">1</span><br><span class="line">2</span><br><span class="line">3</span><br><span class="line">4</span><br><span class="line">5</span><br><span class="line">6</span><br><span class="line">7</span><br><span class="line">8</span><br><span class="line">9</span><br><span class="line">10</span><br><span class="line">11</span><br><span class="line">12</span><br><span class="line">13</span><br><span class="line">14</span><br><span class="line">15</span><br><span class="line">16</span><br><span class="line">17</span><br><span class="line">18</span><br><span class="line">19</span><br><span class="line">20</span><br></pre></td><td class="code"><pre><span class="line"><span class="keyword">def</span> <span class="title function_">_cal_grad</span>(<span class="params">self, data, initial</span>):</span><br><span class="line">	...</span><br><span class="line">	<span class="comment"># === Replay-based value learning (keep gradients through world model) ===</span></span><br><span class="line">    last, term, reward = (</span><br><span class="line">        to_f32(data[<span class="string">&quot;is_last&quot;</span>]),</span><br><span class="line">        to_f32(data[<span class="string">&quot;is_terminal&quot;</span>]),</span><br><span class="line">        to_f32(data[<span class="string">&quot;reward&quot;</span>]),</span><br><span class="line">    )</span><br><span class="line">    feat = self.rssm.get_feat(post_stoch, post_deter)</span><br><span class="line">    boot = ret[:, <span class="number">0</span>].reshape(B, T, <span class="number">1</span>) <span class="comment"># 不存在想象的话, 对齐补 0</span></span><br><span class="line">    value = self._frozen_value(feat).mode()</span><br><span class="line">    slow_value = self._frozen_slow_value(feat).mode()</span><br><span class="line">    disc = <span class="number">1</span> - <span class="number">1</span> / self.horizon</span><br><span class="line">    weight = <span class="number">1.0</span> - last <span class="comment"># 不按距离衰减训练权重</span></span><br><span class="line">    ret = self._lambda_return(last, term, reward, value, boot, disc, self.lamb)</span><br><span class="line">    ret_padded = torch.cat([ret, <span class="number">0</span> * ret[:, -<span class="number">1</span>:]], <span class="number">1</span>) <span class="comment"># 末尾补 0 占位</span></span><br><span class="line">    value_dist = self.value(feat) <span class="comment"># 不 .detach(), 让梯度传</span></span><br><span class="line">    losses[<span class="string">&quot;repval&quot;</span>] = torch.mean(</span><br><span class="line">        weight[:, :-<span class="number">1</span>] * (-value_dist.log_prob(ret_padded.detach()) - value_dist.log_prob(slow_value.detach()))[:, :-<span class="number">1</span>].unsqueeze(-<span class="number">1</span>)</span><br><span class="line">    )</span><br></pre></td></tr></table></figure>
+<p>此时 <span class="math inline">\(R_t^{\mathrm{replay}} =
+r_{t}^{\mathrm{real}} +\gamma(1-\mathrm{term}_{t}) \left[
+(1-c_{t+1})\,\mathrm{boot}_{t+1} +c_{t+1}R_{t+1}^{\mathrm{replay}}
+\right]\)</span>, 这里的 <span class="math inline">\(\rm boot\)</span>
+是 <span class="math inline">\(V\)</span> 和 0 的 "混合物"</p>
+<p>每次 <code>_cal_grad()</code> 都会执行一次 imagined rollout
+部分和一次 replay value learning 部分, 两者的损失最后一起汇总, 统一
+<code>backward()</code>, 但是训练样本量不是 1:1 的, 大概是 15:1 左右,
+训练范围也不同</p>
+<p><code>clone_and_freeze()</code>
+方法创建模型与原网络共享参数数据的副本, 因为是共享与冻结,
+不用实时同步<br />
+与 <code>.detach()</code> 的区别是可以对上游网络求梯度<br />
+gpt 告诉我, 这里的 freeze 大多可以用原网络配合 <code>no_grad()</code>
+替代……</p>
+<p>剩下部分在每篇 RL 论文可能都有, 例如 trainer.py 和 buffer.py,
+就不读了</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>前沿 RL 论文阅读</p><p><a href="https://frankly6.cn/2026/10/24/Modern-RL-paper-notes/">https://frankly6.cn/2026/10/24/Modern-RL-paper-notes/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Frankly6</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2026-10-24</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2026-10-24</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/python/">python, </a><a class="link-muted" rel="tag" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习, </a><a class="link-muted" rel="tag" href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习 </a></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2026/10/09/CS285-notes/"><span class="level-item">CS285 笔记</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.webp" alt="Frankly6" decoding="async" loading="lazy" width="128" height="128"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Frankly6</p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">文章</p><div><p class="title">9</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">分类</p><div><p class="title">3</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">标签</p><div><p class="title">7</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">总字数</p><div><p class="title">21.0W</p></div></div></a></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#r2-dreamer"><span class="level-left"><span class="level-item">1</span><span class="level-item">R2-Dreamer</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/newlogo-optimized.png" alt="frankly6" height="28" decoding="async"></a><p class="is-size-7"><span>&copy; 2026 Frankly6</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script data-pjax>window.IcarusThemeSettings = {"article":{"highlight":{"clipboard":true,"fold":"unfolded"}},"features":{"clipboard":"https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js","mathjax":"https://cdnjs.loli.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","gallery":{"js":"https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js","css":"https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"},"justifiedGallery":{"js":"https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js","css":"https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"}}};</script><script data-pjax src="/js/column.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+      window.cookieconsent.initialise({
+        type: "info",
+        theme: "edgeless",
+        static: false,
+        position: "bottom-left",
+        content: {
+          message: "此网站使用Cookie来改善您的体验。",
+          dismiss: "知道了！",
+          allow: "允许使用Cookie",
+          deny: "拒绝",
+          link: "了解更多",
+          policy: "Cookie政策",
+          href: "https://www.cookiesandyou.com/",
+        },
+        palette: {
+          popup: {
+            background: "#edeff5",
+            text: "#838391"
+          },
+          button: {
+            background: "#4b81e8"
+          },
+        },
+      });
+    });</script><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/pjax/0.2.8/pjax.min.js"></script><script src="/js/pjax.js"></script><!--!--><!--!--><!--!--><script src="/js/features.js" defer></script><script data-pjax src="/js/main.js" defer></script><div class="searchbox"><div class="searchbox-container"><div class="searchbox-header"><div class="searchbox-input-container"><input class="searchbox-input" type="text" placeholder="想要查找什么..."></div><a class="searchbox-close" href="javascript:;">×</a></div><div class="searchbox-body"></div></div></div><script data-pjax src="/js/insight.js" defer></script><script data-pjax>document.addEventListener('DOMContentLoaded', function () {
+            loadInsight({"contentUrl":"/content.json"}, {"hint":"想要查找什么...","untitled":"(无标题)","posts":"文章","pages":"页面","categories":"分类","tags":"标签"});
+        });</script></body></html>
