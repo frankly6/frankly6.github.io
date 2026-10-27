@@ -53,6 +53,17 @@ html[data-theme="dark"] :is(.tag:not(body), .button.is-light, .button.is-white, 
     border-color: var(--night-border);
 }
 html[data-theme="dark"] :is(.button.is-light:hover, .pagination-link:hover, .pagination-next:hover, .pagination-previous:hover) { background-color: #343d4b; }
+html[data-theme="dark"] .article-more.button {
+    background: #16191f;
+    color: #ededed;
+    border-color: #454d5b;
+}
+html[data-theme="dark"] .article-more.button:is(:hover, :focus, :active) {
+    background: #303744;
+    color: #fff;
+    border-color: var(--night-link);
+}
+html[data-theme="dark"] .article-more.button .has-text-grey { color: inherit !important; }
 html[data-theme="dark"] .pagination-link.is-current { background: #315c96; border-color: #8abaff; color: #fff; }
 html[data-theme="dark"] hr { background-color: var(--night-border); }
 html[data-theme="dark"] .timeline { border-color: var(--night-border); }
