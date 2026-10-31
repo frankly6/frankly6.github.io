@@ -1,5 +1,5 @@
 <!doctype html>
-<html lang="zh"><head><meta charset="utf-8"><script>(function(){var theme='light';try{if(localStorage.getItem('icarus-theme')==='dark')theme='dark';}catch(e){}document.documentElement.setAttribute('data-theme',theme);}());</script><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>前沿 RL 论文阅读 - frankly6</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="frankly6"><meta name="msapplication-TileImage" content="/img/newfavicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="frankly6"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="CS285 笔记的 follow-up, 默认读者拥有 RL 基础"><meta property="og:type" content="blog"><meta property="og:title" content="前沿 RL 论文阅读"><meta property="og:url" content="https://frankly6.cn/2026/10/24/Modern-RL-paper-notes/"><meta property="og:site_name" content="frankly6"><meta property="og:description" content="CS285 笔记的 follow-up, 默认读者拥有 RL 基础"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://frankly6.cn/images/covers/modern-rl-paper-notes.webp"><meta property="article:published_time" content="2026-10-24T15:00:00.000Z"><meta property="article:modified_time" content="2026-10-24T15:38:07.111Z"><meta property="article:author" content="Frankly6"><meta property="article:tag" content="深度学习"><meta property="article:tag" content="强化学习"><meta property="article:tag" content="python"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://frankly6.cn/images/covers/modern-rl-paper-notes.webp"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://frankly6.cn/2026/10/24/Modern-RL-paper-notes/"},"headline":"前沿 RL 论文阅读","image":["https://frankly6.cn/images/covers/modern-rl-paper-notes.webp"],"datePublished":"2026-10-24T15:00:00.000Z","dateModified":"2026-10-24T15:38:07.111Z","author":{"@type":"Person","name":"Frankly6"},"publisher":{"@type":"Organization","name":"frankly6","logo":{"@type":"ImageObject","url":"https://frankly6.cn/img/newlogo-transparent.svg"}},"description":"CS285 笔记的 follow-up, 默认读者拥有 RL 基础"}</script><link rel="canonical" href="https://frankly6.cn/2026/10/24/Modern-RL-paper-notes/"><link rel="icon" href="/img/newfavicon.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/6.0.0/css/all.min.css"><link data-pjax rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><link rel="stylesheet" href="/css/night.css"><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.loli.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
+<html lang="zh"><head><meta charset="utf-8"><script>(function(){var theme='light';try{if(localStorage.getItem('icarus-theme')==='dark')theme='dark';}catch(e){}document.documentElement.setAttribute('data-theme',theme);}());</script><meta name="viewport" content="width=device-width, initial-scale=1, maximum-scale=1"><meta><title>前沿 RL 论文阅读 - frankly6</title><link rel="manifest" href="/manifest.json"><meta name="application-name" content="frankly6"><meta name="msapplication-TileImage" content="/img/newfavicon.svg"><meta name="apple-mobile-web-app-capable" content="yes"><meta name="apple-mobile-web-app-title" content="frankly6"><meta name="apple-mobile-web-app-status-bar-style" content="default"><meta name="description" content="CS285 笔记的 follow-up, 默认读者拥有 RL 基础"><meta property="og:type" content="blog"><meta property="og:title" content="前沿 RL 论文阅读"><meta property="og:url" content="https://frankly6.cn/2026/10/24/Modern-RL-paper-notes/"><meta property="og:site_name" content="frankly6"><meta property="og:description" content="CS285 笔记的 follow-up, 默认读者拥有 RL 基础"><meta property="og:locale" content="zh_CN"><meta property="og:image" content="https://frankly6.cn/images/covers/modern-rl-paper-notes.webp"><meta property="article:published_time" content="2026-10-24T15:00:00.000Z"><meta property="article:modified_time" content="2026-10-31T16:10:04.893Z"><meta property="article:author" content="Frankly6"><meta property="article:tag" content="python"><meta property="article:tag" content="深度学习"><meta property="article:tag" content="强化学习"><meta property="twitter:card" content="summary"><meta property="twitter:image:src" content="https://frankly6.cn/images/covers/modern-rl-paper-notes.webp"><script type="application/ld+json">{"@context":"https://schema.org","@type":"BlogPosting","mainEntityOfPage":{"@type":"WebPage","@id":"https://frankly6.cn/2026/10/24/Modern-RL-paper-notes/"},"headline":"前沿 RL 论文阅读","image":["https://frankly6.cn/images/covers/modern-rl-paper-notes.webp"],"datePublished":"2026-10-24T15:00:00.000Z","dateModified":"2026-10-31T16:10:04.893Z","author":{"@type":"Person","name":"Frankly6"},"publisher":{"@type":"Organization","name":"frankly6","logo":{"@type":"ImageObject","url":"https://frankly6.cn/img/newlogo-transparent.svg"}},"description":"CS285 笔记的 follow-up, 默认读者拥有 RL 基础"}</script><link rel="canonical" href="https://frankly6.cn/2026/10/24/Modern-RL-paper-notes/"><link rel="icon" href="/img/newfavicon.svg"><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/font-awesome/6.0.0/css/all.min.css"><link data-pjax rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/highlight.js/11.7.0/styles/atom-one-light.min.css"><link rel="stylesheet" href="https://fonts.loli.net/css2?family=Ubuntu:wght@400;600&amp;family=Source+Code+Pro"><link data-pjax rel="stylesheet" href="/css/default.css"><link rel="stylesheet" href="/css/night.css"><!--!--><!--!--><!--!--><script src="//busuanzi.ibruce.info/busuanzi/2.3/busuanzi.pure.mini.js" defer></script><!--!--><link rel="stylesheet" href="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.css"><!--!--><!--!--><!--!--><style>.pace{-webkit-pointer-events:none;pointer-events:none;-webkit-user-select:none;-moz-user-select:none;user-select:none}.pace-inactive{display:none}.pace .pace-progress{background:#3273dc;position:fixed;z-index:2000;top:0;right:100%;width:100%;height:2px}</style><script src="https://cdnjs.loli.net/ajax/libs/pace/1.2.4/pace.min.js"></script><!--!--><!--!--><!-- hexo injector head_end start --><script>
   (function () {
       function switchTab() {
           if (!location.hash) {
@@ -29,10 +29,12 @@
       switchTab();
       window.addEventListener('hashchange', switchTab, false);
   })();
-  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/newlogo-transparent.svg" alt="frankly6" height="28" decoding="async"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><button class="navbar-item theme-toggle" type="button" aria-label="切换到夜间模式" aria-pressed="false" title="切换到夜间模式"><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.9 13.1A9 9 0 0 1 10.9 3.1 9 9 0 1 0 20.9 13.1Z"></path></svg></button><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/images/covers/modern-rl-paper-notes.webp" alt="前沿 RL 论文阅读" decoding="async" loading="eager" fetchpriority="high"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><i class="far fa-calendar-alt"> </i><time datetime="2026-10-24T15:00:00.000Z" title="2026-10-24T15:00:00.000Z">2026-10-24</time></span><span class="level-item is-hidden-mobile"><i class="far fa-calendar-check"> </i><time datetime="2026-10-24T15:38:07.111Z" title="2026-10-24T15:38:07.111Z">2026-10-24</time></span><span class="level-item"><a class="link-muted" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a></span><span class="level-item">1 小时读完 (大约6900个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">前沿 RL 论文阅读</h1><div class="content"><p>一些前沿(after 2025)的 RL 论文阅读, 纯粹个人偏见, 拒绝客观分析,
+  </script><!-- hexo injector head_end end --><meta name="generator" content="Hexo 7.3.0"></head><body class="is-3-column"><nav class="navbar navbar-main"><div class="container navbar-container"><div class="navbar-brand justify-content-center"><a class="navbar-item navbar-logo" href="/"><img src="/img/newlogo-transparent.svg" alt="frankly6" height="28" decoding="async"></a></div><div class="navbar-menu"><div class="navbar-start"><a class="navbar-item" href="/">主页</a><a class="navbar-item" href="/archives">归档</a><a class="navbar-item" href="/categories">分类</a><a class="navbar-item" href="/tags">标签</a></div><div class="navbar-end"><button class="navbar-item theme-toggle" type="button" aria-label="切换到夜间模式" aria-pressed="false" title="切换到夜间模式"><svg class="theme-icon theme-icon-sun" viewBox="0 0 24 24" aria-hidden="true"><circle cx="12" cy="12" r="4"></circle><path d="M12 2v2m0 16v2M2 12h2m16 0h2M4.93 4.93l1.42 1.42m11.3 11.3 1.42 1.42M4.93 19.07l1.42-1.42m11.3-11.3 1.42-1.42"></path></svg><svg class="theme-icon theme-icon-moon" viewBox="0 0 24 24" aria-hidden="true"><path d="M20.9 13.1A9 9 0 0 1 10.9 3.1 9 9 0 1 0 20.9 13.1Z"></path></svg></button><a class="navbar-item is-hidden-tablet catalogue" title="目录" href="javascript:;"><i class="fas fa-list-ul"></i></a><a class="navbar-item search" title="搜索" href="javascript:;"><i class="fas fa-search"></i></a></div></div></div></nav><section class="section"><div class="container"><div class="columns"><div class="column order-2 column-main is-8-tablet is-8-desktop is-9-widescreen"><div class="card"><div class="card-image"><span class="image is-7by3"><img class="fill" src="/images/covers/modern-rl-paper-notes.webp" alt="前沿 RL 论文阅读" decoding="async" loading="eager" fetchpriority="high"></span></div><article class="card-content article" role="article"><div class="article-meta is-size-7 is-uppercase level is-mobile"><div class="level-left"><span class="level-item"><i class="far fa-calendar-alt"> </i><time datetime="2026-10-24T15:00:00.000Z" title="2026-10-24T15:00:00.000Z">2026-10-24</time></span><span class="level-item is-hidden-mobile"><i class="far fa-calendar-check"> </i><time datetime="2026-10-31T16:10:04.893Z" title="2026-10-31T16:10:04.893Z">2026-11-01</time></span><span class="level-item"><a class="link-muted" href="/categories/%E4%BA%BA%E5%B7%A5%E6%99%BA%E8%83%BD/">人工智能</a></span><span class="level-item">1 小时读完 (大约9464个字)</span><span class="level-item" id="busuanzi_container_page_pv"><span id="busuanzi_value_page_pv">0</span>次访问</span></div></div><h1 class="title is-3 is-size-4-mobile">前沿 RL 论文阅读</h1><div class="content"><p>一些前沿(after 2025)的 RL 论文阅读, 纯粹个人偏见, 拒绝客观分析,
 滑香蕉皮式写作, 捉摸不定更新</p>
 <p>2026/10/24 更新 <a
-target="_blank" rel="noopener" href="https://arxiv.org/pdf/2603.18202">R2-Dreamer</a></p>
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2603.18202">R2-Dreamer</a><br />
+2026/11/1 更新 <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2503.14858">1000 Layer
+Networks for Self-Supervised RL</a></p>
 <h2 id="r2-dreamer">R2-Dreamer</h2>
 <p>默认读者拥有 Model-based RL 与 Dreamer 系列文章的基础</p>
 <p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2603.18202">R2-Dreamer —— ICLR 2026
@@ -495,7 +497,214 @@ gpt 告诉我, 这里的 freeze 大多可以用原网络配合 <code>no_grad()</
 替代……</p>
 <p>剩下部分在每篇 RL 论文可能都有, 例如 trainer.py 和 buffer.py,
 就不读了</p>
-</div><div class="article-licensing box"><div class="licensing-title"><p>前沿 RL 论文阅读</p><p><a href="https://frankly6.cn/2026/10/24/Modern-RL-paper-notes/">https://frankly6.cn/2026/10/24/Modern-RL-paper-notes/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Frankly6</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2026-10-24</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2026-10-24</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习, </a><a class="link-muted" rel="tag" href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习, </a><a class="link-muted" rel="tag" href="/tags/python/">python </a></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2026/10/09/CS285-notes/"><span class="level-item">CS285 笔记</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.webp" alt="Frankly6" decoding="async" loading="lazy" width="128" height="128"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Frankly6</p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">文章</p><div><p class="title">9</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">分类</p><div><p class="title">3</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">标签</p><div><p class="title">7</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">总字数</p><div><p class="title">21.0W</p></div></div></a></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#r2-dreamer"><span class="level-left"><span class="level-item">1</span><span class="level-item">R2-Dreamer</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/newlogo-transparent.svg" alt="frankly6" height="28" decoding="async"></a><p class="is-size-7"><span>&copy; 2026 Frankly6</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script data-pjax>window.IcarusThemeSettings = {"article":{"highlight":{"clipboard":true,"fold":"unfolded"}},"features":{"clipboard":"https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js","mathjax":"https://cdnjs.loli.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","gallery":{"js":"https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js","css":"https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"},"justifiedGallery":{"js":"https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js","css":"https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"}}};</script><script data-pjax src="/js/column.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
+<h2 id="layers-rl">1000 Layers RL</h2>
+<p><a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2503.14858">1000 Layer Networks for
+Self-Supervised RL —— NeurIPS 2025 Best Paper</a><br />
+<a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/32157287905">强化学习也涌现？自监督
+RL 扩展到 1000 层网络, 机器人任务提升 50 倍 —— 知乎</a><br />
+<a
+target="_blank" rel="noopener" href="https://www.zhihu.com/question/1989035976148919664/answer/1989037114353006154">如何评价
+NeurIPS 2025 获奖论文, 把自监督 RL 拓展到 1000 层？—— 知乎</a></p>
+<p>RL 上的 scaling up 十分稀有, 论文证明了 RL 也能 Scaling up,
+更多的层数能显著提升性能, 而且能泛化到不同的任务上, 这简直是 RL 的
+ResNet 啊(纠正, 自监督 online CRL 的 ResNet, 不是都能 Scaling 的)</p>
+<p><strong>自监督学习(Self-Supervised Learning, SSL)</strong>方法在
+Scaling up 上特别有用, 这里使用的是<strong>对比强化学习(Contrastive RL,
+CRL)</strong></p>
+<p>一开始我们说<strong>对比学习(Contrastive learing)</strong>,
+这种无监督方法通过
+<strong>"最大化相关样本之间的相似性并最小化不相关样本之间的相似性"</strong>
+来学习数据表示</p>
+<p><img
+src="https://files.seeusercontent.com/2026/10/30/jwX6/d25b8342a048be510faf0d51d0c3d2db.png" decoding="async" loading="lazy"></p>
+<p>我们需要对比学习, 正如我们需要蛋糕一样,
+无标注的大量数据是机器学习的基石, 仅仅盯着 cherry 虽然很优雅,
+但是吃不饱<br />
+既然要对比, 一般都使用 共享/双塔 编码器, 可能有正负样本,
+可能有对比损失</p>
+<blockquote>
+<p>eg. <a target="_blank" rel="noopener" href="https://arxiv.org/pdf/2103.03230">Barlow Twins</a>
+属于冗余消除类的对比学习, 结构使用双塔 + 投影头, 不用负样本,
+优化互相关/方差正则</p>
+</blockquote>
+<p>最常用/知名的对比学习论文应该是 <a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/2002.05709">SimCLR, ICLR 2020</a>, 足够
+simple 和好用</p>
+<blockquote>
+<p><a target="_blank" rel="noopener" href="https://amitness.com/posts/simclr">The Illustrated SimCLR
+Framework by Amit Chaudhary</a></p>
+<p>对比学习教会机器区分相似与不相似的图像, 但为了训练这个模型,
+并且不手动标注相似对与不相似对,<br />
+模型架构应该要有知道图像代表什么的能力,
+以及量化两个图像是否相似的能力</p>
+<p><img
+src="https://files.seeusercontent.com/2026/10/31/Jik1/simclr-general-architecture.png" decoding="async" loading="lazy"></p>
+<p>SimCLR 的机制十分简单, 一张图像经过 DA 后得到一对图像 <span
+class="math inline">\(x_i, x_j\)</span>, 这里的 DA 十分凶狠, 包含
+<code>random (crop + flip + color jitter + grayscale)</code></p>
+<figure>
+<img
+src="https://files.seeusercontent.com/2026/10/30/Wcw7/6d4875f55dec889d133ae8bece9110f8.png"
+alt="ways of DA" decoding="async" loading="lazy">
+<figcaption aria-hidden="true">ways of DA</figcaption>
+</figure>
+<p>然后这对图像各自过同一个 ResNet-50 Encoder <span
+class="math inline">\(f(\cdot)\)</span>, 得到两个 flatten 的 2048 维的 h
+表示<br />
+你可能想到这里的两个 h 直接找个函数(eg. 余弦相似)来最小化相似 loss,
+但是先忍住！h 可能要共给下游任务, 不能直接污染, 还要各自过
+[Dense+ReLU+Dense] 的投影头 <span
+class="math inline">\(g(\cdot)\)</span>​ 得到两个 z, 然后算相似度</p>
+<p>对于两张图像之间的相似度, 使用 <span class="math inline">\(s_{i,j} =
+\dfrac{z_i^\top z_j}{\tau \|z_i\| \| z_j \|}\)</span> 计算, 这里的 <span
+class="math inline">\(\tau\)</span> 是温度<br />
+对于整个 batch 的 2N 张图像这么做, 可以得到一个 pairwise cosine
+similarity 矩阵</p>
+<p>接下来算 loss, 我们使用 <strong>NT-Xent loss(Normalized
+Temperature-scaled Cross-Entropy loss)</strong><br />
+每次取出一个 pair, 应用 softmax 函数来获得这两个图像相似的概率<br />
+batch 中所有剩余的图像都被采样为不相似图像(负样本), 有 loss 如下, <span
+class="math inline">\(\rm sim(\cdot, \cdot)\)</span> 是相似度 <span
+class="math display">\[
+\mathcal L_{i,j} = - \log \dfrac{\exp({\rm sim}(z_i, z_j) /
+\tau)}{\sum_{k \neq i} \exp({\rm sim}(z_i, z_k) / \tau)}
+\]</span> <img
+src="https://files.seeusercontent.com/2026/10/31/j9Ec/simclr-softmax-loss-inverted.png" decoding="async" loading="lazy"></p>
+<p>整个 batch 的 loss 就是 sum 后求 mean, NT-Xent loss 本质在 softmax
+框架下, 就是 -log(softmax)<br />
+这么设计 loss 有一些好处, 例如每个负样本被推远的力度, 与其 softmax
+概率成正比, 鼓励模型学习难负样本。如果用 margin 的思路要求最小 margin
+最大, 那么当正负样本分开超过阈值时梯度为 0<br />
+同时, 余弦相似度带来 <span class="math inline">\(l_2\)</span>​ 归一化,
+让模型主要学习方向而不是模长</p>
+</blockquote>
+<hr />
+<p><a target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1956369897601865207">对比学习在
+LLM 中的应用(三): Contrastive RL —— 知乎</a><br />
+<a
+target="_blank" rel="noopener" href="https://www.cnblogs.com/moonout/p/18905820#contrastive-learning-as-goal-conditioned-reinforcement-learning-contrastive-rl-nce">论文速读记录
+| 2025.06 - MoonOut —— 博客园</a></p>
+<p>然后是对比强化学习(CRL), 我们接触过一些它的近亲, 例如
+goal-conditional RL(GCRL)(eg. <a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/1707.01495">HER</a>), <a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/2011.08909">C-learning</a>,
+我们接下来以这一篇开山作为例: <a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/2206.07568">Contrastive Learning as
+Goal-Conditioned Reinforcement Learning, NeurIPS 2022</a></p>
+<p>我们想为 RL 算法学习一个好的表示, 现有的方法可以总结为三类(两类):
+辅助损失、数据增强(DA) 以及对比(表征)学习(感觉是前两类的超集啊)</p>
+<p>对比(表征)学习够好, 但对 RL 还不够好, 一是表征学习与 RL 目标相解耦,
+二是表征并非最优、三是依赖 DA(这个问题已经 partly solved 了)</p>
+<p>Contrastive RL 的工作是让对比学习直接承担 GCRL 的价值学习, 额, 要不从
+GCRL 开始讲？</p>
+<blockquote>
+<p>在 GCRL 中, policy 是 <span
+class="math inline">\(\pi(a|s,s_g)\)</span>, 同一个状态, 指定不同目标,
+策略可以采取不同动作<br />
+奖励定义为 <span class="math inline">\(r_g(s_t, a_t) = (1-\gamma)
+p(s_{t+1} = s_g | s_t, a_t)\)</span>,
+即下一步出现在目标状态的概率(密度), 含归一化<br />
+policy 先抽一个目标 <span class="math inline">\(s_g \sim p_g\)</span>,
+再从目标中产生轨迹 <span class="math inline">\(\tau \sim \pi(\tau |
+s_g)\)</span>, 去优化 <span class="math display">\[
+\max_\pi
+\mathbb E_{\substack{s_g\sim p_g\\
+\tau\sim\pi(\tau\mid s_g)}}
+\left[
+\sum_{t=0}^{\infty}\gamma^t r_g(s_t,a_t)
+\right]
+\]</span> 同理也有 goal-conditioned Q, <span
+class="math inline">\(Q^\pi_{s_g}(s,a) = \mathbb E_\pi \left[
+\sum_{k=0}^{\infty} \gamma^k r_g(s_{t+k},a_{t+k}) | s_t=s, a_t=a
+\right]\)</span><br />
+如果你还记得后继表示(Successor Representations, SR) 的思想, 这里的 Q
+函数相当于某种占用度量, 从 <span class="math inline">\((s,a)\)</span>
+开始, 未来按 <span class="math inline">\(\gamma\)</span>
+加权能够出现在目标状态 <span class="math inline">\(s_g\)</span>
+的概率密度, 你把 <span class="math inline">\(r_g\)</span>
+展开就知道了</p>
+</blockquote>
+<p>我们可以通过对比学习来(间接)获得这个 Q 函数,<br />
+正样本是 <span class="math inline">\((s,a,s_f^{+})\)</span>, 即从 <span
+class="math inline">\((s,a)\)</span> 出发能够真正达到的未来状态,
+负样本是 <span class="math inline">\((s,a,s_f^{-})\)</span>, 随机从
+buffer 里抽一个 <span class="math inline">\(s_f^{-}\)</span>;
+设计两个编码器, <span class="math inline">\(\phi(s,a)\)</span>
+编码状态动作, <span class="math inline">\(\psi(g)\)</span>
+编码未来/目标, 于是 <span class="math inline">\(f(s,a,s_f) =
+\phi(s,a)^{\top}\psi(g)\)</span> 可以表达某种未来可达性分数</p>
+<blockquote>
+<p>假设训练后两个潜在方向恰好对应"向左"和"向右", 有下式,
+就可以表达可达性 <span class="math display">\[
+\begin{align}
+&amp;\phi(s,a_{\text{右}})=[0,2],\qquad \psi(g_{\text{右}})=[0,3],\qquad
+\psi(g_{\text{左}})=[3,0] \\
+&amp;f(s,a_{\text{右}},g_{\text{右}})=6,\qquad
+f(s,a_{\text{右}},g_{\text{左}})=0
+\end{align}
+\]</span></p>
+</blockquote>
+<p>对于正样本最大化这个分数, 负样本最小化, 有 NCE loss <span
+class="math display">\[
+\max_f \mathbb E_{(s,a) \sim p(s,a)} \left[ \mathbb E_{s_f^{+} \sim
+p^{\pi(\cdot|\cdot)}(s_{t+}|s,a)} \left[ \log \sigma(f(s,a,s_f^{+}))
+\right] + \mathbb E_{s_f^{-} \sim p(s_{t+})} \left[ \log (1 -
+\sigma(f(s,a,s_f^{+}))) \right] \right]
+\]</span> 然后有 <span class="math inline">\(Q_{s_f}^\pi (s,a) \propto
+p(s_f) \cdot \exp (f^\star (s,a,s_f))\)</span>, 这就是 Contrastive
+RL<br />
+优点有很多, 无显式奖励, 无 TD 自举, 无 DA, 无辅助损失</p>
+<hr />
+<p>然后, 虽然我们现在还没有讲 1000 Layers of RL 论文,
+但已经快学完其思想了<br />
+CRL, 或者这里特指 online CRL, 可以 scaling, 方法就是简单的残差连接(纠正,
+并非简单, 主要对 Dense+LayerNorm+Swish 架构有用, 不要在那里 ReLU, see
+Appendix A.5), 可以在特定任务上叠上 1000 layers<br />
+SAC 不行, SAC+HER 不行, 连 offline CRL 也不行, 为什么？</p>
+<p>答案是: 我不知道, 作者也不算知道。</p>
+<p>CRL 有一些好处, 例如它利用 online RL + 自监督快速转数据飞轮(再见了
+Offline RL), 例如它可以利用失败轨迹提供预测未来的监督, 例如它不用 TD
+自举更新(再见了传统 TD), 否则自己依赖自己容易爆炸, 例如它将不稳定的 RL
+问题转化为基于交叉熵损失的监督学习分类任务(这个思路在 <a
+target="_blank" rel="noopener" href="https://arxiv.org/pdf/2403.03950">Stop Regressing: Training Value
+Functions via Classification for Scalable Deep RL, 2024 ICML Oral</a>
+上提到过, 分类任务效果好于回归, 只能说 RL 苦 scaling 久也？)</p>
+<blockquote>
+<p>divert 一下, 说到 classification, 想到了 DreamerV3 那个 two-hot
+reward, 这两篇文章都是 Deepmind 的。再扩展一下也许能扯到 Distributional
+RL, 再再扩展一下我们能不能认为避免 OOD 要从源头开始而不是使用 ad-hoc
+的压低机制？ <img
+src="https://files.seeusercontent.com/2026/10/31/t4Qs/360aceda772bb7e05c7927a78e8e2a96.png" decoding="async" loading="lazy"></p>
+</blockquote>
+<p>现在我们开始看文章, Introduction, Related Work 和 Preliminaries
+全部跳过,<br />
+主要的 baseline 为 SAC, SAC+HER, TD3+HER, GCBC, GCSL(GC 就是
+goal-conditioned, 后面的缩写都熟悉吧？)</p>
+<p>有一些有趣的模式在 scaling 中被发现, 例如模型的能力并非逐渐提高,
+而是随着层数跃升, 还有某种能力的涌现(depth 256 的 model
+小人走迷宫会翻墙? 简直是超天才)</p>
+<p>对于 scaling 本身, 有一些发现, 例如深度比宽度更重要, 同时扩展 actor
+与 critic 网络, batch size 在更高的 depth 下才明显有用, depth
+的优势能够持续到 1000+ layers</p>
+<p>为什么 scaling 在 RL 语境下有用？热度图告诉我们表征学得更好,
+对照实验告诉我们探索和表达能力都能随 depth 增强,
+拆分目标体现了更深的网络能够在一定程度上拼接经验, 还有 PCA
+可视化说明深层网络学会为目标附近的状态分配更多表征容量</p>
+<p><img
+src="https://files.seeusercontent.com/2026/10/31/Lrb4/7698317dc2d78262a04706294fbfd76c.png" decoding="async" loading="lazy"></p>
+<p>论文的这套方法拥有可扩展性, 不是直接扩展到 SAC 这样的算法上,
+而是适应不同的底层 RL 训练架构, 例如 <a
+target="_blank" rel="noopener" href="https://arxiv.org/abs/2502.15280">SimbaV2, ICLR 2025
+spotlight</a>, 它使用了某种超球面 L2-Norm, 我完全看不懂什么 manifold
+什么 Tangent Spaces, 可以见 <a
+target="_blank" rel="noopener" href="https://zhuanlan.zhihu.com/p/1980270216006104901">Simba V2 解析 -
+知乎</a></p>
+<p>论文说明了 training time 也随着层数对数增长(不然呢？), 不过达到相同
+performance 下的时间还是远远快于 baseline 的</p>
+<p>知乎有锐评: 问题比方法更重要, 非常正确啊, 我还说老板比方法也更重要,
+因为 CRL 论文就是 Eysenbach 这个组三年前写的……</p>
+</div><div class="article-licensing box"><div class="licensing-title"><p>前沿 RL 论文阅读</p><p><a href="https://frankly6.cn/2026/10/24/Modern-RL-paper-notes/">https://frankly6.cn/2026/10/24/Modern-RL-paper-notes/</a></p></div><div class="licensing-meta level is-mobile"><div class="level-left"><div class="level-item is-narrow"><div><h6>作者</h6><p>Frankly6</p></div></div><div class="level-item is-narrow"><div><h6>发布于</h6><p>2026-10-24</p></div></div><div class="level-item is-narrow"><div><h6>更新于</h6><p>2026-11-01</p></div></div><div class="level-item is-narrow"><div><h6>许可协议</h6><p><a class="icons" rel="noopener" target="_blank" title="Creative Commons" href="https://creativecommons.org/"><i class="icon fab fa-creative-commons"></i></a><a class="icons" rel="noopener" target="_blank" title="Attribution" href="https://creativecommons.org/licenses/by/4.0/"><i class="icon fab fa-creative-commons-by"></i></a><a class="icons" rel="noopener" target="_blank" title="Noncommercial" href="https://creativecommons.org/licenses/by-nc/4.0/"><i class="icon fab fa-creative-commons-nc"></i></a></p></div></div></div></div></div><hr style="height:1px;margin:1rem 0"><div class="level is-mobile is-flex"><div class="article-tags is-size-7 is-uppercase"><i class="fas fa-tags has-text-grey"></i> <a class="link-muted" rel="tag" href="/tags/python/">python, </a><a class="link-muted" rel="tag" href="/tags/%E6%B7%B1%E5%BA%A6%E5%AD%A6%E4%B9%A0/">深度学习, </a><a class="link-muted" rel="tag" href="/tags/%E5%BC%BA%E5%8C%96%E5%AD%A6%E4%B9%A0/">强化学习 </a></div></div><!--!--></article></div><!--!--><nav class="post-navigation mt-4 level is-mobile"><div class="level-end"><a class="article-nav-next level level-item link-muted" href="/2026/10/09/CS285-notes/"><span class="level-item">CS285 笔记</span><i class="level-item fas fa-chevron-right"></i></a></div></nav><!--!--></div><div class="column column-left is-4-tablet is-4-desktop is-3-widescreen  order-1"><div class="card widget" data-type="profile"><div class="card-content"><nav class="level" style="margin-bottom:1rem"><div class="level-item has-text-centered flex-shrink-1"><div><figure class="image is-128x128 mx-auto mb-2"><img class="avatar" src="/img/avatar.webp" alt="Frankly6" decoding="async" loading="lazy" width="128" height="128"></figure><p class="title is-size-4 is-block" style="line-height:inherit;">Frankly6</p></div></div></nav><nav class="level menu-list is-mobile" style="margin-bottom:1rem"><a class="level-item has-text-centered is-marginless" href="/archives/"><div><p class="heading">文章</p><div><p class="title">9</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/categories/"><div><p class="heading">分类</p><div><p class="title">3</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">标签</p><div><p class="title">7</p></div></div></a><a class="level-item has-text-centered is-marginless" href="/tags/"><div><p class="heading">总字数</p><div><p class="title">212k</p></div></div></a></nav></div></div><div class="card widget" id="toc" data-type="toc"><div class="card-content"><div class="menu"><h3 class="menu-label">目录</h3><ul class="menu-list"><li><a class="level is-mobile" href="#r2-dreamer"><span class="level-left"><span class="level-item">1</span><span class="level-item">R2-Dreamer</span></span></a></li><li><a class="level is-mobile" href="#layers-rl"><span class="level-left"><span class="level-item">2</span><span class="level-item">1000 Layers RL</span></span></a></li></ul></div></div><style>#toc .menu-list > li > a.is-active + .menu-list { display: block; }#toc .menu-list > li > a + .menu-list { display: none; }</style><script src="/js/toc.js" defer></script></div></div><!--!--></div></div></section><footer class="footer"><div class="container"><div class="level"><div class="level-start"><a class="footer-logo is-block mb-2" href="/"><img src="/img/newlogo-transparent.svg" alt="frankly6" height="28" decoding="async"></a><p class="is-size-7"><span>&copy; 2026 Frankly6</span>  Powered by <a href="https://hexo.io/" target="_blank" rel="noopener">Hexo</a> &amp; <a href="https://github.com/ppoffice/hexo-theme-icarus" target="_blank" rel="noopener">Icarus</a><br><span id="busuanzi_container_site_uv">共<span id="busuanzi_value_site_uv">0</span>个访客</span></p></div><div class="level-end"><div class="field has-addons"><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Creative Commons" href="https://creativecommons.org/"><i class="fab fa-creative-commons"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Attribution 4.0 International" href="https://creativecommons.org/licenses/by/4.0/"><i class="fab fa-creative-commons-by"></i></a></p><p class="control"><a class="button is-transparent is-large" target="_blank" rel="noopener" title="Download on GitHub" href="https://github.com/ppoffice/hexo-theme-icarus"><i class="fab fa-github"></i></a></p></div></div></div></div></footer><script src="https://cdnjs.loli.net/ajax/libs/jquery/3.3.1/jquery.min.js"></script><script data-pjax>window.IcarusThemeSettings = {"article":{"highlight":{"clipboard":true,"fold":"unfolded"}},"features":{"clipboard":"https://cdnjs.loli.net/ajax/libs/clipboard.js/2.0.4/clipboard.min.js","mathjax":"https://cdnjs.loli.net/ajax/libs/mathjax/3.2.2/es5/tex-mml-chtml.js","gallery":{"js":"https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/js/lightgallery.min.js","css":"https://cdnjs.loli.net/ajax/libs/lightgallery/1.10.0/css/lightgallery.min.css"},"justifiedGallery":{"js":"https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/js/jquery.justifiedGallery.min.js","css":"https://cdnjs.loli.net/ajax/libs/justifiedGallery/3.8.1/css/justifiedGallery.min.css"}}};</script><script data-pjax src="/js/column.js"></script><a id="back-to-top" title="回到顶端" href="javascript:;"><i class="fas fa-chevron-up"></i></a><script data-pjax src="/js/back_to_top.js" defer></script><!--!--><!--!--><!--!--><!--!--><script src="https://cdnjs.loli.net/ajax/libs/cookieconsent/3.1.1/cookieconsent.min.js" defer></script><script>window.addEventListener("load", () => {
       window.cookieconsent.initialise({
         type: "info",
         theme: "edgeless",
